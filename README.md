@@ -1,1 +1,1 @@
-# ogcapi-workshop
+# OGC API workshop
