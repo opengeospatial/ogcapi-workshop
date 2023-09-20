@@ -1,0 +1,26 @@
+name: Test documentation ⚙️
+
+on:
+  pull_request:
+    paths:
+      - 'workshop/content/**'
+
+defaults:
+  run:
+    working-directory: workshop/content
+
+jobs:
+  build:
+    name: Test documentation build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install requirements 📦
+        run: |
+          python3 -m pip3 install --upgrade pip
+          pip3 install -r requirements.txt
+      - name: Deploy 📦
+        run: mkdocs build --strict
