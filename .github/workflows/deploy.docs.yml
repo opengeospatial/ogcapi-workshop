@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-#    paths:
-#      - 'workshop/content/**'
+    paths:
+      - 'workshop/content/**'
 
 defaults:
   run:
@@ -25,4 +25,4 @@ jobs:
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
       - name: Deploy 📦
-        run: mkdocs gh-deploy --force --message 'update website via GitHub Actions'
+        run: mkdocs gh-deploy --strict --force --message 'update website via GitHub Actions'
