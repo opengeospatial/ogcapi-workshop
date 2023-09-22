@@ -1,0 +1,62 @@
+site_name: OGC API workshop
+site_description: "OGC APIs are designed to make it easy for ANYONE to provide and use geospatial data on the web, and to integrate this data with ANY other type of information.  This workshop describes OGC APIs in support of discovery, access, visualization and processing in support of FAIR data principles."
+site_author: Open Geospatial Consortium
+copyright: "&copy; 2023 Open Geospatial Consortium"
+site_url: https://opengeospatial.github.io/ogcapi-workshop
+repo_url: https://github.com/opengeospatial/ogcapi-workshop
+nav:
+    - Home: index.md
+    - Background and context: background-and-context.md
+    - Overview and main concepts: overview-and-main-concepts.md
+    - API deep dive:
+        - OGC API - Common: ogcapi/common.md
+        - OGC API - Features: ogcapi/features.md
+        - OGC API - Coverages: ogcapi/coverages.md
+        - OGC API - Maps: ogcapi/maps.md
+        - OGC API - Tiles: ogcapi/tiles.md
+        - OGC API - Records: ogcapi/records.md
+        - OGC API - Processes: ogcapi/processes.md
+        - OGC API - Environmental Data Retrieval: ogcapi/environmental-data-retrieval.md
+    - OGC API roadmap: ogcapi-roadmap.md
+    - Encodings: encodings.md
+    - Compliance and certification: compliance-and-certification.md
+    - Transition and migration:
+        - Benefits and examples: benefits-and-examples.md
+    - Conclusion: conclusion.md
+
+use_directory_urls: true
+
+theme:
+    name: material
+    palette:
+        # See https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-scheme
+        # Default is indigo (blue)
+        primary: black
+        scheme: ogcapi-workshop
+    features:
+        - navigation.indexes 
+    favicon: assets/favicon.ico
+    logo: assets/images/ogc.png
+
+plugins:
+    - search
+
+markdown_extensions:
+    - meta # option to add some meta tags on top, title, author, date, etc
+    - admonition # adds the note, question, tip boxes, eg: !!! tip "my tip"
+    - pymdownx.details # advanced collapsible panels
+    - pymdownx.superfences # advanced features; such as line number, flow chart, python shell
+    - footnotes # notes bottom of page
+    - attr_list # used to size images
+    - md_in_html # used to size images
+
+extra_css:
+    # ogcapi-workshop primary color with light and dark variations from material.io
+    # https://material.io/resources/color/#!/?view.left=0&view.right=1
+    - assets/stylesheets/ogcapi-workshop.css
+    - assets/stylesheets/termynal.css
+    - assets/stylesheets/custom.css
+
+extra_javascript:
+    - assets/javascripts/termynal.js
+    - assets/javascripts/custom.js
