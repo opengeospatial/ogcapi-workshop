@@ -73,7 +73,7 @@ echo 'Hello world'
 
 # Workshop location and materials
 
-This workshop is always provided live at [opengeospatial.github.io/ogcapi-workshop](https://opengeospatial.github.io/ogcapi-workshop).
+This workshop is always provided live at [ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org).
 
 The workshop contents, wiki and issue tracker are managed on GitHub at [github.com/opengeospatial/ogcapi-workshop](https://github.com/opengeospatial/ogcapi-workshop).
 

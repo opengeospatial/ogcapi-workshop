@@ -12,7 +12,7 @@ These Standards are being constructed as "building blocks" that can be used to a
 
 ## For users
 
-Are you a workshop participant or want to dive-in individually?  Go to [opengeospatial.github.io/ogcapi-workshop](https://opengeospatial.github.io/ogcapi-workshop) to follow the lessons and exercises.
+Are you a workshop participant or want to dive-in individually?  Go to [https://ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org) to follow the lessons and exercises.
 
 ## For authors
 
@@ -45,7 +45,7 @@ mkdocs serve  # website is made available on http://localhost:8000
 
 To make contributions back to the workshop, fork the repository from GitHub.  Contributions and Pull Requests are always welcome!
 
-Changes to the GitHub repository result in an automated build and deploy of the content to [opengeospatial.github.io/ogcapi-workshop](https://opengeospatial.github.io/ogcapi-workshop).
+Changes to the GitHub repository result in an automated build and deploy of the content to [ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org).
 
 ## Deploying to live site
 

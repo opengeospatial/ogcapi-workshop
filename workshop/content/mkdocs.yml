@@ -2,7 +2,7 @@ site_name: OGC API workshop
 site_description: "OGC APIs are designed to make it easy for ANYONE to provide and use geospatial data on the web, and to integrate this data with ANY other type of information.  This workshop describes OGC APIs in support of discovery, access, visualization and processing in support of FAIR data principles."
 site_author: Open Geospatial Consortium
 copyright: "&copy; 2023 Open Geospatial Consortium"
-site_url: https://opengeospatial.github.io/ogcapi-workshop
+site_url: https://ogcapi-workshop.ogc.org
 repo_url: https://github.com/opengeospatial/ogcapi-workshop
 nav:
     - Home: index.md
