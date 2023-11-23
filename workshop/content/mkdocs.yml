@@ -10,7 +10,11 @@ nav:
     - Overview and main concepts: overview-and-main-concepts.md
     - API deep dive:
         - OGC API - Common: ogcapi/common.md
-        - OGC API - Features: ogcapi/features.md
+        - OGC API - Features:
+            - Prerequisites: ogcapi/ogcapi-features/text/basic-index.md
+            - Overview, OGC API - Features: ogcapi/ogcapi-features/text/basic-overview.md
+            - An Introduction to OGC API - Feature: ogcapi/ogcapi-features/text/basic-main.md
+            - Resources of OGC API - Features: ogcapi/ogcapi-features/text/operations.md
         - OGC API - Coverages: ogcapi/coverages.md
         - OGC API - Maps: ogcapi/maps.md
         - OGC API - Tiles: ogcapi/tiles.md
