@@ -24,29 +24,25 @@ models, richer queries, and additional coordinate reference systems.
 
 ## Background
 
-History
+### History
 
-:   While in draft form and prior to February 2019, **OGC API -
-    Features - Part 1: Core** was referred to as WFS3.0.
+While in draft form and prior to February 2019, **OGC API -
+Features - Part 1: Core** was referred to as WFS3.0.
 
-Versions
+### Versions
 
-:   **OGC API - Features - Part 1: Core** version 1.0.0 is the current
-    latest version
+**OGC API - Features - Part 1: Core** version 1.0.0 is the current
+latest version
 
-Test Suite
+### Test Suite
 
-:   
+Test suites are available for:
 
-    Test suites are available for:
+*   [OGC API - Features](https://github.com/opengeospatial/ets-ogcapi-features10)
 
-    :   -   [OGC API -
-            Features](https://github.com/opengeospatial/ets-ogcapi-features10)
+### Implementations
 
-Implementations
-
-:   Implementations can be found on the Compliance Database here
-    \<<http://www.opengeospatial.org/resource/products/byspec>\>
+Implementations can be found on the Compliance Database [here](http://www.opengeospatial.org/resource/products/byspec)
 
 ### Usage
 
@@ -85,68 +81,47 @@ and time can also be accessed consistently.
 **OGC API - Features - Part 1: Core** defines the resources listed in
 the following table.
 
-  --------------------------------------------------------------------------------------------
-  Resource                     Path                                            Purpose
-  ---------------------------- ----------------------------------------------- ---------------
-  Landing page                 /                                               This is the
-                                                                               top-level
-                                                                               resource, which
-                                                                               serves as an
-                                                                               entry point.
-
-  Conformance declaration      /conformance                                    This resource
-                                                                               presents
-                                                                               information
-                                                                               about the
-                                                                               functionality
-                                                                               that is
-                                                                               implemented by
-                                                                               the server.
-
-  API definition               /api                                            This resource
-                                                                               provides
-                                                                               metadata about
-                                                                               the API itself.
-                                                                               Note use of
-                                                                               **/api** on the
-                                                                               server is
-                                                                               optional and
-                                                                               the API
-                                                                               definition may
-                                                                               be hosted on
-                                                                               completely
-                                                                               separate server
-
-  Feature collections          /collections                                    This resource
-                                                                               lists the
-                                                                               feature
-                                                                               collections
-                                                                               that are
-                                                                               offered through
-                                                                               the API.
-
-  Feature collection           /collections/{collectionId}                     This resource
-                                                                               describes the
-                                                                               feature
-                                                                               collection
-                                                                               identified in
-                                                                               the path.
-
-  Features                     /collections/{collectionId}/items               This resource
-                                                                               presents the
-                                                                               features that
-                                                                               are contained
-                                                                               in the
-                                                                               collection.
-
-  Feature                      /collections/{collectionId}/items/{featureId}   This resource
-                                                                               presents the
-                                                                               feature that is
-                                                                               identified in
-                                                                               the path
-  --------------------------------------------------------------------------------------------
-
-  : Overview of OGC API - Features resources
+<table>
+  <tr>
+    <th>Resource</th>
+    <th>Path</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>Landing page</td>
+    <td>/</td>
+    <td>This is the top-level resource, which serves as an entry point.</td>
+  </tr>
+  <tr>
+    <td>Conformance declaration</td>
+    <td>/conformance</td>
+    <td>This resource presents information about the functionality that is implemented by the server.</td>
+  </tr>
+    <td>API definition</td>
+    <td>/api</td>
+    <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
+  </tr>
+  </tr>
+    <td>Feature collections</td>
+    <td>/collections </td>
+    <td>This resource lists the feature collections that are offered through the API.</td>
+  </tr>
+  </tr>
+    <td>Feature collection</td>
+    <td>/collections/{collectionId}</td>
+    <td>This resource describes the feature collection identified in the path.</td>
+  </tr>
+  </tr>
+    <td>Features</td>
+    <td>/collections/{collectionId}/items</td>
+    <td>This resource presents the features that are contained in the collection.</td>
+  </tr>
+  </tr>
+    <td>Feature</td>
+    <td>/collections/{collectionId}/items/{featureId}</td>
+    <td>This resource presents the feature that is identified in the path</td>
+  </tr>
+</table>
 
 ## Example
 
