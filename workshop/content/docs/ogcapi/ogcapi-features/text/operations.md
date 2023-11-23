@@ -7,7 +7,7 @@ Each resource provides **links** to related resources. This enables a
 client application to navigate the resources, from the landing page
 through to the individual features. The server identifies the
 relationship between a resource and other linked resources through a
-**link relation type**, represented by the attribute \'rel\'. The link
+**link relation type**, represented by the attribute ```rel```. The link
 relation types used by implementations of the **OGC API - Features -
 Part 1: Core** can be found in [Section
 5.2](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations)
@@ -23,12 +23,12 @@ definition paths. An example landing page is at
 <https://services.interactive-instruments.de/t15/daraa?f=json>
 
 The link to the API definition is identified through the
-\'service-desc\' and \'service-doc\' link relation types.
+```service-desc``` and ```service-doc``` link relation types.
 
 The link to the Conformance declaration is identified through the
-\'conformance\' link relation type.
+```conformance``` link relation type.
 
-The link to the Collections is identified through the \'data\' link
+The link to the Collections is identified through the ```data``` link
 relation type.
 
 An extract from the landing page of a demo server is shown below.
@@ -75,9 +75,9 @@ order to meet one or more sets of requirements specified in a standard.
 Below is an extract from the response to the request
 <https://services.interactive-instruments.de/t15/daraa/conformance?f=json>
 
-Notice that the example shows a link relation type called \'alternate\'
+Notice that the example shows a link relation type called ```alternate```
 which identifies a way to retrieve an alternative representation of the
-information provided by the resource. In this case the \'alternate\'
+information provided by the resource. In this case the ```alternate```
 link relation is referencing an HTML representation of the conformance
 declaration.
 
@@ -102,7 +102,7 @@ declaration.
 
 Data offered through an implementation of **OGC API - Features - Part 1:
 Core** is organized into one or more feature collections. The
-\'Collections\' resource provides information about and access to the
+```Collections``` resource provides information about and access to the
 list of collections.
 
 For each collection, there is a link to the detailed description of the
@@ -123,7 +123,7 @@ collection:
     spatial and temporal extent of the collection
 -   An optional indicator about the type of the items in the collection
     (the default value, if the indicator is not provided, is
-    \'feature\').
+    ```feature```).
 
 Below is an extract from the response to the request
 <https://services.interactive-instruments.de/t15/daraa/collections?f=json>
@@ -302,14 +302,14 @@ response. An example request that uses the **limit** parameter is
 <https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items?f=json&limit=2>
 
 Each page may include information about the number of selected and
-returned features (\'numberMatched\' and \'numberReturned\') as well as
-links to support paging (link relation \'next\').
+returned features (```numberMatched``` and ```numberReturned```) as well as
+links to support paging (link relation ```next```).
 
 ## Feature {#ogcapif_feature}
 
 The Feature resource is used for retrieving an individual feature, its
 geometric representation and other properties. In the example below, the
-feature with an \'id\' of 1 is retrieved. The response is retrieved
+feature with an ```id``` of 1 is retrieved. The response is retrieved
 through the request
 <https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items/1?f=json>
 
