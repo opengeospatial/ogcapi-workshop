@@ -288,18 +288,13 @@ by the **datetime** parameter. An example request that uses the **bbox**
 parameter is
 <https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json&bbox=36.0832432,32.599852,36.1168237,32.6283697>
 
-::: note
-::: title
-Note
-:::
-
-The effect of the bbox parameter can be easily seen when comparing the
-HTML response from
-[applying](https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html&bbox=36.0832432,32.599852,36.1168237,32.6283697)
-the bbox parameter to the response
-[without](https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html)
-any bbox parameter.
-:::
+!!! note
+  The effect of the bbox parameter can be easily seen when comparing the
+  HTML response from
+  [applying](https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html&bbox=36.0832432,32.599852,36.1168237,32.6283697)
+  the bbox parameter to the response
+  [without](https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html)
+  any bbox parameter.
 
 The **limit** parameter may be used to control the page size by
 specifying the maximum number of features that should be returned in the
