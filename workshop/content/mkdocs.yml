@@ -26,7 +26,20 @@ nav:
             - Overview, OGC API - Processes: ogcapi/ogcapi-processes/text/basic-overview.md
             - An Introduction to OGC API - Processes: ogcapi/ogcapi-processes/text/basic-main.md
         - OGC API - Records: ogcapi/records.md
-        - OGC API - Environmental Data Retrieval: ogcapi/environmental-data-retrieval.md
+        - OGC API - Environmental Data Retrieval:
+            - Prerequisites: ogcapi/ogcapi-edr/text/basic-index.md
+            - An Introduction to OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/basic-main.md
+            - Information Resources of OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/operations.md
+            - Query Resources of OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/advanced.md
+            - Position Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/positionquery.md
+            - Area Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/areaquery.md
+            - Cube Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/cubequery.md
+            - Trajectory Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/trajectoryquery.md
+            - Corridor Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/corridorquery.md
+            - Radius Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/radiusquery.md
+            - Instances Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/instancesquery.md
+            - Locations Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/locationsquery.md
+            - Items (Features) Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/itemsquery.md
         - OGC API - Maps: ogcapi/maps.md
         - OGC - Sensor Things API: ogcapi/sta.md
     - OGC API roadmap: ogcapi-roadmap.md
