@@ -1,4 +1,4 @@
-# SensorThings API
+# Demo - SensorThings API
 
 ## Overview
 

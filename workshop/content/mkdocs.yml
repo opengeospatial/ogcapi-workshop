@@ -20,11 +20,6 @@ nav:
             - Overview, OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-overview.md
             - An Introduction to OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-main.md
             - Resources of OGC API - Tiles: ogcapi/ogcapi-tiles/text/operations.md
-        - OGC - SensorThings API:
-            - Prerequisites: ogcapi/sta/text/index.md
-            - Overview, SensorThings API: ogcapi/sta/text/overview.md
-            - An Introduction to SensorThings API: ogcapi/sta/text/main.md
-            - Resources of SensorThings API: ogcapi/sta/text/operations.md
 #        - OGC API - Coverages: ogcapi/coverages.md
         - OGC API - Processes:
             - Prerequisites: ogcapi/ogcapi-processes/text/basic-index.md
@@ -46,6 +41,12 @@ nav:
             - Locations Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/locationsquery.md
             - Items (Features) Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/itemsquery.md
         - OGC API - Maps: ogcapi/maps.md
+        - OGC - SensorThings API:
+            - Prerequisites: ogcapi/sta/text/basic-index.md
+            - Overview, SensorThings API: ogcapi/sta/text/overview.md
+            - An Introduction to SensorThings API: ogcapi/sta/text/main.md
+            - Resources of SensorThings API: ogcapi/sta/text/operations.md
+            - Demo: ogcapi/sta/slides/presentation.md
     - OGC API roadmap: ogcapi-roadmap.md
     - Encodings: encodings.md
     - Compliance and certification: compliance-and-certification.md

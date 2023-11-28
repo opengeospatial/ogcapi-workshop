@@ -4,8 +4,8 @@
 
 The Internet of Things (IoT) is a global information infrastructure that
 enables advanced services by interconnecting both physical and virtual
-\"things\" based on existing and evolving interoperable information and
-communication technologies \[ITU-T\]. To facilitate geospatial
+"things" based on existing and evolving interoperable information and
+communication technologies [ITU-T\]. To facilitate geospatial
 interoperability between devices in the IoT, the OGC has published the
 OGC SensorThings API.
 
@@ -22,23 +22,18 @@ observations or perform other functions.
 
 ## Background
 
-History
+> History
 
-:   SensorThings API Part 1: Sensing version 1.0 in July 2016.
+SensorThings API Part 1: Sensing version 1.0 in July 2016.
 
-Test Suite
+> Test Suite
 
-:   
+Test suites are available for:
+- SensorThings API Part 1 version 1.0 <https://github.com/opengeospatial/ets-sta10>
 
-    Test suites are available for:
+> Implementations
 
-    :   -   SensorThings API Part 1 version 1.0
-            \<<https://github.com/opengeospatial/ets-sta10>\>
-
-Implementations
-
-:   Implementations are listed on the OGC website here
-    \<<http://www.opengeospatial.org/resource/products/byspec>\>
+Implementations are listed on the OGC website here <http://www.opengeospatial.org/resource/products/byspec>
 
 ### Usage
 
@@ -80,53 +75,53 @@ Rather than operations, it is more appropriate to discuss what the
 SensorThings API offers through the entities it provides as resources.
 The following is a list entities supported by the API:
 
-Thing
+> Thing
 
-:   The OGC SensorThings API follows the ITU-T definition, i.e., with
+    The OGC SensorThings API follows the ITU-T definition, i.e., with
     regard to the Internet of Things, a thing is an object of the
     physical world (physical things) or the information world (virtual
     things) that is capable of being identified and integrated into
     communication networks \[ITU-T\].
 
-Location
+>  Location
 
-:   The Location entity locates the Thing or the Things it associated
+    The Location entity locates the Thing or the Things it associated
     with. A Thing's Location entity is defined as the last known
     location of the Thing.
 
-HistoricalLocation
+>  HistoricalLocation
 
-:   A Thing's HistoricalLocation entity set provides the times of the
+    A Thing's HistoricalLocation entity set provides the times of the
     current (i.e., last known) and previous locations of the Thing.
 
-Datastream
+>  Datastream
 
-:   A Datastream groups a collection of Observations measuring the same
+    A Datastream groups a collection of Observations measuring the same
     ObservedProperty and produced by the same Sensor.
 
-Sensor
+> Sensor
 
-:   A Sensor is an instrument that observes a property or phenomenon
+    A Sensor is an instrument that observes a property or phenomenon
     with the goal of producing an estimate of the value of the property.
 
-ObservedProperty
+> ObservedProperty
 
-:   An ObservedProperty specifies the phenomenon of an Observation.
+    An ObservedProperty specifies the phenomenon of an Observation.
 
-Observation
+> Observation
 
-:   An Observation is the act of measuring or otherwise determining the
+    An Observation is the act of measuring or otherwise determining the
     value of a property.
 
-FeatureOfInterest
+> FeatureOfInterest
 
-:   The phenomenon against which an observation is made is a property of
+    The phenomenon against which an observation is made is a property of
     the feature of interest.
 
 ## Example
 
 This [SensorThings API
-server](http://toronto-bike-snapshot.sensorup.com/v1.0/)publishes sample
+server](http://toronto-bike-snapshot.sensorup.com/v1.0/) publishes sample
 data about available bikes and docks from a Toronto bike share station.
 
 An example request to retrieve sensors through the API is shown below.
