@@ -20,7 +20,7 @@ nav:
             - Overview, OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-overview.md
             - An Introduction to OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-main.md
             - Resources of OGC API - Tiles: ogcapi/ogcapi-tiles/text/operations.md
-        - OGC - Sensor Things API:
+        - OGC - SensorThings API:
             - Prerequisites: ogcapi/sta/text/index.md
             - Overview, SensorThings API: ogcapi/sta/text/overview.md
             - An Introduction to SensorThings API: ogcapi/sta/text/main.md
