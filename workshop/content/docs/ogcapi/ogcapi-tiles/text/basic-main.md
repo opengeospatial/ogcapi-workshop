@@ -61,15 +61,15 @@ API - Tiles Standard.
 
 Once you have discovered the relevant resources, then retrieve the list
 of available tiling schemes from the resource
-[\.../{datasetRoot}/tileMatrixSets]{.title-ref} to identify the tiling
+```.../{datasetRoot}/tileMatrixSets]``` to identify the tiling
 scheme of interest. Retrieve the details of the specific tiling scheme
-with \`\.../{datasetRoot}/tileMatrixSets/{tileMatrixSetId}.
+with ```.../{datasetRoot}/tileMatrixSets/{tileMatrixSetId}```.
 
 Once you have identified a tiling scheme of interest, you can retrieve
 tile set metadata for that tiling scheme through
-[{datasetRoot}/tiles/{tileMatrixSetId}]{.title-ref} and also retrieve
+```[{datasetRoot}/tiles/{tileMatrixSetId}]``` and also retrieve
 individual tiles with
-[{datasetRoot}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}]{.title-ref}.
+```[{datasetRoot}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
 
 ### Relation to other OGC Standards
 
