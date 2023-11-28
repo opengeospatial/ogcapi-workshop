@@ -42,7 +42,7 @@ Test suites are available for:
 
 ### Implementations
 
-Implementations can be found on the Compliance Database [here](http://www.opengeospatial.org/resource/products/byspec)
+Implementations can be found on the Compliance Database <http://www.opengeospatial.org/resource/products/byspec>
 
 ### Usage
 
@@ -97,26 +97,27 @@ the following table.
     <td>/conformance</td>
     <td>This resource presents information about the functionality that is implemented by the server.</td>
   </tr>
+  <tr>
     <td>API definition</td>
     <td>/api</td>
     <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
   </tr>
-  </tr>
+  <tr>
     <td>Feature collections</td>
     <td>/collections </td>
     <td>This resource lists the feature collections that are offered through the API.</td>
   </tr>
-  </tr>
+  <tr>
     <td>Feature collection</td>
     <td>/collections/{collectionId}</td>
     <td>This resource describes the feature collection identified in the path.</td>
   </tr>
-  </tr>
+  <tr>
     <td>Features</td>
     <td>/collections/{collectionId}/items</td>
     <td>This resource presents the features that are contained in the collection.</td>
   </tr>
-  </tr>
+  <tr>
     <td>Feature</td>
     <td>/collections/{collectionId}/items/{featureId}</td>
     <td>This resource presents the feature that is identified in the path</td>
