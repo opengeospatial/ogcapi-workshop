@@ -1,1 +1,12 @@
+.DS_Store
+workshop/.DS_Store
+workshop/content/.DS_Store
+workshop/content/docs/.DS_Store
+workshop/content/docs/ogcapi/.DS_Store
 workshop/content/site
+workshop/content/docs/ogcapi/ogcapi-edr/.DS_Store
+workshop/content/docs/ogcapi/ogcapi-features/.DS_Store
+workshop/content/docs/ogcapi/ogcapi-processes/.DS_Store
+workshop/content/docs/ogcapi/ogcapi-tiles/.DS_Store
+workshop/content/docs/ogcapi/sta/.DS_Store
+
