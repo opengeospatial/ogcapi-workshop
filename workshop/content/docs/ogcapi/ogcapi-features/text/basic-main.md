@@ -24,25 +24,25 @@ models, richer queries, and additional coordinate reference systems.
 
 ## Background
 
-### History
+> History
+ 
+  While in draft form and prior to February 2019, **OGC API -
+  Features - Part 1: Core** was referred to as WFS3.0.
 
-While in draft form and prior to February 2019, **OGC API -
-Features - Part 1: Core** was referred to as WFS3.0.
+> Versions
 
-### Versions
+  **OGC API - Features - Part 1: Core** version 1.0.0 is the current
+  latest version
 
-**OGC API - Features - Part 1: Core** version 1.0.0 is the current
-latest version
+> Test Suite
 
-### Test Suite
+  Test suites are available for:
 
-Test suites are available for:
+  *   [OGC API - Features](https://github.com/opengeospatial/ets-ogcapi-features10)
 
-*   [OGC API - Features](https://github.com/opengeospatial/ets-ogcapi-features10)
+>  Implementations
 
-### Implementations
-
-Implementations can be found on the Compliance Database <http://www.opengeospatial.org/resource/products/byspec>
+  Implementations can be found on the Compliance Database <http://www.opengeospatial.org/resource/products/byspec>
 
 ### Usage
 

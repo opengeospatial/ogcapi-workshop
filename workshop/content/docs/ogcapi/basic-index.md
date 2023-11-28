@@ -1,4 +1,4 @@
-# OGC API - Environmental Data Retrieval
+# OGC API
 
 ## Prerequisites
 

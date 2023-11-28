@@ -9,25 +9,22 @@ nav:
     - Background and context: background-and-context.md
     - Overview and main concepts: overview-and-main-concepts.md
     - API deep dive:
+        - Prerequisites: ogcapi/basic-index.md
         - OGC API - Common: ogcapi/common.md
         - OGC API - Features:
-            - Prerequisites: ogcapi/ogcapi-features/text/basic-index.md
             - Overview, OGC API - Features: ogcapi/ogcapi-features/text/basic-overview.md
             - An Introduction to OGC API - Features: ogcapi/ogcapi-features/text/basic-main.md
             - Resources of OGC API - Features: ogcapi/ogcapi-features/text/operations.md
         - OGC API - Tiles: 
-            - Prerequisites: ogcapi/ogcapi-tiles/text/basic-index.md
             - Overview, OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-overview.md
             - An Introduction to OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-main.md
             - Resources of OGC API - Tiles: ogcapi/ogcapi-tiles/text/operations.md
 #        - OGC API - Coverages: ogcapi/coverages.md
         - OGC API - Processes:
-            - Prerequisites: ogcapi/ogcapi-processes/text/basic-index.md
             - Overview, OGC API - Processes: ogcapi/ogcapi-processes/text/basic-overview.md
             - An Introduction to OGC API - Processes: ogcapi/ogcapi-processes/text/basic-main.md
         - OGC API - Records: ogcapi/records.md
         - OGC API - Environmental Data Retrieval:
-            - Prerequisites: ogcapi/ogcapi-edr/text/basic-index.md
             - An Introduction to OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/basic-main.md
             - Information Resources of OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/operations.md
             - Query Resources of OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/advanced.md
@@ -42,7 +39,6 @@ nav:
             - Items (Features) Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/itemsquery.md
         - OGC API - Maps: ogcapi/maps.md
         - OGC - SensorThings API:
-            - Prerequisites: ogcapi/sta/text/basic-index.md
             - Overview, SensorThings API: ogcapi/sta/text/overview.md
             - An Introduction to SensorThings API: ogcapi/sta/text/main.md
             - Resources of SensorThings API: ogcapi/sta/text/operations.md
