@@ -127,19 +127,18 @@ the following table.
 ## Example
 
 This [demonstration
-server](https://services.interactive-instruments.de/t15/daraa/)
+server](https://demo.pygeoapi.io/master)
 publishes vector geospatial data through an interface that conforms to
 OGC API - Features.
 
-An example request that can be used to retrieve data from the Vegetation
-surface feature collection is
-<https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html>
+An example request that can be used to retrieve data from the Portuguese Points of Interest feature collection is
+<https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi?f=html>
 
 Note that the response to the request is HTML in this case.
 
 Alternatively, the same data can be retrieved in GeoJSON format, through
 the request
-<https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json>
+<https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi?f=json>
 
 A client application can then retrieve the GeoJSON document and display
 or process it.

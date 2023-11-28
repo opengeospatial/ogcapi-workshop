@@ -20,7 +20,7 @@ point. A client application needs to know the location of the landing
 page of the server. From the landing page, the client application can
 then retrieve links to the Conformance declaration, Collection and API
 definition paths. An example landing page is at
-<https://services.interactive-instruments.de/t15/daraa?f=json>
+<https://demo.ldproxy.net/daraa?f=json>
 
 The link to the API definition is identified through the
 ```service-desc``` and ```service-doc``` link relation types.
@@ -35,28 +35,33 @@ An extract from the landing page of a demo server is shown below.
 
 ``` json
 {
-"title" : "Daraa",
-"description" : "This is a test dataset from the Open Portrayal Framework thread of the OGC Testbed-15 initiative.",
-"links" : [ {
-  "rel" : "self",
-  "type" : "application/json",
-  "title" : "This document",
-  "href" : "https://services.interactive-instruments.de/t15/daraa?f=json"
-}, {
-  "rel" : "service-desc",
-  "type" : "application/vnd.oai.openapi+json;version=3.0",
-  "title" : "Formal definition of the API in OpenAPI 3.0",
-  "href" : "https://services.interactive-instruments.de/t15/daraa/api?f=json"
-}, {
-  "rel" : "conformance",
-  "title" : "OGC API conformance classes implemented by this server",
-  "href" : "https://services.interactive-instruments.de/t15/daraa/conformance"
-}, {
-  "rel" : "data",
-  "title" : "Access the data",
-  "href" : "https://services.interactive-instruments.de/t15/daraa/collections"
-}
-]
+  "title": "Daraa",
+  "description": "This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.",
+  "attribution": "US National Geospatial Intelligence Agency (NGA)",
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/json",
+      "title": "This document",
+      "href": "https://demo.ldproxy.net/daraa?f=json"
+    },
+    {
+      "rel": "service-desc",
+      "type": "application/vnd.oai.openapi+json;version=3.0",
+      "title": "Definition of the API in OpenAPI 3.0",
+      "href": "https://demo.ldproxy.net/daraa/api?f=json"
+    },
+    {
+      "rel": "conformance",
+      "title": "OGC API conformance classes implemented by this server",
+      "href": "https://demo.ldproxy.net/daraa/conformance"
+    },
+    {
+      "rel": "data",
+      "title": "Access the data",
+      "href": "https://demo.ldproxy.net/daraa/collections"
+    }
+  ]
 }
 ```
 
@@ -73,7 +78,7 @@ Conformance classes describe the behavior a server should implement in
 order to meet one or more sets of requirements specified in a standard.
 
 Below is an extract from the response to the request
-<https://services.interactive-instruments.de/t15/daraa/conformance?f=json>
+<https://demo.ldproxy.net/daraa/conformance?f=json>
 
 Notice that the example shows a link relation type called ```alternate```
 which identifies a way to retrieve an alternative representation of the
@@ -83,22 +88,25 @@ declaration.
 
 ``` json
 {
-"links" : [ {
-  "rel" : "self",
-  "type" : "application/json",
-  "title" : "This document",
-  "href" : "https://services.interactive-instruments.de/t15/daraa/conformance?f=json"
-}, {
-  "rel" : "alternate",
-  "type" : "text/html",
-  "title" : "This document as HTML",
-  "href" : "https://services.interactive-instruments.de/t15/daraa/conformance?f=html"
-} ],
-"conformsTo" : [ "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson",  "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/html", "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30", "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core" ]
+  "links": [
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://demo.ldproxy.net/daraa/conformance?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/json",
+      "title": "This document",
+      "href": "https://demo.ldproxy.net/daraa/conformance?f=json"
+    }
+  ]
+"conformsTo" : ["http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core", "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson", "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/html", "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30", "http://www.opengis.net/spec/ogcapi-features-2/1.0/conf/crs", "http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/features-filter", "http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/filter", "http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/queryables", "http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/queryables-query-parameters"]
 }
 ```
 
-## Feature collections {#ogcapif_collections}
+## Feature collections
 
 Data offered through an implementation of **OGC API - Features - Part 1:
 Core** is organized into one or more feature collections. The
@@ -126,64 +134,83 @@ collection:
     ```feature```).
 
 Below is an extract from the response to the request
-<https://services.interactive-instruments.de/t15/daraa/collections?f=json>
+<https://demo.ldproxy.net/daraa/collections?f=json>
 
 ``` json
 {
-  "title" : "Daraa",
-  "description" : "This is a test dataset from the Open Portrayal Framework thread of the OGC Testbed-15 initiative",
-  "links" : [ {
-    "rel" : "self",
-    "type" : "application/json",
-    "title" : "This document",
-    "href" : "https://services.interactive-instruments.de/t15/daraa/collections?f=json"
-  }],
-  "collections" : [ {
-    "title" : "Aeronautic (Curves)",
-    "description" : "Aeronautical Facilities: Information about an area specifically designed and constructed for landing, accommodating, and launching military and/or civilian aircraft, rockets, missiles and/or spacecraft.<br/>Aeronautical Aids to Navigation: Information about electronic equipment, housings, and utilities that provide positional information for direction or otherwise assisting in the navigation of airborne aircraft.",
-    "links" : [{
-    "rel" : "self",
-    "title" : "The 'Aeronautic (Curves)' feature collection",
-    "href" : "https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv"
-  }, {
-    "rel" : "items",
-    "type" : "application/geo+json",
-    "title" : "Access the features in the collection 'Aeronautic (Curves)'",
-    "href" : "https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items?f=json"
-  }],
-    "id" : "AeronauticCrv",
-    "extent" : {
-      "spatial" : {
-        "bbox" : [ [ 36.395158, 32.6933011, 36.4308137, 32.7173334 ] ],
-        "crs" : "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
-      }
+  "title": "Daraa",
+  "description": "This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.",
+  "collections": [
+    {
+      "title": "Aeronautic (Curves)",
+      "description": "Aeronautical Facilities: Information about an area specifically designed and constructed for landing, accommodating, and launching military and/or civilian aircraft, rockets, missiles and/or spacecraft.<br/>Aeronautical Aids to Navigation: Information about electronic equipment, housings, and utilities that provide positional information for direction or otherwise assisting in the navigation of airborne aircraft.",
+      "id": "AeronauticCrv",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [36.395158, 32.693301, 36.430814, 32.717333]
+          ],
+          "crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+        },
+      "storageCrs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+      "links": [
+        {
+          "rel": "items",
+          "type": "application/geo+json",
+          "title": "Access the features in the collection 'Aeronautic (Curves)' as GeoJSON",
+          "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json"
+        },
+        {
+          "rel": "self",
+          "title": "The 'Aeronautic (Curves)' feature collection",
+          "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv"
+        }
+      ]
+     }
     },
-    "crs" : [ "#/crs" ],
-    "storageCrs" : "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
-  },  {
-    "title" : "Other (Points)",
-    "links" : [{
-    "rel" : "self",
-    "title" : "The 'Other (Points)' feature collection",
-    "href" : "https://services.interactive-instruments.de/t15/daraa/collections/o2s_p"
-  }, {
-    "rel" : "items",
-    "type" : "application/geo+json",
-    "title" : "Access the features in the collection 'Other (Points)'",
-    "href" : "https://services.interactive-instruments.de/t15/daraa/collections/o2s_p/items?f=json"
-  }],
-    "id" : "o2s_p",
-    "extent" : {
-      "spatial" : {
-        "bbox" : [ [ 35.9396036, 32.5449626, 36.443695, 32.9846485 ] ],
-        "crs" : "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
-      }
-    },
-    "crs" : [ "#/crs" ],
-    "storageCrs" : "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
-  } ]
-}
+    {
+      "title": "Other (Points)",
+      "id": "o2s_p",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [35.939604, 32.544963, 36.443695, 32.984648]
+          ],
+          "crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+        }
+      },
+      "storageCrs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+      "links": [
+        {
+          "rel": "items",
+          "type": "application/geo+json",
+          "title": "Access the features in the collection 'Other (Points)' as GeoJSON",
+          "href": "https://demo.ldproxy.net/daraa/collections/o2s_p/items?f=json"
+        },
+        {
+          "rel": "self",
+          "title": "The 'Other (Points)' feature collection",
+          "href": "https://demo.ldproxy.net/daraa/collections/o2s_p"
+        }
+      ],
+    }
+  ]
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Feature collection {#ogcapif_collection}
 
