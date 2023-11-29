@@ -360,47 +360,63 @@ Below is an extract from the response to the request
   ]
 ```
 
-## Feature collection {#ogcapif_collection}
+## Feature collection
 
 The **Collection** resource provides detailed information about the
 collection identified in a request.
 
 Below is an extract from the response to the request
-<https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/?f=json>
+<https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json>
 
 ``` json
 {
-"title" : "Aeronautic (Curves)",
-"description" : "Aeronautical Facilities: Information about an area specifically designed and constructed for landing, accommodating, and launching military and/or civilian aircraft, rockets, missiles and/or spacecraft.<br/>Aeronautical Aids to Navigation: Information about electronic equipment, housings, and utilities that provide positional information for direction or otherwise assisting in the navigation of airborne aircraft.",
-"links" : [ {
-  "rel" : "self",
-  "type" : "application/json",
-  "title" : "This document",
-  "href" : "https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv?f=json"
-}, {
-  "rel" : "items",
-  "type" : "application/geo+json",
-  "title" : "Access the features in the collection 'Aeronautic (Curves)'",
-  "href" : "https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items?f=json"
-} ],
-"id" : "AeronauticCrv",
-"extent" : {
-  "spatial" : {
-    "bbox" : [ [ 36.395158, 32.6933011, 36.4308137, 32.7173334 ] ],
-    "crs" : "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+  "title": "Aeronautic (Curves)",
+  "description": "Aeronautical Facilities: Information about an area specifically designed and constructed for landing, accommodating, and launching military and/or civilian aircraft, rockets, missiles and/or spacecraft.<br/>Aeronautical Aids to Navigation: Information about electronic equipment, housings, and utilities that provide positional information for direction or otherwise assisting in the navigation of airborne aircraft.",
+  "id": "AeronauticCrv",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [36.395158, 32.693301, 36.430814, 32.717333]
+      ],
+      "crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2011-03-16T14:51:12Z",
+          "2015-09-11T19:15:35Z"
+        ]
+      ],
+      "trs": "http://www.opengis.net/def/uom/ISO-8601/0/Gregorian"
+    }
   },
-  "temporal" : {
-    "interval" : [ [ null, null ] ],
-    "trs" : "http://www.opengis.net/def/uom/ISO-8601/0/Gregorian"
-  }
-},
-"crs" : [ "http://www.opengis.net/def/crs/OGC/1.3/CRS84", "http://www.opengis.net/def/crs/EPSG/0/3395", "http://www.opengis.net/def/crs/EPSG/0/3857", "http://www.opengis.net/def/crs/EPSG/0/4326" ],
-"storageCrs" : "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+  "itemType": "feature",
+  "crs": [
+    "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+    "http://www.opengis.net/def/crs/EPSG/0/3395",
+    "http://www.opengis.net/def/crs/EPSG/0/3857",
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "storageCrs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+  "links": [
+    {
+      "rel": "items",
+      "type": "application/geo+json",
+      "title": "Access the features in the collection 'Aeronautic (Curves)' as GeoJSON",
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json"
+    }
+    {
+      "rel": "self",
+      "type": "application/json",
+      "title": "This document",
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json"
+    }
+  ],
+}
 ```
 
-}
 
-## Features {#ogcapif_features}
+## Features
 
 The Features resource returns a document consisting of features
 contained by the collection identified in a request. The features
@@ -410,44 +426,53 @@ without overloading the client, the API supports paged access with links
 to the next page, if more features are selected than the page size.
 
 Below is an extract from the response to the request
-<https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items?f=json>
+<https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json>
 
 ``` json
 {
   "type": "FeatureCollection",
-  "links": [],
   "numberReturned": 10,
   "numberMatched": 20,
-  "timeStamp": "2020-07-23T17:58:40Z",
-  "features": [{
-          "type": "Feature",
-          "id": "1",
-          "geometry": {
-              "type": "MultiLineString",
-              "coordinates": [[[36.4251993, 32.7137029], [36.4270026, 32.7114543]]]
-          },
-          "properties": {
-              "F_CODE": "GB075",
-              "ZI001_SDV": "2011-03-16T14:51:12Z",
-              "UFI": "2d008c34-4458-4226-b335-cf903d261ce9",
-              "ZI005_FNA": "No Information",
-              "FCSUBTYPE": 100454
-          }
-      }, {
-          "type": "Feature",
-          "id": "2",
-          "geometry": {
-              "type": "MultiLineString",
-              "coordinates": [[[36.4252966, 32.7137689], [36.4251993, 32.7137029], [36.4231106, 32.7125398], [36.4208881, 32.7113022], [36.4031334, 32.7013331], [36.400909, 32.700077]]]
-          },
-          "properties": {
-              "F_CODE": "GB075",
-              "ZI001_SDV": "2015-09-11T19:15:35Z",
-              "UFI": "1257bf27-3f91-461d-8a3b-a95af2ea1f5a",
-              "ZI005_FNA": "No Information",
-              "FCSUBTYPE": 100454
-          }
-      }]
+  "timeStamp": "2023-11-29T08:38:10Z",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [[[36.4270030, 32.7114540],[36.4251990, 32.7137030]]]
+      },
+      "properties": {
+        "F_CODE": "GB075",
+        "ZI001_SDV": "2011-03-16T14:51:12Z",
+        "UFI": "2d008c34-4458-4226-b335-cf903d261ce9",
+        "ZI005_FNA": "No Information",
+        "FCSUBTYPE": 100454
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [[ 36.4009090, 32.7000770 ],
+            [ 36.4031330, 32.7013330 ],
+            [ 36.4208880, 32.7113020 ],
+            [ 36.4231110, 32.7125400 ],
+            [ 36.4251990, 32.7137030 ],
+            [ 36.4252970, 32.7137690 ]
+          ]
+        ]
+      },
+      "properties": {
+        "F_CODE": "GB075",
+        "ZI001_SDV": "2015-09-11T19:15:35Z",
+        "UFI": "1257bf27-3f91-461d-8a3b-a95af2ea1f5a",
+        "ZI005_FNA": "No Information",
+        "FCSUBTYPE": 100454
+      }
+    }]
 }
 ```
 
@@ -461,63 +486,102 @@ subset of the features in the collection that are within the bounding
 box specified by the **bbox** parameter or the time interval specified
 by the **datetime** parameter. An example request that uses the **bbox**
 parameter is
-<https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json&bbox=36.0832432,32.599852,36.1168237,32.6283697>
+<https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=json&bbox=36.0832432,32.599852,36.1168237,32.6283697>
 
 !!! note
     The effect of the bbox parameter can be easily seen when comparing the
     HTML response from
-    [applying](https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html&bbox=36.0832432,32.599852,36.1168237,32.6283697)
+    [applying](https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=html&bbox=36.0832432,32.599852,36.1168237,32.6283697)
     the bbox parameter to the response
-    [without](https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html)
+    [without](https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=html)
     any bbox parameter.
 
 The **limit** parameter may be used to control the page size by
 specifying the maximum number of features that should be returned in the
 response. An example request that uses the **limit** parameter is
-<https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items?f=json&limit=2>
+<https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json&limit=2>
 
 Each page may include information about the number of selected and
 returned features (```numberMatched``` and ```numberReturned```) as well as
 links to support paging (link relation ```next```).
 
-## Feature {#ogcapif_feature}
+## Feature
 
 The Feature resource is used for retrieving an individual feature, its
 geometric representation and other properties. In the example below, the
 feature with an ```id``` of 1 is retrieved. The response is retrieved
 through the request
-<https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items/1?f=json>
+<https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=json>
 
 ``` json
 {
   "type": "Feature",
-  "links": [{
-          "href": "https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items/1?f=json",
-          "rel": "self",
-          "type": "application/geo+json",
-          "title": "This document"
-      }, {
-          "href": "https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv/items/1?f=html",
-          "rel": "alternate",
-          "type": "text/html",
-          "title": "This document as HTML"
-      }, {
-          "href": "https://services.interactive-instruments.de/t15/daraa/collections/AeronauticCrv?f=json",
-          "rel": "collection",
-          "type": "application/json",
-          "title": "The collection the feature belongs to"
-      }],
-  "id": "1",
+  "id": 1,
   "geometry": {
-      "type": "MultiLineString",
-      "coordinates": [[[36.4251993, 32.7137029], [36.4270026, 32.7114543]]]
+    "type": "MultiLineString",
+    "coordinates": [
+      [
+        [
+          36.4270030,
+          32.7114540
+        ],
+        [
+          36.4251990,
+          32.7137030
+        ]
+      ]
+    ]
   },
   "properties": {
-      "F_CODE": "GB075",
-      "ZI001_SDV": "2011-03-16T14:51:12Z",
-      "UFI": "2d008c34-4458-4226-b335-cf903d261ce9",
-      "ZI005_FNA": "No Information",
-      "FCSUBTYPE": 100454
-  }
+    "F_CODE": "GB075",
+    "ZI001_SDV": "2011-03-16T14:51:12Z",
+    "UFI": "2d008c34-4458-4226-b335-cf903d261ce9",
+    "ZI005_FNA": "No Information",
+    "FCSUBTYPE": 100454
+  },
+  "links": [
+    {
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=json",
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document"
+    },
+    {
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=jsonfgc",
+      "rel": "alternate",
+      "type": "application/vnd.ogc.fg+json;compatibility=geojson",
+      "title": "This document as JSON-FG (GeoJSON Compatibility Mode)"
+    },
+    {
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=csv",
+      "rel": "alternate",
+      "type": "text/csv",
+      "title": "This document as CSV"
+    },
+    {
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=fgb",
+      "rel": "alternate",
+      "type": "application/flatgeobuf",
+      "title": "This document as FlatGeobuf"
+    },
+    {
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=html",
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML"
+    },
+    {
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=jsonfg",
+      "rel": "alternate",
+      "type": "application/vnd.ogc.fg+json",
+      "title": "This document as JSON-FG"
+    },
+    {
+      "href": "https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json",
+      "rel": "collection",
+      "type": "application/json",
+      "title": "The collection the feature belongs to"
+    }
+  ]
 }
 ```
