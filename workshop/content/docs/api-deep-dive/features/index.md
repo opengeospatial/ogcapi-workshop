@@ -40,7 +40,7 @@ models, richer queries, and additional coordinate reference systems.
     Features - Part 1: Core** standard for additional detail.
 
 
-## Background
+### Background
 
 > History
  
@@ -62,7 +62,7 @@ models, richer queries, and additional coordinate reference systems.
 
   Implementations can be found on the Compliance Database <http://www.opengeospatial.org/resource/products/byspec>
 
-### Usage
+#### Usage
 
 **OGC API - Features - Part 1: Core** specifies discovery and query
 operations that are implemented using the HTTP GET method. Support for
@@ -176,7 +176,7 @@ Part 1: Core** can be found in [Section
 5.2](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations)
 of the standard.
 
-## Landing Page {#ogcapif_landingpage}
+## Landing Page
 
 The landing page is the top-level resource that serves as an entry
 point. A client application needs to know the location of the landing
@@ -228,7 +228,7 @@ An extract from the landing page of a demo server is shown below.
 }
 ```
 
-## Conformance declaration {#ogcapif_conformance}
+## Conformance declarations
 
 An implementation of OGC API - Features describes the capabilities that
 it supports by declaring which conformance classes it implements. The
