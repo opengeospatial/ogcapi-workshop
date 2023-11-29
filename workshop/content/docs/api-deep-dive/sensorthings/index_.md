@@ -98,7 +98,7 @@ The following is a list entities supported by the API:
     regard to the Internet of Things, a thing is an object of the
     physical world (physical things) or the information world (virtual
     things) that is capable of being identified and integrated into
-    communication networks \[ITU-T\].
+    communication networks ITU-T.
 
 >  Location
 
@@ -186,7 +186,7 @@ http://toronto-bike-snapshot.sensorup.com/v1.0
 The link to the request
 is: <http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations(1593917)?$select=result>
 
-## Resources
+## Operations
 
 The entities offered by a SensorThings API service can be accessed by
 appending a resource path to the service root URI. An example of a URL
@@ -218,38 +218,47 @@ type.
   <caption>Entity Sets Offered</caption>
   <tr>
     <th>Entity Set</th>
+    <th>Method</th>
     <th>Resource Path</th>
   </tr>
   <tr>
     <td>Things</td>
+    <td>GET</td>
     <td>/Things</td>
   </tr>
   <tr>
     <td>Locations</td>
+    <td>GET</td>
     <td>/Locations</td>
   </tr>
   <tr>
     <td>Historical locations</td>
+    <td>GET</td>
     <td>/HistoricalLocations</td>
   </tr>
   <tr>
     <td>Datastreams</td>
+    <td>GET</td>
     <td>/Datastreams</td>
   </tr>
   <tr>
     <td>Sensors</td>
+    <td>GET</td>
     <td>/Sensors</td>
   </tr>
   <tr>
     <td>Observed properties</td>
+    <td>GET</td>
     <td>/ObservedProperties</td>
   </tr>
   <tr>
     <td>Observations</td>
+    <td>GET</td>
     <td>/Observations</td>
   </tr>
   <tr>
     <td>Features of interest</td>
+    <td>GET</td>
     <td>/FeaturesOfInterest</td>
   </tr>
 </table>
@@ -268,18 +277,22 @@ table.
   <caption>Property Resource Path Examples</caption>
   <tr>
     <th>Property</th>
+    <th>Method</th>
     <th>Resource Path</th>
   </tr>
   <tr>
     <td>Result of an observation with an ID of 1595550</td>
+    <td>GET</td>
     <td>/Observations(1595550)/result</td>
   </tr>
   <tr>
     <td>The name of a feature of interest</td>
+    <td>GET</td>
     <td>/Sensor(4)/metadata</td>
   </tr>
   <tr>
     <td>Coordinates of the feature observed by observation 1595550</td>
+    <td>GET</td>
     <td>/Observations(1595550)/FeatureOfInterest/feature</td>
   </tr>
 </table>
@@ -463,17 +476,18 @@ only the result and phenomenonTime properties listed.
    ....
 ```
 
-### Note: Datastreams define the unit of measurement
+!!! note
+    Datastreams define the unit of measurement
 
-> ``` properties
-> "observationType":
->     "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation",
-> "unitOfMeasurement":{  
->   "symbol":"{TOT}",
->   "name":"dock count",
->   "definition":"http://unitsofmeasure.org/ucum.html#para-50"
-> },
-> ```
+    > ``` properties
+    > "observationType":
+    >     "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation",
+    > "unitOfMeasurement":{  
+    >   "symbol":"{TOT}",
+    >   "name":"dock count",
+    >   "definition":"http://unitsofmeasure.org/ucum.html#para-50"
+    > },
+    > ```
 
 ### Getting the *Observations* related to a stream
 

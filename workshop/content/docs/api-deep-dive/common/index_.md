@@ -62,21 +62,25 @@ the following table:
 <table>
   <tr>
     <th>Resource</th>
+    <th>Method</th>
     <th>Path</th>
     <th>Purpose</th>
   </tr>
   <tr>
     <td>Landing page</td>
+    <td>GET</td>
     <td>/</td>
     <td>Retrieves the landing page. The purpose of the landing page is to provide clients with a starting point for using the API. Any resource exposed through an API can be accessed by following paths or links starting from the landing page. The landing page includes three metadata elements; title, description, and attribution. Only the title is required. These three elements describe the API as a whole. Clients can expect to encounter metadata which is more resource-specific as they follow links and paths from the landing page.</td>
   </tr>
   <tr>
     <td>Conformance declaration</td>
+    <td>GET</td>
     <td>/conformance</td>
     <td>Provides a list declaring the modules that are implemented by the API. These modules are referred to as Conformance Classes. The list of Conformance Classes is key to understanding and using an OGC Web API.</td>
   </tr>
   <tr>
     <td>API definition</td>
+    <td>GET</td>
     <td>/api</td>
     <td>Retrieves the API definition which describes the capabilities provided by that API. This resource can be used by developers to understand the API, by software clients to connect to the server, and by development tools to support the implementation of servers and clients. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
   </tr>
@@ -87,16 +91,19 @@ The purpose of the draft **OGC API - Common - Part 2: Geospatial Data** Standard
 <table>
   <tr>
     <th>Resource</th>
+    <th>Method</th>
     <th>Path</th>
     <th>Purpose</th>
   </tr>
   <tr>
     <td>Collections</td>
+    <td>GET</td>
     <td>/collections </td>
     <td>Retrieves information which describes the set of supported Collections.</td>
   </tr>
   <tr>
     <td>Collection</td>
+    <td>GET</td>
     <td>/collections/{collectionId}</td>
     <td>Retrieves descriptive information about a specific Collection.</td>
   </tr>

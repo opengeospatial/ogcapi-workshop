@@ -79,15 +79,15 @@ API - Tiles Standard.
 
 Once you have discovered the relevant resources, then retrieve the list
 of available tiling schemes from the resource
-```.../{datasetRoot}/tileMatrixSets]``` to identify the tiling
+```/tileMatrixSets``` to identify the tiling
 scheme of interest. Retrieve the details of the specific tiling scheme
-with ```.../{datasetRoot}/tileMatrixSets/{tileMatrixSetId}```.
+with ```/tileMatrixSets/{tileMatrixSetId}```.
 
 Once you have identified a tiling scheme of interest, you can retrieve
 tile set metadata for that tiling scheme through
-```[{datasetRoot}/tiles/{tileMatrixSetId}]``` and also retrieve
+```/tiles/{tileMatrixSetId}``` and also retrieve
 individual tiles with
-```[{datasetRoot}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
+```/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
 
 #### Relation to other OGC Standards
 
@@ -111,103 +111,128 @@ following table.
 <table>
   <tr>
     <th>Resource</th>
+    <th>Method</th>
     <th>Path</th>
   </tr>
   <tr>
     <td>Landing page</td>
+    <td>GET</td>
     <td>/</td>
   </tr>
   <tr>
     <td>Conformance declaration</td>
+    <td>GET</td>
     <td>/conformance</td>
   <tr>
   </tr>
     <td>API definition</td>
+    <td>GET</td>
     <td>/api</td>
   </tr>
   <tr>
     <td>Tiling Schemes</td>
+    <td>GET</td>
     <td>/tileMatrixSets</td>
   </tr>
   <tr>
     <td>Tiling Scheme (tile matrix set)</td>
+    <td>GET</td>
     <td>/tileMatrixSets/{tileMatrixSetId}</td>
   </tr>
   <tr>
     <td>Dataset tileset</td>
+    <td>GET</td>
     <td>/tiles</td>
   </tr>
   <tr>
     <td>Dataset tileset metadata</td>
+    <td>GET</td>
     <td>/tiles/{tileMatrixSetId}</td>
   </tr>
   <tr>
     <td>Dataset tileset metadata</td>
+    <td>GET</td>
     <td>/tiles/{tileMatrixSetId}</td>
   </tr>
   <tr>
     <td>Dataset feature tile</td>
+    <td>GET</td>
     <td>/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
   </tr>
   <tr>
     <td>Map tileset list</td>
+    <td>GET</td>
     <td>/map/tiles</td>
   </tr>
   <tr>
     <td>Map tileset metadata</td>
+    <td>GET</td>
     <td>/map/tiles/{tileMatrixSetId}</td>
   </tr>
   <tr>
     <td>Map tile</td>
+    <td>GET</td>
     <td>/map/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
   </tr>
   <tr>
     <td>Collections</td>
+    <td>GET</td>
     <td>/collections </td>
   </tr>
   <tr>
     <td>Collection</td>
+    <td>GET</td>
     <td>/collections/{collectionId}</td>
   </tr>
   <tr>
     <td>Feature tileset list</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/tiles</td>
   </tr>
   <tr>
     <td>Feature tileset metadata</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/tiles/{tileMatrixSetId}</td>
   </tr>
   <tr>
     <td>Feature tileset list</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/tiles</td>
   </tr>
   <tr>
     <td>Feature tile</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
   </tr>
 
   <tr>
     <td>Map tileset list</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/map/tiles</td>
   </tr>
   <tr>
     <td>Map tileset metadata</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/map/tiles/{tileMatrixSetId}</td>
   </tr>
   <tr>
     <td>Map tile</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/map/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
   </tr>
   <tr>
     <td>Coverage tileset list</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/coverage/tiles</td>
   </tr>
   <tr>
     <td>Coverage tileset metadata</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/coverage/tiles/{tileMatrixSetId}</td>
   </tr>
   <tr>
     <td>Coverage tile</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/coverage/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
   </tr>
 </table>

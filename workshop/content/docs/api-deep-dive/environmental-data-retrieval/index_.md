@@ -124,46 +124,55 @@ resources listed in the following table.
 <caption>Overview of OGC API - EDR resources</caption>
   <tr>
     <th>Resource</th>
+    <th>Method</th>
     <th>Path</th>
     <th>Purpose</th>
   </tr>
   <tr>
     <td>Landing page</td>
+    <td>GET</td>
     <td>/</td>
     <td>This is the top-level resource, which serves as an entry point.</td>
   </tr>
   <tr>
     <td>Conformance declaration</td>
+    <td>GET</td>
     <td>/conformance</td>
     <td>TThis resource presents information about the functionality that is implemented by the server.</td>
   </tr>
   <tr>
     <td>API definition</td>
+    <td>GET</td>
     <td>/api</td>
     <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
   </tr>
   <tr>
     <td>Collections metadata</td>
+    <td>GET</td>
     <td>/collections </td>
     <td>Metadata describing the collections of data available from this API.</td>
   </tr>
   <tr>
     <td>Single Collection metadata</td>
+    <td>GET</td>
     <td>/collections/{collectionId}</td>
     <td>Metadata describing the collection of data which has the unique identifier {collectionId}.</td>
   </tr>
   <tr>
     <td>Items metadata</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/items</td>
     <td>Retrieve metadata about available items.</td>
   </tr>
   <tr>
     <td>Query data</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/{queryType}</td>
     <td>Retrieve data according to the query pattern</td>
   </tr>
   <tr>
     <td>Query instances</td>
+    <td>GET</td>
     <td>/collections/{collectionId}/instances</td>
     <td>Retrieve metadata about instances of a collection</td>
   </tr>

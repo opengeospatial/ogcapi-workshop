@@ -93,62 +93,72 @@ of data.
 **OGC API - Processes - Part 1: Core** defines the resources listed in
 the following table.
 
-
 <table>
   <tr>
     <th>Resource</th>
+    <th>Method</th>
     <th>Path</th>
     <th>Purpose</th>
   </tr>
   <tr>
     <td>Landing page</td>
+    <td>GET</td>
     <td>/</td>
     <td>This is the top-level resource, which serves as an entry point.</td>
   </tr>
   <tr>
     <td>Conformance declaration</td>
+    <td>GET</td>
     <td>/conformance</td>
     <td>This resource presents information about the functionality that is implemented by the server.</td>
   </tr>
   <tr>
     <td>API definition</td>
+    <td>GET</td>
     <td>/api</td>
     <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
   </tr>
   <tr>
     <td>Process list</td>
+    <td>GET</td>
     <td>/processes </td>
     <td>Process identifiers, links to process descriptions.</td>
   </tr>
   <tr>
     <td>Process description </td>
+    <td>GET</td>
     <td>/processes/{processID}</td>
     <td>Retrieves a process description.</td>
   </tr>
   <tr>
     <td>Process execution</td>
+    <td>POST</td>
     <td>/processes/{processID}/execution</td>
     <td>Creates and executes a job.</td>
   </tr>
   <tr>
     <td>Job status info</td>
+    <td>GET</td>
     <td>/jobs/{jobID}</td>
-    <td>Retrieves information about the status of a job./td>
+    <td>Retrieves information about the status of a job.</td>
   </tr>
   <tr>
     <td>Job results</td>
+    <td>GET</td>
     <td>/jobs/{jobID}/results</td>
-    <td>Retrieves the resul(s) of a job./td>
+    <td>Retrieves the resul(s) of a job.</td>
   </tr>
   <tr>
     <td>Job list</td>
+    <td>GET</td>
     <td>/jobs</td>
-    <td>Retrieves the list of jobs./td>
+    <td>Retrieves the list of jobs.</td>
   </tr>
   <tr>
     <td>Job Deletion</td>
+    <td>DELETE</td>
     <td>/jobs/{jobID} </td>
-    <td>Cancels and deletes a job./td>
+    <td>Cancels and deletes a job.</td>
   </tr>
 </table>
 
