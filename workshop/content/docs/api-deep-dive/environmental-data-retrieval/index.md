@@ -59,7 +59,7 @@ by this standard and selected by the client.
 
 > Implementations
 
-Implementations can be found on the OGC Product Database here \<<http://www.opengeospatial.org/resource/products/byspec>\>
+Implementations can be found on the OGC Product Database here <http://www.opengeospatial.org/resource/products/byspec>
 
 ## Usage
 
