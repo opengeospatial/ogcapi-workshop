@@ -47,27 +47,27 @@ multiple scales in a Coordinate Reference System (CRS).
 
 ## Background
 
-### History
+>  History
 
-The OGC API - Tiles standard is a successor to the OGC\'s Web Map
-Tile Service (WMTS) standard, focusing on simple reusable REST API
-building blocks which can be described using the OpenAPI
-specification. Whereas WMTS focused on map tiles, the OGC API ---
-Tiles standard has been designed to support any form of tiled data.
+  The OGC API - Tiles standard is a successor to the OGC's Web Map
+  Tile Service (WMTS) standard, focusing on simple reusable REST API
+  building blocks which can be described using the OpenAPI
+  specification. Whereas WMTS focused on map tiles, the OGC API -
+  Tiles standard has been designed to support any form of tiled data.
 
-### Versions
+>  Versions
 
-**OGC API - Tiles - Part 1: Core** version 1.0.0 is the current latest version
+  **OGC API - Tiles - Part 1: Core** version 1.0.0 is the current latest version
 
-### Test Suite
+>  Test Suite
 
-Test suites are available for:
+  Test suites are available for:
 
--   [OGC API - Tiles](https://github.com/opengeospatial/ets-ogcapi-tiles10)
+  -   [OGC API - Tiles](https://github.com/opengeospatial/ets-ogcapi-tiles10)
 
-### Implementations
+>  Implementations
 
-Implementations can be found on the Compliance Database here <http://www.opengeospatial.org/resource/products/byspec>
+  Implementations can be found on the Compliance Database here <http://www.opengeospatial.org/resource/products/byspec>
 
 ### Usage
 

@@ -47,23 +47,23 @@ imagery analysis and several others.
 
 ## Background
 
-### History
+> History
 
-Several of the concepts specified in OGC API - Processes originated in work specifying a RESTful interface for WPS 2.0. From February 2019 onwards, all work relating to a RESTful interface for the WPS2.0 was changed to focus on OGC API - Processes.
+  Several of the concepts specified in OGC API - Processes originated in work specifying a RESTful interface for WPS 2.0. From February 2019 onwards, all work relating to a RESTful interface for the WPS2.0 was changed to focus on OGC API - Processes.
 
-### Versions
+>  Versions
 
-**OGC API - Processes - Part 1: Core** version 1.0.0 is the current latest version
+  **OGC API - Processes - Part 1: Core** version 1.0.0 is the current latest version
 
-### Test Suite
+> Test Suite
 
-**Draft** Test suites are available for:
+  **Draft** Test suites are available for:
 
--   [OGC API - Processes](https://github.com/opengeospatial/ets-ogcapi-processes10)
+  -   [OGC API - Processes](https://github.com/opengeospatial/ets-ogcapi-processes10)
 
-### Implementations
+>  Implementations
 
-Implementations can be found here <https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc>
+  Implementations can be found here <https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc>
 
 ### Usage
 
