@@ -161,7 +161,7 @@ the request
 A client application can then retrieve the GeoJSON document and display
 or process it.
 
-# Resources
+## Resources
 
 This section provides basic information about the types of resources
 that OGC API - Features offers.
