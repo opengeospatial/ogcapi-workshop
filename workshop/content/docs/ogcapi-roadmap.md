@@ -8,4 +8,4 @@ The OGC API Roadmap highlights the current and planned standards efforts as well
 
 This is a snapshot of the OGC API Roadmap, as of 29/11/2023.
 
-![image](../../assets/images/ogcapi-roadmap.png){width="100.0%"}
+![OGC Roadmap](assets/images/ogcapi-roadmap.png)
