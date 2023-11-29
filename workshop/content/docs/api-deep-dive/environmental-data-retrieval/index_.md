@@ -18,8 +18,6 @@ title: OGC API - Environmental Data Retrieval
     - Understand how to issue requests to an implementation of OGC API - Environmental Data Retrieval
     - Be able to find an OGC API - Environmental Data Retrieval endpoint and use it through a client
 
-# An Introduction to OGC API - Environmental Data Retrieval
-
 ## Introduction
 
 OGC API - Environmental Data Retrieval is a standard that provides a
@@ -41,7 +39,7 @@ by this standard and selected by the client.
     student started with using the standard. Please refer to the **OGC API -
     Environmental Data Retrieval** standard for additional detail.
 
-# Background
+### Background
 
 > History
 
@@ -61,7 +59,7 @@ by this standard and selected by the client.
 
 Implementations can be found on the OGC Product Database here <http://www.opengeospatial.org/resource/products/byspec>
 
-## Usage
+#### Usage
 
 **OGC API - Environmental Data Retrieval** provides a family of
 lightweight query interfaces to access spatio-temporal data resources by
@@ -79,7 +77,7 @@ enables the data to be accessed consistently with other data. Feature
 properties encoded using common data types such as text strings, date
 and time can also be accessed consistently.
 
-## Relation to other OGC Standards
+#### Relation to other OGC Standards
 
 -   OGC API-Features: The EDR API is completely compatible with OGC
     API - Features - Part 1: Core (OGC 17-069r3), in that it
@@ -171,7 +169,7 @@ resources listed in the following table.
   </tr>
 </table>
 
-# Example
+### Example
 
 This [demonstration server](http://labs.metoffice.gov.uk/edr) publishes
 environmental data through an interface that conforms to the OGC API -
@@ -195,8 +193,7 @@ observations, therefore you may need to update the values of the
 ```datetime``` parameter to the current day in order to access
 available METAR observation.
 
-
-## Information Resources of OGC API - Environmental Data Retrieval
+## Resources
 
 This section provides basic information about the types of resources
 that OGC API - Environmental Data Retrieval offers.
@@ -211,7 +208,7 @@ Data Retrieval** can be found in [Section
 6.2](https://docs.ogc.org/is/19-086r4/19-086r4.html#toc22) of the
 standard.
 
-# Landing Page
+### Landing Page
 
 The landing page is the top-level resource that serves as an entry
 point. A client application needs to know the location of the landing
@@ -287,11 +284,10 @@ An extract from the landing page of a demo server is shown below.
     "variables": null
   }
 ]
+}
 ```
 
-}
-
-# Conformance declaration
+### Conformance declaration
 
 An implementation of OGC API - Environmental Data Retrieval describes
 the capabilities that it supports by declaring which conformance classes
@@ -319,11 +315,10 @@ Below is an extract from the response to the request
     "http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/coveragejson",
     "http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/wkt"
  ]
+ }
 ```
 
-}
-
-# Collections metadata
+### Collections metadata
 
 Data offered through an implementation of **OGC API - Environmental Data
 Retrevial** is organized into one or more feature collections. The
@@ -1296,7 +1291,7 @@ Below is an extract from the response to the request
 }
 ```
 
-## Query Resources
+### Query Resources
 
 Query resources are spatio-temporal queries which support operation of
 the API for the access and use of the spatio-temporal data resources.
@@ -1325,7 +1320,7 @@ Where the query applies to an instance, the pattern is as follows:
 ```/collections/{collectionId}/instances/{instanceId}/{queryType}```
 
 
-### Area Query Resources of OGC API - EDR
+#### Area Query Resources of OGC API - EDR
 
 An area is a region specified with a geographic envelope that may have
 vertical dimension. An illustration, created using NASA WorldWind, is
@@ -1354,7 +1349,7 @@ An example request is shown below.
 
 ```http://example.org/edr/collections/gfs-pressure_at_height/area?coords=POLYGON((-0.898132%2051.179362,-0.909119%2051.815488,0.552063%2051.818884,0.560303%2051.191414,-0.898132%2051.179362))&parameter-name=Pressure_height_above_ground&datetime=2022-01-19T06:00Z/2022-01-19T12:00Z&z=80/80&crs=CRS84&f=CoverageJSON```
 
-### Corridor Query Resources of OGC API - EDR
+#### Corridor Query Resources of OGC API - EDR
 
 A corridor is a two parameter set of points around a trajectory. An
 illustration, created using NASA WorldWind, is shown below.
@@ -1383,7 +1378,7 @@ The paths accepts the following parameters:
 -   crs
 -   f
   
-### Cube Query Resources of OGC API - EDR
+#### Cube Query Resources of OGC API - EDR
 
 A cube is a rectangular area, with a vertical extent. An illustration,
 created using NASA WorldWind, is shown below.
@@ -1407,7 +1402,7 @@ The paths accepts the following parameters:
 -   crs
 -   f
 
-### Instances Query Resources of OGC API - EDR
+#### Instances Query Resources of OGC API - EDR
 
 The ```instances``` query resource retrieves metadata about
 instances of a collection. The resource enables support for multiple
@@ -1418,7 +1413,7 @@ The path to the resource is shown below:
 
 ```/collections/{collectionID}/instances/{instanceID}/{queryType}```
 
-### Items (Features) Query Resources of OGC API - EDR
+#### Items (Features) Query Resources of OGC API - EDR
 
 The ```items``` query resource offers an OGC API - Features
 endpoint that may be used to catalog pre-existing EDR sampling features.
@@ -1437,7 +1432,7 @@ An example request is below.
 
 ```http://example.org/edr/collections/mocov-daily_global/items```
 
-### Locations Query Resources of OGC API - EDR
+#### Locations Query Resources of OGC API - EDR
 
 The ```locations``` query resource returns a list of location
 identifiers and relevant metadata for the collection.
@@ -1453,7 +1448,7 @@ An example request is below.
 
 ```http://example.org/edr/collections/obs_demo/locations```
 
-### Position Query Resources of OGC API - EDR
+#### Position Query Resources of OGC API - EDR
 
 A position is a data type that describes a point or geometry potentially
 occupied by an object or person. An illustration, created using NASA
@@ -1482,7 +1477,7 @@ An example request is shown below.
 
 ```http://example.org/edr/collections/obs_demo/position?coords=POINT(0.00577%2051.562608)&parameter-name=Wind%20Direction&datetime=2022-01-19T10:00Z/2022-01-19T12:00Z&crs=CRS84&f=GeoJSON```
 
-### Radius Query Resources of OGC API - EDR
+#### Radius Query Resources of OGC API - EDR
 
 A radius is a region specified with a geographic position and radial
 distance. An illustration, created using NASA WorldWind, is shown below.
@@ -1512,7 +1507,7 @@ An example request is shown below.
 
 ```http://example.org/edr/collections/obs_demo/radius?coords=POINT(-0.095882%2051.512983)&within=50&within-units=km&parameter-name=Wind%20Direction&datetime=2022-01-19T04:00Z/2022-01-19T06:00Z&crs=CRS84&f=GeoJSON```
 
-### Trajectory Query Resources of OGC API - EDR
+#### Trajectory Query Resources of OGC API - EDR
 
 A trajectory is a path of a moving point described by a one parameter
 set of points. An illustration, created using NASA WorldWind, is shown

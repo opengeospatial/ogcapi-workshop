@@ -18,19 +18,17 @@ title: OGC API - Tiles
     -   Understand how to issue requests to an implementation of OGC API - Features
     -   Be able to find an OGC API - Tiles endpoint and use it through a client
 
-# An Introduction to OGC API - Tiles
-
 ## Introduction
 
-The OGC API --- Tiles standard defines building blocks for creating Web
+The OGC API - Tiles standard defines building blocks for creating Web
 APIs that support the retrieval of geospatial information as tiles.
 Different forms of geospatial information are supported, such as tiles
 of vector features ("vector tiles"), coverages, maps (or imagery) and
 other types of geospatial information. Although it can be used
-independently, the OGC API --- Tiles building blocks can be combined
+independently, the OGC API - Tiles building blocks can be combined
 with other OGC API Standards and draft specifications for additional
 capabilities or increasing interoperability for specific types of data.
-The OGC API --- Tiles standard references the OGC Two Dimensional Tile
+The OGC API - Tiles standard references the OGC Two Dimensional Tile
 Matrix Set (TMS) and Tileset Metadata standard, which defines logical
 models and encodings for specifying tile matrix sets and describing tile
 sets. A tile matrix set is a tiling scheme that enables an application
@@ -45,7 +43,7 @@ multiple scales in a Coordinate Reference System (CRS).
     Core** standard for additional detail.
 
 
-## Background
+### Background
 
 >  History
 
@@ -69,7 +67,7 @@ multiple scales in a Coordinate Reference System (CRS).
 
   Implementations can be found on the Compliance Database here <http://www.opengeospatial.org/resource/products/byspec>
 
-### Usage
+#### Usage
 
 There are at least two ways to approach an implementation of the OGC
 API - Tiles Standard.
@@ -91,12 +89,12 @@ tile set metadata for that tiling scheme through
 individual tiles with
 ```[{datasetRoot}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
 
-### Relation to other OGC Standards
+#### Relation to other OGC Standards
 
-Although the OGC API --- Tiles Standard is designed as a building block
+Although the OGC API - Tiles Standard is designed as a building block
 that can be leveraged by (or with) other OGC API Standards adding
 precisions about specific types of data available as tiles (e.g., OGC
-API --- Features standard, and OGC API --- Maps and OGC API ---
+API - Features standard, and OGC API - Maps and OGC API -
 Coverages candidate standards), the conformance classes defined in this
 Standard are still concrete enough to make it possible to support
 distributing and requesting various types of tiled data, including
@@ -104,7 +102,7 @@ coverages, vector features and maps, by relying strictly on the content
 herein and in the OGC Two Dimensional Tile Matrix Set and Tile Set
 Metadata 2.0 standard.
 
-# Overview of Resources
+### Overview of Resources
 
 **OGC API - Tiles - Part 1: Core** defines the resources listed in the
 following table.
@@ -214,7 +212,7 @@ following table.
   </tr>
 </table>
 
-# Example
+### Example
 
 This [demonstration server](https://demo.ldproxy.net/zoomstack/)
 publishes tiled feature data through an interface that conforms to OGC
@@ -231,7 +229,9 @@ data.
 
 ![image](../../assets/images/mvt_example.png){width="40.0%"}
 
-# Resources
+## Resources
 
 This section provides basic information about the types of resources
 that OGC API - Tiles offers.
+
+TODO

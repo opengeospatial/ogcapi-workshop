@@ -82,7 +82,7 @@ enables the data to be accessed consistently with other data. Feature
 properties encoded using common data types such as text strings, date
 and time can also be accessed consistently.
 
-### Relation to other OGC Standards
+#### Relation to other OGC Standards
 
 -   OGC Web Feature Service Interface Standard (WFS): The WFS standard
     is more appropriate when working with client applications that only
@@ -94,7 +94,7 @@ and time can also be accessed consistently.
     Implementations of OGC API - Features may also optionally support
     GML.
 
-## Overview of Resources
+### Overview of Resources
 
 **OGC API - Features - Part 1: Core** defines the resources listed in
 the following table.
@@ -142,7 +142,7 @@ the following table.
   </tr>
 </table>
 
-## Example
+### Example
 
 This [demonstration
 server](https://demo.pygeoapi.io/master)
@@ -176,7 +176,7 @@ Part 1: Core** can be found in [Section
 5.2](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations)
 of the standard.
 
-## Landing Page
+### Landing Page
 
 The landing page is the top-level resource that serves as an entry
 point. A client application needs to know the location of the landing
@@ -228,7 +228,7 @@ An extract from the landing page of a demo server is shown below.
 }
 ```
 
-## Conformance declarations
+### Conformance declarations
 
 An implementation of OGC API - Features describes the capabilities that
 it supports by declaring which conformance classes it implements. The
@@ -269,7 +269,7 @@ declaration.
 }
 ```
 
-## Feature collections
+### Feature collections
 
 Data offered through an implementation of **OGC API - Features - Part 1:
 Core** is organized into one or more feature collections. The
@@ -360,7 +360,7 @@ Below is an extract from the response to the request
   ]
 ```
 
-## Feature collection
+### Feature collection
 
 The **Collection** resource provides detailed information about the
 collection identified in a request.
@@ -416,7 +416,7 @@ Below is an extract from the response to the request
 ```
 
 
-## Features
+### Features
 
 The Features resource returns a document consisting of features
 contained by the collection identified in a request. The features
@@ -505,7 +505,7 @@ Each page may include information about the number of selected and
 returned features (```numberMatched``` and ```numberReturned```) as well as
 links to support paging (link relation ```next```).
 
-## Feature
+### Feature
 
 The Feature resource is used for retrieving an individual feature, its
 geometric representation and other properties. In the example below, the

@@ -18,8 +18,6 @@ title: OGC API - Processes
     - Understand how to issue requests to an implementation of OGC API - Processes
     - Be able to find an OGC API - Processes endpoint and use it through a client
 
-# An Introduction to OGC API - Processes
-
 ## Introduction
 
 The OGC API -- Processes standard supports the wrapping of
@@ -45,7 +43,7 @@ imagery analysis and several others.
     student started with using the standard. Please refer to the **OGC API -
     Processes - Part 1: Core** standard for additional detail.
 
-## Background
+### Background
 
 > History
 
@@ -65,7 +63,7 @@ imagery analysis and several others.
 
   Implementations can be found here <https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc>
 
-### Usage
+#### Usage
 
 **OGC API - Processes - Part 1: Core** supports the wrapping of
 computational tasks into executable processes that can be offered by a
@@ -77,7 +75,7 @@ processing of geospatial data, including data from sensors, can be
 distributed thereby allowing for more capacity to process larger amounts
 of data.
 
-### Relation to other OGC Standards
+#### Relation to other OGC Standards
 
 -   OGC Web Processing Service Interface Standard (WPS): The WPS
     Standard provides a standard interface that simplifies the task of
@@ -90,7 +88,7 @@ of data.
     addressed by the WPS Standard, while also leveraging the OpenAPI
     specification and a resource-oriented approach.
 
-## Overview of Resources
+### Overview of Resources
 
 **OGC API - Processes - Part 1: Core** defines the resources listed in
 the following table.
@@ -154,7 +152,7 @@ the following table.
   </tr>
 </table>
 
-# Example
+### Example
 
 This ZOO-Project [demonstration
 server](http://tb17.geolabs.fr:8090/ogc-api/index.html) from OGC
@@ -163,3 +161,7 @@ interface that conforms to OGC API - Processes.
 
 The processes offered by the server can be browsed at
 <http://tb17.geolabs.fr:8090/ogc-api/processes.html>
+
+## Resources
+
+TODO
