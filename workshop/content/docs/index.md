@@ -55,12 +55,12 @@ Code
 </html>
 ```
 
-Configuration
-``` {.yaml linenums="1"}
-my-collection:
-    type: collection
-    title: my cool collection title
-    description: my cool collection description
+JSON
+``` {.json linenums="1"}
+{
+    "title": "my cool collection title",
+    "description": "my cool collection description"
+}
 ```
 
 Snippets which need to be typed in a on a terminal/console are indicated as:
@@ -79,9 +79,9 @@ The workshop contents, wiki and issue tracker are managed on GitHub at [github.c
 
 # Support
 
-For issues/bugs/suggestions or improvements/contributions, use the [GitHub issue tracker](https://github.com/opengeospatial/ogcapi-workshop/issues).
+For issues/bugs/suggestions or improvements/contributions, please use the [GitHub issue tracker](https://github.com/opengeospatial/ogcapi-workshop/issues).
 
-Contributions are always enncouraged and welcome!
+Contributions are always encouraged and welcome!
 
 
-## Now, on to the workshop.  Let's go!
+## Now, on to the workshop.  Ready?  Let's go!
