@@ -8,46 +8,20 @@ nav:
     - Home: index.md
     - Background and context: background-and-context.md
     - Overview and main concepts: overview-and-main-concepts.md
-    - API deep dive:
-        - Prerequisites: ogcapi/basic-index.md
-        - OGC API - Common: ogcapi/common.md
-        - OGC API - Features:
-            - Overview, OGC API - Features: ogcapi/ogcapi-features/text/basic-overview.md
-            - An Introduction to OGC API - Features: ogcapi/ogcapi-features/text/basic-main.md
-            - Resources of OGC API - Features: ogcapi/ogcapi-features/text/operations.md
-        - OGC API - Tiles: 
-            - Overview, OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-overview.md
-            - An Introduction to OGC API - Tiles: ogcapi/ogcapi-tiles/text/basic-main.md
-            - Resources of OGC API - Tiles: ogcapi/ogcapi-tiles/text/operations.md
-#        - OGC API - Coverages: ogcapi/coverages.md
-        - OGC API - Processes:
-            - Overview, OGC API - Processes: ogcapi/ogcapi-processes/text/basic-overview.md
-            - An Introduction to OGC API - Processes: ogcapi/ogcapi-processes/text/basic-main.md
-        - OGC API - Records: ogcapi/records.md
-        - OGC API - Environmental Data Retrieval:
-            - An Introduction to OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/basic-main.md
-            - Information Resources of OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/operations.md
-            - Query Resources of OGC API - Environmental Data Retrieval: ogcapi/ogcapi-edr/text/advanced.md
-            - Position Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/positionquery.md
-            - Area Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/areaquery.md
-            - Cube Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/cubequery.md
-            - Trajectory Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/trajectoryquery.md
-            - Corridor Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/corridorquery.md
-            - Radius Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/radiusquery.md
-            - Instances Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/instancesquery.md
-            - Locations Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/locationsquery.md
-            - Items (Features) Query Resources of OGC API - EDR: ogcapi/ogcapi-edr/text/itemsquery.md
-        - OGC API - Maps: ogcapi/maps.md
-        - OGC - SensorThings API:
-            - Overview, SensorThings API: ogcapi/sta/text/overview.md
-            - An Introduction to SensorThings API: ogcapi/sta/text/main.md
-            - Resources of SensorThings API: ogcapi/sta/text/operations.md
-            - Demo: ogcapi/sta/slides/presentation.md
-    - OGC API roadmap: ogcapi-roadmap.md
-    - Encodings: encodings.md
     - Compliance and certification: compliance-and-certification.md
-    - Transition and migration:
-        - Benefits and examples: benefits-and-examples.md
+    - API deep dive:
+        - OGC API - Common: api-deep-dive/common/index.md
+        - OGC API - Features: api-deep-dive/features/index.md
+        - OGC API - Tiles: api-deep-dive/tiles/index.md
+#        - OGC API - Coverages: api-deep-dive/coverages/index.md
+        - OGC API - Processes: api-deep-dive/processes/index.md
+        - OGC API - Records: api-deep-dive/records/index.md
+        - OGC API - Environmental Data Retrieval: api-deep-dive/environmental-data-retrieval/index.md
+        - OGC API - Maps: api-deep-dive/maps/index.md
+        - OGC SensorThings API: api-deep-dive/sensorthings/index.md
+    - OGC API roadmap: ogcapi-roadmap.md
+    - Transition and migration: transition-and-migration.md
+    - Getting involved: getting-involved.md
     - Conclusion: conclusion.md
 
 use_directory_urls: true
