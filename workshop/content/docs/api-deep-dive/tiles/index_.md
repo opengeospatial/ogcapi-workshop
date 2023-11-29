@@ -65,7 +65,7 @@ multiple scales in a Coordinate Reference System (CRS).
 
 >  Implementations
 
-  Implementations can be found on the Compliance Database here <http://www.opengeospatial.org/resource/products/byspec>
+  Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc>
 
 #### Usage
 

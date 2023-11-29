@@ -48,9 +48,9 @@ SensorThings API Part 1: Sensing version 1.0 in July 2016.
 Test suites are available for:
 - SensorThings API Part 1 version 1.0 <https://github.com/opengeospatial/ets-sta10>
 
-> Implementations
+> Public Endpoints
 
-Implementations are listed on the OGC website here <http://www.opengeospatial.org/resource/products/byspec>
+  A list of public endpoints can be found here: <https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md>
 
 #### Usage
 
