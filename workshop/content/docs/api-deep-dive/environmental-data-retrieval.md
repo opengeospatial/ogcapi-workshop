@@ -57,7 +57,7 @@ by this standard and selected by the client.
 
 > Implementations
 
-Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/tree/master/implementations>
+Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/tree/master/implementations).
 
 #### Usage
 

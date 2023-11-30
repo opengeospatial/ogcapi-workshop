@@ -60,7 +60,7 @@ models, richer queries, and additional coordinate reference systems.
 
 >  Implementations
 
-  Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-features/tree/master/implementations>
+  Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-features/tree/master/implementations).
 
 #### Usage
 

@@ -56,7 +56,7 @@ records will be specified in additional parts.
 
 >  Implementations
 
-  Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-records/blob/master/implementations.md>
+  Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-records/blob/master/implementations.md).
 
 
 #### Usage
