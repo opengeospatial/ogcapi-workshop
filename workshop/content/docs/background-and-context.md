@@ -78,4 +78,5 @@ made available as HTML pages (and PDF).  Collaborative tools used by OGC also pr
 
 ## Summary
 
-OGC API standards are built
+OGC API standards are built to be low barrier, with a focus on resources (data/content!) using modern web development
+principles and practices.
