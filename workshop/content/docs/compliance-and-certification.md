@@ -23,7 +23,7 @@ Developers can either use the hosted version of TEAM Engine on CITE, or install 
 
 ## Reference implementations
 
-A reference implementation (RI) is a fully functional, licensed copy of a tested, branded software that has passes the test for an associated conformance class in a version of an Implementation Standard and that is free and publicly available for testing via a web service or download. 
+A reference implementation (RI) is a fully functional, licensed copy of a tested, branded software that has passed the test for an associated conformance class in a version of an Implementation Standard and that is free and publicly available for testing via a web service or download. 
 
 * RI do not need to comply to all the conformance classes in the standard, but they should conform at least to the core.
 * RI should be available, on a reliable server that has a high treshold for uptime.
