@@ -50,9 +50,9 @@ records will be specified in additional parts.
 
 > Test Suite
 
-  There are no test suites currently implemented.
-
-  *   [OGC API - Features](https://github.com/opengeospatial/ets-ogcapi-features10)
+  There are no test suites currently implemented; they will be made available once
+  the specification is approved, and an executable test suite (ETS) is made availabe
+  as per of OGC CITE.
 
 >  Implementations
 
