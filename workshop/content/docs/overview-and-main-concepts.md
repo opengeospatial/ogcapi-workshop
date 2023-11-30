@@ -55,7 +55,7 @@ OGC API - Common allows for specification developers to focus on the key functio
 while using common constructs. This harmonizes OGC API standards and enables deeper integration with less code. This also
 allows for OGC API client software to be more streamlined.
 
-The `/conformance` endpoint indicates which standards and extensions are supported by a deployment of OGC API.
+For more details about this standard, please refer to the [OGC API - Common section](https://ogcapi-workshop.ogc.org/api-deep-dive/common/).
 
 #### OGC API building blocks
 

@@ -18,8 +18,6 @@ title: OGC API - Processes
     - Understand how to issue requests to an implementation of OGC API - Processes
     - Be able to find an OGC API - Processes endpoint and use it through a client
 
-# An Introduction to OGC API - Processes
-
 ## Introduction
 
 The OGC API -- Processes standard supports the wrapping of
@@ -45,27 +43,27 @@ imagery analysis and several others.
     student started with using the standard. Please refer to the **OGC API -
     Processes - Part 1: Core** standard for additional detail.
 
-## Background
+### Background
 
-### History
+> History
 
-Several of the concepts specified in OGC API - Processes originated in work specifying a RESTful interface for WPS 2.0. From February 2019 onwards, all work relating to a RESTful interface for the WPS2.0 was changed to focus on OGC API - Processes.
+  Several of the concepts specified in OGC API - Processes originated in work specifying a RESTful interface for WPS 2.0. From February 2019 onwards, all work relating to a RESTful interface for the WPS2.0 was changed to focus on OGC API - Processes.
 
-### Versions
+>  Versions
 
-**OGC API - Processes - Part 1: Core** version 1.0.0 is the current latest version
+  **OGC API - Processes - Part 1: Core** version 1.0.0 is the current latest version
 
-### Test Suite
+> Test Suite
 
-**Draft** Test suites are available for:
+  **Draft** Test suites are available for:
 
--   [OGC API - Processes](https://github.com/opengeospatial/ets-ogcapi-processes10)
+  -   [OGC API - Processes](https://github.com/opengeospatial/ets-ogcapi-processes10)
 
-### Implementations
+>  Implementations
 
-Implementations can be found here <https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc>
+  Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc>
 
-### Usage
+#### Usage
 
 **OGC API - Processes - Part 1: Core** supports the wrapping of
 computational tasks into executable processes that can be offered by a
@@ -77,7 +75,7 @@ processing of geospatial data, including data from sensors, can be
 distributed thereby allowing for more capacity to process larger amounts
 of data.
 
-### Relation to other OGC Standards
+#### Relation to other OGC Standards
 
 -   OGC Web Processing Service Interface Standard (WPS): The WPS
     Standard provides a standard interface that simplifies the task of
@@ -90,71 +88,81 @@ of data.
     addressed by the WPS Standard, while also leveraging the OpenAPI
     specification and a resource-oriented approach.
 
-## Overview of Resources
+### Overview of Resources
 
 **OGC API - Processes - Part 1: Core** defines the resources listed in
 the following table.
 
-
 <table>
   <tr>
     <th>Resource</th>
+    <th>Method</th>
     <th>Path</th>
     <th>Purpose</th>
   </tr>
   <tr>
     <td>Landing page</td>
+    <td>GET</td>
     <td>/</td>
     <td>This is the top-level resource, which serves as an entry point.</td>
   </tr>
   <tr>
     <td>Conformance declaration</td>
+    <td>GET</td>
     <td>/conformance</td>
     <td>This resource presents information about the functionality that is implemented by the server.</td>
   </tr>
   <tr>
     <td>API definition</td>
+    <td>GET</td>
     <td>/api</td>
     <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
   </tr>
   <tr>
     <td>Process list</td>
+    <td>GET</td>
     <td>/processes </td>
     <td>Process identifiers, links to process descriptions.</td>
   </tr>
   <tr>
     <td>Process description </td>
+    <td>GET</td>
     <td>/processes/{processID}</td>
     <td>Retrieves a process description.</td>
   </tr>
   <tr>
     <td>Process execution</td>
+    <td>POST</td>
     <td>/processes/{processID}/execution</td>
     <td>Creates and executes a job.</td>
   </tr>
   <tr>
     <td>Job status info</td>
+    <td>GET</td>
     <td>/jobs/{jobID}</td>
-    <td>Retrieves information about the status of a job./td>
+    <td>Retrieves information about the status of a job.</td>
   </tr>
   <tr>
     <td>Job results</td>
+    <td>GET</td>
     <td>/jobs/{jobID}/results</td>
-    <td>Retrieves the resul(s) of a job./td>
+    <td>Retrieves the resul(s) of a job.</td>
   </tr>
   <tr>
     <td>Job list</td>
+    <td>GET</td>
     <td>/jobs</td>
-    <td>Retrieves the list of jobs./td>
+    <td>Retrieves the list of jobs.</td>
   </tr>
   <tr>
     <td>Job Deletion</td>
+    <td>DELETE</td>
     <td>/jobs/{jobID} </td>
-    <td>Cancels and deletes a job./td>
+    <td>Cancels and deletes a job.</td>
   </tr>
 </table>
 
-# Example
+### Example
 
 This ZOO-Project [demonstration
 server](http://tb17.geolabs.fr:8090/ogc-api/index.html) from OGC
@@ -163,3 +171,7 @@ interface that conforms to OGC API - Processes.
 
 The processes offered by the server can be browsed at
 <http://tb17.geolabs.fr:8090/ogc-api/processes.html>
+
+## Resources
+
+TODO

@@ -18,4 +18,25 @@ title: OGC API - Maps
     - Understand how to issue requests to an implementation of OGC API - Maps
     - Be able to find an OGC API - Maps endpoint and use it through a client
 
+## Introduction
+
+### Background
+
+> History
+
+  TODO
+
+>  Implementations
+
+  Implementations can be found here <https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc>
+
+#### Usage
+
+#### Relation to other standards
+
+### Overview of Resources
+
+### Example
+
+## Resources
 TODO

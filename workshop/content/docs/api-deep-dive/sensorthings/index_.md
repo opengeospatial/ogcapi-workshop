@@ -17,8 +17,6 @@ title: OGC SensorThings API
     - Understand how to publish sensor-collected data through the SensorThings API
     - Be able to find a SensorThings API endpoint and use it through a client
 
-# SensorThings - Introduction
-
 ## Introduction
 
 The Internet of Things (IoT) is a global information infrastructure that
@@ -39,7 +37,7 @@ expected to provide a standard way for parameterizing - also called
 tasking - of IoT devices that can be instructed to carry out
 observations or perform other functions.
 
-## Background
+### Background
 
 > History
 
@@ -50,11 +48,11 @@ SensorThings API Part 1: Sensing version 1.0 in July 2016.
 Test suites are available for:
 - SensorThings API Part 1 version 1.0 <https://github.com/opengeospatial/ets-sta10>
 
-> Implementations
+> Public Endpoints
 
-Implementations are listed on the OGC website here <http://www.opengeospatial.org/resource/products/byspec>
+  A list of public endpoints can be found here: <https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md>
 
-### Usage
+#### Usage
 
 The SensorThings API allows for the access and dissemination of
 sensor-collected data about any object of the physical world (physical
@@ -72,7 +70,7 @@ tablets. The use of REST also makes it easier for web developers and the
 applications they implement to access data through resource-centric
 Uniform Resource Locator (URL) patterns.
 
-### Relation to other OGC Standards
+#### Relation to other OGC Standards
 
 -   Sensor Observation Service Interface Standard (SOS): The
     SensorThings API is designed specifically to enable the
@@ -88,7 +86,7 @@ Uniform Resource Locator (URL) patterns.
     contrast, SensorThings API formalized how specific entities and
     concepts should be represented and serialized.
 
-## Resources Offered
+### Overview of Resources
 
 Rather than operations, it is more appropriate to discuss what the
 SensorThings API offers through the entities it provides as resources.
@@ -100,7 +98,7 @@ The following is a list entities supported by the API:
     regard to the Internet of Things, a thing is an object of the
     physical world (physical things) or the information world (virtual
     things) that is capable of being identified and integrated into
-    communication networks \[ITU-T\].
+    communication networks ITU-T.
 
 >  Location
 
@@ -137,7 +135,7 @@ The following is a list entities supported by the API:
     The phenomenon against which an observation is made is a property of
     the feature of interest.
 
-## Example
+### Example
 
 This [SensorThings API
 server](http://toronto-bike-snapshot.sensorup.com/v1.0/) publishes sample
@@ -167,11 +165,11 @@ The data returned by the service can be rendered by a desktop Geographic
 Information System (GIS) or a web application. Alternatively, it can be
 forwarded to an OGC WPS for further processing.
 
-## Client Usage
+### Client Usage
 
 A client needs to know the location of the SensorThings API service to
 be able to interact with the server. The location is usually called the
-\'end point\' of the service and is represented by the service root URI.
+```end point``` of the service and is represented by the service root URI.
 Resources available through the service can be accessed by appending a
 resource path and, optionally query options.
 
@@ -185,16 +183,10 @@ http://toronto-bike-snapshot.sensorup.com/v1.0
 ?$select=result
 ```
 
-[The link to the request
-is](http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations(1593917)?$select=result)
+The link to the request
+is: <http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations(1593917)?$select=result>
 
-## References
-
-[ITU-T, Overview of the Internet of
-things](http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=y.2060)
-
-[SensorUp SensorThings API](https://www.sensorup.com/)
-# SensorThings - Operations
+## Operations
 
 The entities offered by a SensorThings API service can be accessed by
 appending a resource path to the service root URI. An example of a URL
@@ -226,38 +218,47 @@ type.
   <caption>Entity Sets Offered</caption>
   <tr>
     <th>Entity Set</th>
+    <th>Method</th>
     <th>Resource Path</th>
   </tr>
   <tr>
     <td>Things</td>
+    <td>GET</td>
     <td>/Things</td>
   </tr>
   <tr>
     <td>Locations</td>
+    <td>GET</td>
     <td>/Locations</td>
   </tr>
   <tr>
     <td>Historical locations</td>
+    <td>GET</td>
     <td>/HistoricalLocations</td>
   </tr>
   <tr>
     <td>Datastreams</td>
+    <td>GET</td>
     <td>/Datastreams</td>
   </tr>
   <tr>
     <td>Sensors</td>
+    <td>GET</td>
     <td>/Sensors</td>
   </tr>
   <tr>
     <td>Observed properties</td>
+    <td>GET</td>
     <td>/ObservedProperties</td>
   </tr>
   <tr>
     <td>Observations</td>
+    <td>GET</td>
     <td>/Observations</td>
   </tr>
   <tr>
     <td>Features of interest</td>
+    <td>GET</td>
     <td>/FeaturesOfInterest</td>
   </tr>
 </table>
@@ -276,25 +277,29 @@ table.
   <caption>Property Resource Path Examples</caption>
   <tr>
     <th>Property</th>
+    <th>Method</th>
     <th>Resource Path</th>
   </tr>
   <tr>
     <td>Result of an observation with an ID of 1595550</td>
+    <td>GET</td>
     <td>/Observations(1595550)/result</td>
   </tr>
   <tr>
     <td>The name of a feature of interest</td>
+    <td>GET</td>
     <td>/Sensor(4)/metadata</td>
   </tr>
   <tr>
     <td>Coordinates of the feature observed by observation 1595550</td>
+    <td>GET</td>
     <td>/Observations(1595550)/FeatureOfInterest/feature</td>
   </tr>
 </table>
 
-## Retrieval Options {#sta_retrieval}
+### Retrieval Options
 
-### $filter
+#### $filter
 
 The ```$filter``` system option allows clients to filter a collection of
 entities that are addressed by a request URL.
@@ -304,7 +309,7 @@ is less than 15.00.
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$filter=result%20lt%2015.00>
 
-### $count
+#### $count
 
 The ```$count``` query option specifies whether the total count of items
 within a collection matching the request should be returned along with
@@ -317,7 +322,7 @@ the response.
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$count=true>
 
-### $orderby
+#### $orderby
 
 The ```$orderby``` query option specifies the order in which items are
 returned from the service.
@@ -327,7 +332,7 @@ ascending order of the result property
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$orderby=result>
 
-### $skip
+#### $skip
 
 The ```$skip``` query option specifies the number for the items of the
 queried collection that should be excluded from the result.
@@ -337,7 +342,7 @@ twenty-first Observation entity.
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$skip=20>
 
-### $top
+#### $top
 
 The ```$top``` query option specifies the limit on the number of items
 returned from a collection of entities.
@@ -347,7 +352,7 @@ in the Observations collection.
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$top=6>
 
-### $expand
+#### $expand
 
 The ```$expand``` query option enables the client to specify the set of
 properties to be included in a response by indicating that the related
@@ -358,7 +363,7 @@ Things and their associated Datastreams.
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Things?$expand=Datastreams>
 
-### $select
+#### $select
 
 The ```$select``` query option enables the client to specify the set of
 properties to be included in a response by instructing the service to
@@ -369,25 +374,14 @@ only the result and phenomenonTime properties listed.
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$select=result,phenomenonTime>
 
-## References
-
--   [SensorUp SensorThings API](https://www.sensorup.com/)
-
-
-# Demo - SensorThings API
-
-## Overview
-
-Interface for Internet of Things
-
-## Demo Server and examples
+## Demo
 
 -   [Demo From SensorUp](http://developers.sensorup.com/docs/)
 -   Link: <http://toronto-bike-snapshot.sensorup.com/v1.0/>
 -   Behaves like a GetCapabilities.
 -   Provides URLs to interrogate further the service
 
-## Return Base Resource Path
+### Return Base Resource Path
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/>
 
@@ -412,7 +406,7 @@ Interface for Internet of Things
       },
 ```
 
-## Return Base Resource Path (Cont)
+### Return Base Resource Path (Cont)
 
 ``` properties
 {  
@@ -435,7 +429,7 @@ Interface for Internet of Things
 }
 ```
 
-## Which *Things* are available in the server?
+### Which *Things* are available in the server?
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Things>
 
@@ -457,7 +451,7 @@ Interface for Internet of Things
 >    ...
 > ```
 
-## Getting a *Datastream* for a thing
+### Getting a *Datastream* for a thing
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Things(206047)/Datastreams>
 
@@ -482,19 +476,20 @@ Interface for Internet of Things
    ....
 ```
 
-## Note: Datastreams define the unit of measurement
+!!! note
+    Datastreams define the unit of measurement
 
-> ``` properties
-> "observationType":
->     "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation",
-> "unitOfMeasurement":{  
->   "symbol":"{TOT}",
->   "name":"dock count",
->   "definition":"http://unitsofmeasure.org/ucum.html#para-50"
-> },
-> ```
+    > ``` properties
+    > "observationType":
+    >     "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation",
+    > "unitOfMeasurement":{  
+    >   "symbol":"{TOT}",
+    >   "name":"dock count",
+    >   "definition":"http://unitsofmeasure.org/ucum.html#para-50"
+    > },
+    > ```
 
-## Getting the *Observations* related to a stream
+### Getting the *Observations* related to a stream
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations>
 
@@ -518,7 +513,7 @@ Interface for Internet of Things
  },
 ```
 
-## Complex Query
+### Complex Query
 
 -   Expands Datastreams and observations in one query
 -   Feature of Interest = 7000:Ft. York / Capreol Crt.
@@ -537,7 +532,7 @@ Interface for Internet of Things
 > Datastreams/Observations/phenomenonTime le 2017-03-01T11:30:00.000Z
 > ```
 
-## Complex Query Response
+### Complex Query Response
 
 > ``` properties
 > {  
@@ -568,7 +563,7 @@ Interface for Internet of Things
 >        },
 > ```
 
-## Complex Query Response (cont)
+### Complex Query Response (cont)
 
 > ``` properties
 > "Observations@iot.nextLink":
@@ -588,3 +583,9 @@ Interface for Internet of Things
 >        "description":"  ...
 > ```
 
+## References
+
+[ITU-T, Overview of the Internet of
+things](http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=y.2060)
+
+[SensorUp SensorThings API](https://www.sensorup.com/)

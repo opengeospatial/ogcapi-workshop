@@ -18,15 +18,6 @@ title: OGC API - Environmental Data Retrieval
     - Understand how to issue requests to an implementation of OGC API - Environmental Data Retrieval
     - Be able to find an OGC API - Environmental Data Retrieval endpoint and use it through a client
 
-# Prerequisites
-
-The following modules are prerequisites:
-
--   `../../fundamental-concepts/text/index`{.interpreted-text
-    role="doc"}
--   `../../ogc-standards/text/index`{.interpreted-text role="doc"}
-# An Introduction to OGC API - Environmental Data Retrieval
-
 ## Introduction
 
 OGC API - Environmental Data Retrieval is a standard that provides a
@@ -48,32 +39,27 @@ by this standard and selected by the client.
     student started with using the standard. Please refer to the **OGC API -
     Environmental Data Retrieval** standard for additional detail.
 
-# Background
+### Background
 
-History
+> History
 
-:   Version 1.0.0 was published on 2021-08-13.
+  Version 1.0.0 was published on 2021-08-13.
 
-Versions
+> Versions
 
-:   **OGC API - Environmental Data Retrieval** version 1.0.0 is the
-    current latest version
+    **OGC API - Environmental Data Retrieval** version 1.0.0 is the current latest version
 
-Test Suite
+> Test Suite
 
-:   
+  A draft executable test suite is available for:
 
-    A draft executable test suite is available for:
+  -   [OGC API - Environmental Data Retrieval](https://github.com/opengeospatial/ets-ogcapi-edr10)
 
-    :   -   [OGC API - Environmental Data
-            Retrieval](https://github.com/opengeospatial/ets-ogcapi-edr10)
+> Implementations
 
-Implementations
+Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/tree/master/implementations>
 
-:   Implementations can be found on the OGC Product Database here
-    \<<http://www.opengeospatial.org/resource/products/byspec>\>
-
-## Usage
+#### Usage
 
 **OGC API - Environmental Data Retrieval** provides a family of
 lightweight query interfaces to access spatio-temporal data resources by
@@ -91,10 +77,10 @@ enables the data to be accessed consistently with other data. Feature
 properties encoded using common data types such as text strings, date
 and time can also be accessed consistently.
 
-## Relation to other OGC Standards
+#### Relation to other OGC Standards
 
 -   OGC API-Features: The EDR API is completely compatible with OGC
-    API --- Features --- Part 1: Core (OGC 17-069r3), in that it
+    API - Features - Part 1: Core (OGC 17-069r3), in that it
     supports Collections and Items. It extends the Collection
     functionality by allowing 'Instances', a form of 'collection of
     collections'. The EDR API also supports the retrieval of
@@ -129,73 +115,70 @@ and time can also be accessed consistently.
     resources. In contrast, the EDR API uses OpenAPI definition
     documents for describing available interfaces.
 
-# Overview of Resources
+### Overview of Resources
 
 **OGC API - Environmental Data Retrieval Standard** defines the
 resources listed in the following table.
 
-  ---------------------------------------------------------------------------------------------
-  Resource                     Path                                            Purpose
-  ---------------------------- ----------------------------------------------- ----------------
-  Landing page                 {root}/                                         This is the
-                                                                               top-level
-                                                                               resource, which
-                                                                               serves as an
-                                                                               entry point.
+<table>
+<caption>Overview of OGC API - EDR resources</caption>
+  <tr>
+    <th>Resource</th>
+    <th>Method</th>
+    <th>Path</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>Landing page</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>This is the top-level resource, which serves as an entry point.</td>
+  </tr>
+  <tr>
+    <td>Conformance declaration</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>TThis resource presents information about the functionality that is implemented by the server.</td>
+  </tr>
+  <tr>
+    <td>API definition</td>
+    <td>GET</td>
+    <td>/api</td>
+    <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
+  </tr>
+  <tr>
+    <td>Collections metadata</td>
+    <td>GET</td>
+    <td>/collections </td>
+    <td>Metadata describing the collections of data available from this API.</td>
+  </tr>
+  <tr>
+    <td>Single Collection metadata</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}</td>
+    <td>Metadata describing the collection of data which has the unique identifier {collectionId}.</td>
+  </tr>
+  <tr>
+    <td>Items metadata</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/items</td>
+    <td>Retrieve metadata about available items.</td>
+  </tr>
+  <tr>
+    <td>Query data</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/{queryType}</td>
+    <td>Retrieve data according to the query pattern</td>
+  </tr>
+  <tr>
+    <td>Query instances</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/instances</td>
+    <td>Retrieve metadata about instances of a collection</td>
+  </tr>
+</table>
 
-  Conformance declaration      {root}/conformance                              This resource
-                                                                               presents
-                                                                               information
-                                                                               about the
-                                                                               functionality
-                                                                               that is
-                                                                               implemented by
-                                                                               the server.
-
-  API definition               {root}/api                                      This resource
-                                                                               provides
-                                                                               metadata about
-                                                                               the API itself.
-                                                                               Note use of
-                                                                               **/api** on the
-                                                                               server is
-                                                                               optional and the
-                                                                               API definition
-                                                                               may be hosted on
-                                                                               completely
-                                                                               separate server
-
-  Collections metadata         {root}/collections                              Metadata
-                                                                               describing the
-                                                                               collections of
-                                                                               data available
-                                                                               from this API.
-
-  Single Collection metadata   {root}/collections/{collectionId}               Metadata
-                                                                               describing the
-                                                                               collection of
-                                                                               data which has
-                                                                               the unique
-                                                                               identifier
-                                                                               {collectionId}
-
-  Items metadata               {root}/collections/{collectionId}/items         Retrieve
-                                                                               metadata about
-                                                                               available items
-
-  Query data                   {root}/collections/{collectionId}/{queryType}   Retrieve data
-                                                                               according to the
-                                                                               query pattern
-
-  Query instances              {root}/collections/{collectionId}/instances     Retrieve
-                                                                               metadata about
-                                                                               instances of a
-                                                                               collection
-  ---------------------------------------------------------------------------------------------
-
-  : Overview of OGC API - Features resources
-
-# Example
+### Example
 
 This [demonstration server](http://labs.metoffice.gov.uk/edr) publishes
 environmental data through an interface that conforms to the OGC API -
@@ -216,12 +199,10 @@ request](http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POL
 
 Note that this demonstration server offers data from recent
 observations, therefore you may need to update the values of the
-[datetime]{.title-ref} parameter to the current day in order to access
+```datetime``` parameter to the current day in order to access
 available METAR observation.
 
-
-## Information Resources of OGC API - Environmental Data Retrieval
-================
+## Resources
 
 This section provides basic information about the types of resources
 that OGC API - Environmental Data Retrieval offers.
@@ -230,13 +211,13 @@ Each resource provides **links** that relate to resources. This enables
 a client application to navigate the resources, from the landing page
 through to the individual features. The server identifies the
 relationship between a resource and other linked resources through a
-**link relation type**, represented by the attribute \'rel\'. The link
+**link relation type**, represented by the attribute ```rel```. The link
 relation types used by implementations of the **OGC API - Environmental
 Data Retrieval** can be found in [Section
 6.2](https://docs.ogc.org/is/19-086r4/19-086r4.html#toc22) of the
 standard.
 
-# Landing Page {#ogcapiedr_landingpage}
+### Landing Page
 
 The landing page is the top-level resource that serves as an entry
 point. A client application needs to know the location of the landing
@@ -246,12 +227,12 @@ definition paths. An example landing page is at
 <http://labs.metoffice.gov.uk/edr>
 
 The link to the API definition is identified through the
-\'service-desc\' and \'service-doc\' link relation types.
+```service-desc``` and ```service-doc``` link relation types.
 
 The link to the Conformance declaration is identified through the
-\'conformance\' link relation type.
+```conformance``` link relation type.
 
-The link to the Collections is identified through the \'data\' link
+The link to the Collections is identified through the ```data``` link
 relation type.
 
 An extract from the landing page of a demo server is shown below.
@@ -312,11 +293,10 @@ An extract from the landing page of a demo server is shown below.
     "variables": null
   }
 ]
+}
 ```
 
-}
-
-# Conformance declaration {#ogcapiedr_conformance}
+### Conformance declaration
 
 An implementation of OGC API - Environmental Data Retrieval describes
 the capabilities that it supports by declaring which conformance classes
@@ -344,15 +324,14 @@ Below is an extract from the response to the request
     "http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/coveragejson",
     "http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/wkt"
  ]
+ }
 ```
 
-}
-
-# Collections metadata {#ogcapiedr_collections}
+### Collections metadata
 
 Data offered through an implementation of **OGC API - Environmental Data
 Retrevial** is organized into one or more feature collections. The
-\'Collections\' resource provides information about and access to the
+```Collections``` resource provides information about and access to the
 list of collections.
 
 For each collection, there is a link to the detailed description of the
@@ -370,7 +349,7 @@ collection:
     spatial and temporal extent of the collection
 -   An optional indicator about the type of the items in the collection
     (the default value, if the indicator is not provided, is
-    \'feature\').
+    ```feature```).
 
 For each collection, there are links to retrieve data according to
 supported query patterns (represented by the path
@@ -855,11 +834,6 @@ Below is an extract from the response to the request
 }
 ```
 
-::: {#ogcapiedr_collection}
-Single collection metadata
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
-:::
-
 The **Collection** resource provides detailed information about the
 collection identified in a request. Some of the information returned
 includes the supported geographic extent, data queries, coordinate
@@ -1326,7 +1300,7 @@ Below is an extract from the response to the request
 }
 ```
 
-## Query Resources
+### Query Resources
 
 Query resources are spatio-temporal queries which support operation of
 the API for the access and use of the spatio-temporal data resources.
@@ -1355,7 +1329,7 @@ Where the query applies to an instance, the pattern is as follows:
 ```/collections/{collectionId}/instances/{instanceId}/{queryType}```
 
 
-Area Query Resources of OGC API - EDR ================
+#### Area Query Resources of OGC API - EDR
 
 An area is a region specified with a geographic envelope that may have
 vertical dimension. An illustration, created using NASA WorldWind, is
@@ -1363,13 +1337,13 @@ shown below.
 
 ![image](../../assets/images/environmental-data-retrieval-query-area.png){width="80.0%"}
 
-The [area]{.title-ref} query resource returns data for the defined area.
+The ```area``` query resource returns data for the defined area.
 The resource offers a convenience mechanism for querying the API by
 area, using a Well Known Text (WKT) POLYGON geometry.
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/area]{.title-ref}
+```/collections/{collectionId}/area```
 
 The paths accepts the following parameters:
 
@@ -1382,22 +1356,23 @@ The paths accepts the following parameters:
 
 An example request is shown below.
 
-[http://example.org/edr/collections/gfs-pressure_at_height/area?coords=POLYGON((-0.898132%2051.179362,-0.909119%2051.815488,0.552063%2051.818884,0.560303%2051.191414,-0.898132%2051.179362))&parameter-name=Pressure_height_above_ground&datetime=2022-01-19T06:00Z/2022-01-19T12:00Z&z=80/80&crs=CRS84&f=CoverageJSON]{.title-ref}
-Corridor Query Resources of OGC API - EDR ================
+```http://example.org/edr/collections/gfs-pressure_at_height/area?coords=POLYGON((-0.898132%2051.179362,-0.909119%2051.815488,0.552063%2051.818884,0.560303%2051.191414,-0.898132%2051.179362))&parameter-name=Pressure_height_above_ground&datetime=2022-01-19T06:00Z/2022-01-19T12:00Z&z=80/80&crs=CRS84&f=CoverageJSON```
+
+#### Corridor Query Resources of OGC API - EDR
 
 A corridor is a two parameter set of points around a trajectory. An
 illustration, created using NASA WorldWind, is shown below.
 
 ![image](../../assets/images/environmental-data-retrieval-query-corridor.png){width="80.0%"}
 
-The [corridor]{.title-ref} query resource returns data for the defined
+The ```corridor``` query resource returns data for the defined
 corridor. The resource offers a convenience mechanism for querying the
 API by corridor, using a Well Known Text (WKT) LINESTRING geometry, or
 alternatively subclasses LINESTRINGZ, LINESTRINGM, LINESTRINGZM.
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/corridor]{.title-ref}
+```/collections/{collectionId}/corridor```
 
 The paths accepts the following parameters:
 
@@ -1411,20 +1386,21 @@ The paths accepts the following parameters:
 -   datetime
 -   crs
 -   f
-Cube Query Resources of OGC API - EDR ================
+  
+#### Cube Query Resources of OGC API - EDR
 
 A cube is a rectangular area, with a vertical extent. An illustration,
 created using NASA WorldWind, is shown below.
 
 ![image](../../assets/images/environmental-data-retrieval-query-cube.png){width="80.0%"}
 
-The [cube]{.title-ref} query resource returns data for a defined cube.
+The ```cube``` query resource returns data for a defined cube.
 The resource offers a convenience mechanism for querying the API using a
 bounding box (BBOX) defining a cube.
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/cube]{.title-ref}
+```/collections/{collectionId}/cube```
 
 The paths accepts the following parameters:
 
@@ -1434,19 +1410,21 @@ The paths accepts the following parameters:
 -   datetime
 -   crs
 -   f
-Instances Query Resources of OGC API - EDR ================
 
-The [instances]{.title-ref} query resource retrieves metadata about
+#### Instances Query Resources of OGC API - EDR
+
+The ```instances``` query resource retrieves metadata about
 instances of a collection. The resource enables support for multiple
 instances or versions of the same underlying data source to be accessed
 by the API.
 
 The path to the resource is shown below:
 
-[/collections/{collectionID}/instances/{instanceID}/{queryType}]{.title-ref}
-Items (Features) Query Resources of OGC API - EDR ================
+```/collections/{collectionID}/instances/{instanceID}/{queryType}```
 
-The [items]{.title-ref} query resource offers an OGC API --- Features
+#### Items (Features) Query Resources of OGC API - EDR
+
+The ```items``` query resource offers an OGC API - Features
 endpoint that may be used to catalog pre-existing EDR sampling features.
 
 Example use cases of this resource include:
@@ -1457,14 +1435,15 @@ Example use cases of this resource include:
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/items]{.title-ref}
+```/collections/{collectionId}/items```
 
 An example request is below.
 
-[http://example.org/edr/collections/mocov-daily_global/items]{.title-ref}
-Locations Query Resources of OGC API - EDR ================
+```http://example.org/edr/collections/mocov-daily_global/items```
 
-The [locations]{.title-ref} query resource returns a list of location
+#### Locations Query Resources of OGC API - EDR
+
+The ```locations``` query resource returns a list of location
 identifiers and relevant metadata for the collection.
 
 The location identifier can be anything as long as it is unique for the
@@ -1472,12 +1451,13 @@ required position (e.g. a GeoHash).
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/locations]{.title-ref}
+```/collections/{collectionId}/locations```
 
 An example request is below.
 
-[http://example.org/edr/collections/obs_demo/locations]{.title-ref}
-Position Query Resources of OGC API - EDR ================
+```http://example.org/edr/collections/obs_demo/locations```
+
+#### Position Query Resources of OGC API - EDR
 
 A position is a data type that describes a point or geometry potentially
 occupied by an object or person. An illustration, created using NASA
@@ -1485,13 +1465,13 @@ WorldWind, is shown below.
 
 ![image](../../assets/images/environmental-data-retrieval-query-position.png){width="80.0%"}
 
-The [position]{.title-ref} query resource returns data for the requested
+The ```position``` query resource returns data for the requested
 position. The resource offers a convenience mechanism for querying the
 API using a Well Known Text (WKT) POINT geometry defining a position.
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/position]{.title-ref}
+```/collections/{collectionId}/position```
 
 The paths accepts the following parameters:
 
@@ -1504,21 +1484,22 @@ The paths accepts the following parameters:
 
 An example request is shown below.
 
-[http://example.org/edr/collections/obs_demo/position?coords=POINT(0.00577%2051.562608)&parameter-name=Wind%20Direction&datetime=2022-01-19T10:00Z/2022-01-19T12:00Z&crs=CRS84&f=GeoJSON]{.title-ref}
-Radius Query Resources of OGC API - EDR ================
+```http://example.org/edr/collections/obs_demo/position?coords=POINT(0.00577%2051.562608)&parameter-name=Wind%20Direction&datetime=2022-01-19T10:00Z/2022-01-19T12:00Z&crs=CRS84&f=GeoJSON```
+
+#### Radius Query Resources of OGC API - EDR
 
 A radius is a region specified with a geographic position and radial
 distance. An illustration, created using NASA WorldWind, is shown below.
 
 ![image](../../assets/images/environmental-data-retrieval-query-radius.png){width="80.0%"}
 
-The [radius]{.title-ref} query resource returns data for a defined
+The ```radius``` query resource returns data for a defined
 radius. The resource offers a convenience mechanism for querying the API
 by radius.
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/radius]{.title-ref}
+```/collections/{collectionId}/radius```
 
 The paths accepts the following parameters:
 
@@ -1533,8 +1514,9 @@ The paths accepts the following parameters:
 
 An example request is shown below.
 
-[http://example.org/edr/collections/obs_demo/radius?coords=POINT(-0.095882%2051.512983)&within=50&within-units=km&parameter-name=Wind%20Direction&datetime=2022-01-19T04:00Z/2022-01-19T06:00Z&crs=CRS84&f=GeoJSON]{.title-ref}
-Trajectory Query Resources of OGC API - EDR ================
+```http://example.org/edr/collections/obs_demo/radius?coords=POINT(-0.095882%2051.512983)&within=50&within-units=km&parameter-name=Wind%20Direction&datetime=2022-01-19T04:00Z/2022-01-19T06:00Z&crs=CRS84&f=GeoJSON```
+
+#### Trajectory Query Resources of OGC API - EDR
 
 A trajectory is a path of a moving point described by a one parameter
 set of points. An illustration, created using NASA WorldWind, is shown
@@ -1542,7 +1524,7 @@ below.
 
 ![image](../../assets/images/environmental-data-retrieval-query-trajectory.png){width="80.0%"}
 
-The [trajectory]{.title-ref} query resource returns data for the defined
+The ```trajectory``` query resource returns data for the defined
 trajectory. The resource offers a convenience mechanism for querying the
 API by trajectory, using a Well Known Text (WKT) LINESTRING geometry, or
 alternatively the specializations LINESTRINGZ, LINESTRINGM,
@@ -1550,7 +1532,7 @@ LINESTRINGZM.
 
 The path to the resource is shown below:
 
-[/collections/{collectionId}/trajectory]{.title-ref}
+```/collections/{collectionId}/trajectory```
 
 The paths accepts the following parameters:
 
@@ -1563,6 +1545,6 @@ The paths accepts the following parameters:
 
 An example request is shown below.
 
-[http://example.org/edr/collections/gfs-pressure_at_height/trajectory?coords=LINESTRING(-3.56
+```http://example.org/edr/collections/gfs-pressure_at_height/trajectory?coords=LINESTRING(-3.56
 53.695,-3.546 53.696,-3.532
-53.697)&parameter-name=Height&crs=CRS84&f=CoverageJSON]{.title-ref}
+53.697)&parameter-name=Height&crs=CRS84&f=CoverageJSON```
