@@ -4,7 +4,7 @@ title: Compliance and certification
 
 # Compliance and certification
 
-![Compliance badge](assets/images/certification-logo.gif){width="40.0%"}
+![Compliance badge](assets/images/Certified_OGC_Compliant_Logo_Example.gif){width="40.0%"}
 
 The [OGC Compliance Program](https://www.ogc.org/compliance) provides the resources, procedures, and policies to certify products for compliance with one or more OGC standards. 
 
