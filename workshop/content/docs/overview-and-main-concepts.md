@@ -13,9 +13,9 @@ The core of Web APIs can be summarized as:
 
 In a typical client / server environment, a client is asking a server for a given resource (for
 example, data), with additional instructions on querying, filtering and what format for the API
-to provide.
+to provide. The image bellow, taken from [Introduction to GIS](https://volaya.github.io/gis-book/en/) illustrates this concept.
 
-TODO: add image
+![Client-Server](assets/images/How_internet_works.png){width="80.0%"}
 
 ## Web architecture
 
