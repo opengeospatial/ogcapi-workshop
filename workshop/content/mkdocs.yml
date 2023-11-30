@@ -10,16 +10,16 @@ nav:
     - Overview and main concepts: overview-and-main-concepts.md
     - Compliance and certification: compliance-and-certification.md
     - API deep dive:
-        - OGC API - Common: api-deep-dive/common/index_.md
-        - OGC API - Features: api-deep-dive/features/index_.md
-        - OGC API - Tiles: api-deep-dive/tiles/index_.md
-#        - OGC API - Coverages: api-deep-dive/coverages/index.md
-        - OGC API - Processes: api-deep-dive/processes/index_.md
-        - OGC API - Records: api-deep-dive/records/index_.md
-        - OGC API - Environmental Data Retrieval: api-deep-dive/environmental-data-retrieval/index_.md
-        - OGC API - Maps: api-deep-dive/maps/index_.md
-        - OGC SensorThings API: api-deep-dive/sensorthings/index_.md
-    - OGC API roadmap: ogcapi-roadmap.md
+        - OGC API - Common: api-deep-dive/common.md
+        - OGC API - Features: api-deep-dive/features.md
+        - OGC API - Tiles: api-deep-dive/tiles.md
+#        - OGC API - Coverages: api-deep-dive/coverages.md
+        - OGC API - Processes: api-deep-dive/processes.md
+        - OGC API - Records: api-deep-dive/records.md
+        - OGC API - Environmental Data Retrieval: api-deep-dive/environmental-data-retrieval.md
+        - OGC API - Maps: api-deep-dive/maps.md
+        - OGC SensorThings API: api-deep-dive/sensorthings.md
+    - OGC API roadmap: roadmap.md
     - Transition and migration: transition-and-migration.md
     - Getting involved: getting-involved.md
     - Conclusion: conclusion.md
