@@ -14,13 +14,11 @@ You can browse the [OGC compliance product page](https://www.ogc.org/resources/c
 
 ## TEAM Engine
 
-In order to be certified, a product needs to pass the tests on the OGC validator. The OGC validation infrastructure is based on [TEAM Engine](https://github.com/opengeospatial/teamengine), a Free and Open Source tool which is being incubated as an [OSGeo project](https://www.osgeo.org/projects/teamengine/). 
+In order to be certified, a product needs to passed the tests on the OGC validator. The OGC validation infrastructure is based on [TEAM Engine](https://github.com/opengeospatial/teamengine), a Free and Open Source tool which is being incubated as an [OSGeo project](https://www.osgeo.org/projects/teamengine/). 
 
 Developers can either use the hosted version of TEAM Engine on CITE, or install it/ integrate it into their own pipeline. We will refer to the available test suites in the context of each standard, during the OGC API Deep Dive.
 
 ## Reference implementations
-
-![Compliance badge](assets/images/ri.png){width="80.0%"}
 
 A reference implementation (RI) is a fully functional, licensed copy of a tested, branded software that has passes the test for an associated conformance class in a version of an Implementation Standard and that is free and publicly available for testing via a web service or download. 
 
@@ -29,3 +27,11 @@ A reference implementation (RI) is a fully functional, licensed copy of a tested
 * OGC will provide an incentive to the first two RI that pass the test related to a conformance class within a version of an Implementation Standard
 
 More information about RI is available on [Compliance Testing Program Policies & Procedures](https://docs.ogc.org/pol/08-134r11.html#toc26). 
+
+<table style="width:80%; border:0;">
+  <tr>
+    <td><img src="/assets/images/srv_ogc_compliance_badge2.png" alt="Compliance badge" style="width:100%"></td>
+    <td><img src="/assets/images/srv_ogc_compliance_badge.png" alt="Compliance badge" style="width:100%"></td>
+    <td><img src="/assets/images/srv_ogc_compliance_badge3.png" alt="Compliance badge" style="width:100%"></td>
+   </tr>
+ </table>
