@@ -4,19 +4,66 @@ title: Overview and main concepts
 
 # Overview and main concepts
 
+The core of Web APIs can be summarized as:
+
+- interfaces: the way in which "conversations" happen between APIs and client of them.
+- encodings: the "formats" of contents provided by an API
+
 ## Client / server
 
-## The Web and HTTP
+In a typical client / server environment, a client is asking a server for a given resource (for
+example, data), with additional instructions on querying, filtering and what format for the API
+to provide.
 
-## REST/JSON/OpenAPI/Swagger
+TODO: add image
 
-https://pygeoapi.io/presentations/default/#/3
+## Web architecture
 
-TODO
+### REST
 
-## Encodings and formats
+REpresentational State Transfer (REST) is an architectural style for the Web.  The core concepts of REST are:
 
-TODO
+- HTTP verbs (GET/PUT/POST/DELETE)
+- HTTP codes (200, 201, 404, etc.)
+- URIs to identify resources
+- Content negotiation (media types)
+- Stateless
+
+Implementing REST results in a simpler, low barrier architecture that is based on web primitives.  This enables systems
+and applications to focus more on domain/business requirements.
+
+### JSON
+
+JSON (JavaScript Object Notation) is a compact and very easy to understand encoding, which is very populate amount
+web developers.  JSON is the primary encoding used in RESTful web services and APIs, and is by nature extensible.
+
+Let's compare JSON and XML in a simple example:
+
+An example XML document (75 bytes):
+
+```xml
+<order>
+    <orderID>123</orderId>
+    <status>completed</status>
+</order>
+```
+
+The same document as JSON (46 bytes):
+
+```json
+{
+  "orderID": 123,
+  "status": "completed"
+}
+```
+
+Here, we see a more compact repsentation using JSON.  In addition, it is easier to determine the underlying data
+type literals (integers, strings, etc.) by parsing the document itself.
+
+!!! note JSON Schema
+    [JSON Schema](https://json-schema.org) is the JSON equivalent to W3C XML Schema, providing a language to define the content model of
+    a JSON document.  A JSON document can choose to implement a JSON Schema, or not, depending on a given application's requirements
+    for data validation and integrity
 
 ## OGC APIs
 
@@ -89,7 +136,7 @@ OGC API - Common suggests this document to be located at `/openapi`. For example
 an API query. Append `?f=json` to view the document in JSON. The OpenAPI document indicates which
 endpoints are available in the service, which parameters it accepts and 
 what types of responses can be expected. The OpenAPI document is a similar concept to Capabilities
-XML as part of the first genration OGC Web Service standards.
+XML as part of the first generation OGC Web Service standards.
 
 !!! question "OpenAPI Specification parsing in a browser" 
 
@@ -106,10 +153,17 @@ The OpenAPI community provides various tools, such as a validator for OAS docume
 
 ## Content and format standards
 
+OGC APIs are typically format agnostic for data.  This means an OGC API can provide any format of data
+or metadata (JSON, YAML, XML, HTML, etc.).
+
 JSON is a core format that is machine readable and easy to parse and handle
-by client software and tools.  OGC API - Common provides uniform JSON formats for the various
-endpoints it supports.  Specific OGC API standards may specify domain specific formats (for example,
-GeoJSON for OGC API - Features, GeoTIFF for OGC API - Coverages) depending on the data type(s).
+by client software and tools.  JSON is easily decoded/encoded into native objects in numerous
+programming languages (Python dictionaries, JavaScript objects, etc.).  OGC API - Common provides
+uniform JSON formats for the various endpoints it supports.
+
+Specific OGC API standards may specify domain specific formats (for example,
+GeoJSON for OGC API - Features, GeoTIFF for OGC API - Coverages, ISO 19115/19139 for OGC API - Records, etc.),
+depending on the data or metadata type(s).
 
 # Summary
 

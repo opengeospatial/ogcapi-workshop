@@ -65,7 +65,7 @@ multiple scales in a Coordinate Reference System (CRS).
 
 >  Implementations
 
-  Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc>
+  Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc).
 
 #### Usage
 
@@ -252,7 +252,7 @@ In this case the data is encoded in Mapbox Vector Tiles (MVT) format.
 Once downloaded, a client application can then display or process the
 data.
 
-![image](../../assets/images/mvt_example.png){width="40.0%"}
+![image](../assets/images/mvt_example.png){width="40.0%"}
 
 ## Resources
 

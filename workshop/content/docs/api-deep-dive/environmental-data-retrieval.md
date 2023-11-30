@@ -57,7 +57,7 @@ by this standard and selected by the client.
 
 > Implementations
 
-Implementations can be found on the implementations page: <https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/tree/master/implementations>
+Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/tree/master/implementations).
 
 #### Usage
 
@@ -1335,7 +1335,7 @@ An area is a region specified with a geographic envelope that may have
 vertical dimension. An illustration, created using NASA WorldWind, is
 shown below.
 
-![image](../../assets/images/environmental-data-retrieval-query-area.png){width="80.0%"}
+![image](../assets/images/environmental-data-retrieval-query-area.png){width="80.0%"}
 
 The ```area``` query resource returns data for the defined area.
 The resource offers a convenience mechanism for querying the API by
@@ -1363,7 +1363,7 @@ An example request is shown below.
 A corridor is a two parameter set of points around a trajectory. An
 illustration, created using NASA WorldWind, is shown below.
 
-![image](../../assets/images/environmental-data-retrieval-query-corridor.png){width="80.0%"}
+![image](../assets/images/environmental-data-retrieval-query-corridor.png){width="80.0%"}
 
 The ```corridor``` query resource returns data for the defined
 corridor. The resource offers a convenience mechanism for querying the
@@ -1392,7 +1392,7 @@ The paths accepts the following parameters:
 A cube is a rectangular area, with a vertical extent. An illustration,
 created using NASA WorldWind, is shown below.
 
-![image](../../assets/images/environmental-data-retrieval-query-cube.png){width="80.0%"}
+![image](../assets/images/environmental-data-retrieval-query-cube.png){width="80.0%"}
 
 The ```cube``` query resource returns data for a defined cube.
 The resource offers a convenience mechanism for querying the API using a
@@ -1463,7 +1463,7 @@ A position is a data type that describes a point or geometry potentially
 occupied by an object or person. An illustration, created using NASA
 WorldWind, is shown below.
 
-![image](../../assets/images/environmental-data-retrieval-query-position.png){width="80.0%"}
+![image](../assets/images/environmental-data-retrieval-query-position.png){width="80.0%"}
 
 The ```position``` query resource returns data for the requested
 position. The resource offers a convenience mechanism for querying the
@@ -1491,7 +1491,7 @@ An example request is shown below.
 A radius is a region specified with a geographic position and radial
 distance. An illustration, created using NASA WorldWind, is shown below.
 
-![image](../../assets/images/environmental-data-retrieval-query-radius.png){width="80.0%"}
+![image](../assets/images/environmental-data-retrieval-query-radius.png){width="80.0%"}
 
 The ```radius``` query resource returns data for a defined
 radius. The resource offers a convenience mechanism for querying the API
@@ -1522,7 +1522,7 @@ A trajectory is a path of a moving point described by a one parameter
 set of points. An illustration, created using NASA WorldWind, is shown
 below.
 
-![image](../../assets/images/environmental-data-retrieval-query-trajectory.png){width="80.0%"}
+![image](../assets/images/environmental-data-retrieval-query-trajectory.png){width="80.0%"}
 
 The ```trajectory``` query resource returns data for the defined
 trajectory. The resource offers a convenience mechanism for querying the

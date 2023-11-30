@@ -50,7 +50,7 @@ In addition, OGC API-Common provides some non-normative information through the 
 
 The image bellow shows the resource architecture in OGC API. OGC API - Common provides a common foundation to all OGC APIs.
 
-![image](../../assets/images/resources-ogcapi.png){width="100.0%"}
+![image](../assets/images/resources-ogcapi.png){width="100.0%"}
 
 <!-- The [OpenAPI](https://www.openapis.org/) specification is used to define the reusable API building blocks. -->
 
