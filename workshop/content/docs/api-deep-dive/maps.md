@@ -26,7 +26,7 @@ title: OGC API - Maps
 
   TODO
 
->  Implementations
+> Implementations
 
   Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-maps/blob/master/implementations.adoc).
 

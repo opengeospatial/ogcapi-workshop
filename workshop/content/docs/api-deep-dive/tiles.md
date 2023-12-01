@@ -53,17 +53,17 @@ multiple scales in a Coordinate Reference System (CRS).
   specification. Whereas WMTS focused on map tiles, the OGC API -
   Tiles standard has been designed to support any form of tiled data.
 
->  Versions
+> Versions
 
   **OGC API - Tiles - Part 1: Core** version 1.0.0 is the current latest version
 
->  Test Suite
+> Test Suite
 
   Test suites are available for:
 
   -   [OGC API - Tiles](https://github.com/opengeospatial/ets-ogcapi-tiles10)
 
->  Implementations
+> Implementations
 
   Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc).
 

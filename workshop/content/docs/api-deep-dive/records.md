@@ -55,7 +55,7 @@ records will be specified in additional parts.
   the specification is approved, and an executable test suite (ETS) is made availabe
   as per of OGC CITE.
 
->  Implementations
+> Implementations
 
   Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-records/blob/master/implementations.md).
 
@@ -202,7 +202,6 @@ illustrating a single record collection:
         }
     ]
 }
-
 ```
 
 ### Records collection
