@@ -6,7 +6,7 @@ title: OGC API - Processes
 
 !!! abstract Audience
     Students that are familiar with web services and APIs, and want to have
-    an overview of OGC API - Processes standard.
+    an overview of OGC API - Processes standard
 
 !!! abstract "Learning Objectives"
     At the completion of the module students will be able to:
@@ -49,7 +49,7 @@ imagery analysis and several others.
 
   Several of the concepts specified in OGC API - Processes originated in work specifying a RESTful interface for WPS 2.0. From February 2019 onwards, all work relating to a RESTful interface for the WPS2.0 was changed to focus on OGC API - Processes.
 
->  Versions
+> Versions
 
   **OGC API - Processes - Part 1: Core** version 1.0.0 is the current latest version
 
@@ -59,7 +59,7 @@ imagery analysis and several others.
 
   -   [OGC API - Processes](https://github.com/opengeospatial/ets-ogcapi-processes10)
 
->  Implementations
+> Implementations
 
   Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc).
 

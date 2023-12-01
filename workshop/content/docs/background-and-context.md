@@ -78,5 +78,6 @@ made available as HTML pages (and PDF).  Collaborative tools used by OGC also pr
 
 ## Summary
 
-OGC API standards are built to be low barrier, with a focus on resources (data/content!) using modern web development
+Geospatial Web Services and APIs have been a long running activity in the geospatial domain.  OGC API standards are designed on the lessons
+learned of past efforts, and built to be low barrier, with a focus on resources (data/content!) using modern web development
 principles and practices.
