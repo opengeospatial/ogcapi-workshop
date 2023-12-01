@@ -16,7 +16,7 @@ You can browse the [OGC compliance product page](https://www.ogc.org/resources/c
 
 In order to be certified, a product needs to passed the tests on the OGC validator. The OGC validation infrastructure is based on [TEAM Engine](https://github.com/opengeospatial/teamengine), a Free and Open Source tool which is being incubated as an [OSGeo project](https://www.osgeo.org/projects/teamengine/). 
 
-Developers can either use the hosted version of TEAM Engine on CITE, or install it/ integrate it into their own pipeline. 
+Developers can either use the hosted version of TEAM Engine on CITE, or install and integrate it locally into their own pipeline. 
 
 !!! note "OGC API Test Suites"
     We will refer to the available test suites in the context of each standard, during the OGC API Deep Dive.
@@ -38,3 +38,8 @@ More information about RI is available on [Compliance Testing Program Policies &
     <td><img src="/assets/images/srv_ogc_compliance_badge3.png" alt="Compliance badge" style="width:100%"></td>
    </tr>
  </table>
+
+## Summary
+
+OGC compliance and certification provides an organization a level of confidence that a product has been deemed compatible for
+maximum interoperability against a given OGC specification.

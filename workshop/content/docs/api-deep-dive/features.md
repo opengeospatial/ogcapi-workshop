@@ -6,7 +6,7 @@ title: OGC API - Features
 
 !!! abstract Audience
     Students that are familiar with web services and APIs, and want to have
-    an overview of OGC API - Features standard.
+    an overview of OGC API - Features standard
 
 !!! abstract "Learning Objectives"
     At the completion of the module students will be able to:
@@ -20,13 +20,13 @@ title: OGC API - Features
 
 ## Introduction
 
-OGC API - Features is a multi-part standard that offers the capability
+[OGC API - Features](https://ogcapi.ogc.org/features) is a multi-part standard that offers the capability
 to create, modify, and query spatial data on the Web and specifies
 requirements and recommendations for APIs that want to follow a standard
 way of sharing feature data. The Core part of the standard is called
 **OGC API - Features - Part 1: Core**. The Core part of the
 specification describes the mandatory capabilities that every
-implementing service has to support and is restricted to read-access to
+implementing service must support and is restricted to read-access to
 spatial data. Additional capabilities that address specific needs will
 be specified in additional parts. Envisaged future capabilities include,
 for example, support for creating and modifying data, more complex data
@@ -92,7 +92,7 @@ and time can also be accessed consistently.
     recommendations to support [HTML](https://html.spec.whatwg.org) and
     [GeoJSON](https://geojson.org) as encodings, where practical.
     Implementations of OGC API - Features may also optionally support
-    GML.
+    GML, as well as other vector formats.
 
 ### Overview of Resources
 
@@ -184,7 +184,7 @@ Part 1: Core** can be found in [Section
 5.2](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations)
 of the standard.
 
-### Landing Page
+### Landing page
 
 The landing page is the top-level resource that serves as an entry
 point. A client application needs to know the location of the landing
@@ -593,3 +593,8 @@ through the request
   ]
 }
 ```
+
+## Summary
+
+OGC API - Features provides functionality for working with vector data on the Web.  This deep dive
+provided an overview of the standard and the various Resources and endpoints that are supported.

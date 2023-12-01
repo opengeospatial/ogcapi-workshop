@@ -6,7 +6,7 @@ title: OGC SensorThings API
 
 !!! abstract Audience
     Students that are familiar with web services and want to have an
-    overview of the SensorThings Application Programming Interface (API) standard.
+    overview of the SensorThings Application Programming Interface (API) standard
 
 !!! abstract "Learning Objectives"
     At completion of the module students will be able to:

@@ -6,7 +6,7 @@ title: OGC API - Environmental Data Retrieval
 
 !!! abstract Audience
     Students that are familiar with web services and APIs, and want to have
-    an overview of OGC API - Environmental Data Retrieval standard.
+    an overview of OGC API - Environmental Data Retrieval standard
 
 !!! abstract "Learning Objectives"
     At the completion of the module students will be able to:
@@ -79,7 +79,7 @@ and time can also be accessed consistently.
 
 #### Relation to other OGC Standards
 
--   OGC API-Features: The EDR API is completely compatible with OGC
+-   OGC API - Features: The EDR API is completely compatible with OGC
     API - Features - Part 1: Core (OGC 17-069r3), in that it
     supports Collections and Items. It extends the Collection
     functionality by allowing 'Instances', a form of 'collection of
@@ -138,7 +138,7 @@ resources listed in the following table.
     <td>Conformance declaration</td>
     <td>GET</td>
     <td>/conformance</td>
-    <td>TThis resource presents information about the functionality that is implemented by the server.</td>
+    <td>This resource presents information about the functionality that is implemented by the server.</td>
   </tr>
   <tr>
     <td>API definition</td>
@@ -217,7 +217,7 @@ Data Retrieval** can be found in [Section
 6.2](https://docs.ogc.org/is/19-086r4/19-086r4.html#toc22) of the
 standard.
 
-### Landing Page
+### Landing page
 
 The landing page is the top-level resource that serves as an entry
 point. A client application needs to know the location of the landing

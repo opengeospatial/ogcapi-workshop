@@ -6,7 +6,7 @@ title: OGC API - Processes
 
 !!! abstract Audience
     Students that are familiar with web services and APIs, and want to have
-    an overview of OGC API - Processes standard.
+    an overview of OGC API - Processes standard
 
 !!! abstract "Learning Objectives"
     At the completion of the module students will be able to:

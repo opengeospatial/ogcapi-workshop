@@ -6,14 +6,17 @@ title: Overview and main concepts
 
 The core of Web APIs can be summarized as:
 
-- interfaces: the way in which "conversations" happen between APIs and client of them.
+- interfaces: the way in which "conversations" happen between APIs and clients of them
 - encodings: the "formats" of contents provided by an API
 
 ## Client / server
 
-In a typical client / server environment, a client is asking a server for a given resource (for
-example, data), with additional instructions on querying, filtering and what format for the API
-to provide. The image bellow, taken from [Introduction to GIS](https://volaya.github.io/gis-book/en/) illustrates this concept.
+In a typical client / server environment, a client is asking a server to perform an action (for
+example, requesting data), with the ability to add additional instructions such as querying, filtering
+and what format for the API to provide as part of the response.
+
+The image below, taken from [Introduction to GIS](https://volaya.github.io/gis-book/en/) illustrates
+the concept of the request / response lifecycle between a client and a server.
 
 ![Client-Server](assets/images/How_internet_works.png){width="80.0%"}
 
@@ -165,6 +168,7 @@ Specific OGC API standards may specify domain specific formats (for example,
 GeoJSON for OGC API - Features, GeoTIFF for OGC API - Coverages, ISO 19115/19139 for OGC API - Records, etc.),
 depending on the data or metadata type(s).
 
-# Summary
+## Summary
 
-TODO
+OGC APIs leverage core principles of Web architecture, providing support for discovery, access, visualization, processing
+of geospatial data, in alignment with industry standards for maximum interoperability on the Web.

@@ -10,6 +10,7 @@ nav:
     - Overview and main concepts: overview-and-main-concepts.md
     - Compliance and certification: compliance-and-certification.md
     - API deep dive:
+        - Primer: api-deep-dive/primer.md
         - OGC API - Common: api-deep-dive/common.md
         - OGC API - Features: api-deep-dive/features.md
         - OGC API - Tiles: api-deep-dive/tiles.md

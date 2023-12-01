@@ -6,7 +6,7 @@ title: OGC API - Tiles
 
 !!! abstract Audience
     Students that are familiar with web services and APIs, and want to have
-    an overview of OGC API - Tiles standard.
+    an overview of OGC API - Tiles standard
 
 !!! abstract "Learning Objectives"
     At the completion of the module students will be able to:
