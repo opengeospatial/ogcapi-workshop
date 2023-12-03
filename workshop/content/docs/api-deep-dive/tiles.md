@@ -28,12 +28,10 @@ other types of geospatial information. Although it can be used
 independently, the OGC API - Tiles building blocks can be combined
 with other OGC API Standards and draft specifications for additional
 capabilities or increasing interoperability for specific types of data.
-The OGC API - Tiles standard references the OGC Two Dimensional Tile
-Matrix Set (TMS) and Tileset Metadata standard, which defines logical
+The OGC API - Tiles standard references the [OGC Two Dimensional Tile
+Matrix Set (TMS) and Tileset Metadata standard](https://docs.ogc.org/is/17-083r4/17-083r4.html), which defines logical
 models and encodings for specifying tile matrix sets and describing tile
-sets. A tile matrix set is a tiling scheme that enables an application
-to partition and index space based on a set of regular grids defined for
-multiple scales in a Coordinate Reference System (CRS).
+sets. 
 
 !!! note
     This tutorial module is not intended to be a replacement to the actual
@@ -41,6 +39,22 @@ multiple scales in a Coordinate Reference System (CRS).
     focuses on a subset of capabilities in order to get the student started
     with using the standard. Please refer to the **OGC API - Tiles - Part 1:
     Core** standard for additional detail.
+
+The concepts of ```Tiling Scheme```, ```Tile Matrix``` and ```Tile Matrix Set``` are at the core of this standard:
+
+- **Tiling Scheme:** schema used to partitioning the space into individual tiles, potentially featuring multiple levels of detail. A tiling scheme is usually defined on top of a CRS, althought it can use other spatial reference systems.
+- **Tile Matrix:** set of tiles that implement a given tiling scheme, for a given scale.
+  ![image](../assets/images/tm.png){width="80.0%"}
+- **Tile Matrix Set:** set of tile matrices, used to represent the data at different scales. A Tile Matrix has a unique alphanumeric identifier in the Tile Matrix Set. Some tile-based implementations prefer to use the zoom level number. 
+  ![image](../assets/images/tms.png){width="80.0%"}
+
+!!! note
+
+    - A tile matrix can be implemented as a set of image files (e.g., PNG or JPEG) in a file folder, each file representing a single tile.
+    - In some standards the Tile Matrix Set concept is called an *image pyramid*. 
+    
+
+
 
 
 ### Background
@@ -259,4 +273,4 @@ data.
 This section provides basic information about the types of resources
 that OGC API - Tiles offers.
 
-TODO
+## Summary
