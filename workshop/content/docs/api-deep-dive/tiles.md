@@ -40,13 +40,14 @@ sets.
     with using the standard. Please refer to the **OGC API - Tiles - Part 1:
     Core** standard for additional detail.
 
-The concepts of ```Tiling Scheme```, ```Tile Matrix``` and ```Tile Matrix Set``` are at the core of this standard:
+These concepts are at the core of this standard:
 
 - **Tiling Scheme:** schema used to partitioning the space into individual tiles, potentially featuring multiple levels of detail. A tiling scheme is usually defined on top of a CRS, althought it can use other spatial reference systems.
-- **Tile Matrix:** set of tiles that implement a given tiling scheme, for a given scale.
+- **Tile Matrix:** tiling grid in a given 2D coordinate reference system, associated to a specific scale and partitioning space (e.g.: tiling scheme).
   ![image](../assets/images/tm.png){width="80.0%"}
-- **Tile Matrix Set:** set of tile matrices, used to represent the data at different scales. A Tile Matrix has a unique alphanumeric identifier in the Tile Matrix Set. Some tile-based implementations prefer to use the zoom level number. 
+- **Tile Matrix Set:** tiling scheme consisting of a set of tile matrices defined at different scales covering approximately the same area and having a common coordinate reference system. A Tile Matrix has a unique alphanumeric identifier in the Tile Matrix Set. Some tile-based implementations prefer to use the zoom level number. 
   ![image](../assets/images/tms.png){width="80.0%"}
+- **Tile Set:** set of tiles resulting from tiling data according to a particular tiling scheme.
 
 !!! note
 
@@ -166,11 +167,6 @@ following table.
     <td>/tiles/{tileMatrixSetId}</td>
   </tr>
   <tr>
-    <td>Dataset tileset metadata</td>
-    <td>GET</td>
-    <td>/tiles/{tileMatrixSetId}</td>
-  </tr>
-  <tr>
     <td>Dataset feature tile</td>
     <td>GET</td>
     <td>/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
@@ -209,11 +205,6 @@ following table.
     <td>Feature tileset metadata</td>
     <td>GET</td>
     <td>/collections/{collectionId}/tiles/{tileMatrixSetId}</td>
-  </tr>
-  <tr>
-    <td>Feature tileset list</td>
-    <td>GET</td>
-    <td>/collections/{collectionId}/tiles</td>
   </tr>
   <tr>
     <td>Feature tile</td>
@@ -289,8 +280,293 @@ for a detailed explanation of an example implementation.
 
 ### Collections
 
-Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collections) deep dive
+Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collections) deep dive
 for a detailed explanation of an example implementation.
 
+### Collection
+
+Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collection) deep dive
+for a detailed explanation of an example implementation.
+
+### Tiling Schemes
+
+This endpoint retrieves a list of links to the descriptions of the tile matrix sets supported by the OGC Web API. These could be one or many of the well-known tile matrix sets listed in Annex D of [OGC Two Dimensional Tile Matrix Set and Tile Set Metadata](https://docs.ogc.org/is/17-083r4/17-083r4.html#toc48), or custom ones.
+
+As an example, we can see an extract of the response to this request:
+<https://demo.ldproxy.net/daraa/tileMatrixSets?f=json>
+
+``` json
+  "tileMatrixSets": [
+    {
+      "title": "Google Maps Compatible for the World",
+      "id": "WebMercatorQuad",
+      "uri": "http://www.opengis.net/def/tilematrixset/OGC/1.0/WebMercatorQuad",
+      "links": [
+        {
+          "rel": "self",
+          "title": "Tile matrix set 'WebMercatorQuad'",
+          "href": "https://demo.ldproxy.net/daraa/tileMatrixSets/WebMercatorQuad"
+        }
+      ]
+    },
+    {
+      "title": "CRS84 for the World",
+      "id": "WorldCRS84Quad",
+      "uri": "http://www.opengis.net/def/tilematrixset/OGC/1.0/WorldCRS84Quad",
+      "links": [
+        {
+          "rel": "self",
+          "title": "Tile matrix set 'WorldCRS84Quad'",
+          "href": "https://demo.ldproxy.net/daraa/tileMatrixSets/WorldCRS84Quad"
+        }
+      ]
+    },
+    {
+      "title": "World Mercator WGS84 (ellipsoid)",
+      "id": "WorldMercatorWGS84Quad",
+      "uri": "http://www.opengis.net/def/tilematrixset/OGC/1.0/WorldMercatorWGS84Quad",
+      "links": [
+        {
+          "rel": "self",
+          "title": "Tile matrix set 'WorldMercatorWGS84Quad'",
+          "href": "https://demo.ldproxy.net/daraa/tileMatrixSets/WorldMercatorWGS84Quad"
+        }
+      ]
+    }
+  ]
+```
+
+If we append the tile matrix set id to this url, we will get the description of one specific tile matrix set, as we can see in the example bellow, generated with this request:
+
+<https://demo.ldproxy.net/daraa/tileMatrixSets/WebMercatorQuad?f=json>
+
+```json
+{
+  "title": "Google Maps Compatible for the World",
+  "id": "WebMercatorQuad",
+  "crs": "http://www.opengis.net/def/crs/EPSG/0/3857",
+  "wellKnownScaleSet": "http://www.opengis.net/def/wkss/OGC/1.0/GoogleMapsCompatible",
+  "uri": "http://www.opengis.net/def/tilematrixset/OGC/1.0/WebMercatorQuad",
+  "tileMatrices": [
+    {
+      "id": "0",
+      "tileWidth": 256,
+      "tileHeight": 256,
+      "matrixWidth": 1,
+      "matrixHeight": 1,
+      "scaleDenominator": 559082264.028717,
+      "cellSize": 156543.033928041,
+      "pointOfOrigin": [
+        -20037508.3427892,
+        20037508.3427892
+      ],
+      "cornerOfOrigin": "topLeft"
+    },
+    {
+      "id": "1",
+      "tileWidth": 256,
+      "tileHeight": 256,
+      "matrixWidth": 2,
+      "matrixHeight": 2,
+      "scaleDenominator": 279541132.014358,
+      "cellSize": 78271.5169640204,
+      "pointOfOrigin": [
+        -20037508.3427892,
+        20037508.3427892
+      ],
+      "cornerOfOrigin": "topLeft"
+    },
+  }
+```
+Note that apart from the descriptive metadata, the response also contains a detailed list of available tile matrices.
+
+### Dataset Tilesets
+
+These endpoints define how a list of tilesets can be associated to an OGC API dataset / landing page.
+
+For vector tiles, we can request tiles using the ```/tiles``` endpoint. As an example, this is part of the response triggered with this request:
+
+<https://demo.ldproxy.net/daraa/tiles?f=json>
+
+```json
+{
+  "title": "Daraa",
+  "description": "This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.",
+  "tilesets": [
+    {
+      "links": [
+        {
+          "rel": "self",
+          "title": "Access the data as tiles in the tile matrix set 'WebMercatorQuad'",
+          "href": "https://demo.ldproxy.net/daraa/tiles/WebMercatorQuad"
+        },
+        {
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme",
+          "title": "Definition of the tiling scheme",
+          "href": "https://demo.ldproxy.net/daraa/tileMatrixSets/WebMercatorQuad"
+        },
+        {
+          "rel": "item",
+          "type": "application/vnd.mapbox-vector-tile",
+          "title": "Mapbox vector tiles; the link is a URI template where {tileMatrix}/{tileRow}/{tileCol} is the tile in the tiling scheme 'WebMercatorQuad'",
+          "href": "https://demo.ldproxy.net/daraa/tiles/WebMercatorQuad/{tileMatrix}/{tileRow}/{tileCol}?f=mvt",
+          "templated": true
+        }
+      ],
+```
+
+We can request metadata about a particular tileset by appending the tile matrix set ID:  ```/tiles/{tileMatrixSetId}```. For instance, the example bellow is triggered by this request:
+
+<https://demo.ldproxy.net/daraa/tiles/WebMercatorQuad?f=json>
+
+```json
+{
+  "tilejson": "3.0.0",
+  "tiles": [
+    "https://demo.ldproxy.net/daraa/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"
+  ],
+  "vector_layers": [
+    {
+      "id": "AeronauticCrv",
+      "fields": {
+        "id": "Integer",
+        "F_CODE": "String",
+        "ZI001_SDV": "String",
+        "UFI": "String",
+        "ZI005_FNA": "String",
+        "FCSUBTYPE": "Integer",
+        "ZI006_MEM": "String",
+        "ZI001_SDP": "String"
+      },
+      "description": "",
+      "maxzoom": 18,
+      "minzoom": 6,
+      "geometry_type": "lines"
+    },
+```
+
+Finally we can request the actual data, in this case a vector tile, using ```/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```.
+
+We can reuse the same endpoints for map or coverage tiles, but in those cases we need to introduce ```map``` or ```coverage``` in the path.
+
+Map tileset list:
+
+* ```/map/tiles```
+
+Map tileset metadata:
+
+* ```/map/tiles/{tileMatrixSetId}```
+
+Map tile:
+
+* ```/map/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
+
+### GeoData Tilesets
+
+These endpoints define how a list of tilesets can be associated to an OGC API collection. 
+
+For vector tiles, you can retrieve the tileset list of a given collection with ```/collections/{collectionId}/tiles```. For instance, the sample bellow is extracted from the response to this request:
+
+<https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles?f=json>
+
+```json
+{
+  "title": "Structure (Surfaces)",
+  "tilesets": [
+    {
+      "links": [
+        {
+          "rel": "self",
+          "title": "Access the data as tiles in the tile matrix set 'WebMercatorQuad'",
+          "href": "https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles/WebMercatorQuad"
+        },
+        {
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme",
+          "title": "Definition of the tiling scheme",
+          "href": "https://demo.ldproxy.net/daraa/tileMatrixSets/WebMercatorQuad"
+        },
+        {
+          "rel": "item",
+          "type": "application/vnd.mapbox-vector-tile",
+          "title": "Mapbox vector tiles; the link is a URI template where {tileMatrix}/{tileRow}/{tileCol} is the tile in the tiling scheme 'WebMercatorQuad'",
+          "href": "https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles/WebMercatorQuad/{tileMatrix}/{tileRow}/{tileCol}?f=mvt",
+          "templated": true
+        }
+      ],
+```
+
+The tileset metadata of a specific tile matrix set, can be retrieved by appending the tile matrix set ID: ```/collections/{collectionId}/tiles/{tileMatrixSetId}```. For instance, the following response was extracted from this request:
+
+<https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles/WebMercatorQuad?f=json>
+
+```json
+
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/json",
+      "title": "This document",
+      "href": "https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles/WebMercatorQuad?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/vnd.mapbox.tile+json",
+      "title": "This document as TileJSON",
+      "href": "https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles/WebMercatorQuad?f=tilejson"
+    },
+    {
+      "rel": "http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme",
+      "title": "Definition of the tiling scheme",
+      "href": "https://demo.ldproxy.net/daraa/tileMatrixSets/WebMercatorQuad"
+    },
+    {
+      "rel": "item",
+      "type": "application/vnd.mapbox-vector-tile",
+      "title": "Mapbox vector tiles; the link is a URI template where {tileMatrix}/{tileRow}/{tileCol} is the tile in the tiling scheme '{{tileMatrixSetId}}'",
+      "href": "https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles/WebMercatorQuad/{tileMatrix}/{tileRow}/{tileCol}?f=mvt",
+      "templated": true
+    }
+  ],
+  "dataType": "vector",
+  "tileMatrixSetId": "WebMercatorQuad",
+  "tileMatrixSetURI": "http://www.opengis.net/def/tilematrixset/OGC/1.0/WebMercatorQuad",
+  "tileMatrixSetLimits": [
+    {
+      "tileMatrix": "6",
+      "minTileRow": 25,
+      "maxTileRow": 25,
+      "minTileCol": 38,
+      "maxTileCol": 38,
+      "numberOfTiles": 1
+    },
+    {
+      "tileMatrix": "7",
+      "minTileRow": 51,
+      "maxTileRow": 51,
+      "minTileCol": 76,
+      "maxTileCol": 76,
+      "numberOfTiles": 1
+    },
+```
+
+Finally we can request the actual data, in this case a vector tile, using ```/collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```.
+
+Similarly to dataset tilesets, we can reuse the same endpoints for map or coverage tiles, but in those cases we need to introduce ```map``` or ```coverage``` in the path.
+
+Map tileset list:
+
+* ```/collections/{collectionId}/map/tiles```
+
+Map tileset metadata:
+
+* ```/collections/{collectionId}/map/tiles/{tileMatrixSetId}```
+
+Map tile:
+
+* ```/collections/{collectionId}/map/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
+
+You can see [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles?f=json) an example of a request for a (map) tileset list and [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles/GoogleCRS84Quad?f=json) an example of a request for (map) tileset metadata.
 
 ## Summary
+
+OGC API - Tiles specifies a standard for Web APIs that provide tiles of geospatial information. Different forms of geospatial information are supported, such as tiles of vector features ("vector tiles"), coverages, maps (or imagery) and potentially eventually additional types of tiles of geospatial information. This deep dive provided an overview of the standard and the various Resources and endpoints that are supported.
