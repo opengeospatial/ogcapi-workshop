@@ -170,6 +170,11 @@ for a detailed explanation.
 Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#conformance-declarations) deep dive
 for a detailed explanation.
 
+### API Definition
+
+Given OGC API - Records uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#api-definition) deep dive
+for a detailed explanation of an example implementation.
+
 ### Records collections
 
 Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#feature-collections) deep dive
