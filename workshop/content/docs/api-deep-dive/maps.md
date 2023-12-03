@@ -137,6 +137,11 @@ for a detailed explanation of an example implementation.
 Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#conformance-declarations) deep dive
 for a detailed explanation of an example implementation.
 
+### API Definition
+
+Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#api-definition) deep dive
+for a detailed explanation of an example implementation.
+
 ### Collections
 
 Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collections) deep dive

@@ -327,6 +327,11 @@ Below is an extract from the response to the request
  }
 ```
 
+### API Definition
+
+Given OGC API - Environmental Data Retrieval uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#api-definition) deep dive
+for a detailed explanation of an example implementation.
+
 ### Collections metadata
 
 Data offered through an implementation of **OGC API - Environmental Data

@@ -53,8 +53,10 @@ The concepts of ```Tiling Scheme```, ```Tile Matrix``` and ```Tile Matrix Set```
     - A tile matrix can be implemented as a set of image files (e.g., PNG or JPEG) in a file folder, each file representing a single tile.
     - In some standards the Tile Matrix Set concept is called an *image pyramid*. 
     
-
-
+<iframe
+  src="https://emotional.byteroad.net/collections/hex350_grid_cardio_1920/tiles"
+  style="width:100%; height:800px;"
+></iframe>
 
 
 ### Background
@@ -270,7 +272,25 @@ data.
 
 ## Resources
 
-This section provides basic information about the types of resources
-that OGC API - Tiles offers.
+### Landing page
+
+Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#landing-page) deep dive
+for a detailed explanation of an example implementation.
+
+### Conformance declarations
+
+Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#conformance-declarations) deep dive
+for a detailed explanation of an example implementation.
+
+### API Definition
+
+Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#api-definition) deep dive
+for a detailed explanation of an example implementation.
+
+### Collections
+
+Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collections) deep dive
+for a detailed explanation of an example implementation.
+
 
 ## Summary

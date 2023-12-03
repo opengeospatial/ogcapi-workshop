@@ -277,6 +277,82 @@ declaration.
 }
 ```
 
+### API Definition
+
+The API definition describes the capabilities of the server. It can be used by developers to understand the API, by software clients to connect to the server, or by development tools to support the implementation of servers and clients. Accessing the API definition using HTTP GET returns a description of the API. 
+
+There are conformance classes to provide the API definition using [Open API](https://ogcapi-workshop.ogc.org/overview-and-main-concepts/#openapi). Some servers also return a human-readable representation of the definition in HTML, using tools such as Redoc or Swagger. 
+
+This is an extract of an API definition, which uses Open API 3:
+
+``` json
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "Daraa",
+    "description" : "This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.\n\n_Note: This API is based on API building blocks (e.g., operations, query parameters, or headers) specified in OGC API Standards or drafts of those standards. For more information about OGC API Standards, see [https://ogcapi.ogc.org](https://ogcapi.ogc.org/). Some building blocks of this API can be preliminary and may change in this API, because they are not yet based on a stable specification. The maturity is stated for each building block._",
+    "contact" : {
+      "name" : "interactive instruments GmbH",
+      "email" : "mail@interactive-instruments.de"
+    },
+    "license" : {
+      "name" : "The dataset was provided by the US National Geospatial Intelligence Agency (NGA) for development, testing and demonstrations in initiatives of the Open Geospatial Consortium (OGC). For any reuse of the data outside this API, please contact NGA."
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://demo.ldproxy.net/daraa"
+  } ],
+  "tags" : [ ],
+  "paths" : {
+    "/" : {
+      "get" : {
+        "tags" : [ "Capabilities" ],
+        "summary" : "landing page",
+        "description" : "The landing page provides links to the API definition (link relations `service-desc` and `service-doc`), the Conformance declaration (path `/conformance`, link relation `conformance`), and other resources in the API.\n\n_Maturity: `STABLE`_",
+        "externalDocs" : {
+          "description" : "The specification that describes this operation: OGC API - Features - Part 1: Core",
+          "url" : "https://docs.ogc.org/is/17-069r4/17-069r4.html"
+        },
+        "operationId" : "getLandingPage",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/fCommon"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The operation was executed successfully.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LandingPage"
+                }
+              },
+              "text/html" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/htmlSchema"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "406" : {
+            "description" : "Not Acceptable"
+          },
+          "500" : {
+            "description" : "Server Error"
+          }
+        },
+        "x-maturity" : "STABLE_OGC"
+      }
+    },
+```
+You can access an HTML representation of the API definition [here](https://demo.ldproxy.net/daraa/api?f=html).
+
+!!! note
+    The use of ```/api``` on the server is optional and the API definition may be hosted in a different path or on completely separate server.
+
 ### Feature collections
 
 Data offered through an implementation of **OGC API - Features - Part 1:
