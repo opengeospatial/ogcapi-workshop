@@ -52,7 +52,7 @@ models, richer queries, and additional coordinate reference systems.
   **OGC API - Features - Part 1: Core** version 1.0.0 is the current
   latest version
 
-> Test Suite
+> Test suite
 
   Test suites are available for:
 
@@ -127,7 +127,7 @@ the following table.
   <tr>
     <td>Feature collections</td>
     <td>GET</td>
-    <td>/collections </td>
+    <td>/collections</td>
     <td>This resource lists the feature collections that are offered through the API.</td>
   </tr>
   <tr>

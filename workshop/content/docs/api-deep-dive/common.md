@@ -97,7 +97,7 @@ The purpose of the draft **OGC API - Common - Part 2: Geospatial Data** Standard
   <tr>
     <td>Collections</td>
     <td>GET</td>
-    <td>/collections </td>
+    <td>/collections</td>
     <td>Retrieves information which describes the set of supported Collections.</td>
   </tr>
   <tr>

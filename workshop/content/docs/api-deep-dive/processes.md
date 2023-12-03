@@ -53,7 +53,7 @@ imagery analysis and several others.
 
   **OGC API - Processes - Part 1: Core** version 1.0.0 is the current latest version
 
-> Test Suite
+> Test suite
 
   **Draft** Test suites are available for:
 

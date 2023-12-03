@@ -49,7 +49,7 @@ by this standard and selected by the client.
 
     **OGC API - Environmental Data Retrieval** version 1.0.0 is the current latest version
 
-> Test Suite
+> Test suite
 
   A draft executable test suite is available for:
 
@@ -149,7 +149,7 @@ resources listed in the following table.
   <tr>
     <td>Collections metadata</td>
     <td>GET</td>
-    <td>/collections </td>
+    <td>/collections</td>
     <td>Metadata describing the collections of data available from this API.</td>
   </tr>
   <tr>

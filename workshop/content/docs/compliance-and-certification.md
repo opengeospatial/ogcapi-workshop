@@ -18,7 +18,7 @@ In order to be certified, a product needs to passed the tests on the OGC validat
 
 Developers can either use the hosted version of TEAM Engine on CITE, or install and integrate it locally into their own pipeline. 
 
-!!! note "OGC API Test Suites"
+!!! note "OGC API test suites"
     We will refer to the available test suites in the context of each standard, during the OGC API Deep Dive.
 
 ## Reference implementations

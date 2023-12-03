@@ -33,8 +33,8 @@ in additional parts. Capabilities for richer queries or to create, update or del
 records will be specified in additional parts.
 
 !!! note
-    OGC API - Records leverages [OGC API - Features](../features#usage) as a baseline with similar
-    URL endpoints and request/response workflow.
+    OGC API - Records leverages [OGC API - Features](features.md#usage) as a baseline with similar
+    URL endpoints and request/response workflow, for the Searchable Catalog and Local.
 
 ### Background
 
@@ -49,7 +49,7 @@ records will be specified in additional parts.
   submitted to the OGC Architecture Board (OAB) in December 2023 for public review
   in Q1 2024.
 
-> Test Suite
+> Test suite
 
   There are no test suites currently implemented; they will be made available once
   the specification is approved, and an executable test suite (ETS) is made availabe
@@ -62,13 +62,11 @@ records will be specified in additional parts.
 
 #### Usage
 
-OGC API - Records is a multi-part draft specification that offers the capability to create, modify, and query metadata on the Web. The draft specification enables the discovery of geospatial resources by standardizing the way collections of descriptive information about the resources (metadata) are exposed. The draft specification also enables the discovery and sharing of related resources that may be referenced from geospatial resources or their metadata by standardizing the way all kinds of records are exposed and managed. Part 1 will cover read-only access to records and simple query capabilities. Additional capabilities that address specific needs will be specified in additional parts. Capabilities for richer queries or to create, update or delete records will be specified in additional parts.
-
 OGC API - Records supports 3 main deployment patterns:
 
 - Crawlable catalog: browse and navigation of a set of metadata records via links
 - Searchable catalog: API capability to query and filter a collection of metadata records based on serch criteria (bbox, datetime, q, etc.)
-- Local resources catalog: searchable catalogue functionality applied at the collection level of an API
+- Local resources catalog: searchable catalog functionality applied at the collection level of an API
 
 OGC API - Records also supports a core queryable model.  That is, a set of common queryable properties that can be used against any
 OGC API - Records server regardless of the metadata format/standard and/or the design of the underlying metadata repository.
@@ -114,7 +112,7 @@ the following table.
   <tr>
     <td>Record collections</td>
     <td>GET</td>
-    <td>/collections </td>
+    <td>/collections</td>
     <td>This resource lists the record collections that are offered through the API.</td>
   </tr>
   <tr>
@@ -137,6 +135,17 @@ the following table.
   </tr>
 </table>
 
+As mentioned earlier, OGC API - Records heavily leverages OGC API - Features as a baseline building block.  While OGC API - Records
+allows for any metadata model, a key difference and value add is the ability to describe a core record model and queryables.  This
+allows for interoperability and integration across catalogs to be able to describe geospatial resources in a consistent manner.
+
+For example, a metadata repository can be modelled after the ISO 19115 standard, and be exposed via OGC API - Records by means
+of "mapping" the ISO elements to the core record model and queryables.
+
+The core record is the atomic unit of information in a catalog.  A full description of the core properties of a record can be
+found in <https://docs.ogc.org/DRAFTS/20-004.html#core-properties>.  The core record is a GeoJSON compatible representation
+with fixed elements in the `properties` object/block.
+
 ### Example
 
 This [demonstration server](https://demo.pygeoapi.io/master) publishes metadata geospatial data through an interface that conforms to OGC API - Records.
@@ -153,17 +162,17 @@ A client application can then retrieve the GeoJSON document and display or proce
 
 ### Landing page
 
-Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](../features#landing-page) deep dive
+Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#landing-page) deep dive
 for a detailed explanation.
 
 ### Conformance declarations
 
-Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](../features#conformance-declarations) deep dive
+Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#conformance-declarations) deep dive
 for a detailed explanation.
 
 ### Records collections
 
-Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](../features#feature-collections) deep dive
+Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#feature-collections) deep dive
 for a detailed initial explanation.
 
 OGC API - Records collection descriptions provide the following additional properties:
@@ -206,12 +215,12 @@ illustrating a single record collection:
 
 ### Records collection
 
-Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](../features#feature-collection) deep dive
-for a detailed initial explanation, as well as [the Records collections](#records-collections) description..
+Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#feature-collection) deep dive
+for a detailed initial explanation, as well as the [Records collections](#records-collections) description..
 
 ### Records access
 
-Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](../features#features) deep dive
+Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#features) deep dive
 for a detailed explanation.
 
 Below is an extract from the response to the request <https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json>
@@ -338,7 +347,7 @@ queryables.  An example query based on a "search engine" style search using the 
 
 ### Record core
 
-Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](../features#feature) deep dive
+Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#feature) deep dive
 for a detailed explanation.
 
 ## Summary
