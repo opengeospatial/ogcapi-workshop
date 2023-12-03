@@ -43,7 +43,7 @@ observations or perform other functions.
 
 SensorThings API Part 1: Sensing version 1.0 in July 2016.
 
-> Test Suite
+> Test suite
 
 Test suites are available for:
 - SensorThings API Part 1 version 1.0 <https://github.com/opengeospatial/ets-sta10>

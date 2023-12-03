@@ -57,7 +57,7 @@ multiple scales in a Coordinate Reference System (CRS).
 
   **OGC API - Tiles - Part 1: Core** version 1.0.0 is the current latest version
 
-> Test Suite
+> Test suite
 
   Test suites are available for:
 
@@ -177,7 +177,7 @@ following table.
   <tr>
     <td>Collections</td>
     <td>GET</td>
-    <td>/collections </td>
+    <td>/collections</td>
   </tr>
   <tr>
     <td>Collection</td>

@@ -14,11 +14,11 @@ nav:
         - OGC API - Common: api-deep-dive/common.md
         - OGC API - Features: api-deep-dive/features.md
         - OGC API - Tiles: api-deep-dive/tiles.md
+        - OGC API - Maps: api-deep-dive/maps.md
 #        - OGC API - Coverages: api-deep-dive/coverages.md
         - OGC API - Processes: api-deep-dive/processes.md
         - OGC API - Records: api-deep-dive/records.md
         - OGC API - Environmental Data Retrieval: api-deep-dive/environmental-data-retrieval.md
-        - OGC API - Maps: api-deep-dive/maps.md
         - OGC SensorThings API: api-deep-dive/sensorthings.md
     - OGC API roadmap: roadmap.md
     - Transition and migration: transition-and-migration.md
