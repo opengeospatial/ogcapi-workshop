@@ -35,6 +35,10 @@ REpresentational State Transfer (REST) is an architectural style for the Web.  T
 Implementing REST results in a simpler, low barrier architecture that is based on web primitives.  This enables systems
 and applications to focus more on domain/business requirements.
 
+!!! note "Know your HTTP!"
+    - verbs: <https://http.dev/methods>
+    - status codes: <https://http.dev/status>
+
 ### JSON
 
 JSON (JavaScript Object Notation) is a compact and very easy to understand encoding, which is very populate amount

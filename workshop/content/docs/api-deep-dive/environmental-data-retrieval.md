@@ -237,7 +237,7 @@ relation type.
 
 An extract from the landing page of a demo server is shown below.
 
-``` json
+```json
 {
 "title": "Environmental Data Retrevial API concept demonstrator",
 "description": "Example EDR API (not for operational use)",
@@ -312,7 +312,7 @@ requirements specified in a standard.
 Below is an extract from the response to the request
 <http://labs.metoffice.gov.uk/edr/conformance>
 
-``` json
+```json
 {
  "conformsTo":[
     "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core",
@@ -368,7 +368,7 @@ other information about the collection.
 Below is an extract from the response to the request
 <http://labs.metoffice.gov.uk/edr/collections>
 
-``` json
+```json
 {
   "links": [
     {
@@ -847,7 +847,7 @@ reference systems, output formats, and parameter names.
 Below is an extract from the response to the request
 <http://labs.metoffice.gov.uk/edr/collections/metar_demo?f=json>
 
-``` json
+```json
 {
   "id": "metar_demo",
   "title": "Metar observations EDR demonstrator",

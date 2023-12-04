@@ -295,7 +295,7 @@ This endpoint retrieves a list of links to the descriptions of the tile matrix s
 As an example, we can see an extract of the response to this request:
 <https://demo.ldproxy.net/daraa/tileMatrixSets?f=json>
 
-``` json
+```json
   "tileMatrixSets": [
     {
       "title": "Google Maps Compatible for the World",
