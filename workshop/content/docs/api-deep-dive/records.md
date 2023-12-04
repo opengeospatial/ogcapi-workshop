@@ -191,11 +191,11 @@ illustrating a single record collection:
 
 ```json
 {
-    "id":"dutch-metadata",
+    "id": "dutch-metadata",
     "type": "Catalog",
-    "itemType":"record",
-    "title":"Sample metadata records from Dutch Nationaal georegister",
-    "description":"Sample metadata records from Dutch Nationaal georegister",
+    "itemType": "record",
+    "title": "Sample metadata records from Dutch Nationaal georegister",
+    "description": "Sample metadata records from Dutch Nationaal georegister",
     "keywords":[
         "netherlands",
         "open data",
@@ -203,16 +203,16 @@ illustrating a single record collection:
     ],
     "links":[
         {
-            "type":"application/json",
-            "rel":"self",
-            "title":"This document as JSON",
-            "href":"https://demo.pygeoapi.io/master/collections/dutch-metadata?f=json"
+            "type": "application/json",
+            "rel": "self",
+            "title": "This document as JSON",
+            "href": "https://demo.pygeoapi.io/master/collections/dutch-metadata?f=json"
         },
         {
-            "type":"application/geo+json",
-            "rel":"items",
-            "title":"items as GeoJSON",
-            "href":"https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json"
+            "type": "application/geo+json",
+            "rel": "items",
+            "title": "items as GeoJSON",
+            "href": "https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json"
         }
     ]
 }

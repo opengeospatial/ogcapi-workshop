@@ -204,7 +204,7 @@ relation type.
 
 An extract from the landing page of a demo server is shown below.
 
-``` json
+```json
 {
   "title": "Daraa",
   "description": "This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.",
@@ -257,7 +257,7 @@ information provided by the resource. In this case the ```alternate```
 link relation is referencing an HTML representation of the conformance
 declaration.
 
-``` json
+```json
 {
   "links": [
     {
@@ -285,7 +285,7 @@ There are conformance classes to provide the API definition using [Open API](htt
 
 This is an extract of an API definition, which uses Open API 3:
 
-``` json
+```json
 {
   "openapi" : "3.0.3",
   "info" : {
@@ -383,7 +383,7 @@ collection:
 Below is an extract from the response to the request
 <https://demo.ldproxy.net/daraa/collections?f=json>
 
-``` json
+```json
 {
   "title": "Daraa",
   "description": "This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.",
@@ -452,7 +452,7 @@ collection identified in a request.
 Below is an extract from the response to the request
 <https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json>
 
-``` json
+```json
 {
   "title": "Aeronautic (Curves)",
   "description": "Aeronautical Facilities: Information about an area specifically designed and constructed for landing, accommodating, and launching military and/or civilian aircraft, rockets, missiles and/or spacecraft.<br/>Aeronautical Aids to Navigation: Information about electronic equipment, housings, and utilities that provide positional information for direction or otherwise assisting in the navigation of airborne aircraft.",
@@ -512,7 +512,7 @@ to the next page, if more features are selected than the page size.
 Below is an extract from the response to the request
 <https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json>
 
-``` json
+```json
 {
   "type": "FeatureCollection",
   "numberReturned": 10,
@@ -597,7 +597,7 @@ feature with an ```id``` of 1 is retrieved. The response is retrieved
 through the request
 <https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=json>
 
-``` json
+```json
 {
   "type": "Feature",
   "id": 1,

@@ -142,7 +142,6 @@ the following table.
     <td>/jobs/{jobID}</td>
     <td>Retrieves information about the status of a job.</td>
   </tr>
-  <tr>
     <td>Job results</td>
     <td>GET</td>
     <td>/jobs/{jobID}/results</td>
@@ -155,7 +154,7 @@ the following table.
     <td>Retrieves the list of jobs.</td>
   </tr>
   <tr>
-    <td>Job Deletion</td>
+    <td>Job deletion</td>
     <td>DELETE</td>
     <td>/jobs/{jobID} </td>
     <td>Cancels and deletes a job.</td>
@@ -164,14 +163,312 @@ the following table.
 
 ### Example
 
-This ZOO-Project [demonstration
-server](http://tb17.geolabs.fr:8090/ogc-api/index.html) from OGC
-Testbed-17 implements a variety of processing algorithms through an
-interface that conforms to OGC API - Processes.
+This [demonstration](https://demo.pygeoapi.io/master) server offers and executes various processes through an interface that conforms to OGC API - Processes.
 
-The processes offered by the server can be browsed at
-<http://tb17.geolabs.fr:8090/ogc-api/processes.html>
+An example request that can be used to browse all the available processes can be found at <https://demo.pygeoapi.io/master/processes>.
+
+Note that the response to the request is HTML in this case.
+
+Alternatively, the same data can be retrieved in GeoJSON format, through the request https://demo.pygeoapi.io/master/processes?f=json
 
 ## Resources
 
-TODO
+### Landing page
+
+Given OGC API - Processes uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#landing-page) deep dive
+for a detailed explanation.
+
+### Conformance declarations
+
+Given OGC API - Processes uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#conformance-declarations) deep dive
+for a detailed explanation.
+
+### API Definition
+
+Given OGC API - Processes OGC API - Common as a building block, please see the [OGC API - Features](features.md#api-definition) deep dive
+for a detailed explanation of an example implementation.
+
+### Process list
+
+Processes offered through an implementation of **OGC API - Processes** are organized into one or more processes.  The `/processes`
+endpoint provides information about and access to the list of processes.
+
+For each process, there is a link to the detailed description of the 
+process (represented by the path **/processes/{processId}** and 
+link relation **self**).  In addition, there are links for executing the
+process as well as the list of jobs as a results of executing the process.
+
+Process information also includes whether the process can be run in synchronous
+and / or asynchronous mode (job control options).  Asynchronous mode is valuable
+for executing long running jobs without blocking the HTTP request/response workflow.
+This also means the client can check back for the status of the job as well as the
+result once it is completed.
+
+Finally, there are definitions for the input structure required to run the process
+(expressed as JSON Schema), as well as the output structure a client should expect
+when receiving a response from the process execution.
+
+Below is an extract from the response to the request
+<https://demo.pygeoapi.io/master/processes?f=json>
+
+```json
+{
+    "version": "0.2.0",
+    "id": "hello-world",
+    "title": "Hello World",
+    "description": "An example process that takes a name as input, and echoes it back as output. Intended to demonstrate a simple process with a single literal input.",
+    "jobControlOptions":[
+        "sync-execute",
+        "async-execute"
+    ],
+    "keywords":[
+        "hello world",
+        "example",
+        "echo"
+    ],
+    "links":[
+        {
+            "type": "text/html",
+            "rel": "about",
+            "title": "information",
+            "href": "https://example.org/process",
+            "hreflang": "en-US"
+        },
+        {
+            "type": "application/json",
+            "rel": "self",
+            "href": "https://demo.pygeoapi.io/master/processes/hello-world?f=json",
+            "title": "Process description as JSON",
+            "hreflang": "en-US"
+        },
+        {
+            "type": "text/html",
+            "rel": "alternate",
+            "href": "https://demo.pygeoapi.io/master/processes/hello-world?f=html",
+            "title": "Process description as HTML",
+            "hreflang": "en-US"
+        },
+        {
+            "type": "text/html",
+            "rel": "http://www.opengis.net/def/rel/ogc/1.0/job-list",
+            "href": "https://demo.pygeoapi.io/master/jobs?f=html",
+            "title": "jobs for this process as HTML",
+            "hreflang": "en-US"
+        },
+        {
+            "type": "application/json",
+            "rel": "http://www.opengis.net/def/rel/ogc/1.0/job-list",
+            "href": "https://demo.pygeoapi.io/master/jobs?f=json",
+            "title": "jobs for this process as JSON",
+            "hreflang": "en-US"
+        },
+        {
+            "type": "application/json",
+            "rel": "http://www.opengis.net/def/rel/ogc/1.0/execute",
+            "href": "https://demo.pygeoapi.io/master/processes/hello-world/execution?f=json",
+            "title": "Execution for this process as JSON",
+            "hreflang": "en-US"
+        }
+    ],
+    "inputs":{
+        "name":{
+            "title": "Name",
+            "description": "The name of the person or entity that you wish tobe echoed back as an output",
+            "schema":{
+                "type": "string"
+            },
+            "minOccurs":1,
+            "maxOccurs":1,
+            "metadata":null,
+            "keywords":[
+                "full name",
+                "personal"
+            ]
+        },
+        "message":{
+            "title": "Message",
+            "description": "An optional message to echo as well",
+            "schema":{
+                "type": "string"
+            },
+            "minOccurs":0,
+            "maxOccurs":1,
+            "metadata":null,
+            "keywords":[
+                "message"
+            ]
+        }
+    },
+    "outputs":{
+        "echo":{
+            "title": "Hello, world",
+            "description": "A \"hello world\" echo with the name and (optional) message submitted for processing",
+            "schema":{
+                "type": "object",
+                "contentMediaType": "application/json"
+            }
+        }
+    },
+    "example":{
+        "inputs":{
+            "name": "World",
+            "message": "An optional message."
+        }
+    },
+    "outputTransmission":[
+        "value"
+    ]
+}
+```
+
+### Process description
+
+The previous example demonstrated process information for all processes offered by an OGC API - Processes
+server.  To access process information for a single process, run the below request against the demo server:
+
+<https://demo.pygeoapi.io/master/processes/hello-world?f=json>
+
+!!! note
+    Single process information requires the process identifier as part of the URL
+
+### Process execution
+
+Now that we have the appropriate process information, we can execute the process.  Process execution
+requires that requests are run using HTTP POST, with a payload as specified/required by the server (JSON).
+
+!!! note
+    Web browsers cannot easily make HTTP POST requests, so we use the [curl](https://curl.se) command.
+    You are welcome to use any tool that is able to execute HTTP POST requests per below.
+
+```bash
+curl -X 'POST' \
+  'https://demo.pygeoapi.io/master/processes/hello-world/execution' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "inputs": {
+    "message": "Great to see you here",
+    "name": "OGC API workshop participant"
+  }
+}'
+```
+
+The server will respond with an immediate response (synchronous mode by default) as per below:
+
+```json
+{
+    "id": "echo",
+    "value": "Hello OGC API workshop participant! Great to see you here"
+}
+```
+
+To execute the same process in asynchronous mode, we need to add the **Prefer: respond-async**
+HTTP header.  As well, the response to an ascynchronous process execution is always empty, where
+the HTTP **Location** header contains a URL to the resulting job information.
+
+
+!!! note
+    We add the `-v` option to the curl command below to be able to inspect the response headers
+
+```bash
+curl -v -X 'POST' \
+  'https://demo.pygeoapi.io/master/processes/hello-world/execution' \
+  -H 'Prefer: respond-async' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "inputs": {
+    "message": "Great to see you here",
+    "name": "OGC API workshop participant"
+  }
+}'
+```
+
+An extract of the response shows the **Location** (location) HTTP header:
+
+```bash
+< HTTP/2 201 
+< access-control-allow-origin: *
+< content-language: en-US
+< content-type: application/json
+< date: Mon, 04 Dec 2023 16:33:06 GMT
+< location: https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003
+< preference-applied: respond-async
+< server: gunicorn
+< x-powered-by: pygeoapi 0.16.dev0
+< content-length: 4
+```
+
+!!! note
+    The URL of the `location` HTTP header will always be unique
+
+### Job status info
+
+Using the URL from the `location` HTTP header above, we can inspect the status of the job:
+
+<https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003?f=json>
+
+```json
+{
+    "processID": "hello-world",
+    "jobID": "cdbc641c-92c2-11ee-9c88-0242ac120003",
+    "status": "successful",
+    "message": "Job complete",
+    "progress":100,
+    "parameters":null,
+    "job_start_datetime": "2023-12-04T16:33:06.806485Z",
+    "job_end_datetime": "2023-12-04T16:33:06.812615Z",
+    "links":[
+        {
+            "href": "https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003/results?f=html",
+            "rel": "about",
+            "type": "text/html",
+            "title": "results of job cdbc641c-92c2-11ee-9c88-0242ac120003 as HTML"
+        },
+        {
+            "href": "https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003/results?f=json",
+            "rel": "about",
+            "type": "application/json",
+            "title": "results of job cdbc641c-92c2-11ee-9c88-0242ac120003 as JSON"
+        }
+    ]
+}
+```
+
+### Job results
+
+Here we see that the job is fully executed and complete, but does not contain the actual results.  To inspect
+the actual results, we use the link objects which provide the results accordingly:
+
+<https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003/results?f=json>
+
+!!! note
+    We see that the the results of the synchronous and asynchronous request/responses are identical, and
+    that only the execution control is different.
+
+
+### Job list
+
+In the same manner that an OGC API - Proceses server provides access to process information for all its
+processes, the server provides the same for all of its jobs (from any process) using the following URL:
+
+<https://demo.pygeoapi.io/master/jobs?f=json>
+
+### Job deletion
+
+If we wish to delete a given job, we can execute an HTTP DELETE request agains the the job ID.
+
+!!! note
+    Web browsers cannot easily make HTTP DELETE requests, so we use the [curl](https://curl.se) command.
+    You are welcome to use any tool that is able to execute HTTP DELETE requests per below.
+
+```bash
+curl -X 'DELETE' https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003
+```
+
+!!! note
+    Try running an HTTP GET on the job that was just deleted and verify that it no longer exists (HTTP 404).
+
+!!! note
+    Some servers may implement access control to prevent erroneous or unwanted deletion of a job or
+    other resource.

@@ -153,9 +153,9 @@ station.
 ``` javascript
 {"@iot.count":2,
     "value":[
-        {"@iot.id":4,"@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(4)","description":"A sensor for tracking how many docks are available in a bike station","name":"available_docks","encodingType":"text/plan","metadata":"https://member.bikesharetoronto.com/stations","Datastreams@iot.navigationLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(4)/Datastreams"
+        {"@iot.id":4,"@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(4)","description": "A sensor for tracking how many docks are available in a bike station","name": "available_docks","encodingType": "text/plan","metadata": "https://member.bikesharetoronto.com/stations","Datastreams@iot.navigationLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(4)/Datastreams"
               },
-        {"@iot.id":3,"@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(3)","description":"A sensor for tracking how many bikes are available in a bike station","name":"available_bikes","encodingType":"text/plan","metadata":"https://member.bikesharetoronto.com/stations","Datastreams@iot.navigationLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(3)/Datastreams"
+        {"@iot.id":3,"@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(3)","description": "A sensor for tracking how many bikes are available in a bike station","name": "available_bikes","encodingType": "text/plan","metadata": "https://member.bikesharetoronto.com/stations","Datastreams@iot.navigationLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(3)/Datastreams"
               }
            ]
 }
@@ -199,11 +199,11 @@ of the requested entity are presented in a JSON array.
 
 ``` javascript
 {"@iot.count":1594349,
-    "@iot.nextLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$top=100&$skip=100","value":
+    "@iot.nextLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$top=100&$skip=100","value":
         [
-            {"@iot.id":1595550,"@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)","phenomenonTime":"2017-02-16T21:55:12.841Z","result":"7","resultTime":null,"Datastream@iot.navigationLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/Datastream","FeatureOfInterest@iot.navigationLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/FeatureOfInterest"
+            {"@iot.id":1595550,"@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)","phenomenonTime": "2017-02-16T21:55:12.841Z","result": "7","resultTime":null,"Datastream@iot.navigationLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/Datastream","FeatureOfInterest@iot.navigationLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/FeatureOfInterest"
                 },
-            {"@iot.id":1595551,"@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)","phenomenonTime":"2017-02-16T21:55:12.841Z","result":"4","resultTime":null,"Datastream@iot.navigationLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)/Datastream","FeatureOfInterest@iot.navigationLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)/FeatureOfInterest"
+            {"@iot.id":1595551,"@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)","phenomenonTime": "2017-02-16T21:55:12.841Z","result": "4","resultTime":null,"Datastream@iot.navigationLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)/Datastream","FeatureOfInterest@iot.navigationLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)/FeatureOfInterest"
                 },
                 ...
         ]
@@ -389,20 +389,20 @@ only the result and phenomenonTime properties listed.
 {  
   "value":[  
       {  
-          "name":"Things",
-          "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/Things"
+          "name": "Things",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Things"
       },
       {  
-          "name":"Locations",
-          "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/Locations"
+          "name": "Locations",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Locations"
       },
       {  
-          "name":"HistoricalLocations",
-          "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/HistoricalLocations"
+          "name": "HistoricalLocations",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/HistoricalLocations"
       },
       {  
-          "name":"Datastreams",
-          "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/Datastreams"
+          "name": "Datastreams",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Datastreams"
       },
 ```
 
@@ -410,20 +410,20 @@ only the result and phenomenonTime properties listed.
 
 ``` properties
 {  
-    "name":"Sensors",
-    "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/Sensors"
+    "name": "Sensors",
+    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Sensors"
 },
 {  
-    "name":"Observations",
-    "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/Observations"
+    "name": "Observations",
+    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Observations"
 },
 {  
-    "name":"ObservedProperties",
-    "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/ObservedProperties"
+    "name": "ObservedProperties",
+    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/ObservedProperties"
 },
 {  
-    "name":"FeaturesOfInterest",
-    "url":"http://pm25-march.singapore2017.sensorup.com/v1.0/FeaturesOfInterest"
+    "name": "FeaturesOfInterest",
+    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/FeaturesOfInterest"
 }
 ]
 }
@@ -436,15 +436,15 @@ only the result and phenomenonTime properties listed.
 > ``` properties
 > {  
 > "@iot.count":199,
-> "@iot.nextLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/
+> "@iot.nextLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/
 >       Things?$top=100&$skip=100",
 > "value":[  
 >  {  
 >    "@iot.id":206047,
->    "@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Things(206047)",
->    "description":"Bloor St / Brunswick Ave Toronto bike share station with data
+>    "@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Things(206047)",
+>    "description": "Bloor St / Brunswick Ave Toronto bike share station with data
 >              of available bikes and available docks",
->    "name":"7061:Bloor St / Brunswick Ave",
+>    "name": "7061:Bloor St / Brunswick Ave",
 >    "properties":{  
 >
 >    },
@@ -465,13 +465,13 @@ only the result and phenomenonTime properties listed.
        "http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)",
    "description":
        "... available docks count for the Toronto bike share station Bloor St ",
-   "name":"7061:Bloor St / Brunswick Ave:available_docks",
+   "name": "7061:Bloor St / Brunswick Ave:available_docks",
    "observationType":
        "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation",
    "unitOfMeasurement":{  
-     "symbol":"{TOT}",
-     "name":"dock count",
-     "definition":"http://unitsofmeasure.org/ucum.html#para-50"
+     "symbol": "{TOT}",
+     "name": "dock count",
+     "definition": "http://unitsofmeasure.org/ucum.html#para-50"
    },
    ....
 ```
@@ -483,9 +483,9 @@ only the result and phenomenonTime properties listed.
     > "observationType":
     >     "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation",
     > "unitOfMeasurement":{  
-    >   "symbol":"{TOT}",
-    >   "name":"dock count",
-    >   "definition":"http://unitsofmeasure.org/ucum.html#para-50"
+    >   "symbol": "{TOT}",
+    >   "name": "dock count",
+    >   "definition": "http://unitsofmeasure.org/ucum.html#para-50"
     > },
     > ```
 
@@ -503,8 +503,8 @@ only the result and phenomenonTime properties listed.
    "@iot.id":1595467,
    "@iot.selfLink":
       "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595467)",
-   "phenomenonTime":"2017-02-16T21:55:12.233Z",
-   "result":"23",
+   "phenomenonTime": "2017-02-16T21:55:12.233Z",
+   "result": "23",
    "resultTime":null,
    "Datastream@iot.navigationLink":
       "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595467)/Datastream",
@@ -540,26 +540,26 @@ only the result and phenomenonTime properties listed.
 > "value":[  
 >  {  
 >    "@iot.id":5,
->    "@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Things(5)",
+>    "@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Things(5)",
 >    "description":
 >          "Ft. York / Capreol Crt. Toronto bike share station available bikes and docks",
->    "name":"7000:Ft. York / Capreol Crt.",
+>    "name": "7000:Ft. York / Capreol Crt.",
 >    "properties":{  
 >
 >    },
 >    "Datastreams":[  
 >      {  
 >        "@iot.id":9,
->        "@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(9)",
+>        "@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(9)",
 >        "description":
 >             "...available docks count for the Toronto bike share station Ft. York / Capreol Crt.",
->        "name":"7000:Ft. York / Capreol Crt.:available_docks",
+>        "name": "7000:Ft. York / Capreol Crt.:available_docks",
 >        "observationType":
 >             "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation",
 >        "unitOfMeasurement":{  
->          "symbol":"{TOT}",
->          "name":"dock count",
->          "definition":"http://unitsofmeasure.org/ucum.html#para-50"
+>          "symbol": "{TOT}",
+>          "name": "dock count",
+>          "definition": "http://unitsofmeasure.org/ucum.html#para-50"
 >        },
 > ```
 
@@ -571,16 +571,16 @@ only the result and phenomenonTime properties listed.
 >  "Observations":[  
 >    {  
 >      "@iot.id":1595545,
->      "@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595545)",
->      "phenomenonTime":"2017-02-16T21:55:12.797Z",
->      "result":"10",
+>      "@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595545)",
+>      "phenomenonTime": "2017-02-16T21:55:12.797Z",
+>      "result": "10",
 >      "resultTime":null,
 >      "Datastream@iot.navigationLink":
 >             ".... /v1.0/Observations(1595545)/Datastream",
 >      "FeatureOfInterest":{  
 >        "@iot.id":10,
->        "@iot.selfLink":"http://toronto-bike-snapshot.sensorup.com/v1.0/FeaturesOfInterest(10)",
->        "description":"  ...
+>        "@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/FeaturesOfInterest(10)",
+>        "description": "  ...
 > ```
 
 ## References
