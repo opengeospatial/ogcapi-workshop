@@ -37,8 +37,8 @@ sets.
     This tutorial module is not intended to be a replacement to the actual
     **OGC API - Tiles - Part 1: Core** standard. The tutorial intentionally
     focuses on a subset of capabilities in order to get the student started
-    with using the standard. Please refer to the **OGC API - Tiles - Part 1:
-    Core** standard for additional detail.
+    with using the standard. Please refer to the [**OGC API - Tiles - Part 1:
+    Core** standard](https://docs.ogc.org/is/20-057/20-057.html) for additional detail.
 
 These concepts are at the core of this standard:
 
@@ -140,8 +140,8 @@ following table.
     <td>Conformance declaration</td>
     <td>GET</td>
     <td>/conformance</td>
-  <tr>
   </tr>
+  <tr>
     <td>API definition</td>
     <td>GET</td>
     <td>/api</td>
@@ -211,7 +211,6 @@ following table.
     <td>GET</td>
     <td>/collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
   </tr>
-
   <tr>
     <td>Map tileset list</td>
     <td>GET</td>

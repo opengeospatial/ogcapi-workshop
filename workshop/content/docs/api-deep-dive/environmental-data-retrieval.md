@@ -36,18 +36,18 @@ by this standard and selected by the client.
     This tutorial module is not intended to be a replacement to the actual
     **OGC API - Environmental Data Retrieval** standard. The tutorial
     intentionally focuses on a subset of capabilities in order to get the
-    student started with using the standard. Please refer to the **OGC API -
-    Environmental Data Retrieval** standard for additional detail.
+    student started with using the standard. Please refer to the [**OGC API -
+    Environmental Data Retrieval** standard](https://docs.ogc.org/is/19-086r6/19-086r6.html) for additional detail.
 
 ### Background
 
 > History
 
-  Version 1.0.0 was published on 2021-08-13.
+  Version 1.1.0 was published on 2023-07-27.
 
 > Versions
 
-    **OGC API - Environmental Data Retrieval** version 1.0.0 is the current latest version
+  **OGC API - Environmental Data Retrieval** version 1.1.0 is the current latest version
 
 > Test suite
 
@@ -1553,3 +1553,7 @@ An example request is shown below.
 ```http://example.org/edr/collections/gfs-pressure_at_height/trajectory?coords=LINESTRING(-3.56
 53.695,-3.546 53.696,-3.532
 53.697)&parameter-name=Height&crs=CRS84&f=CoverageJSON```
+
+## Summary
+
+ OGC API - Environmental Data Retrieval provides a family of lightweight interfaces to access Environmental Data resources. Each resource addressed by an EDR API maps to a defined query pattern. In this deep dive, we provided an overview of the standard and described each of these query patterns in detail.

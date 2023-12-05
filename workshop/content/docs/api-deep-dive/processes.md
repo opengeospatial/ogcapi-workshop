@@ -472,3 +472,7 @@ curl -X 'DELETE' https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-02
 !!! note
     Some servers may implement access control to prevent erroneous or unwanted deletion of a job or
     other resource.
+
+## Summary
+
+The OGC API - Processes standard enables the execution of computing processes and the retrieval of metadata describing the purpose and functionality of the processes. This deep dive provided an introduction to the standard and an overview of its various endpoints, that enable monitoring, creating, updating and deleting those processes on a server.

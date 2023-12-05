@@ -32,16 +32,27 @@ applications of the Internet of Things (IoT). The first part of the
 standard describes the interface for Sensing. The second part describes
 the interface for Tasking. The Sensing part standardizes the management
 and retrieval of observations and metadata from heterogeneous IoT sensor
-systems. The Tasking part, which is to be developed in the future, is
-expected to provide a standard way for parameterizing - also called
+systems. The Tasking part provides a standard way for parameterizing - also called
 tasking - of IoT devices that can be instructed to carry out
-observations or perform other functions.
+observations or perform other functions. SensorThings also includes an extension, STAplus, specifically developed to address the requirements from the Citizen Science community.
+
+!!! note
+    This tutorial module is not intended to be a replacement to the actual
+    **OGC SensorThings API Part 1: Sensing** standard. The tutorial
+    intentionally focuses on a subset of capabilities in order to get the
+    student started with using the standard. Please refer to the [**OGC SensorThings API Part 1: Sensing** standard](https://docs.ogc.org/is/18-088/18-088.html) for additional detail.
+
+![image](../assets/images/SensorCollage.jpg){width="100.0%"}
 
 ### Background
 
 > History
 
-SensorThings API Part 1: Sensing version 1.0 in July 2016.
+The OGC SensorThings API is based on the existing [OGC Sensor Web Enablement (SWE) standards](https://www.ogc.org/about-ogc/domains/swe/). It was developed to address the specific needs of the IoT community. SensorThings API Part 1: Sensing version 1.0 was approved by the OGC Technical Committee in February 2016.
+
+> Versions
+
+**OGC SensorThings API Part 1: Sensing** Version 1.1 and **OGC SensorThings API Part 2 – Tasking Core** Version 1.0.0 are the current latest versions. The current latest version of the **STAplus extension** is 1.0.0.
 
 > Test suite
 
@@ -70,6 +81,14 @@ tablets. The use of REST also makes it easier for web developers and the
 applications they implement to access data through resource-centric
 Uniform Resource Locator (URL) patterns.
 
+* **OGC SensorThings API Part 1: Sensing** - provides a standard way to manage and retrieve observations and metadata from heterogeneous IoT sensor systems.
+* **OGC SensorThings API Part 2: Tasking Core** - provides a standard way for parameterizing - also called tasking - of taskable IoT devices, such as individual sensors and actuators, composite consumer / commercial / industrial / smart cities in-situ platforms, mobile and wearable devices, or even unmanned systems platforms such as drones, satellites, connected and autonomous vehicles, etc. 
+* **OGC SensorThings API Extension: STAplus** - is designed to support a model in which observations are owned by different users. This results in requirements for the ownership concept. In addition to the ownership, users may express a license for ensuring proper re-use of their observations. The STAplus extension also supports expressing explicit relations between observations as well as between observations and external resources. Relations can enrich observations to enable future extensions supporting Linked Data, RDF and SPARQL. Observation group(s) allow the grouping of observations that belong together.
+
+!!! note
+
+    The rest of this tutorial will focus on Version 1.0 of the Part 1 of the standard (e.g.: Sensing). Version 1.1 of SensorThings API Part 1 is an [update to version 1.0 that is (mostly) backwards compatible with version 1.0](https://docs.ogc.org/is/18-088/18-088.html#changes_v_11). 
+
 #### Relation to other OGC Standards
 
 -   Sensor Observation Service Interface Standard (SOS): The
@@ -88,8 +107,7 @@ Uniform Resource Locator (URL) patterns.
 
 ### Overview of Resources
 
-Rather than operations, it is more appropriate to discuss what the
-SensorThings API offers through the entities it provides as resources.
+SensorThings API provides a serious of entities as resources.
 The following is a list entities supported by the API:
 
 > Thing
@@ -134,6 +152,10 @@ The following is a list entities supported by the API:
 
     The phenomenon against which an observation is made is a property of
     the feature of interest.
+
+The figure bellow shows the relations between sensing entities.
+
+![image](../assets/images/sensorthings-data-model.png){width="100.0%"}
 
 ### Example
 
@@ -592,4 +614,4 @@ things](http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=y.2060)
 
 ## Summary
 
-The OGC SensorThings API provides an open and unified way to interconnect IoT devices, data, and applications over the Web. It builds on Web protocols and the OGC Sensor Web Enablement standards, and applies an easy-to-use REST-like style. This deep dive provides an overview of the entities and main operations made available by this standard.
+The OGC SensorThings API provides an open and unified way to interconnect IoT devices, data, and applications over the Web. It builds on Web protocols and the OGC Sensor Web Enablement standards, and applies an easy-to-use REST-like style. This deep dive provided an overview of the entities and main operations made available by this standard.

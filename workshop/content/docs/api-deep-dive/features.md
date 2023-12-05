@@ -23,21 +23,16 @@ title: OGC API - Features
 [OGC API - Features](https://ogcapi.ogc.org/features) is a multi-part standard that offers the capability
 to create, modify, and query spatial data on the Web and specifies
 requirements and recommendations for APIs that want to follow a standard
-way of sharing feature data. The Core part of the standard is called
-**OGC API - Features - Part 1: Core**. The Core part of the
-specification describes the mandatory capabilities that every
+way of sharing feature data. **OGC API - Features - Part 1: Core** describes the mandatory capabilities that every
 implementing service must support and is restricted to read-access to
-spatial data. Additional capabilities that address specific needs will
-be specified in additional parts. Envisaged future capabilities include,
-for example, support for creating and modifying data, more complex data
-models, richer queries, and additional coordinate reference systems.
+spatial data. Additional capabilities like support for different CRS, richer queries and creating and modifying data are specified in additional parts.
 
 !!! note
     This tutorial module is not intended to be a replacement to the actual
     **OGC API - Features - Part 1: Core** standard. The tutorial
     intentionally focuses on a subset of capabilities in order to get the
-    student started with using the standard. Please refer to the **OGC API -
-    Features - Part 1: Core** standard for additional detail.
+    student started with using the standard. Please refer to the [**OGC API -
+    Features - Part 1: Core** standard](https://docs.ogc.org/is/17-069r4/17-069r4.html) for additional detail.
 
 
 ### Background
@@ -49,8 +44,8 @@ models, richer queries, and additional coordinate reference systems.
 
 > Versions
 
-  **OGC API - Features - Part 1: Core** version 1.0.0 is the current
-  latest version
+  **OGC API - Features - Part 1: Core** version 1.0.1 and **OGC API - Features - Part 2: Coordinate Reference Systems by Reference** version 1.0.1 are the current
+  latest versions
 
 > Test suite
 
@@ -64,15 +59,6 @@ models, richer queries, and additional coordinate reference systems.
 
 #### Usage
 
-**OGC API - Features - Part 1: Core** specifies discovery and query
-operations that are implemented using the HTTP GET method. Support for
-additional methods (in particular POST, PUT, DELETE, PATCH) will be
-specified in additional parts. Government agencies, private
-organisations and academic institutes use this standard to publish
-vector geospatial datasets in a way that makes it easier for receiving
-organisations to compile new maps or conduct analysis on the supplied
-data.
-
 The standard provides a standard interface for requesting vector
 geospatial data consisting of geographic features and their properties.
 The benefit of this is that client applications can request source data
@@ -81,6 +67,25 @@ display or process the data further as part of a workflow. The standard
 enables the data to be accessed consistently with other data. Feature
 properties encoded using common data types such as text strings, date
 and time can also be accessed consistently.
+
+* **OGC API - Features - Part 1: Core** specifies discovery and query
+operations that are implemented using the HTTP GET method. Support for
+additional methods (in particular POST, PUT, DELETE, PATCH) will be
+specified in additional parts. Government agencies, private
+organisations and academic institutes use this standard to publish
+vector geospatial datasets in a way that makes it easier for receiving
+organisations to compile new maps or conduct analysis on the supplied
+data. In Part 1 the default spatial Coordinate Reference System (CRS) is WGS 84 longitude/latitude with or without height.
+* **OGC API - Features - Part 2: Coordinate Reference Systems By Reference** extends Part 1 to support presenting geometry-valued properties in a response document in additional CRSs. Each supported CRS must be identified by a URI such as: ```http://www.opengis.net/def/crs/EPSG/0/4326```.
+
+In addition to the approved parts above, The OGC API - Features Standards Working Group (SWG) is working on the following drafts:
+
+* *Draft* **OGC API - Features - Part 3: Filtering** defines query parameters (```filter```, ```filter-lang```, ```filter-crs```) to specify filter criteria in a request to an API and the ```Queryables``` resource that declares the properties of data in a collection that can be used in filter expressions.
+* *Draft* **OGC API - Features - Part 4: Create, Replace, Update and Delete** defines the behaviour of an API that allows resource instances to be added, replaced, modified and/or removed for a collection.
+
+!!! note
+
+    The rest of this tutorial will focus on the core part of the standard.
 
 #### Relation to other OGC Standards
 
