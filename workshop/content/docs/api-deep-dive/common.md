@@ -113,4 +113,4 @@ in a uniform and consistent manner.  Examples of OGC API - Common resources will
 
 ## Summary
 
-OGC API - Common documents the set of common practices and shared requirements that have emerged from the development of Resource Oriented Architectures and Web APIs within the OGC. The standard defines resources and access mechanisms which are useful for a client seeking to understand the offerings and capabilities of an API, as well as a connection between the API landing page and resource-specific details.
+OGC API - Common documents the set of common practices and shared requirements that have emerged from the development of Resource Oriented Architectures and Web APIs within the OGC. The standard defines resources and access mechanisms which are useful for a client seeking to understand the offerings and capabilities of an API, as well as a connection between the API landing page and resource-specific details. In this deep dive we provided an overview of the standard and look at the resources on part 1 and part 2 (draft).

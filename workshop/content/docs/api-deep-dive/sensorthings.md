@@ -592,4 +592,4 @@ things](http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=y.2060)
 
 ## Summary
 
-The OGC SensorThings API provides an open and unified way to interconnect IoT devices, data, and applications over the Web. It builds on Web protocols and the OGC Sensor Web Enablement standards, and applies an easy-to-use REST-like style. This deep dive provides an overview of the entities and main operations made available by this standard.
+The OGC SensorThings API provides an open and unified way to interconnect IoT devices, data, and applications over the Web. It builds on Web protocols and the OGC Sensor Web Enablement standards, and applies an easy-to-use REST-like style. This deep dive provided an overview of the entities and main operations made available by this standard.
