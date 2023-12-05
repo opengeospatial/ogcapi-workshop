@@ -140,8 +140,8 @@ following table.
     <td>Conformance declaration</td>
     <td>GET</td>
     <td>/conformance</td>
-  <tr>
   </tr>
+  <tr>
     <td>API definition</td>
     <td>GET</td>
     <td>/api</td>
@@ -211,7 +211,6 @@ following table.
     <td>GET</td>
     <td>/collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}</td>
   </tr>
-
   <tr>
     <td>Map tileset list</td>
     <td>GET</td>
