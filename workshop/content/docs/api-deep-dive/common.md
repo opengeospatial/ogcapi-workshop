@@ -20,10 +20,10 @@ title: OGC API - Common
 
 !!! note
     This tutorial module is not intended to be a replacement to the actual
-    **OGC API - Common - Part 1: Core** standard. The tutorial
+    **OGC API - Common - Part 1: Core** standard or **OGC API - Common - Part 2: Geospatial Data** draft standard. The tutorial
     intentionally focuses on a subset of capabilities in order to get the
-    student started with using the standard. Please refer to the **OGC API -
-    Common - Part 1: Core** standard for additional detail.
+    student started with using the standard. Please refer to the [**OGC API -
+    Common - Part 1: Core** standard](https://docs.ogc.org/is/19-072/19-072.html) and [**OGC API - Common - Part 2: Geospatial Data** draft standard](https://docs.ogc.org/DRAFTS/20-024.html) for additional detail.
 
 ### Background
 
@@ -110,3 +110,7 @@ The purpose of the draft **OGC API - Common - Part 2: Geospatial Data** Standard
 
 Providing a **common foundation**, OGC API - Common is meant to be implemented by "downstream" OGC API standards
 in a uniform and consistent manner.  Examples of OGC API - Common resources will be shown in the context of other OGC API standards.
+
+## Summary
+
+OGC API - Common documents the set of common practices and shared requirements that have emerged from the development of Resource Oriented Architectures and Web APIs within the OGC. The standard defines resources and access mechanisms which are useful for a client seeking to understand the offerings and capabilities of an API, as well as a connection between the API landing page and resource-specific details.
