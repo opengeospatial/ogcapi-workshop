@@ -83,7 +83,9 @@ In addition to the approved parts above, The OGC API - Features Standards Workin
 * *Draft* **OGC API - Features - Part 3: Filtering** defines query parameters (```filter```, ```filter-lang```, ```filter-crs```) to specify filter criteria in a request to an API and the ```Queryables``` resource that declares the properties of data in a collection that can be used in filter expressions.
 * *Draft* **OGC API - Features - Part 4: Create, Replace, Update and Delete** defines the behaviour of an API that allows resource instances to be added, replaced, modified and/or removed for a collection.
 
-The rest of this tutorial will focus on the core part of the standard.
+!!! note
+
+    The rest of this tutorial will focus on the core part of the standard.
 
 #### Relation to other OGC Standards
 
