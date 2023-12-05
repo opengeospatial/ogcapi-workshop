@@ -32,44 +32,41 @@ These Standards are being constructed as "building blocks" that can be used to a
 
 This workshop provides a combination of concepts, presentation and exercises of OGC APIs in support of discovery, access, visualization and processing in support of FAIR data principles.
 
+Each deep dive module starts with an "Audience" and "Learning Objectives" sections:
+
+!!! abstract Audience
+    Describes what this module is about.
+
+!!! abstract "Learning Objectives"
+    Describes what students should be able to do, after the completion of the module.
+
 Exercises are indicated as follows:
 
 !!! question "Example exercise"
 
     A section marked like this indicates that you can try out the exercise.
 
-Also you will notice tips and notes sections within the text:
+Also you will notice notes sections within the text:
 
-!!! tip
+!!! note
 
-    Tips share additional help on how to best achieve tasks
+    Highlights some important aspect.
 
 Examples are indicated as follows:
 
-Code
-``` {.html linenums="1"}
-<html>
-    <head>
-        <title>This is an HTML sample</title>
-    </head>
-</html>
+BASH
+``` bash
+curl -X 'GET' \
+  'https://myrequest.com' \
 ```
 
 JSON
-``` {.json linenums="1"}
+``` json
 {
     "title": "my cool collection title",
     "description": "my cool collection description"
 }
 ```
-
-Snippets which need to be typed in a on a terminal/console are indicated as:
-
-<div class="termy">
-```bash
-echo 'Hello world'
-```
-</div>
 
 # Workshop location and materials
 
