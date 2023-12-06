@@ -10,7 +10,7 @@ There are numerous ways to get involved with the development of OGC APIs. If you
 
 Most of the OGC API development takes place on public [GitHub repositories](https://github.com/orgs/opengeospatial/repositories?q=ogcapi&type=all&language=&sort=). This means anyone can follow the development of the standards, from their early stages and even contribute through the usual mechanisms (e.g.: issue tracker, pull requests)
 
-![Generated with AI ∙ 22 November 2023 at 4:24 pm](assets/images/oaf-issue-tracker.png){width="100.0%"}
+![image](assets/images/oaf-issue-tracker.png){width="100.0%"}
 
 ## OGC Code sprints
 
