@@ -10,6 +10,4 @@ This could be the case of many [OWS standards](https://developer.ogc.org/ows.htm
 
 As with deprecated Standards, Legacy Standards are no longer supported, but they remain on the OGC website with a notification that the capabilities of the Standard have been replaced in whole or part by new Standard(s). The notification will clearly indicate that the Legacy Standard is not invalid, but that new implementations of the capabilities of the Standard are better served by the identified new Standard(s).
 
-In the [Diving into pygeoapi Workshop](https://dive.pygeoapi.io), you can find a section about the [use of bridges to facilitate the migration from OWS to OGC API](https://dive.pygeoapi.io/advanced/bridges/).
-
-![image](assets/images/bridges.png){width="80.0%"}
+In the Diving into pygeoapi Workshop, we include a section about the use of bridges to facilitate the migration from OWS to OGC API. TODO: add link
