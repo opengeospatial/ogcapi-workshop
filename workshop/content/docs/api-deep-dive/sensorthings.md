@@ -398,12 +398,15 @@ only the result and phenomenonTime properties listed.
 
 ## Demo
 
--   [Demo From SensorUp](http://developers.sensorup.com/docs/)
--   Link: <http://toronto-bike-snapshot.sensorup.com/v1.0/>
--   Behaves like a GetCapabilities.
--   Provides URLs to interrogate further the service
+On this section, we explore different ways to access a [SensorThings API server](http://developers.sensorup.com/docs/) on: 
 
-### Return Base Resource Path
+<http://toronto-bike-snapshot.sensorup.com/v1.0/>
+
+### Web Client
+
+We start exploring the different endpoints available in the server using a web browser. In alternative you could also use [postman](https://www.postman.com/) or [curl](https://curl.se/).
+
+#### Return Base Resource Path
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/>
 
@@ -426,32 +429,27 @@ only the result and phenomenonTime properties listed.
           "name": "Datastreams",
           "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Datastreams"
       },
+      {  
+          "name": "Sensors",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Sensors"
+      },
+      {  
+          "name": "Observations",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Observations"
+      },
+      {  
+          "name": "ObservedProperties",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/ObservedProperties"
+      },
+      {  
+          "name": "FeaturesOfInterest",
+          "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/FeaturesOfInterest"
+      }
+      ]
+      }
 ```
 
-### Return Base Resource Path (Cont)
-
-``` properties
-{  
-    "name": "Sensors",
-    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Sensors"
-},
-{  
-    "name": "Observations",
-    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/Observations"
-},
-{  
-    "name": "ObservedProperties",
-    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/ObservedProperties"
-},
-{  
-    "name": "FeaturesOfInterest",
-    "url": "http://pm25-march.singapore2017.sensorup.com/v1.0/FeaturesOfInterest"
-}
-]
-}
-```
-
-### Which *Things* are available in the server?
+#### Which *Things* are available in the server?
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Things>
 
@@ -473,7 +471,7 @@ only the result and phenomenonTime properties listed.
 >    ...
 > ```
 
-### Getting a *Datastream* for a thing
+#### Getting a *Datastream* for a thing
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Things(206047)/Datastreams>
 
@@ -511,7 +509,7 @@ only the result and phenomenonTime properties listed.
     > },
     > ```
 
-### Getting the *Observations* related to a stream
+#### Getting the *Observations* related to a stream
 
 <http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations>
 
@@ -535,7 +533,7 @@ only the result and phenomenonTime properties listed.
  },
 ```
 
-### Complex Query
+#### Complex Query
 
 -   Expands Datastreams and observations in one query
 -   Feature of Interest = 7000:Ft. York / Capreol Crt.
@@ -554,7 +552,7 @@ only the result and phenomenonTime properties listed.
 > Datastreams/Observations/phenomenonTime le 2017-03-01T11:30:00.000Z
 > ```
 
-### Complex Query Response
+#### Complex Query Response
 
 > ``` properties
 > {  
@@ -583,11 +581,6 @@ only the result and phenomenonTime properties listed.
 >          "name": "dock count",
 >          "definition": "http://unitsofmeasure.org/ucum.html#para-50"
 >        },
-> ```
-
-### Complex Query Response (cont)
-
-> ``` properties
 > "Observations@iot.nextLink":
 >          ".../v1.0/Datastreams(9)/Observations?$top=100&$skip=100",
 >  "Observations":[  
@@ -604,6 +597,14 @@ only the result and phenomenonTime properties listed.
 >        "@iot.selfLink": "http://toronto-bike-snapshot.sensorup.com/v1.0/FeaturesOfInterest(10)",
 >        "description": "  ...
 > ```
+
+### Python Client
+
+The [Sensorthings API Python Client](https://pypi.org/project/frost-sta-client/) is a python package for developing applications with SensorThings API.
+
+### QGIS Plugin
+
+The [SensorThings API plugin](https://plugins.qgis.org/plugins/SensorThingsAPI/) enables QGIS software to access dynamic data from sensors, using SensorThings API protocol.
 
 ## References
 
