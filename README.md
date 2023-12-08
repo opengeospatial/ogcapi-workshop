@@ -12,7 +12,7 @@ These Standards are being constructed as "building blocks" that can be used to a
 
 ## For users
 
-Are you a workshop participant or want to dive-in individually?  Go to [https://ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org) to follow the lessons and exercises.
+Are you a workshop participant or want to dive-in individually?  Go to [ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org) to follow the lessons and exercises.
 
 ## For authors
 
