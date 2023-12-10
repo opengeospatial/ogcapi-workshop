@@ -174,6 +174,102 @@ the request
 A client application can then retrieve the GeoJSON document and display
 or process it.
 
+### Client Usage
+
+Various clients/softwares supports OGC API- Features, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-features/blob/master/implementations/clients/README.md)
+
+In this workshop we'll check a client example ( leaflet and Openlayers ), Software example (QGIS), Native API example (GDAL) and also server example ( PygeoAPI )
+
+#### Leaflet Implementation
+
+Leaflet supports reading and implementing GeoJSON by default, thus just like any other  file or API which spits out data as GeoJSON, OGC API - Features can also be expose data as GeoJSON, by passing `f=json` in the string and then it can be utilized in Front end my adding following code block
+
+```JavaScript
+fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
+    headers: {
+      'Accept': 'application/geo+json'
+    }
+  }).then(response => response.json())
+  .then(data => {
+  L.geoJSON(data).addTo(map);
+});
+```
+
+Leaflet also has an [external plugin](https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi) which allows OGCAPI-Features to be used right out of the box
+
+```JavaScript
+// Import following in <head> tag
+//   <script src='https://unpkg.com/leaflet-featuregroup-ogcapi@0.1.0/Leaflet.FeatureGroup.OGCAPI.js'></script>
+
+
+var overlay = L.featureGroup.ogcApi("https://demo.ldproxy.net/zoomstack/", {
+	collection: "airports",
+	limit: 500,
+	padding: 0.2
+}).addTo(map);
+```
+
+#### Openlayers Implementation
+
+Just like Leaflet.js, [Openlayers](https://openlayers.org/) also understands the GeoJSON format by default. Thus OGC API- Features can by used in it right out of the bat
+
+```JavaScript
+fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
+    headers: {
+      'Accept': 'application/geo+json'
+    }
+  }).then(response => response.json())
+  .then(data => {
+  map.addLayer(new ol.layer.Vector({
+    source: new ol.source.Vector({
+      features: new ol.format.GeoJSON().readFeatures(data, { featureProjection: 'EPSG:3857' }),
+      attributions: 'Contains OS data &copy; Crown copyright and database right 2021.'
+    })
+  }));
+});
+```
+
+#### QGIS Implementation
+
+QGIS supports OGC API - Features and WFS in the same panel. Open the Data Source Manager and go to the "WFS / OGC API Features" tab.
+
+![qgis-data-source-manager](../assets/images/qgis-data-source-manager.png){width="100.0%"}
+
+Provide the connection information. The URL is the URL of the OGC API Landing Page resource, in this case "https://demo.ldproxy.net/zoomstack". Make sure "Enable feature paging" is checked.
+
+![qgis-add-api](../assets/images/qgis-add-api.png){width="100.0%"}
+
+Note that, if a collection has millions of features and the map view covers the extent of the collection, QGIS will try to load all features. To avoid this, you can, for example, restrict the scale range in which the layer should be visible.
+
+![qgis-zoomstack-national-roads](../assets/images/qgis-zoomstack-national-roads.gif){width="100.0%"}
+
+
+#### GDAL Implementation
+
+GDAL/OGR APIs supports OGCAPI - Feature. Just like checking info about any other file, we can execute
+
+```bash
+ogrinfo OAPIF:https://demo.ldproxy.net/zoomstack
+```
+which will spit out all available layers following OGC API - Features protocol 
+![gdal](../assets/images/gdal.png){width="100.0%"}
+
+#### Pygeoapi Implementation
+
+Pygeoapi allows users to create configuration of various data formats (Shape files, GeoJSON, Geopackage, CSV, etc.) and also data connections ( PostGIS, Elasticsearch, etc.) and expose them OGC API - Features protocol, which then can be used via URLs such as 
+
+```bash
+
+# get all collection information 
+https://demo.pygeoapi.io/master/collections?f=json
+
+# Get all features in `Lakes` data
+https://demo.pygeoapi.io/master/collections/lakes/items?f=json
+
+# Get single feature in `Lakes` 
+https://demo.pygeoapi.io/master/collections/lakes/items/1?f=json
+```
+
 ## Resources
 
 This section provides basic information about the types of resources
