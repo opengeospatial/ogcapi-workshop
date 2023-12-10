@@ -261,15 +261,15 @@ data.
 ![image](../assets/images/mvt_example.png){width="40.0%"}
 
 
-### Client Usage
+### Client usage
 
-Various clients/softwares supports OGC API- Tiles, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc#clients)
+Various clients/softwares supports OGC API - Tiles, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc#clients)
 
-In this workshop we'll check a  Openlayers client example, QGIS Software example (QGIS)  and also PygeoAPI as server example
+In this workshop we'll check a  OpenLayers client example, QGIS Software example (QGIS)  and also pygeoapi as server example
 
-#### Openlayers implementation 
+#### OpenLayers implementation 
 
-[Openlayers](https://openlayers.org) started supporting OGC Vector tiles from V.7. by introducing OGCVectorTile Source which can be used in  VectorTile  type of layer
+[OpenLayers](https://openlayers.org) started supporting OGC Vector tiles from V.7. by introducing OGCVectorTile Source which can be used in  VectorTile  type of layer
 
 Example of this can be seen on official page [here](https://openlayers.org/en/latest/examples/ogc-vector-tiles.html)
 
@@ -307,7 +307,7 @@ const map = new Map({
 
 #### QGIS implementation 
 
-Recent Verion of QGIS supports adding OGC API- Tiles under adding `new raster data`.
+Recent Verion of QGIS supports adding OGC API - Tiles under adding `new raster data`.
 
 ![qgis_tiles](../assets/images/qgis_tiles.png){width="100.0%"}
 
