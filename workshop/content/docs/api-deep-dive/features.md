@@ -174,17 +174,17 @@ the request
 A client application can then retrieve the GeoJSON document and display
 or process it.
 
-### Client Usage
+### Client usage
 
 Various clients/softwares supports OGC API- Features, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-features/blob/master/implementations/clients/README.md)
 
-In this workshop we'll check a client example ( leaflet and Openlayers ), Software example (QGIS), Native API example (GDAL) and also server example ( PygeoAPI )
+In this workshop we'll check a client example ( Leaflet and OpenLayers ), Software example (QGIS), Native API example (GDAL) and also server example ( pygeoapi )
 
 #### Leaflet Implementation
 
-Leaflet supports reading and implementing GeoJSON by default, thus just like any other  file or API which spits out data as GeoJSON, OGC API - Features can also be expose data as GeoJSON, by passing `f=json` in the string and then it can be utilized in Front end my adding following code block
+Leaflet supports reading and implementing GeoJSON by default, thus just like any other  file or API which spits out data as GeoJSON, OGC API - Features can also be expose data as GeoJSON, by passing `f=json` in the string and then it can be utilized in Front end my adding following code block via the front end by adding the following code:
 
-```JavaScript
+```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
     headers: {
       'Accept': 'application/geo+json'
@@ -197,7 +197,7 @@ fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100',
 
 Leaflet also has an [external plugin](https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi) which allows OGCAPI-Features to be used right out of the box
 
-```JavaScript
+```javascript
 // Import following in <head> tag
 //   <script src='https://unpkg.com/leaflet-featuregroup-ogcapi@0.1.0/Leaflet.FeatureGroup.OGCAPI.js'></script>
 
@@ -213,7 +213,7 @@ var overlay = L.featureGroup.ogcApi("https://demo.ldproxy.net/zoomstack/", {
 
 Just like Leaflet.js, [Openlayers](https://openlayers.org/) also understands the GeoJSON format by default. Thus OGC API- Features can by used in it right out of the bat
 
-```JavaScript
+```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
     headers: {
       'Accept': 'application/geo+json'
@@ -248,17 +248,40 @@ Note that, if a collection has millions of features and the map view covers the 
 
 GDAL/OGR APIs supports OGCAPI - Feature. Just like checking info about any other file, we can execute
 
-```bash
-ogrinfo OAPIF:https://demo.ldproxy.net/zoomstack
+```curl
+(env) krishnaglodha@192 / % ogrinfo OAPIF:https://demo.ldproxy.net/zoomstack 
+INFO: Open of `OAPIF:https://demo.ldproxy.net/zoomstack'
+      using driver `OAPIF' successful.
+1: airports (title: Airports) (Point)
+2: boundaries (title: Boundaries) (Line String)
+3: contours (title: Contours) (Line String)
+4: district_buildings (title: District Buildings) (Polygon)
+5: etl (title: ETL) (Line String)
+6: foreshore (title: Foreshore) (Polygon)
+7: greenspace (title: Greenspace) (Polygon)
+8: land (title: Land) (Polygon)
+9: local_buildings (title: Local Buildings) (Polygon)
+10: names (title: Names) (Point)
+11: national_parks (title: National Parks) (Polygon)
+12: rail (title: Rail) (Line String)
+13: railway_stations (title: RailwayStation) (Point)
+14: roads_local (title: Local Roads) (Line String)
+15: roads_national (title: National Roads) (Line String)
+16: roads_regional (title: Regional Roads) (Line String)
+17: sites (title: Sites) (Multi Polygon)
+18: surfacewater (title: Surface Water) (Polygon)
+19: urban_areas (title: Urban Areas) (Polygon)
+20: waterlines (title: Waterlines) (Line String)
+21: woodland (title: Woodland) (Polygon)
 ```
 which will spit out all available layers following OGC API - Features protocol 
-![gdal](../assets/images/gdal.png){width="100.0%"}
 
 #### Pygeoapi Implementation
 
-Pygeoapi allows users to create configuration of various data formats (Shape files, GeoJSON, Geopackage, CSV, etc.) and also data connections ( PostGIS, Elasticsearch, etc.) and expose them OGC API - Features protocol, which then can be used via URLs such as 
+Pygeoapi allows users to create configuration of various data formats (ESRI Shapefile
+, GeoJSON, GeoPackage, CSV, etc.) and also data connections ( PostGIS, Elasticsearch, etc.) and expose them OGC API - Features protocol, which then can be used via URLs such as 
 
-```bash
+```curl
 
 # get all collection information 
 https://demo.pygeoapi.io/master/collections?f=json
