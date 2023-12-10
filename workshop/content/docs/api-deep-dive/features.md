@@ -176,7 +176,7 @@ or process it.
 
 ### Client usage
 
-Various clients/softwares supports OGC API- Features, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-features/blob/master/implementations/clients/README.md)
+Various clients/softwares supports OGC API - Features, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-features/blob/master/implementations/clients/README.md)
 
 In this workshop we'll check a client example ( Leaflet and OpenLayers ), Software example (QGIS), Native API example (GDAL) and also server example ( pygeoapi )
 
@@ -211,7 +211,7 @@ var overlay = L.featureGroup.ogcApi("https://demo.ldproxy.net/zoomstack/", {
 
 #### Openlayers Implementation
 
-Just like Leaflet.js, [Openlayers](https://openlayers.org/) also understands the GeoJSON format by default. Thus OGC API- Features can by used in it right out of the bat
+Just like Leaflet.js, [Openlayers](https://openlayers.org/) also understands the GeoJSON format by default. Thus OGC API - Features can by used in it right out of the bat
 
 ```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
