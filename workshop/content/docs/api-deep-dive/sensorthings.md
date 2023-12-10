@@ -208,6 +208,34 @@ http://toronto-bike-snapshot.sensorup.com/v1.0
 The link to the request
 is: <http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations(1593917)?$select=result>
 
+Checkout various available public end points [here](https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md)
+#### QGIS Implementation 
+
+QGIS has a ready plugin available to use OGC API - SensorThings , which can be downloaded [here](https://plugins.qgis.org/plugins/SensorThingsAPI/)
+This plugin might not be available to search directly in plugin directory inside QGIS, so you will need to install it from zip. 
+
+![install_plugin](../assets/images/install_plugin.png){width="100.0%"}
+
+Open the plugin and enter SensorThings API with `/Locations`
+
+In our case we'll connect to 
+```bash
+
+Name - Surface, Atmospheric, and Groundwater data
+URL - https://labs.waterdata.usgs.gov/sta/v1.1/Locations
+```
+
+Now you can either add each sensors as new layer or combine all in one layer
+![connect_sta](../assets/images/connect_sta.png){width="100.0%"}
+
+Now we can check more information about each Location by activate `Show Location Information` and then clicking on sensor
+
+![location_info](../assets/images/location_info.png){width="100.0%"}
+
+Each sensor also has observation panel which allows us to see complete spatio-temporal data for each sensor in table and graph format
+![sta_obs](../assets/images/sta_obs.png){width="100.0%"}
+
+
 ## Operations
 
 The entities offered by a SensorThings API service can be accessed by
