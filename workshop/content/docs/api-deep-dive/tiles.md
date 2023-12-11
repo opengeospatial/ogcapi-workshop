@@ -568,8 +568,6 @@ You can see [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/t
 
 ### Client usage
 
-Various software supports the OGC API - Tiles standard (see <https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc#clients> for a list of supporting implementations).
-
 In this section we will demonstrate examples using OpenLayers, QGIS, and pygeoap.
 
 #### OpenLayers 
@@ -616,27 +614,6 @@ Recent Verion of QGIS supports adding OGC API - Tiles under adding `new raster d
 
 ![qgis_tiles](../assets/images/qgis_tiles.png){width="100.0%"}
 
-#### pygeoapi 
-
-This code block shows how to configure pygeoapi to read Mapbox vector tiles, from disk or a URL.
-
-```yaml
-providers:
-    - type: tile
-      name: MVT
-      data: tests/data/tiles/ne_110m_lakes  # local directory tree
-      # data: http://localhost:9000/ne_110m_lakes/{z}/{x}/{y}.pbf # tiles stored on a MinIO bucket
-      options:
-          metadata_format: default # default | tilejson
-          zoom:
-              min: 0
-              max: 5
-          schemes:
-              - WorldCRS84Quad
-      format:
-          name: pbf
-          mimetype: application/vnd.mapbox-vector-tile
-```
 
 ## Summary
 

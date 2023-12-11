@@ -677,9 +677,7 @@ through the request
 
 ### Client usage
 
-Various clients/softwares supports OGC API - Features, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-features/blob/master/implementations/clients/README.md)
-
-In this workshop we'll check a client example ( Leaflet and OpenLayers ), Software example (QGIS), Native API example (GDAL) and also server example ( pygeoapi )
+In this workshop we'll check a client example ( Leaflet and OpenLayers ), Software example (QGIS), Native API example (GDAL)
 
 #### Leaflet
 
@@ -774,21 +772,6 @@ INFO: Open of `OAPIF:https://demo.ldproxy.net/zoomstack'
 19: urban_areas (title: Urban Areas) (Polygon)
 20: waterlines (title: Waterlines) (Line String)
 21: woodland (title: Woodland) (Polygon)
-```
-
-#### pygeoapi
-
-[pygeoapi](https://pygeoapi.io) allows users to create data publishing various vector formats (ESRI Shapefile, GeoJSON, GeoPackage, CSV, etc.) and also data connections (PostGIS, Elasticsearch, etc.) and expose them via OGC API - Features, which then can be used via URLs such as follows:
-
-```bash
-# get all collection information 
-https://demo.pygeoapi.io/master/collections?f=json
-
-# get all features in `Lakes` data
-https://demo.pygeoapi.io/master/collections/lakes/items?f=json
-
-# get single feature in `Lakes` 
-https://demo.pygeoapi.io/master/collections/lakes/items/1?f=json
 ```
 
 ## Summary
