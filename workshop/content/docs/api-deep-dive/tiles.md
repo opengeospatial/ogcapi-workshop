@@ -568,7 +568,7 @@ You can see [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/t
 
 ### Client usage
 
-In this section we will demonstrate examples using OpenLayers, QGIS, and pygeoap.
+In this section we will demonstrate examples using OpenLayers, QGIS.
 
 #### OpenLayers 
 
