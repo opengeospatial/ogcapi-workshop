@@ -14,7 +14,7 @@ The 1990s saw the initial implementation of Service-Oriented Architecture (SOA).
 standard was published in 1999, providing a vendor-neutral approach to visualizing maps of geospatial data on a web
 page.  Web services had strong roots in [XML-RPC (eXtensible Markup Language over Remote Procedure Call)](http://xmlrpc.com/)
 and [CORBA](https://www.omg.org/spec/CCM), and standards and technologies such as SOAP, WSDL and UDDI began to emerge
-as as means to describe, discover, and perform request/response workflow  a web interface.
+as as means to describe, discover, and perform request/response workflow via a web interface.
 
 The 2000s saw continued development of OGC Web Service standards such as Web Feature Service (WFS), Catalogue Service
 for the Web (CSW), Web Coverage Service (WCS), Web Processing Service (WPS), and others.  In addition, Geography Markup Language (GML)
@@ -49,9 +49,9 @@ room for improvement in order to evolve:
 
 In 2017, the W3C published the [Spatial Data on the Web Best Practices](https://www.w3.org/TR/sdw-bp), which provided
 recommendations on data formats, identifiers, access, licensing, and provenance.  The goal of this best practice was
-to provide a baseline of recommendations to integrate geosaptial data and services with mainline Web practices and 
+to provide a baseline of recommendations to integrate geospatial data and services with mainline Web practices and 
 design patterns.  In addition, the OGC published the OGC API Whitepaper describing, discussing APIs and next steps
-for the OGC at the time.  It became obvious that a "clean break" was needed, in order for OGC APIs to becoe more
+for the OGC at the time.  It became obvious that a "clean break" was needed, in order for OGC APIs to become more
 "of the Web" and lower barrier for non-domain experts.
 
 A new paradigm emerged, which highlighted the following concepts:
@@ -74,7 +74,7 @@ open on GitHub.  In addition, the specifications themselves began to be develope
 made available as HTML pages (and PDF).  Collaborative tools used by OGC also proliferated, such as Gitter/Element as well as Discourse.
 
 !!! note
-    OGC standards, while primarily developed on GitHub, continue to be voted on by OGC members.
+    OGC standards, while primarily developed on GitHub, are voted on by the OGC membership.
 
 ## Summary
 
