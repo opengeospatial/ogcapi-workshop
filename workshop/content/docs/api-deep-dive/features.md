@@ -677,11 +677,11 @@ through the request
 
 ### Client usage
 
-In this workshop we'll check a client example ( Leaflet and OpenLayers ), Software example (QGIS), Native API example (GDAL)
+In this workshop we'll cover different OGC API - Features client tools two JavaScript libraries ( Leaflet and OpenLayers ), one desktop GIS (QGIS) and a C++ library (GDAL).
 
 #### Leaflet
 
-[Leaflet](https://leafletjs.com) supports reading and implementing GeoJSON by default, thus just like any other file or API which returns data as GeoJSON, OGC API - Features can also expose data as GeoJSON, by passing `f=json` in the request.  It can then be utilized in a web appication by adding the following code:
+[Leaflet](https://leafletjs.com) can read GeoJSON out-of-the-box, from a file or an API. As OGC API - Features can expose data as GeoJSON by using `f=json` in the request, the response can be read directly in LeafLet using the following code:
 
 ```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
@@ -694,7 +694,7 @@ fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100',
 });
 ```
 
-Leaflet also has an [external plugin](https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi) which allows OGC API - Features to be used directly:
+Leaflet also has an [external plugin](https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi) which allows OGC API - Features to be used natively:
 
 ```javascript
 // Import following in <head> tag
@@ -710,7 +710,7 @@ var overlay = L.featureGroup.ogcApi("https://demo.ldproxy.net/zoomstack/", {
 
 #### Openlayers
 
-[Openlayers](https://openlayers.org/) also understands GeoJSON by default and can be used directly:
+[Openlayers](https://openlayers.org/) also understands GeoJSON by default. An OGC API - Features response can be consumed using the folllowing code:
 
 ```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
@@ -730,7 +730,7 @@ fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100',
 
 #### QGIS
 
-[QGIS](https://qgis.org) supports OGC API - Features and WFS in the same provider panel.  Open the Data Source Manager and go to the "WFS / OGC API Features" tab.
+[QGIS](https://qgis.org) supports OGC API - Features and WFS using the same vector layer provider.  Open the Data Source Manager and go to the "WFS / OGC API Features" tab.
 
 ![qgis-data-source-manager](../assets/images/qgis-data-source-manager.png){width="100.0%"}
 
@@ -777,4 +777,4 @@ INFO: Open of `OAPIF:https://demo.ldproxy.net/zoomstack'
 ## Summary
 
 OGC API - Features provides functionality for working with vector data on the Web.  This deep dive
-provided an overview of the standard and the various Resources and endpoints that are supported.
+provided an overview of the standard and the various Resources and endpoints that are supported, as well as example of how-to access it using different clients.
