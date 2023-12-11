@@ -64,7 +64,7 @@ The same document as JSON (46 bytes):
 }
 ```
 
-Here, we see a more compact repsentation using JSON.  In addition, it is easier to determine the underlying data
+Here, we see a more compact representation using JSON.  In addition, it is easier to determine the underlying data
 type literals (integers, strings, etc.) by parsing the document itself.
 
 !!! note JSON Schema
