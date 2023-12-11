@@ -675,6 +675,122 @@ through the request
 }
 ```
 
+### Client usage
+
+Various clients/softwares supports OGC API - Features, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-features/blob/master/implementations/clients/README.md)
+
+In this workshop we'll check a client example ( Leaflet and OpenLayers ), Software example (QGIS), Native API example (GDAL) and also server example ( pygeoapi )
+
+#### Leaflet
+
+[Leaflet](https://leafletjs.com) supports reading and implementing GeoJSON by default, thus just like any other file or API which returns data as GeoJSON, OGC API - Features can also expose data as GeoJSON, by passing `f=json` in the request.  It can then be utilized in a web appication by adding the following code:
+
+```javascript
+fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
+    headers: {
+      'Accept': 'application/geo+json'
+    }
+  }).then(response => response.json())
+  .then(data => {
+  L.geoJSON(data).addTo(map);
+});
+```
+
+Leaflet also has an [external plugin](https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi) which allows OGC API - Features to be used directly:
+
+```javascript
+// Import following in <head> tag
+//   <script src='https://unpkg.com/leaflet-featuregroup-ogcapi@0.1.0/Leaflet.FeatureGroup.OGCAPI.js'></script>
+
+
+var overlay = L.featureGroup.ogcApi("https://demo.ldproxy.net/zoomstack/", {
+	collection: "airports",
+	limit: 500,
+	padding: 0.2
+}).addTo(map);
+```
+
+#### Openlayers
+
+[Openlayers](https://openlayers.org/) also understands GeoJSON by default and can be used directly:
+
+```javascript
+fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
+    headers: {
+      'Accept': 'application/geo+json'
+    }
+  }).then(response => response.json())
+  .then(data => {
+  map.addLayer(new ol.layer.Vector({
+    source: new ol.source.Vector({
+      features: new ol.format.GeoJSON().readFeatures(data, { featureProjection: 'EPSG:3857' }),
+      attributions: 'Contains OS data &copy; Crown copyright and database right 2021.'
+    })
+  }));
+});
+```
+
+#### QGIS
+
+[QGIS](https://qgis.org) supports OGC API - Features and WFS in the same provider panel.  Open the Data Source Manager and go to the "WFS / OGC API Features" tab.
+
+![qgis-data-source-manager](../assets/images/qgis-data-source-manager.png){width="100.0%"}
+
+Provide the connection information.  The URL is the URL of the OGC API landing page resource (in this case <https://demo.ldproxy.net/zoomstack>). Make sure "Enable feature paging" is checked.
+
+![qgis-add-api](../assets/images/qgis-add-api.png){width="100.0%"}
+
+Note that, if a collection has millions of features and the map view covers the extent of the collection, QGIS will try to load all features. To avoid this, you can, for example, restrict the scale range in which the layer should be visible.
+
+![qgis-zoomstack-national-roads](../assets/images/qgis-zoomstack-national-roads.gif){width="100.0%"}
+
+
+#### GDAL
+
+[GDAL](https://gdal.org) supports OGC API - Features as core vector format.  The below example demonstrates usage via `ogrinfo` against an OGC API - Features endpoint:
+
+```bash
+ogrinfo OAPIF:https://demo.ldproxy.net/zoomstack 
+INFO: Open of `OAPIF:https://demo.ldproxy.net/zoomstack'
+      using driver `OAPIF' successful.
+1: airports (title: Airports) (Point)
+2: boundaries (title: Boundaries) (Line String)
+3: contours (title: Contours) (Line String)
+4: district_buildings (title: District Buildings) (Polygon)
+5: etl (title: ETL) (Line String)
+6: foreshore (title: Foreshore) (Polygon)
+7: greenspace (title: Greenspace) (Polygon)
+8: land (title: Land) (Polygon)
+9: local_buildings (title: Local Buildings) (Polygon)
+10: names (title: Names) (Point)
+11: national_parks (title: National Parks) (Polygon)
+12: rail (title: Rail) (Line String)
+13: railway_stations (title: RailwayStation) (Point)
+14: roads_local (title: Local Roads) (Line String)
+15: roads_national (title: National Roads) (Line String)
+16: roads_regional (title: Regional Roads) (Line String)
+17: sites (title: Sites) (Multi Polygon)
+18: surfacewater (title: Surface Water) (Polygon)
+19: urban_areas (title: Urban Areas) (Polygon)
+20: waterlines (title: Waterlines) (Line String)
+21: woodland (title: Woodland) (Polygon)
+```
+
+#### pygeoapi
+
+[pygeoapi](https://pygeoapi.io) allows users to create data publishing various vector formats (ESRI Shapefile, GeoJSON, GeoPackage, CSV, etc.) and also data connections (PostGIS, Elasticsearch, etc.) and expose them via OGC API - Features, which then can be used via URLs such as follows:
+
+```bash
+# get all collection information 
+https://demo.pygeoapi.io/master/collections?f=json
+
+# get all features in `Lakes` data
+https://demo.pygeoapi.io/master/collections/lakes/items?f=json
+
+# get single feature in `Lakes` 
+https://demo.pygeoapi.io/master/collections/lakes/items/1?f=json
+```
+
 ## Summary
 
 OGC API - Features provides functionality for working with vector data on the Web.  This deep dive
