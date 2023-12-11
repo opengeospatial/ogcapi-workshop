@@ -260,79 +260,6 @@ data.
 
 ![image](../assets/images/mvt_example.png){width="40.0%"}
 
-
-### Client usage
-
-Various clients/softwares supports OGC API - Tiles, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc#clients)
-
-In this workshop we'll check a  OpenLayers client example, QGIS Software example (QGIS)  and also pygeoapi as server example
-
-#### OpenLayers implementation 
-
-[OpenLayers](https://openlayers.org) started supporting OGC Vector tiles from V.7. by introducing OGCVectorTile Source which can be used in  VectorTile  type of layer
-
-Example of this can be seen on official page [here](https://openlayers.org/en/latest/examples/ogc-vector-tiles.html)
-
-```JavaScript
-import MVT from 'ol/format/MVT.js';
-import Map from 'ol/Map.js';
-import OGCVectorTile from 'ol/source/OGCVectorTile.js';
-import VectorTileLayer from 'ol/layer/VectorTile.js';
-import View from 'ol/View.js';
-
-const map = new Map({
-  target: 'map',
-  layers: [
-    new VectorTileLayer({
-      source: new OGCVectorTile({
-        url: 'https://demo.ldproxy.net/zoomstack/tiles/WebMercatorQuad',
-        format: new MVT(),
-      }),
-      background: '#d1d1d1',
-      style: {
-        'stroke-width': 0.6,
-        'stroke-color': '#8c8b8b',
-        'fill-color': '#f7f7e9',
-      },
-    }),
-  ],
-  view: new View({
-    center: [0, 0],
-    zoom: 1,
-  }),
-});
-
-```
-![vector_tiles](../assets/images/vector_tiles.png){width="100.0%"}
-
-#### QGIS implementation 
-
-Recent Verion of QGIS supports adding OGC API - Tiles under adding `new raster data`.
-
-![qgis_tiles](../assets/images/qgis_tiles.png){width="100.0%"}
-
-#### pygeoapi implementation 
-
-This code block shows how to configure pygeoapi to read Mapbox vector tiles, from disk or a URL.
-
-
-```YAML
-providers:
-    - type: tile
-      name: MVT
-      data: tests/data/tiles/ne_110m_lakes  # local directory tree
-      # data: http://localhost:9000/ne_110m_lakes/{z}/{x}/{y}.pbf # tiles stored on a MinIO bucket
-      options:
-          metadata_format: default # default | tilejson
-          zoom:
-              min: 0
-              max: 5
-          schemes:
-              - WorldCRS84Quad
-      format:
-          name: pbf
-          mimetype: application/vnd.mapbox-vector-tile
-```
 ## Resources
 
 ### Landing page
@@ -638,6 +565,78 @@ Map tile:
 * ```/collections/{collectionId}/map/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
 
 You can see [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles?f=json) an example of a request for a (map) tileset list and [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles/GoogleCRS84Quad?f=json) an example of a request for (map) tileset metadata.
+
+### Client usage
+
+Various software supports the OGC API - Tiles standard (see <https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc#clients> for a list of supporting implementations).
+
+In this section we will demonstrate examples using OpenLayers, QGIS, and pygeoap.
+
+#### OpenLayers 
+
+[OpenLayers](https://openlayers.org) started supporting OGC Vector tiles from V.7. by introducing OGCVectorTile Source which can be used in the VectorTile layer type.
+
+An example of this can be seen on the [example page on the OpenLayers website](https://openlayers.org/en/latest/examples/ogc-vector-tiles.html).
+
+```javascript
+import MVT from 'ol/format/MVT.js';
+import Map from 'ol/Map.js';
+import OGCVectorTile from 'ol/source/OGCVectorTile.js';
+import VectorTileLayer from 'ol/layer/VectorTile.js';
+import View from 'ol/View.js';
+
+const map = new Map({
+  target: 'map',
+  layers: [
+    new VectorTileLayer({
+      source: new OGCVectorTile({
+        url: 'https://demo.ldproxy.net/zoomstack/tiles/WebMercatorQuad',
+        format: new MVT(),
+      }),
+      background: '#d1d1d1',
+      style: {
+        'stroke-width': 0.6,
+        'stroke-color': '#8c8b8b',
+        'fill-color': '#f7f7e9',
+      },
+    }),
+  ],
+  view: new View({
+    center: [0, 0],
+    zoom: 1,
+  }),
+});
+
+```
+![vector_tiles](../assets/images/vector_tiles.png){width="100.0%"}
+
+#### QGIS
+
+Recent Verion of QGIS supports adding OGC API - Tiles under adding `new raster data`.
+
+![qgis_tiles](../assets/images/qgis_tiles.png){width="100.0%"}
+
+#### pygeoapi 
+
+This code block shows how to configure pygeoapi to read Mapbox vector tiles, from disk or a URL.
+
+```yaml
+providers:
+    - type: tile
+      name: MVT
+      data: tests/data/tiles/ne_110m_lakes  # local directory tree
+      # data: http://localhost:9000/ne_110m_lakes/{z}/{x}/{y}.pbf # tiles stored on a MinIO bucket
+      options:
+          metadata_format: default # default | tilejson
+          zoom:
+              min: 0
+              max: 5
+          schemes:
+              - WorldCRS84Quad
+      format:
+          name: pbf
+          mimetype: application/vnd.mapbox-vector-tile
+```
 
 ## Summary
 
