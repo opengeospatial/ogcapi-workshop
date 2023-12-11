@@ -568,8 +568,6 @@ You can see [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/t
 
 ### Client usage
 
-Various software supports the OGC API - Tiles standard (see <https://github.com/opengeospatial/ogcapi-tiles/blob/master/implementations.adoc#clients> for a list of supporting implementations).
-
 In this section we will demonstrate examples using OpenLayers, QGIS, and pygeoap.
 
 #### OpenLayers 

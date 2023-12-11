@@ -677,8 +677,6 @@ through the request
 
 ### Client usage
 
-Various clients/softwares supports OGC API - Features, You can checkout latest list [here](https://github.com/opengeospatial/ogcapi-features/blob/master/implementations/clients/README.md)
-
 In this workshop we'll check a client example ( Leaflet and OpenLayers ), Software example (QGIS), Native API example (GDAL) and also server example ( pygeoapi )
 
 #### Leaflet
