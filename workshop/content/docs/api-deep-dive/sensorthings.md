@@ -601,9 +601,9 @@ We start exploring the different endpoints available in the server using a web b
 >        "description": "  ...
 > ```
 
-### Python Client
+<!-- ### Python Client
 
-The [Sensorthings API Python Client](https://pypi.org/project/frost-sta-client/) is a python package for developing applications with SensorThings API.
+The [Sensorthings API Python Client](https://pypi.org/project/frost-sta-client/) is a python package for developing applications with SensorThings API. -->
 
 ### QGIS Plugin
 
