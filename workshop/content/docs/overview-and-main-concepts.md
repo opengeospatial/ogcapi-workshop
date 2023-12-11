@@ -41,7 +41,7 @@ and applications to focus more on domain/business requirements.
 
 ### JSON
 
-JSON (JavaScript Object Notation) is a compact and very easy to understand encoding, which is very populate amount
+JSON (JavaScript Object Notation) is a compact and very easy to understand encoding, which is very popular among
 web developers.  JSON is the primary encoding used in RESTful web services and APIs, and is by nature extensible.
 
 Let's compare JSON and XML in a simple example:
@@ -93,7 +93,7 @@ Open standards allow for broad interoperability and plug and play capability.
 #### OGC API - Common
 
 [OGC API - Common](https://ogcapi.ogc.org/common/) is a common framework used in all OGC API's. 
-OGC API - Common Common provides the following functionality:
+OGC API - Common provides the following functionality:
 
 - based on [OpenAPI 3.0](https://spec.openapis.org/oas/latest.html)
 - HTML and JSON as the dominant encodings, alternative encodings are possible
