@@ -607,9 +607,11 @@ The [Sensorthings API Python Client](https://pypi.org/project/frost-sta-client/)
 
 ### QGIS Plugin
 
-The [SensorThings API plugin](https://plugins.qgis.org/plugins/SensorThingsAPI/) enables QGIS software to access dynamic data from sensors, using SensorThings API protocol.This plugin might not be available to search directly in plugin directory inside QGIS, so you will need to install it from zip. 
+The [SensorThings API plugin](https://plugins.qgis.org/plugins/SensorThingsAPI/) enables QGIS software to access dynamic data from sensors, using SensorThings API protocol.
 
-![install_plugin](../assets/images/install_plugin.png){width="100.0%"}
+In order to install this plugin from the QGIS repository, you will need to enable experimental plugins, in the plugins settings.
+
+![experimental plugins](../assets/images/experimental-plugins.png){width="100.0%"}
 
 Open the plugin and enter SensorThings API with `/Locations`
 
