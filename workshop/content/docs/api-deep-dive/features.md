@@ -708,9 +708,9 @@ var overlay = L.featureGroup.ogcApi("https://demo.ldproxy.net/zoomstack/", {
 }).addTo(map);
 ```
 
-#### Openlayers
+#### OpenLayers
 
-[Openlayers](https://openlayers.org/) also understands GeoJSON by default. An OGC API - Features response can be consumed using the folllowing code:
+[OpenLayers](https://openlayers.org/) also understands GeoJSON by default. An OGC API - Features response can be consumed using the following code:
 
 ```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
