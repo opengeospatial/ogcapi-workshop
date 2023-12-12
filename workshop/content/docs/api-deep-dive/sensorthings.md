@@ -191,7 +191,7 @@ forwarded to an OGC API - Processes service for further processing.
 
 A client needs to know the location of the SensorThings API service to
 be able to interact with the server. The location is usually called the
-```end point``` of the service and is represented by the service root URI.
+```endpoint``` of the service and is represented by the service root URI.
 Resources available through the service can be accessed by appending a
 resource path and, optionally query options.
 
@@ -208,7 +208,7 @@ http://toronto-bike-snapshot.sensorup.com/v1.0
 The link to the request
 is: <http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations(1593917)?$select=result>
 
-Checkout various available public end points [here](https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md)
+Checkout various available public endpoints [here](https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md)
 
 
 ## Operations
