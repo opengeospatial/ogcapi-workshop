@@ -22,9 +22,9 @@ These Standards are being constructed as "building blocks" that can be used to a
         <td><a href="https://twitter.com/krishnaglodha"><img width="150" src="https://avatars.githubusercontent.com/u/47075664?v=4"/></a></td>
     </tr>
     <tr>
-        <td>Joana Simoes</td>
-        <td>Tom Kralidis</td>
-        <td>Krishna Lodha</td>
+        <td><a href="https://github.com/doublebyte1">Joana Simoes (OGC)</a></td>
+        <td><a href="https://github.com/tomkralidis">Tom Kralidis (OSGeo)</a></td>
+        <td><a href="https://github.com/krishnaglodha">Krishna Lodha (Rotten Grapes)</a></td>
     </tr>
 </table>
 
