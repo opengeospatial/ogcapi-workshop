@@ -147,12 +147,12 @@ following table.
     <td>/api</td>
   </tr>
   <tr>
-    <td>Tiling Schemes</td>
+    <td>Tile matrix sets</td>
     <td>GET</td>
     <td>/tileMatrixSets</td>
   </tr>
   <tr>
-    <td>Tiling Scheme (tile matrix set)</td>
+    <td>Tile matrix set</td>
     <td>GET</td>
     <td>/tileMatrixSets/{tileMatrixSetId}</td>
   </tr>
