@@ -54,10 +54,9 @@ Also you will notice notes sections within the text:
 
 Examples are indicated as follows:
 
-BASH
+Bash shell
 ``` bash
-curl -X 'GET' \
-  'https://myrequest.com' \
+curl -X 'GET' 'https://myrequest.com'
 ```
 
 JSON
