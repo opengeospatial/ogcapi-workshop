@@ -568,11 +568,11 @@ You can see [here](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/t
 
 ### Client usage
 
-In this section we will demonstrate examples using OpenLayers, QGIS, and pygeoap.
+In this section we will demonstrate how-to access OGC API - Tiles using the OpenLayers client.
 
 #### OpenLayers 
 
-[OpenLayers](https://openlayers.org) started supporting OGC Vector tiles from V.7. by introducing OGCVectorTile Source which can be used in the VectorTile layer type.
+[OpenLayers](https://openlayers.org) started supporting OGC Vector tiles from V.7., when `OGCVectorTile` Source was introduced..
 
 An example of this can be seen on the [example page on the OpenLayers website](https://openlayers.org/en/latest/examples/ogc-vector-tiles.html).
 
@@ -608,13 +608,13 @@ const map = new Map({
 ```
 ![vector_tiles](../assets/images/vector_tiles.png){width="100.0%"}
 
-#### QGIS
+<!-- #### QGIS
 
 Recent Verion of QGIS supports adding OGC API - Tiles under adding `new raster data`.
 
-![qgis_tiles](../assets/images/qgis_tiles.png){width="100.0%"}
+![qgis_tiles](../assets/images/qgis_tiles.png){width="100.0%"} -->
 
 
 ## Summary
 
-OGC API - Tiles specifies a standard for Web APIs that provide tiles of geospatial information. Different forms of geospatial information are supported, such as tiles of vector features ("vector tiles"), coverages, maps (or imagery) and potentially eventually additional types of tiles of geospatial information. This deep dive provided an overview of the standard and the various Resources and endpoints that are supported.
+OGC API - Tiles specifies a standard for Web APIs that provide tiles of geospatial information. Different forms of geospatial information are supported, such as tiles of vector features ("vector tiles"), coverages, maps (or imagery) and potentially eventually additional types of tiles of geospatial information. This deep dive provided an overview of the standard and the various Resources and endpoints that are supported. It also shows an example of how-to access an OGC API - Tiles endpoint, using a JavaScript client.
