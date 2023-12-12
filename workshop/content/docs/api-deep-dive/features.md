@@ -288,7 +288,7 @@ The API definition describes the capabilities of the server. It can be used by d
 
 There are conformance classes to provide the API definition using [Open API](https://ogcapi-workshop.ogc.org/overview-and-main-concepts/#openapi). Some servers also return a human-readable representation of the definition in HTML, using tools such as Redoc or Swagger. 
 
-This is an extract of an API definition, which uses Open API 3:
+This is an extract of an [API definition](https://demo.ldproxy.net/daraa/api?f=json), which uses Open API 3:
 
 ```json
 {

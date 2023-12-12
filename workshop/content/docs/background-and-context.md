@@ -71,7 +71,7 @@ API (now OGC API - Environmental Data Retrieval).  This represented the origins 
 The development and working processes of OGC standards development themselves evolved during this time.  OGC API specifications began to be
 developed on public GitHub repositories, allowing for anyone in the public to discuss and collaboration for a given OGC API standard in the
 open on GitHub.  In addition, the specifications themselves began to be developed in AsciiDoc (an open format for documentation/markup), and
-made available as HTML pages (and PDF).  Collaborative tools used by OGC also proliferated, such as Gitter/Element as well as Discourse.
+made available as HTML pages (and PDF).  Collaborative tools used by OGC also proliferated, such as Gitter/Element as well as Discord.
 
 !!! note
     OGC standards, while primarily developed on GitHub, are voted on by the OGC membership.
