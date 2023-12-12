@@ -185,7 +185,7 @@ station.
 
 The data returned by the service can be rendered by a desktop Geographic
 Information System (GIS) or a web application. Alternatively, it can be
-forwarded to an OGC WPS for further processing.
+forwarded to an OGC API - Processes service for further processing.
 
 ### Client usage
 
