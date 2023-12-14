@@ -335,7 +335,7 @@ As an example, we can see an extract of the response to this request:
   ]
 ```
 
-If we append the tile matrix set id to this url, we will get the description of one specific tile matrix set, as we can see in the example bellow, generated with this request:
+If we append the tile matrix set id to this url, we will get the description of one specific tile matrix set, as we can see in the example below, generated with this request:
 
 <https://demo.ldproxy.net/daraa/tileMatrixSets/WebMercatorQuad?f=json>
 
@@ -414,7 +414,7 @@ For vector tiles, we can request tiles using the ```/tiles``` endpoint. As an ex
       ],
 ```
 
-We can request metadata about a particular tileset by appending the tile matrix set ID:  ```/tiles/{tileMatrixSetId}```. For instance, the example bellow is triggered by this request:
+We can request metadata about a particular tileset by appending the tile matrix set ID:  ```/tiles/{tileMatrixSetId}```. For instance, the example below is triggered by this request:
 
 <https://demo.ldproxy.net/daraa/tiles/WebMercatorQuad?f=json>
 
@@ -464,7 +464,7 @@ Map tile:
 
 These endpoints define how a list of tilesets can be associated to an OGC API collection. 
 
-For vector tiles, you can retrieve the tileset list of a given collection with ```/collections/{collectionId}/tiles```. For instance, the sample bellow is extracted from the response to this request:
+For vector tiles, you can retrieve the tileset list of a given collection with ```/collections/{collectionId}/tiles```. For instance, the sample below is extracted from the response to this request:
 
 <https://demo.ldproxy.net/daraa/collections/StructureSrf/tiles?f=json>
 

@@ -153,7 +153,7 @@ The following is a list entities supported by the API:
     The phenomenon against which an observation is made is a property of
     the feature of interest.
 
-The figure bellow shows the relations between sensing entities.
+The figure below shows the relations between sensing entities.
 
 ![image](../assets/images/sensorthings-data-model.png){width="100.0%"}
 
