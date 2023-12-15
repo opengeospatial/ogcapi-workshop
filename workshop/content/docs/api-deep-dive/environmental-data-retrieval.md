@@ -63,8 +63,8 @@ Implementations can be found on the [implementations page](https://github.com/op
 
 **OGC API - Environmental Data Retrieval** provides a family of
 lightweight query interfaces to access spatio-temporal data resources by
-requesting data at a Position, within an Area, along a Trajectory or
-through a Corridor. A spatio-temporal data resource is a collection of
+requesting data at a position, within an area, along a trajectory or
+through a corridor. A spatio-temporal data resource is a collection of
 spatio-temporal data that can be sampled using the EDR query pattern
 geometries.
 
