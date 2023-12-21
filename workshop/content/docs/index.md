@@ -17,7 +17,7 @@ These Standards are being constructed as "building blocks" that can be used to a
 
 <table>
     <tr>
-        <td><a href="https://twitter.com/doublebyte"><img width="150" src="https://avatars.githubusercontent.com/u/1038897?v=4"/></a></td>
+        <td><a href="https://noc.social/@doublebyte"><img width="150" src="assets/images/joana-profile.jpeg"/></a></td>
         <td><a href="https://twitter.com/tomkralidis"><img width="150" src="https://avatars.githubusercontent.com/u/910430?v=4"/></a></td>
         <td><a href="https://twitter.com/krishnaglodha"><img width="150" src="https://avatars.githubusercontent.com/u/47075664?v=4"/></a></td>
     </tr>
