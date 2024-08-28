@@ -75,6 +75,12 @@ processing of geospatial data, including data from sensors, can be
 distributed thereby allowing for more capacity to process larger amounts
 of data.
 
+In addition to the approved part above, The OGC API - Processes Standards Working Group (SWG) is working on the following drafts:
+
+* *Draft* **OGC API - Processes - Part 2: Deploy, Replace, Undeploy** extends the core capabilities specified in Part 1 with the ability to dynamically add, modify and/or delete individual processes using an implementation (endpoint) of the OGC API - Processes Standard.
+  
+* *Draft* **OGC API - Processes - Part 3: Workflows and Chaining** extends the core capabilities specified in Part 1 with the ability to chain nested processes, refer to both local and external processes and collections of data accessible via OGC API standards as inputs to a process, and trigger execution of processes through OGC API data delivery specifications such as OGC API — Tiles, DGGS, Coverages, Features, EDR and Maps.
+
 #### Relation to other OGC Standards
 
 -   OGC Web Processing Service Interface Standard (WPS): The WPS
