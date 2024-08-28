@@ -131,6 +131,7 @@ The OGC API effort is rapidly evolving. Numerous OGC API standards are in develo
 - [Moving Features](https://ogcapi.ogc.org/movingfeatures) defines an API that provides access to data representing features that move as rigid bodies
 - [Joins](https://ogcapi.ogc.org/joins)  supports the joining of data, from multiple sources, with feature collections or directly with other input files
 - [Discrete Global Grid System](https://ogcapi.ogc.org/dggs) enables applications to organise and access data arranged according to a Discrete Global Grid System (DGGS)
+- [Connected Systems](https://ogcapi.ogc.org/connectedsystems/) is intended to act as a bridge between static data (geographic and other domain features) and dynamic data (observations of these feature properties, and commands/actuations that change these feature properties)
 
 ![Approved and candidate OGC API standards](assets/images/ogcapis-overview.png)
 
