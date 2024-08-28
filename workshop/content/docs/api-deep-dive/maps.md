@@ -20,10 +20,17 @@ title: OGC API - Maps
 
 ## Introduction
 
-The draft OGC API - Maps standard describes an API that presents data as maps by applying a
+The OGC API - Maps standard describes an API that presents data as maps by applying a
 style.  The draft standard allows a client application to request maps as images, or change
 parameters such as size and coordinate reference systems at the time of request, making them
 implementer-friendly and easily understandable by developers without geospatial experience.
+
+!!! note
+    This tutorial module is not intended to be a replacement to the actual
+    **OGC API - Maps - Part 1: Core** standard. The tutorial intentionally
+    focuses on a subset of capabilities in order to get the student started
+    with using the standard. Please refer to the [**OGC API - Maps - Part 1:
+    Core** standard](https://docs.ogc.org/is/20-058/20-058.html) for additional detail.
 
 ### Background
 
@@ -34,7 +41,7 @@ implementer-friendly and easily understandable by developers without geospatial 
 
 > Versions
 
-  OGC API - Maps is currently in draft.
+  **OGC API - Maps - Part 1: Core** version 1.0.0 is the current latest version
 
 > Test suite
 
@@ -278,5 +285,5 @@ Each style within the collection can then be requested as a map as follows (usin
 
 ## Summary
 
-The draft OGC API - Maps standard describes an API that presents data as maps by applying a style.  This deep dive
-provided an overview of the draft standard and the various Resources and endpoints that are supported.
+The OGC API - Maps standard describes an API that presents data as maps by applying a style.  This deep dive
+provided an overview of the standard and the various Resources and endpoints that are supported.
