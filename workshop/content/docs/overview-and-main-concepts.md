@@ -76,21 +76,13 @@ type literals (integers, strings, etc.) by parsing the document itself.
 
 This section provides a high level overview of OGC API standards support.
 
-### Standards
-
-Open standards allow for broad interoperability and plug and play capability.
-
-### API standards
-
-#### OGC API
-
 !!! cite
 
     The OGC API family of standards are being developed to make it easy for anyone to provide geospatial data to the web. These standards build upon the legacy of the OGC Web Service standards (WMS, WFS, WCS, WPS, etc.), but define resource-centric APIs that take advantage of modern web development practices. This web page provides information on these standards in a consolidated location.
 
     These standards are being constructed as "building blocks" that can be used to assemble novel APIs for web access to geospatial content. The building blocks are defined not only by the requirements of the specific standards, but also through interoperability prototyping and testing in OGC's Innovation Program. 
 
-#### OGC API - Common
+### OGC API - Common
 
 [OGC API - Common](https://ogcapi.ogc.org/common/) is a common framework used in all OGC API's. 
 OGC API - Common provides the following functionality:
@@ -111,7 +103,17 @@ allows for OGC API client software to be more streamlined.
 
 For more details about this standard, please refer to the [OGC API - Common section](https://ogcapi-workshop.ogc.org/api-deep-dive/common/).
 
-#### OGC API building blocks
+### Approved Standards
+
+The below OGC API standards have been approved and available for use.  Note that these standards have 1 or more "Parts" or extensions that enable specific functionality.  "Part 1" of a given standard represents the most basic capabilities.  Additional parts can also be implemented as [building blocks](#ogc-api-building-blocks).
+
+- [OGC API - Features](https://ogcapi.ogc.org/features) offers the capability to create, modify, and query spatial data on the Web and specifies requirements and recommendations for APIs that want to follow a standard way of sharing feature data
+- [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) provides a family of lightweight interfaces to access Environmental Data resources. Each resource addressed by an EDR API maps to a defined query pattern
+- [OGC API - Maps](https://ogcapi.ogc.org/maps) offers a modern approach to the OGC Web Map Service (WMS) standard for provision map and raster content
+- [OGC API - Processes](https://ogcapi.ogc.org/processes) allows for processing tools to be called and combined from many sources and applied to data in other OGC API resources though a simple API
+- [OGC API - Tiles](https://ogcapi.ogc.org/tiles) provides extended functionality to other OGC API Standards to deliver vector tiles, map tiles, and other tiled data
+
+### OGC API building blocks
 
 The OGC API approach allows for modularity and "profiling" of APIs depending on your requirements.  This means you
 can mix and match OGC APIs together.
@@ -120,11 +122,10 @@ can mix and match OGC APIs together.
 
 You can read more about this topic in the [building blocks website](https://opengeospatial.github.io/bblocks/).
 
-#### More OGC APIs
+### In development
 
 The OGC API effort is rapidly evolving. Numerous OGC API standards are in development:
 
-- [Maps](https://ogcapi.ogc.org/maps) can serve spatially referenced and dynamically rendered map imagery
 - [Routes](https://ogcapi.ogc.org/routes) provides access to routing data
 - [Styles](https://ogcapi.ogc.org/styles) defines a Web API that enables map servers, clients as well as visual style editors, to manage and fetch styles
 - [3D GeoVolumes](https://ogcapi.ogc.org/geovolumes) facilitates efficient discovery of and access to 3D content in multiple formats based on a space-centric perspective
@@ -135,7 +136,7 @@ The OGC API effort is rapidly evolving. Numerous OGC API standards are in develo
 
 ![Approved and candidate OGC API standards](assets/images/ogcapis-overview.png)
 
-#### OpenAPI
+### OpenAPI
 
 Core to OGC API - Common is the [OpenAPI initiative](https://www.openapis.org/about) to help
 describe and document an API. OpenAPI defines its structure in an OpenAPI document. 

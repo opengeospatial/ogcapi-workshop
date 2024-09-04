@@ -20,7 +20,7 @@ title: OGC API - Processes
 
 ## Introduction
 
-The OGC API -- Processes standard supports the wrapping of
+[OGC API -- Processes](https://ogcapi.ogc.org/processes) is a standard that supports the wrapping of
 computational tasks into executable processes that can be offered by a
 server through a Web API and be invoked by a client application. The
 standard specifies a processing interface to communicate over a RESTful
