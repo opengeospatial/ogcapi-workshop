@@ -21,7 +21,7 @@ title: OGC API - Records
 
 ## Introduction
 
-[OGC API - Records](https://ogcapi.ogc.org/records) is a multi-part draft specification that offers the capability to
+[OGC API - Records](https://records.developer.ogc.org/) is a multi-part draft specification that offers the capability to
 create, modify, and query metadata on the Web. The draft specification enables the
 discovery of geospatial resources by standardizing the way collections of descriptive
 information about the resources (metadata) are exposed.  The draft specification also

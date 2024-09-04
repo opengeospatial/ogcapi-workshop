@@ -20,7 +20,7 @@ title: OGC API - Features
 
 ## Introduction
 
-[OGC API - Features](https://ogcapi.ogc.org/features) is a multi-part standard that offers the capability
+[OGC API - Features](https://features.developer.ogc.org/) is a multi-part standard that offers the capability
 to create, modify, and query spatial data on the Web and specifies
 requirements and recommendations for APIs that want to follow a standard
 way of sharing feature data. **OGC API - Features - Part 1: Core** describes the mandatory capabilities that every
