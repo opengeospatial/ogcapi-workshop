@@ -21,7 +21,7 @@ title: OGC API - Maps
 ## Introduction
 
 [OGC API - Maps](https://ogcapi.ogc.org/maps) is a specification that describes an API that presents data as maps by applying a
-style.  The draft standard allows a client application to request maps as images, or change
+style.  The standard allows a client application to request maps as images, or change
 parameters such as size and coordinate reference systems at the time of request, making them
 implementer-friendly and easily understandable by developers without geospatial experience.
 
