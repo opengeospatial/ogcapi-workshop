@@ -44,7 +44,7 @@ spatial data. Additional capabilities like support for different CRS, richer que
 
 > Versions
 
-  **OGC API - Features - Part 1: Core** version 1.0.1 and **OGC API - Features - Part 2: Coordinate Reference Systems by Reference** version 1.0.1 are the current
+  **OGC API - Features - Part 1: Core** version 1.0.1, **OGC API - Features - Part 2: Coordinate Reference Systems by Reference** version 1.0.1 and **OGC API - Features - Part 3: Filtering** version 1.0.1 are the current
   latest versions
 
 > Test suite
@@ -78,10 +78,23 @@ organisations to compile new maps or conduct analysis on the supplied
 data. In Part 1 the default spatial Coordinate Reference System (CRS) is WGS 84 longitude/latitude with or without height.
 * **OGC API - Features - Part 2: Coordinate Reference Systems By Reference** extends Part 1 to support presenting geometry-valued properties in a response document in additional CRSs. Each supported CRS must be identified by a URI such as: ```http://www.opengis.net/def/crs/EPSG/0/4326```.
 
+* **OGC API - Features - Part 3: Filtering** defines query parameters (```filter```, ```filter-lang```, ```filter-crs```) to specify filter criteria in a request to an API and the ```Queryables``` resource that declares the properties of data in a collection that can be used in filter expressions.
+
 In addition to the approved parts above, The OGC API - Features Standards Working Group (SWG) is working on the following drafts:
 
-* *Draft* **OGC API - Features - Part 3: Filtering** defines query parameters (```filter```, ```filter-lang```, ```filter-crs```) to specify filter criteria in a request to an API and the ```Queryables``` resource that declares the properties of data in a collection that can be used in filter expressions.
 * *Draft* **OGC API - Features - Part 4: Create, Replace, Update and Delete** defines the behaviour of an API that allows resource instances to be added, replaced, modified and/or removed for a collection.
+
+* *Draft* **OGC API - Features - Part 5: Schemas** specifies how features can be described by a logical schema and how such schemas are published in an OGC Web API implementation.
+
+* *Draft* **OGC API - Features - Part 6: Property Selection** specifies how the representation of a resource can be reduced to selected properties of the resource using a query parameter.
+
+* *Draft* **OGC API - Features - Part 7: Geometry Simplification** specifies how the representation of geometry can be simplified using a query parameter.
+
+* *Draft* **OGC API - Features - Part 8: Sorting** defines query parameters (sortby) to specify sorting criteria in a request to an API and the Sortables resource that declares the properties of data in a collection that can be used in sort by expressions.
+
+* *Draft* **OGC API - Features - Part 9: Text Search** adds a query parameter to the OGC API Features suite of standards to support text or keyword searches on text fields.
+
+* *Draft* **OGC API - Features - Part 10: Search/Queries** adds support to dynamically fetch features from multiple collections at a time.
 
 !!! note
 
