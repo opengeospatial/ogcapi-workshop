@@ -20,7 +20,7 @@ title: OGC API - Environmental Data Retrieval
 
 ## Introduction
 
-OGC API - Environmental Data Retrieval is a standard that provides a
+[OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) is a standard that provides a
 family of lightweight interfaces to access Environmental Data resources.
 The standard, which is also called the Environmental Data Retrieval
 (EDR) API, addresses two fundamental operations; discovery and query.

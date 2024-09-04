@@ -46,8 +46,7 @@ records will be specified in additional parts.
 > Versions
 
   **OGC API - Records - Part 1: Core** is currently in draft and is planned to be
-  submitted to the OGC Architecture Board (OAB) in December 2023 for public review
-  in Q1 2024.
+  submitted to the OGC Technical Committee in Fall 2024 for final approval.
 
 > Test suite
 
