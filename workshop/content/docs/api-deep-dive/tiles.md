@@ -20,7 +20,7 @@ title: OGC API - Tiles
 
 ## Introduction
 
-The [OGC API - Tiles standard](https://tiles.developer.ogc.org/) defines building blocks for creating Web
+[OGC API - Tiles standard](https://tiles.developer.ogc.org/) is a specification that defines building blocks for creating Web
 APIs that support the retrieval of geospatial information as tiles.
 Different forms of geospatial information are supported, such as tiles
 of vector features ("vector tiles"), coverages, maps (or imagery) and
