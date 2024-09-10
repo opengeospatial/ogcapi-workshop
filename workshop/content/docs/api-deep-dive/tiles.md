@@ -4,7 +4,7 @@ title: OGC API - Tiles
 
 # OGC API - Tiles
 
-!!! abstract Audience
+!!! abstract "Audience"
     Students that are familiar with web services and APIs, and want to have
     an overview of OGC API - Tiles standard
 
