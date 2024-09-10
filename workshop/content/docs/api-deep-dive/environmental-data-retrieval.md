@@ -51,9 +51,9 @@ by this standard and selected by the client.
 
 > Test suite
 
-  A draft executable test suite is available for:
+  A test suite is available for:
 
-  -   [OGC API - Environmental Data Retrieval](https://github.com/opengeospatial/ets-ogcapi-edr10)
+  * [OGC API - Environmental Data Retrieval - Part 1](https://github.com/opengeospatial/ets-ogcapi-edr10)
 
 > Implementations
 

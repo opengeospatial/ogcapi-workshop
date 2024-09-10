@@ -56,8 +56,9 @@ The OGC SensorThings API is based on the existing [OGC Sensor Web Enablement (SW
 
 > Test suite
 
-Test suites are available for:
-- SensorThings API Part 1 version 1.0 <https://github.com/opengeospatial/ets-sta10>
+A test suite is available for:
+
+* [SensorThings API - Part 1](https://github.com/opengeospatial/ets-sta10)
 
 > Public Endpoints
 

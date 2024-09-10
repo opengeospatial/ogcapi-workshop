@@ -76,9 +76,9 @@ These concepts are at the core of this standard:
 
 > Test suite
 
-  Test suites are available for:
+  A test suite is available for:
 
-  -   [OGC API - Tiles](https://github.com/opengeospatial/ets-ogcapi-tiles10)
+  * [OGC API - Tiles - Part 1](https://github.com/opengeospatial/ets-ogcapi-tiles10)
 
 > Implementations
 
