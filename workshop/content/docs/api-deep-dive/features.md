@@ -51,7 +51,8 @@ spatial data. Additional capabilities like support for different CRS, richer que
 
   Test suites are available for:
 
-  *   [OGC API - Features](https://github.com/opengeospatial/ets-ogcapi-features10)
+  *   [OGC API - Features - Part 1](https://github.com/opengeospatial/ets-ogcapi-features10)
+  *    [OGC API - Features - Part 2 (DRAFT)](https://github.com/opengeospatial/ets-ogcapi-features10-part2)
 
 >  Implementations
 
