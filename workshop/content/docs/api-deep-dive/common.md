@@ -4,7 +4,7 @@ title: OGC API - Common
 
 # OGC API - Common
 
-!!! abstract Audience
+!!! abstract "Audience"
     Students that are familiar with web services and APIs, and want to have
     an overview of OGC API - Common draft standard
 

@@ -4,7 +4,7 @@ title: OGC SensorThings API
 
 # OGC SensorThings API
 
-!!! abstract Audience
+!!! abstract "Audience"
     Students that are familiar with web services and want to have an
     overview of the SensorThings Application Programming Interface (API) standard
 

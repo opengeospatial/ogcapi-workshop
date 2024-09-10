@@ -4,7 +4,7 @@ title: OGC API - Environmental Data Retrieval
 
 # OGC API - Environmental Data Retrieval
 
-!!! abstract Audience
+!!! abstract "Audience"
     Students that are familiar with web services and APIs, and want to have
     an overview of OGC API - Environmental Data Retrieval standard
 
