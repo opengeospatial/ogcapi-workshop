@@ -27,3 +27,22 @@ title: OGC API - Styles
     focuses on a subset of capabilities in order to get the student started
     with using the standard. Please refer to the [**OGC API - Styles - Part 1:
     Core** standard](https://docs.ogc.org/DRAFTS/20-009.html) for additional detail.
+
+### Background
+
+> History
+
+TODO
+
+> Versions
+
+  **OGC API - Styles - Part 1: Core** is currently in draft.
+
+> Test suite
+
+  There are no test suites currently implemented; they will be made available once the specification is
+  approved, and an executable test suite (ETS) is made availabe as per of OGC CITE.
+
+> Implementations
+
+  Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-styles/blob/master/implementations.md).
