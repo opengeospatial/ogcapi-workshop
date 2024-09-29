@@ -356,7 +356,7 @@ for a detailed explanation.
 
 ### GeoJSON
 
-The OGC API - Records GeoJSON Requirements Class specifies a GeoJSON based encoding for Record core, based on RFC7946.  Given the ubiquity of GeoJSON, numerous tools exist to validate process and decode/encode GeoJSON, making OGC API - Records GeoJSON easy to include in metadata processing pipelines.  OGC API - Records includes the [JSON Schema](https://github.com/opengeospatial/ogcapi-records/blob/master/core/openapi/schemas/recordGeoJSON.yaml) for the GeoJSON representation and thus can be used for runtime or offline validation of metadata payloads.  Applications based on OGC API - Reocrds GeoJSON can extend and constrain the schema accordingly for domain specific workflows.
+The OGC API - Records GeoJSON Requirements Class specifies a GeoJSON based encoding for Record core, based on RFC7946.  Given the ubiquity of GeoJSON, numerous tools exist to validate process and decode/encode GeoJSON, making OGC API - Records GeoJSON easy to include in metadata processing pipelines.  OGC API - Records includes the [JSON Schema](https://github.com/opengeospatial/ogcapi-records/blob/master/core/openapi/schemas/recordGeoJSON.yaml) for the GeoJSON representation and thus can be used for runtime or offline validation of metadata payloads.  Applications based on OGC API - Records GeoJSON can extend and constrain the schema accordingly for domain specific workflows.
 
 ## Summary
 
