@@ -788,6 +788,10 @@ INFO: Open of `OAPIF:https://demo.ldproxy.net/zoomstack'
 21: woodland (title: Woodland) (Polygon)
 ```
 
+### GeoJSON
+
+The OGC API - Features GeoJSON Requirements Class specifies a GeoJSON based encoding for based on RFC7946.  Given the ubiquity of GeoJSON, numerous tools exist to validate process and decode/encode GeoJSON, making OGC API - Features GeoJSON easy to include in data processing pipelines.  OGC API - Features includes the [JSON Schema](https://github.com/opengeospatial/ogcapi-features/blob/master/core/openapi/schemas/featureGeoJSON.yaml) for the GeoJSON representation and thus can be used for runtime or offline validation of data payloads.  Applications based on OGC API - Features GeoJSON can extend and constrain the schema accordingly for domain specific workflows.
+
 ## Summary
 
 OGC API - Features provides functionality for working with vector data on the Web.  This deep dive
