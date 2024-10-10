@@ -182,3 +182,265 @@ the following table.
     
     Each of the resources needs to be created (and eventually deleted) separately. 
 
+### Example
+
+This [demonstration
+server](https://demo.ldproxy.net/)
+publishes styles through an interface that conforms to
+OGC API - Features.
+
+An example request that can be used to list the styles from the Daara collection is
+<https://demo.ldproxy.net/daraa/styles?f=html>
+
+Note that the response to the request is HTML in this case.
+
+Alternatively, the same data can be retrieved in GeoJSON format, through
+the request
+<https://demo.ldproxy.net/daraa/styles?f=json>
+
+These styles can be rendered by a client application, or applied directly by other OGC APIs that support styles. The example bellow shows the *Night* style, being applied by OGC API - maps.
+<https://demo.ldproxy.net/daraa/styles/night?f=html#12.24/32.6264/36.1033>
+
+<iframe
+  src="https://demo.ldproxy.net/daraa/styles/night?f=html#12.24/32.6264/36.1033s"
+  style="width:100%; height:800px;"
+></iframe>
+
+## Resources
+
+Styles are the main resources of this API. 
+
+* For each style there is style metadata available, with general descriptive information about the style, structural information (e.g., layers and attributes), and so forth to allow users to discover and select existing styles for their data.
+
+* Each style is available as one or more stylesheets - the representation of a style in an encoding like OGC SLD 1.0 or Mapbox Style. Clients will use the stylesheet of a style that fits best based on the capabilities of available tools and their preferences.
+
+A basic request workflow could look like the diagram bellow, where a client requests the list of styles, and then asks for more information about a particular style, before fetching the stylesheet. In alternative, a client can request the stylesheet directly after the styles request. 
+
+![image](../assets/images/styles-workflow.png){width="80.0%"}
+
+### Landing page
+
+Given OGC API - Styles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#landing-page) deep dive
+for a detailed explanation of an example implementation.
+
+### Conformance declarations
+
+Given OGC API - Styles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#conformance-declarations) deep dive
+for a detailed explanation of an example implementation.
+
+### API Definition
+
+Given OGC API - Styles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#api-definition) deep dive
+for a detailed explanation of an example implementation.
+
+### Style list
+
+This endpoint, lists the styles available on the server, and for each describes basic information like its id, title and description, as well as the available stylesheets.
+
+Below is an extract from the response to the request <https://demo.ldproxy.net/daraa/styles?f=json>.
+
+```json
+{
+  "styles": [
+    {
+      "title": "night",
+      "id": "night",
+      "links": [
+        {
+          "rel": "describedby",
+          "title": "Style metadata",
+          "href": "https://demo.ldproxy.net/daraa/styles/night/metadata"
+        },
+        {
+          "rel": "stylesheet",
+          "type": "text/html",
+          "title": "Web map using the style",
+          "href": "https://demo.ldproxy.net/daraa/styles/night?f=html"
+        },
+        {
+          "rel": "stylesheet",
+          "type": "application/vnd.mapbox.style+json",
+          "title": "Style in format 'Mapbox'",
+          "href": "https://demo.ldproxy.net/daraa/styles/night?f=mbs"
+        }
+      ]
+    },
+```
+
+In this response, we can see that the links to retrieve more information about the style (e.g.: style metadata) and to retrieve it as a stylesheet.
+
+### Style metadata
+
+Requests the metadata for a particular style, so that a client has more information about a potential style of interest. The response format (typically HTML or JSON, but extensions can easily supply others) is determined using HTTP content negotiation.
+
+In the sample bellow, we request information about the *topographic* style. The full response can be retrieved using this request:
+<https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=json>
+
+```json
+{
+  "title": "topographic",
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/json",
+      "title": "This document",
+      "href": "https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=html"
+    }
+  ],
+  "id": "topographic",
+  "scope": "style",
+  "stylesheets": [
+    {
+      "title": "Mapbox",
+      "version": "8",
+      "specification": "https://docs.mapbox.com/mapbox-gl-js/style-spec/",
+      "native": true,
+      "link": {
+        "rel": "stylesheet",
+        "type": "application/vnd.mapbox.style+json",
+        "title": "Style in format 'Mapbox'",
+        "href": "https://demo.ldproxy.net/daraa/styles/topographic?f=mbs"
+      }
+    }
+  ],
+```
+
+### Fetch Style
+
+This request returns a stylesheet. If multiple encodings are available, the style encoding is determined using HTTP content negotiation. For instance, a client looking for a Mapbox stylesheet, could request the `application/vnd.mapbox.style+json` type.
+
+In the example bellow, the *topographic* style is retrieved as a Mapbox stylesheet. 
+
+<https://demo.ldproxy.net/daraa/styles/topographic?f=mbs>
+
+This sample shows an extract of the Mapbox spec 8.0, response.
+
+```json
+    "daraa": {
+      "type": "vector",
+      "tiles": [
+        "https://demo.ldproxy.net/daraa/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"
+      ],
+      "bounds": [
+        35.755073,
+        32.357351,
+        37.205276,
+        33.26714
+      ],
+      "scheme": "xyz",
+      "maxzoom": 16
+    }
+  },
+  "sprite": "https://demo.ldproxy.net/daraa/resources/sprites",
+  "glyphs": "https://go-spatial.github.io/carto-assets/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "Grey Background",
+      "type": "background",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "background-color": "#d3d3d3"
+      }
+    },
+    {
+      "id": "OSM",
+      "type": "raster",
+      "source": "osm",
+      "layout": {
+        "visibility": "none"
+      }
+    },
+    {
+      "id": "agriculturesrf",
+      "type": "fill",
+      "source": "daraa",
+      "source-layer": "AgricultureSrf",
+      "paint": {
+        "fill-color": "#7ac5a5"
+      }
+    },
+    {
+      "id": "vegetationsrf",
+      "type": "fill",
+      "source": "daraa",
+      "source-layer": "VegetationSrf",
+      "paint": {
+        "fill-color": "#C2E4B9"
+      }
+    },
+    {
+      "id": "settlementsrf.1",
+      "type": "line",
+      "source": "daraa",
+      "source-layer": "SettlementSrf",
+      "paint": {
+        "line-color": "#000000",
+        "line-width": 2
+      }
+    },
+    {
+      "id": "settlementsrf.2",
+      "type": "fill",
+      "source": "daraa",
+      "source-layer": "SettlementSrf",
+      "paint": {
+        "fill-color": "#E8C3B2"
+      }
+    },
+    {
+      "id": "militarysrf",
+      "type": "fill",
+      "source": "daraa",
+      "source-layer": "MilitarySrf",
+      "paint": {
+        "fill-color": "#f3602f",
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "culturesrf",
+      "type": "fill",
+      "source": "daraa",
+      "source-layer": "CultureSrf",
+      "paint": {
+        "fill-color": "#ab92d2",
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "hydrographycrv",
+      "type": "line",
+      "source": "daraa",
+      "source-layer": "HydrographyCrv",
+      "filter": [
+        "==",
+        "BH140",
+        [
+          "get",
+          "F_CODE"
+        ]
+      ],
+      "paint": {
+        "line-color": "#00A0C6",
+        "line-width": [
+          "step",
+          [
+            "zoom"
+          ],
+          1,
+          8,
+          2,
+          13,
+          4
+        ]
+      }
+    },
+```
