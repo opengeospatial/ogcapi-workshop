@@ -218,6 +218,11 @@ A basic request workflow could look like the diagram bellow, where a client requ
 
 ![image](../assets/images/styles-workflow.png){width="80.0%"}
 
+!!! note
+
+    This section will focus on the resources related to requirements class "Core": fetching styles, style and style metadata.  
+
+
 ### Landing page
 
 Given OGC API - Styles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#landing-page) deep dive
@@ -444,3 +449,7 @@ This sample shows an extract of the Mapbox spec 8.0, response.
       }
     },
 ```
+
+## Summary
+
+The OGC API - Styles candidate Standard describes an API for accessing and managing styles for rendering geospatial data on the web. It provides building blocks for interacting with styles in multiple style encodings and with metadata for the styles. This deep dive provided an overview of the candidate Standard and the various resources and endpoints that are supported.
