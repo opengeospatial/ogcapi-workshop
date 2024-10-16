@@ -32,7 +32,10 @@ title: OGC API - Styles
 
 > History
 
-The need for users and software to be able to control the visual portrayal of geospatial data was already present in the first generation of OGC Web Services. A profile of the [Web Map Service (WMS)](https://www.ogc.org/standard/wms/) Standard was published in 2007, for the definition of a [Styled Layer Descriptor (SLD)](https://www.ogc.org/standard/sld/); this profile defined an encoding that extends the WMS standard to allow user-defined symbolization and coloring of geographic feature and coverage data. 
+The need for users and software to be able to control the visual portrayal of geospatial data was already present in the first generation of OGC Web Services. 
+
+In 2002, [Web Map Service (WMS)](https://www.ogc.org/standard/wms/) 1.1.0 introduced enhanced support for styles using the [Styled Layer Descriptor (SLD)](https://www.ogc.org/standard/sld/) [Implementation Specification](https://portal.ogc.org/files/?artifact_id=1188). This specification extended WMS to allow user-defined symbolization of feature data. In 2007, SLD became a profile of WMS.
+
 The evolution of the new web APIs also brought new capabilities in terms of changing, sharing and rendering styles, which were explored in OGC Testbed-15 Open Portrayal Framework (OPF), in 2019. This work was documented in the [OGC Testbed-15: Styles API Engineering Report](https://docs.ogc.org/per/19-010r2.html). The following year, in 2020, the charter for the OGC API - Styles Standards Working Group was drafted.
 
 > Versions
@@ -68,7 +71,7 @@ The draft Standard also defines a conceptual model for styles, style encodings a
 
 #### Relation to other standards
 
-OGC API - styles is designed to be combined with other OGC API Standards, in order to produce styled geospatial data.
+OGC API - Styles is designed to be combined with other OGC API Standards, in order to produce styled geospatial data.
 Feature or coverage data published through OGC APIs, can be styled on client side with styles produced by OGC API - Styles editors. This is the case of OGC API - Features, OGC API - Coverages or OGC API - Tiles (vector tiles).
 OGC API - Maps has support for fetching styles and rendering geospatial data (features or coverages) on server side. 
 
@@ -198,7 +201,7 @@ Alternatively, the same data can be retrieved in GeoJSON format, through
 the request
 <https://demo.ldproxy.net/daraa/styles?f=json>
 
-These styles can be rendered by a client application, or applied directly by other OGC APIs that support styles. The example bellow shows the *Night* style, being applied by OGC API - maps.
+These styles can be rendered by a client application, or applied directly by other OGC APIs that support styles. The example below shows the *Night* style, being applied by OGC API - Maps.
 <https://demo.ldproxy.net/daraa/styles/night?f=html#12.24/32.6264/36.1033>
 
 <iframe
@@ -214,7 +217,7 @@ Styles are the main resources of this API.
 
 * Each style is available as one or more stylesheets - the representation of a style in an encoding like OGC SLD 1.0 or Mapbox Style. Clients will use the stylesheet of a style that fits best based on the capabilities of available tools and their preferences.
 
-A basic request workflow could look like the diagram bellow, where a client requests the list of styles, and then asks for more information about a particular style, before fetching the stylesheet. In alternative, a client can request the stylesheet directly after the styles request. 
+A basic request workflow could look like the diagram below, where a client requests the list of styles, and then asks for more information about a particular style, before fetching the stylesheet. In alternative, a client can request the stylesheet directly after the styles request. 
 
 ![image](../assets/images/styles-workflow.png){width="80.0%"}
 
@@ -278,7 +281,7 @@ In this response, we can see that the links to retrieve more information about t
 
 Requests the metadata for a particular style, so that a client has more information about a potential style of interest. The response format (typically HTML or JSON, but extensions can easily supply others) is determined using HTTP content negotiation.
 
-In the sample bellow, we request information about the *topographic* style. The full response can be retrieved using this request:
+In the sample below, we request information about the *topographic* style. The full response can be retrieved using this request:
 <https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=json>
 
 ```json
@@ -320,7 +323,7 @@ In the sample bellow, we request information about the *topographic* style. The 
 
 This request returns a stylesheet. If multiple encodings are available, the style encoding is determined using HTTP content negotiation. For instance, a client looking for a Mapbox stylesheet, could request the `application/vnd.mapbox.style+json` type.
 
-In the example bellow, the *topographic* style is retrieved as a Mapbox stylesheet. 
+In the example below, the *topographic* style is retrieved as a Mapbox stylesheet. 
 
 <https://demo.ldproxy.net/daraa/styles/topographic?f=mbs>
 
