@@ -34,7 +34,7 @@ title: OGC API - Styles
 
 The need for users and software to be able to control the visual portrayal of geospatial data was already present in the first generation of OGC Web Services. 
 
-In 2002, [Web Map Service (WMS)](https://www.ogc.org/standard/wms/) 1.1.0 introduced enhanced support for styles using the [Styled Layer Descriptor (SLD)](https://www.ogc.org/standard/sld/) [Implementation Specification](https://portal.ogc.org/files/?artifact_id=1188). This specification extended WMS to allow user-defined symbolization of feature data. In 2007, SLD became a profile of WMS.
+In 2001, [Web Map Service (WMS)](https://www.ogc.org/standard/wms/) 1.1.0 introduced enhanced support for styles using the [Styled Layer Descriptor (SLD)](https://www.ogc.org/standard/sld/) [Implementation Specification](https://portal.ogc.org/files/?artifact_id=1188). This specification extended WMS to allow user-defined symbolization of feature data. In 2007, SLD became a profile of WMS.
 
 The evolution of the new web APIs also brought new capabilities in terms of changing, sharing and rendering styles, which were explored in OGC Testbed-15 Open Portrayal Framework (OPF), in 2019. This work was documented in the [OGC Testbed-15: Styles API Engineering Report](https://docs.ogc.org/per/19-010r2.html). The following year, in 2020, the charter for the OGC API - Styles Standards Working Group was drafted.
 
