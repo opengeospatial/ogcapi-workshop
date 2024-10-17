@@ -15,6 +15,7 @@ nav:
         - OGC API - Features: api-deep-dive/features.md
         - OGC API - Tiles: api-deep-dive/tiles.md
         - OGC API - Maps: api-deep-dive/maps.md
+        - OGC API - Styles: api-deep-dive/styles.md
 #        - OGC API - Coverages: api-deep-dive/coverages.md
         - OGC API - Processes: api-deep-dive/processes.md
         - OGC API - Records: api-deep-dive/records.md
