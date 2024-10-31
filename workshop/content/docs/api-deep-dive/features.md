@@ -177,13 +177,13 @@ publishes vector geospatial data through an interface that conforms to
 OGC API - Features.
 
 An example request that can be used to retrieve data from the Portuguese Points of Interest feature collection is
-<https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi?f=html>
+<https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi/items?f=html>
 
 Note that the response to the request is HTML in this case.
 
 Alternatively, the same data can be retrieved in GeoJSON format, through
 the request
-<https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi?f=json>
+<https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi/items?f=json>
 
 A client application can then retrieve the GeoJSON document and display
 or process it.
