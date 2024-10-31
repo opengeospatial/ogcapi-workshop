@@ -572,7 +572,7 @@ In this section we will demonstrate how-to access OGC API - Tiles using the Open
 
 #### OpenLayers 
 
-[OpenLayers](https://openlayers.org) started supporting OGC Vector tiles from V.7., when `OGCVectorTile` Source was introduced..
+The latest versions of [OpenLayers](https://openlayers.org) supports both OGC Vector tiles and Map Tiles, with the [`OGCVectorTile`](https://openlayers.org/en/latest/apidoc/module-ol_source_OGCVectorTile-OGCVectorTile.html) and the [`OGCMapTile`](https://openlayers.org/en/latest/apidoc/module-ol_source_OGCMapTile-OGCMapTile.html) classes.
 
 An example of this can be seen on the [example page on the OpenLayers website](https://openlayers.org/en/latest/examples/ogc-vector-tiles.html).
 
@@ -607,6 +607,8 @@ const map = new Map({
 
 ```
 ![vector_tiles](../assets/images/vector_tiles.png){width="100.0%"}
+
+[This](https://ogcincubator.github.io/ogcapi-tiles-map/) example shows both, Map and Vector tiles, that do not use the WGS84 CRS.
 
 <!-- #### QGIS
 

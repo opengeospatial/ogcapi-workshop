@@ -185,6 +185,9 @@ the following table.
     
     Each of the resources needs to be created (and eventually deleted) separately. 
 
+
+    ![sprite](../assets/images/sprites.png){width="60.0%"}
+
 ### Example
 
 This [demonstration
