@@ -71,6 +71,10 @@ This workshop is always provided live at [ogcapi-workshop.ogc.org](https://ogcap
 
 The workshop contents, wiki and issue tracker are managed on GitHub at [github.com/opengeospatial/ogcapi-workshop](https://github.com/opengeospatial/ogcapi-workshop).
 
+## Printing this workshop
+
+To print this workshop, navigate to the [print page](/print_page) and select *File > Print > Save as PDF*.
+
 # Support
 
 For issues/bugs/suggestions or improvements/contributions, please use the [GitHub issue tracker](https://github.com/opengeospatial/ogcapi-workshop/issues).
