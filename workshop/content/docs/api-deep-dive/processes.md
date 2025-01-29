@@ -57,9 +57,10 @@ imagery analysis and several others.
 
   Test suites are available for:
 
-  * [OGC API - Processes - Part 1 (DRAFT)](https://github.com/opengeospatial/ets-ogcapi-processes10)
-  * [OGC API - Processes - Part 2 (DRAFT)](https://github.com/opengeospatial/ets-ogcapi-processes10-part2)
+  * OGC API - Processes - Part 1
   
+  All of the test suites are available from the [OGC Validator](https://cite.ogc.org/teamengine/).
+
 > Implementations
 
   Implementations can be found on the [implementations page](https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc).
