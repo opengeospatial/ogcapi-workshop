@@ -53,7 +53,9 @@ by this standard and selected by the client.
 
   A test suite is available for:
 
-  * [OGC API - Environmental Data Retrieval - Part 1](https://github.com/opengeospatial/ets-ogcapi-edr10)
+  * OGC API - Environmental Data Retrieval - Part 1
+
+  All of the test suites are available from the [OGC Validator](https://cite.ogc.org/teamengine/).  
 
 > Implementations
 
