@@ -19,12 +19,10 @@ These Standards are being constructed as "building blocks" that can be used to a
     <tr>
         <td><a href="https://noc.social/@doublebyte"><img width="150" src="assets/images/joana-profile.jpeg"/></a></td>
         <td><a href="https://twitter.com/tomkralidis"><img width="150" src="https://avatars.githubusercontent.com/u/910430?v=4"/></a></td>
-        <td><a href="https://twitter.com/krishnaglodha"><img width="150" src="https://avatars.githubusercontent.com/u/47075664?v=4"/></a></td>
     </tr>
     <tr>
         <td><a href="https://github.com/doublebyte1">Joana Simoes (OGC)</a></td>
         <td><a href="https://github.com/tomkralidis">Tom Kralidis (OSGeo)</a></td>
-        <td><a href="https://github.com/krishnaglodha">Krishna Lodha (Rotten Grapes)</a></td>
     </tr>
 </table>
 
@@ -72,6 +70,10 @@ JSON
 This workshop is always provided live at [ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org).
 
 The workshop contents, wiki and issue tracker are managed on GitHub at [github.com/opengeospatial/ogcapi-workshop](https://github.com/opengeospatial/ogcapi-workshop).
+
+## Printing this workshop
+
+To print this workshop, navigate to the [print page](/print_page) and select *File > Print > Save as PDF*.
 
 # Support
 
