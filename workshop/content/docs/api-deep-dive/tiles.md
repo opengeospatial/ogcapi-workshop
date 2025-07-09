@@ -279,12 +279,12 @@ for a detailed explanation of an example implementation.
 
 ### Collections
 
-Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collections) deep dive
+Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#feature-collections) deep dive
 for a detailed explanation of an example implementation.
 
 ### Collection
 
-Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collection) deep dive
+Given OGC API - Tiles uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#feature-collection) deep dive
 for a detailed explanation of an example implementation.
 
 ### Tiling Schemes

@@ -151,7 +151,7 @@ for a detailed explanation of an example implementation.
 
 ### Collections
 
-Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collections) deep dive
+Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#feature-collections) deep dive
 for a detailed explanation of an example implementation.
 
 OGC API - Maps collection descriptions provide a number of optional properties, including:
@@ -240,7 +240,7 @@ with various query parameters applied.
 
 ### Collection
 
-Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#collection) deep dive
+Given OGC API - Maps uses OGC API - Common as a building block, please see the [OGC API - Features](features.md#feature-collection) deep dive
 for a detailed explanation of an example implementation, as well as the [Collections](#collections) description.
 
 To inspect the specific collection, run the request <https://demo.pygeoapi.io/master/collections/mapserver_world_map?f=json>.

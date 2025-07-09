@@ -73,7 +73,7 @@ The workshop contents, wiki and issue tracker are managed on GitHub at [github.c
 
 ## Printing this workshop
 
-To print this workshop, navigate to the [print page](/print_page) and select *File > Print > Save as PDF*.
+To print this workshop, navigate to the [print page](https://ogcapi-workshop.ogc.org/print_page/) and select *File > Print > Save as PDF*.
 
 # Support
 
