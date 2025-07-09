@@ -43,6 +43,7 @@ theme:
 
 plugins:
     - search
+    - with-pdf
     - print-site
 
 markdown_extensions:
