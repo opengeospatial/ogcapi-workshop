@@ -25,12 +25,7 @@ jobs:
 
       - name: Mock mkdocs config without the with-pdf plugin 🧰
         run: |
-          awk '
-            BEGIN { skip=0 }
-            /^\s*- with-pdf/ { skip=1; next }
-            /^[^ ]/ { skip=0 }
-            { if (!skip) print }
-          ' mkdocs.yml > mkdocs-strict.yml
+          awk '!/with-pdf/' mkdocs.yml > mkdocs-strict.yml
 
       - name: Build 📦
         #run: mkdocs build --strict
