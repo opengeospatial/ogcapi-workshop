@@ -1,0 +1,2036 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OGC APIs are designed to make it easy for ANYONE to provide and use geospatial data on the web, and to integrate this data with ANY other type of information.  This workshop describes OGC APIs in support of discovery, access, visualization and processing in support of FAIR data principles.">
+      
+      
+        <meta name="author" content="Open Geospatial Consortium">
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/features/">
+      
+      
+        <link rel="prev" href="../common/">
+      
+      
+        <link rel="next" href="../tiles/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>OGC API - Features - OGC API workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/termynal.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="ogcapi-workshop" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-api-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="OGC API workshop" class="md-header__button md-logo" aria-label="OGC API workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OGC API workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC API - Features
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="OGC API workshop" class="md-nav__button md-logo" aria-label="OGC API workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="logo">
+
+    </a>
+    OGC API workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Background and context
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview and main concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance and certification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API deep dive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API deep dive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Primer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Common
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Features
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Features
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relation-to-other-ogc-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to other OGC Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landing page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-declarations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance declarations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature collections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leaflet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaflet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenLayers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      QGIS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdal" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDAL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      GeoJSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Tiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Styles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environmental-data-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Environmental Data Retrieval
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensorthings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC SensorThings API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transition and migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting involved
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conclusion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relation-to-other-ogc-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to other OGC Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landing page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-declarations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance declarations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature collections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leaflet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaflet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenLayers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      QGIS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdal" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDAL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      GeoJSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ogc-api-features">OGC API - Features</h1>
+<div class="admonition abstract">
+<p class="admonition-title">Audience</p>
+<p>Students that are familiar with web services and APIs, and want to have
+an overview of OGC API - Features standard</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Learning Objectives</p>
+<p>At the completion of the module students will be able to:</p>
+<ul>
+<li>Explain what the OGC API - Features standard is</li>
+<li>Describe what can be done with OGC API - Features implementations</li>
+<li>Understand the main resources offered by OGC API - Features implementations</li>
+<li>Understand how to retrieve a description of the capabilities of an OGC API - Features implementation</li>
+<li>Understand how to issue requests to an implementation of OGC API - Features</li>
+<li>Be able to find an OGC API - Features endpoint and use it through a client</li>
+</ul>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://features.developer.ogc.org/">OGC API - Features</a> is a multi-part standard that offers the capability
+to create, modify, and query spatial data on the Web and specifies
+requirements and recommendations for APIs that want to follow a standard
+way of sharing feature data. <strong>OGC API - Features - Part 1: Core</strong> describes the mandatory capabilities that every
+implementing service must support and is restricted to read-access to
+spatial data. Additional capabilities like support for different CRS, richer queries and creating and modifying data are specified in additional parts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial module is not intended to be a replacement to the actual
+<strong>OGC API - Features - Part 1: Core</strong> standard. The tutorial
+intentionally focuses on a subset of capabilities in order to get the
+student started with using the standard. Please refer to the <a href="https://docs.ogc.org/is/17-069r4/17-069r4.html"><strong>OGC API -
+Features - Part 1: Core</strong> standard</a> for additional detail.</p>
+</div>
+<h3 id="background">Background</h3>
+<blockquote>
+<p>History</p>
+</blockquote>
+<p>While in draft form and prior to February 2019, <strong>OGC API -
+  Features - Part 1: Core</strong> was referred to as WFS3.0.</p>
+<blockquote>
+<p>Versions</p>
+</blockquote>
+<p><strong>OGC API - Features - Part 1: Core</strong> version 1.0.1, <strong>OGC API - Features - Part 2: Coordinate Reference Systems by Reference</strong> version 1.0.1 and <strong>OGC API - Features - Part 3: Filtering</strong> version 1.0.1 are the current
+  latest versions</p>
+<blockquote>
+<p>Test suite</p>
+</blockquote>
+<p>Test suites are available for:</p>
+<ul>
+<li>OGC API - Features - Part 1</li>
+<li>OGC API - Features - Part 2</li>
+</ul>
+<p>All of the test suites are available from the <a href="https://cite.ogc.org/teamengine/">OGC Validator</a>.</p>
+<blockquote>
+<p>Implementations</p>
+</blockquote>
+<p>Implementations can be found on the <a href="https://github.com/opengeospatial/ogcapi-features/tree/master/implementations">implementations page</a>.</p>
+<h4 id="usage">Usage</h4>
+<p>The standard provides a standard interface for requesting vector
+geospatial data consisting of geographic features and their properties.
+The benefit of this is that client applications can request source data
+from multiple implementations of the API, and then render the data for
+display or process the data further as part of a workflow. The standard
+enables the data to be accessed consistently with other data. Feature
+properties encoded using common data types such as text strings, date
+and time can also be accessed consistently.</p>
+<ul>
+<li><strong>OGC API - Features - Part 1: Core</strong> specifies discovery and query
+operations that are implemented using the HTTP GET method. Support for
+additional methods (in particular POST, PUT, DELETE, PATCH) will be
+specified in additional parts. Government agencies, private
+organisations and academic institutes use this standard to publish
+vector geospatial datasets in a way that makes it easier for receiving
+organisations to compile new maps or conduct analysis on the supplied
+data. In Part 1 the default spatial Coordinate Reference System (CRS) is WGS 84 longitude/latitude with or without height.</li>
+<li>
+<p><strong>OGC API - Features - Part 2: Coordinate Reference Systems By Reference</strong> extends Part 1 to support presenting geometry-valued properties in a response document in additional CRSs. Each supported CRS must be identified by a URI such as: <code>http://www.opengis.net/def/crs/EPSG/0/4326</code>.</p>
+</li>
+<li>
+<p><strong>OGC API - Features - Part 3: Filtering</strong> defines query parameters (<code>filter</code>, <code>filter-lang</code>, <code>filter-crs</code>) to specify filter criteria in a request to an API and the <code>Queryables</code> resource that declares the properties of data in a collection that can be used in filter expressions.</p>
+</li>
+</ul>
+<p>In addition to the approved parts above, The OGC API - Features Standards Working Group (SWG) is working on the following drafts:</p>
+<ul>
+<li>
+<p><em>Draft</em> <strong>OGC API - Features - Part 4: Create, Replace, Update and Delete</strong> defines the behaviour of an API that allows resource instances to be added, replaced, modified and/or removed for a collection.</p>
+</li>
+<li>
+<p><em>Draft</em> <strong>OGC API - Features - Part 5: Schemas</strong> specifies how features can be described by a logical schema and how such schemas are published in an OGC Web API implementation.</p>
+</li>
+<li>
+<p><em>Draft</em> <strong>OGC API - Features - Part 6: Property Selection</strong> specifies how the representation of a resource can be reduced to selected properties of the resource using a query parameter.</p>
+</li>
+<li>
+<p><em>Draft</em> <strong>OGC API - Features - Part 7: Geometry Simplification</strong> specifies how the representation of geometry can be simplified using a query parameter.</p>
+</li>
+<li>
+<p><em>Draft</em> <strong>OGC API - Features - Part 8: Sorting</strong> defines query parameters (sortby) to specify sorting criteria in a request to an API and the Sortables resource that declares the properties of data in a collection that can be used in sort by expressions.</p>
+</li>
+<li>
+<p><em>Draft</em> <strong>OGC API - Features - Part 9: Text Search</strong> adds a query parameter to the OGC API Features suite of standards to support text or keyword searches on text fields.</p>
+</li>
+<li>
+<p><em>Draft</em> <strong>OGC API - Features - Part 10: Search/Queries</strong> adds support to dynamically fetch features from multiple collections at a time.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The rest of this tutorial will focus on the core part of the standard.</p>
+</div>
+<h4 id="relation-to-other-ogc-standards">Relation to other OGC Standards</h4>
+<ul>
+<li>OGC Web Feature Service Interface Standard (WFS): The WFS standard
+    is more appropriate when working with client applications that only
+    support classic OGC Web Services. Note as well that WFS adopts the
+    Geography Markup Language (<a href="https://www.ogc.org/standards/gml">GML</a>)
+    as a default data format. In contrast, OGC API - Features includes
+    recommendations to support <a href="https://html.spec.whatwg.org">HTML</a> and
+    <a href="https://geojson.org">GeoJSON</a> as encodings, where practical.
+    Implementations of OGC API - Features may also optionally support
+    GML, as well as other vector formats.</li>
+</ul>
+<h3 id="overview-of-resources">Overview of Resources</h3>
+<p><strong>OGC API - Features - Part 1: Core</strong> defines the resources listed in
+the following table.</p>
+<table>
+  <tr>
+    <th>Resource</th>
+    <th>Method</th>
+    <th>Path</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>Landing page</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>This is the top-level resource, which serves as an entry point.</td>
+  </tr>
+  <tr>
+    <td>Conformance declaration</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>This resource presents information about the functionality that is implemented by the server.</td>
+  </tr>
+  <tr>
+    <td>API definition</td>
+    <td>GET</td>
+    <td>/api</td>
+    <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
+  </tr>
+  <tr>
+    <td>Feature collections</td>
+    <td>GET</td>
+    <td>/collections</td>
+    <td>This resource lists the feature collections that are offered through the API.</td>
+  </tr>
+  <tr>
+    <td>Feature collection</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}</td>
+    <td>This resource describes the feature collection identified in the path.</td>
+  </tr>
+  <tr>
+    <td>Features</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/items</td>
+    <td>This resource presents the features that are contained in the collection.</td>
+  </tr>
+  <tr>
+    <td>Feature</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/items/{featureId}</td>
+    <td>This resource presents the feature that is identified in the path</td>
+  </tr>
+</table>
+
+<h3 id="example">Example</h3>
+<p>This <a href="https://demo.pygeoapi.io/master">demonstration
+server</a>
+publishes vector geospatial data through an interface that conforms to
+OGC API - Features.</p>
+<p>An example request that can be used to retrieve data from the Portuguese Points of Interest feature collection is
+<a href="https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi/items?f=html">https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi/items?f=html</a></p>
+<p>Note that the response to the request is HTML in this case.</p>
+<p>Alternatively, the same data can be retrieved in GeoJSON format, through
+the request
+<a href="https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi/items?f=json">https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi/items?f=json</a></p>
+<p>A client application can then retrieve the GeoJSON document and display
+or process it.</p>
+<h2 id="resources">Resources</h2>
+<p>This section provides basic information about the types of resources
+that OGC API - Features offers.</p>
+<p>Each resource provides <strong>links</strong> to related resources. This enables a
+client application to navigate the resources, from the landing page
+through to the individual features. The server identifies the
+relationship between a resource and other linked resources through a
+<strong>link relation type</strong>, represented by the attribute <code>rel</code>. The link
+relation types used by implementations of the <strong>OGC API - Features -
+Part 1: Core</strong> can be found in <a href="http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations">Section
+5.2</a>
+of the standard.</p>
+<h3 id="landing-page">Landing page</h3>
+<p>The landing page is the top-level resource that serves as an entry
+point. A client application needs to know the location of the landing
+page of the server. From the landing page, the client application can
+then retrieve links to the Conformance declaration, Collection and API
+definition paths. An example landing page is at
+<a href="https://demo.ldproxy.net/daraa?f=json">https://demo.ldproxy.net/daraa?f=json</a></p>
+<p>The link to the API definition is identified through the
+<code>service-desc</code> and <code>service-doc</code> link relation types.</p>
+<p>The link to the Conformance declaration is identified through the
+<code>conformance</code> link relation type.</p>
+<p>The link to the Collections is identified through the <code>data</code> link
+relation type.</p>
+<p>An extract from the landing page of a demo server is shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Daraa&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;attribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US National Geospatial Intelligence Agency (NGA)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa?f=json&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-desc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/vnd.oai.openapi+json;version=3.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Definition of the API in OpenAPI 3.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/api?f=json&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conformance&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OGC API conformance classes implemented by this server&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/conformance&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access the data&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="conformance-declarations">Conformance declarations</h3>
+<p>An implementation of OGC API - Features describes the capabilities that
+it supports by declaring which conformance classes it implements. The
+Conformance declaration states the conformance classes from standards or
+community specifications, identified by a URI, that the API conforms to.
+Clients can then use this information, although they are not required
+to. Accessing the Conformance declaration using HTTP GET returns the
+list of URIs of conformance classes implemented by the server.
+Conformance classes describe the behavior a server should implement in
+order to meet one or more sets of requirements specified in a standard.</p>
+<p>Below is an extract from the response to the request
+<a href="https://demo.ldproxy.net/daraa/conformance?f=json">https://demo.ldproxy.net/daraa/conformance?f=json</a></p>
+<p>Notice that the example shows a link relation type called <code>alternate</code>
+which identifies a way to retrieve an alternative representation of the
+information provided by the resource. In this case the <code>alternate</code>
+link relation is referencing an HTML representation of the conformance
+declaration.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as HTML&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/conformance?f=html&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/conformance?f=json&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="nt">&quot;conformsTo&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/html&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-2/1.0/conf/crs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/features-filter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/filter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/queryables&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-features-3/0.0/conf/queryables-query-parameters&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="api-definition">API Definition</h3>
+<p>The API definition describes the capabilities of the server. It can be used by developers to understand the API, by software clients to connect to the server, or by development tools to support the implementation of servers and clients. Accessing the API definition using HTTP GET returns a description of the API. </p>
+<p>There are conformance classes to provide the API definition using <a href="https://ogcapi-workshop.ogc.org/overview-and-main-concepts/#openapi">Open API</a>. Some servers also return a human-readable representation of the definition in HTML, using tools such as Redoc or Swagger. </p>
+<p>This is an extract of an <a href="https://demo.ldproxy.net/daraa/api?f=json">API definition</a>, which uses Open API 3:</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;openapi&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.0.3&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Daraa&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.\n\n_Note: This API is based on API building blocks (e.g., operations, query parameters, or headers) specified in OGC API Standards or drafts of those standards. For more information about OGC API Standards, see [https://ogcapi.ogc.org](https://ogcapi.ogc.org/). Some building blocks of this API can be preliminary and may change in this API, because they are not yet based on a stable specification. The maturity is stated for each building block._&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;contact&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;interactive instruments GmbH&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;email&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mail@interactive-instruments.de&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The dataset was provided by the US National Geospatial Intelligence Agency (NGA) for development, testing and demonstrations in initiatives of the Open Geospatial Consortium (OGC). For any reuse of the data outside this API, please contact NGA.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa&quot;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;tags&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;paths&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;/&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;get&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;tags&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;Capabilities&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;summary&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;landing page&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The landing page provides links to the API definition (link relations `service-desc` and `service-doc`), the Conformance declaration (path `/conformance`, link relation `conformance`), and other resources in the API.\n\n_Maturity: `STABLE`_&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;externalDocs&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The specification that describes this operation: OGC API - Features - Part 1: Core&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.ogc.org/is/17-069r4/17-069r4.html&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;operationId&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getLandingPage&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;$ref&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/components/parameters/fCommon&quot;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;responses&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;200&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The operation was executed successfully.&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;application/json&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;$ref&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/components/schemas/LandingPage&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">&quot;text/html&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;$ref&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/components/schemas/htmlSchema&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;400&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bad Request&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;406&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Not Acceptable&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;500&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Server Error&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;x-maturity&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STABLE_OGC&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+</code></pre></div>
+You can access an HTML representation of the API definition <a href="https://demo.ldproxy.net/daraa/api?f=html">here</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The use of <code>/api</code> on the server is optional and the API definition may be hosted in a different path or on completely separate server.</p>
+</div>
+<h3 id="feature-collections">Feature collections</h3>
+<p>Data offered through an implementation of <strong>OGC API - Features - Part 1:
+Core</strong> is organized into one or more feature collections. The
+<code>Collections</code> resource provides information about and access to the
+list of collections.</p>
+<p>For each collection, there is a link to the detailed description of the
+collection (represented by the path <strong>/collections/{collectionId}</strong> and
+link relation <strong>self</strong>).</p>
+<p>For each collection, there is a link to the features in the collection
+(represented by the path <strong>/collections/{collectionId}/items</strong> and link
+relation <strong>items</strong>) and other information about the collection. The
+following information is provided by the server to describe each
+collection:</p>
+<ul>
+<li>A local identifier for the collection that is unique for the dataset</li>
+<li>A list of coordinate reference systems (CRS) in which geometries may
+    be returned by the server</li>
+<li>An optional title and description for the collection</li>
+<li>An optional extent that can be used to provide an indication of the
+    spatial and temporal extent of the collection</li>
+<li>An optional indicator about the type of the items in the collection
+    (the default value, if the indicator is not provided, is
+    <code>feature</code>).</li>
+</ul>
+<p>Below is an extract from the response to the request
+<a href="https://demo.ldproxy.net/daraa/collections?f=json">https://demo.ldproxy.net/daraa/collections?f=json</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Daraa&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a test dataset used in the Open Portrayal Framework thread in the OGC Testbed-15 as well as the OGC Vector Tiles Pilot Phase 2. The data is based on OpenStreetMap data from the region of Daraa, Syria, converted to the Topographic Data Store schema of NGA.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;collections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aeronautic (Curves)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aeronautical Facilities: Information about an area specifically designed and constructed for landing, accommodating, and launching military and/or civilian aircraft, rockets, missiles and/or spacecraft.&lt;br/&gt;Aeronautical Aids to Navigation: Information about electronic equipment, housings, and utilities that provide positional information for direction or otherwise assisting in the navigation of airborne aircraft.&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AeronauticCrv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;spatial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">[</span><span class="mf">36.395158</span><span class="p">,</span><span class="w"> </span><span class="mf">32.693301</span><span class="p">,</span><span class="w"> </span><span class="mf">36.430814</span><span class="p">,</span><span class="w"> </span><span class="mf">32.717333</span><span class="p">]</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;storageCrs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;items&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/geo+json&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access the features in the collection &#39;Aeronautic (Curves)&#39; as GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The &#39;Aeronautic (Curves)&#39; feature collection&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Other (Points)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2s_p&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;spatial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">[</span><span class="mf">35.939604</span><span class="p">,</span><span class="w"> </span><span class="mf">32.544963</span><span class="p">,</span><span class="w"> </span><span class="mf">36.443695</span><span class="p">,</span><span class="w"> </span><span class="mf">32.984648</span><span class="p">]</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;storageCrs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;items&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/geo+json&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access the features in the collection &#39;Other (Points)&#39; as GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/o2s_p/items?f=json&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The &#39;Other (Points)&#39; feature collection&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/o2s_p&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+</code></pre></div>
+<h3 id="feature-collection">Feature collection</h3>
+<p>The <strong>Collection</strong> resource provides detailed information about the
+collection identified in a request.</p>
+<p>Below is an extract from the response to the request
+<a href="https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json">https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aeronautic (Curves)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aeronautical Facilities: Information about an area specifically designed and constructed for landing, accommodating, and launching military and/or civilian aircraft, rockets, missiles and/or spacecraft.&lt;br/&gt;Aeronautical Aids to Navigation: Information about electronic equipment, housings, and utilities that provide positional information for direction or otherwise assisting in the navigation of airborne aircraft.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AeronauticCrv&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;spatial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">36.395158</span><span class="p">,</span><span class="w"> </span><span class="mf">32.693301</span><span class="p">,</span><span class="w"> </span><span class="mf">36.430814</span><span class="p">,</span><span class="w"> </span><span class="mf">32.717333</span><span class="p">]</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;temporal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;2011-03-16T14:51:12Z&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;2015-09-11T19:15:35Z&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;trs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/uom/ISO-8601/0/Gregorian&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;itemType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;feature&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/def/crs/EPSG/0/3395&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/def/crs/EPSG/0/3857&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/def/crs/EPSG/0/4326&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;storageCrs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;items&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/geo+json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access the features in the collection &#39;Aeronautic (Curves)&#39; as GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="features">Features</h3>
+<p>The Features resource returns a document consisting of features
+contained by the collection identified in a request. The features
+included in the response are determined by the server based on the query
+parameters of the request. To support access to larger collections
+without overloading the client, the API supports paged access with links
+to the next page, if more features are selected than the page size.</p>
+<p>Below is an extract from the response to the request
+<a href="https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json">https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;numberReturned&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;numberMatched&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-11-29T08:38:10Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MultiLineString&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[[</span><span class="mf">36.4270030</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7114540</span><span class="p">],[</span><span class="mf">36.4251990</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7137030</span><span class="p">]]]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;F_CODE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GB075&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ZI001_SDV&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2011-03-16T14:51:12Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UFI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d008c34-4458-4226-b335-cf903d261ce9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ZI005_FNA&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;No Information&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;FCSUBTYPE&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100454</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MultiLineString&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">[[</span><span class="w"> </span><span class="mf">36.4009090</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7000770</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="w"> </span><span class="mf">36.4031330</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7013330</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="w"> </span><span class="mf">36.4208880</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7113020</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="w"> </span><span class="mf">36.4231110</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7125400</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="w"> </span><span class="mf">36.4251990</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7137030</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="w"> </span><span class="mf">36.4252970</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7137690</span><span class="w"> </span><span class="p">]</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;F_CODE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GB075&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ZI001_SDV&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-09-11T19:15:35Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UFI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1257bf27-3f91-461d-8a3b-a95af2ea1f5a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ZI005_FNA&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;No Information&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;FCSUBTYPE&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100454</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Note that this document is a valid GeoJSON document.</p>
+<p>Additional parameters may be used to select only a subset of the
+features in the collection.</p>
+<p>A <strong>bbox</strong> or <strong>datetime</strong> parameter may be used to select only the
+subset of the features in the collection that are within the bounding
+box specified by the <strong>bbox</strong> parameter or the time interval specified
+by the <strong>datetime</strong> parameter. An example request that uses the <strong>bbox</strong>
+parameter is
+<a href="https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=json&amp;bbox=36.0832432,32.599852,36.1168237,32.6283697">https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=json&amp;bbox=36.0832432,32.599852,36.1168237,32.6283697</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The effect of the bbox parameter can be easily seen when comparing the
+HTML response from
+<a href="https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=html&amp;bbox=36.0832432,32.599852,36.1168237,32.6283697">applying</a>
+the bbox parameter to the response
+<a href="https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=html">without</a>
+any bbox parameter.</p>
+</div>
+<p>The <strong>limit</strong> parameter may be used to control the page size by
+specifying the maximum number of features that should be returned in the
+response. An example request that uses the <strong>limit</strong> parameter is
+<a href="https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json&amp;limit=2">https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items?f=json&amp;limit=2</a></p>
+<p>Each page may include information about the number of selected and
+returned features (<code>numberMatched</code> and <code>numberReturned</code>) as well as
+links to support paging (link relation <code>next</code>).</p>
+<h3 id="feature">Feature</h3>
+<p>The Feature resource is used for retrieving an individual feature, its
+geometric representation and other properties. In the example below, the
+feature with an <code>id</code> of 1 is retrieved. The response is retrieved
+through the request
+<a href="https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=json">https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=json</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MultiLineString&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="mf">36.4270030</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">32.7114540</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="mf">36.4251990</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">32.7137030</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;F_CODE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GB075&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ZI001_SDV&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2011-03-16T14:51:12Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;UFI&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d008c34-4458-4226-b335-cf903d261ce9&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ZI005_FNA&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;No Information&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;FCSUBTYPE&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100454</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/geo+json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=jsonfgc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/vnd.ogc.fg+json;compatibility=geojson&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as JSON-FG (GeoJSON Compatibility Mode)&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=csv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/csv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as CSV&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=fgb&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/flatgeobuf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as FlatGeobuf&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as HTML&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv/items/1?f=jsonfg&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/vnd.ogc.fg+json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as JSON-FG&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/collections/AeronauticCrv?f=json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The collection the feature belongs to&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="client-usage">Client usage</h3>
+<p>In this workshop we'll cover different OGC API - Features client tools two JavaScript libraries ( Leaflet and OpenLayers ), one desktop GIS (QGIS) and a C++ library (GDAL).</p>
+<h4 id="leaflet">Leaflet</h4>
+<p><a href="https://leafletjs.com">Leaflet</a> can read GeoJSON out-of-the-box, from a file or an API. As OGC API - Features can expose data as GeoJSON by using <code>f=json</code> in the request, the response can be read directly in LeafLet using the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">&#39;Accept&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/geo+json&#39;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">L</span><span class="p">.</span><span class="nx">geoJSON</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Leaflet also has an <a href="https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi">external plugin</a> which allows OGC API - Features to be used natively:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Import following in &lt;head&gt; tag</span>
+<span class="c1">//   &lt;script src=&#39;https://unpkg.com/leaflet-featuregroup-ogcapi@0.1.0/Leaflet.FeatureGroup.OGCAPI.js&#39;&gt;&lt;/script&gt;</span>
+
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">featureGroup</span><span class="p">.</span><span class="nx">ogcApi</span><span class="p">(</span><span class="s2">&quot;https://demo.ldproxy.net/zoomstack/&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">collection</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;airports&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="openlayers">OpenLayers</h4>
+<p><a href="https://openlayers.org/">OpenLayers</a> also understands GeoJSON by default. An OGC API - Features response can be consumed using the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">&#39;Accept&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/geo+json&#39;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">Vector</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">Vector</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">GeoJSON</span><span class="p">().</span><span class="nx">readFeatures</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">featureProjection</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;EPSG:3857&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nx">attributions</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Contains OS data &amp;copy; Crown copyright and database right 2021.&#39;</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}));</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="qgis">QGIS</h4>
+<p><a href="https://qgis.org">QGIS</a> supports OGC API - Features and WFS using the same vector layer provider.  Open the Data Source Manager and go to the "WFS / OGC API Features" tab.</p>
+<p><img alt="qgis-data-source-manager" src="../../assets/images/qgis-data-source-manager.png" width="100.0%" /></p>
+<p>Provide the connection information.  The URL is the URL of the OGC API landing page resource (in this case <a href="https://demo.ldproxy.net/zoomstack">https://demo.ldproxy.net/zoomstack</a>). Make sure "Enable feature paging" is checked.</p>
+<p><img alt="qgis-add-api" src="../../assets/images/qgis-add-api.png" width="100.0%" /></p>
+<p>Note that, if a collection has millions of features and the map view covers the extent of the collection, QGIS will try to load all features. To avoid this, you can, for example, restrict the scale range in which the layer should be visible.</p>
+<p><img alt="qgis-zoomstack-national-roads" src="../../assets/images/qgis-zoomstack-national-roads.gif" width="100.0%" /></p>
+<h4 id="gdal">GDAL</h4>
+<p><a href="https://gdal.org">GDAL</a> supports OGC API - Features as core vector format.  The below example demonstrates usage via <code>ogrinfo</code> against an OGC API - Features endpoint:</p>
+<div class="highlight"><pre><span></span><code>ogrinfo<span class="w"> </span>OAPIF:https://demo.ldproxy.net/zoomstack<span class="w"> </span>
+INFO:<span class="w"> </span>Open<span class="w"> </span>of<span class="w"> </span><span class="sb">`</span>OAPIF:https://demo.ldproxy.net/zoomstack<span class="s1">&#39;</span>
+<span class="s1">      using driver `OAPIF&#39;</span><span class="w"> </span>successful.
+<span class="m">1</span>:<span class="w"> </span>airports<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Airports<span class="o">)</span><span class="w"> </span><span class="o">(</span>Point<span class="o">)</span>
+<span class="m">2</span>:<span class="w"> </span>boundaries<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Boundaries<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">3</span>:<span class="w"> </span>contours<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Contours<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">4</span>:<span class="w"> </span>district_buildings<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>District<span class="w"> </span>Buildings<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">5</span>:<span class="w"> </span>etl<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>ETL<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">6</span>:<span class="w"> </span>foreshore<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Foreshore<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">7</span>:<span class="w"> </span>greenspace<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Greenspace<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">8</span>:<span class="w"> </span>land<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Land<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">9</span>:<span class="w"> </span>local_buildings<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Local<span class="w"> </span>Buildings<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">10</span>:<span class="w"> </span>names<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Names<span class="o">)</span><span class="w"> </span><span class="o">(</span>Point<span class="o">)</span>
+<span class="m">11</span>:<span class="w"> </span>national_parks<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>National<span class="w"> </span>Parks<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">12</span>:<span class="w"> </span>rail<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Rail<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">13</span>:<span class="w"> </span>railway_stations<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>RailwayStation<span class="o">)</span><span class="w"> </span><span class="o">(</span>Point<span class="o">)</span>
+<span class="m">14</span>:<span class="w"> </span>roads_local<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Local<span class="w"> </span>Roads<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">15</span>:<span class="w"> </span>roads_national<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>National<span class="w"> </span>Roads<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">16</span>:<span class="w"> </span>roads_regional<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Regional<span class="w"> </span>Roads<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">17</span>:<span class="w"> </span>sites<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Sites<span class="o">)</span><span class="w"> </span><span class="o">(</span>Multi<span class="w"> </span>Polygon<span class="o">)</span>
+<span class="m">18</span>:<span class="w"> </span>surfacewater<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Surface<span class="w"> </span>Water<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">19</span>:<span class="w"> </span>urban_areas<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Urban<span class="w"> </span>Areas<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+<span class="m">20</span>:<span class="w"> </span>waterlines<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Waterlines<span class="o">)</span><span class="w"> </span><span class="o">(</span>Line<span class="w"> </span>String<span class="o">)</span>
+<span class="m">21</span>:<span class="w"> </span>woodland<span class="w"> </span><span class="o">(</span>title:<span class="w"> </span>Woodland<span class="o">)</span><span class="w"> </span><span class="o">(</span>Polygon<span class="o">)</span>
+</code></pre></div>
+<h3 id="geojson">GeoJSON</h3>
+<p>The OGC API - Features GeoJSON Requirements Class specifies a GeoJSON based encoding for based on RFC7946.  Given the ubiquity of GeoJSON, numerous tools exist to validate process and decode/encode GeoJSON, making OGC API - Features GeoJSON easy to include in data processing pipelines.  OGC API - Features includes the <a href="https://github.com/opengeospatial/ogcapi-features/blob/master/core/openapi/schemas/featureGeoJSON.yaml">JSON Schema</a> for the GeoJSON representation and thus can be used for runtime or offline validation of data payloads.  Applications based on OGC API - Features GeoJSON can extend and constrain the schema accordingly for domain specific workflows.</p>
+<h2 id="summary">Summary</h2>
+<p>OGC API - Features provides functionality for working with vector data on the Web.  This deep dive
+provided an overview of the standard and the various Resources and endpoints that are supported, as well as example of how-to access it using different clients.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+        <script src="../../assets/javascripts/termynal.js"></script>
+      
+        <script src="../../assets/javascripts/custom.js"></script>
+      
+    
+  </body>
+</html>

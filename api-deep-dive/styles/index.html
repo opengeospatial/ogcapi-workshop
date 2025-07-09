@@ -1,0 +1,1591 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OGC APIs are designed to make it easy for ANYONE to provide and use geospatial data on the web, and to integrate this data with ANY other type of information.  This workshop describes OGC APIs in support of discovery, access, visualization and processing in support of FAIR data principles.">
+      
+      
+        <meta name="author" content="Open Geospatial Consortium">
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/styles/">
+      
+      
+        <link rel="prev" href="../maps/">
+      
+      
+        <link rel="next" href="../processes/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>OGC API - Styles - OGC API workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/termynal.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="ogcapi-workshop" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-api-styles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="OGC API workshop" class="md-header__button md-logo" aria-label="OGC API workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OGC API workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC API - Styles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="OGC API workshop" class="md-nav__button md-logo" aria-label="OGC API workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="logo">
+
+    </a>
+    OGC API workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Background and context
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview and main concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance and certification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API deep dive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API deep dive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Primer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Common
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Tiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Styles
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Styles
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relation-to-other-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to other standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landing page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-declarations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance declarations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fetch Style
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environmental-data-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Environmental Data Retrieval
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensorthings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC SensorThings API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transition and migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting involved
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conclusion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relation-to-other-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to other standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landing page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-declarations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance declarations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Style metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fetch Style
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ogc-api-styles">OGC API - Styles</h1>
+<div class="admonition abstract">
+<p class="admonition-title">Audience</p>
+<p>Students that are familiar with web services and APIs, and want to have an overview of OGC API - Styles standard</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Learning Objectives</p>
+<p>At the completion of the module students will be able to:</p>
+<ul>
+<li>Explain what the OGC API - Styles standard is</li>
+<li>Describe what can be done with OGC API - Styles implementations</li>
+<li>Understand the main resources offered by OGC API - Styles implementations</li>
+<li>Understand how to retrieve a description of the capabilities of an OGC API - Styles implementation</li>
+<li>Understand how to issue requests to an implementation of OGC API - Styles</li>
+<li>Be able to find an OGC API - Styles endpoint and use it through a client</li>
+</ul>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://ogcapi.ogc.org/styles">OGC API - Styles</a> is a standard that describes an API that enables map servers, clients as well as visual style editors, to manage and fetch styles. The styles consist of symbolizing instructions that can be applied by a rendering engine on features and/or coverages. The API implements the conceptual model for style encodings and style metadata.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial module is not intended to be a replacement to the actual
+<strong>OGC API - Styles - Part 1: Core</strong> standard. The tutorial intentionally
+focuses on a subset of capabilities in order to get the student started
+with using the standard. Please refer to the <a href="https://docs.ogc.org/DRAFTS/20-009.html"><strong>OGC API - Styles - Part 1:
+Core</strong> standard</a> for additional detail.</p>
+</div>
+<h3 id="background">Background</h3>
+<blockquote>
+<p>History</p>
+</blockquote>
+<p>The need for users and software to be able to control the visual portrayal of geospatial data was already present in the first generation of OGC Web Services. </p>
+<p>In 2001, <a href="https://www.ogc.org/standard/wms/">Web Map Service (WMS)</a> 1.1.0 introduced enhanced support for styles using the <a href="https://www.ogc.org/standard/sld/">Styled Layer Descriptor (SLD)</a> <a href="https://portal.ogc.org/files/?artifact_id=1188">Implementation Specification</a>. This specification extended WMS to allow user-defined symbolization of feature data. In 2007, SLD became a profile of WMS.</p>
+<p>The evolution of the new web APIs also brought new capabilities in terms of changing, sharing and rendering styles, which were explored in OGC Testbed-15 Open Portrayal Framework (OPF), in 2019. This work was documented in the <a href="https://docs.ogc.org/per/19-010r2.html">OGC Testbed-15: Styles API Engineering Report</a>. The following year, in 2020, the charter for the OGC API - Styles Standards Working Group was drafted.</p>
+<blockquote>
+<p>Versions</p>
+</blockquote>
+<p><strong>OGC API - Styles - Part 1: Core</strong> is currently in draft.</p>
+<blockquote>
+<p>Test suite</p>
+</blockquote>
+<p>There are no test suites currently implemented; they will be made available once the specification is
+  approved, and an executable test suite (ETS) is made availabe as per of OGC CITE.</p>
+<blockquote>
+<p>Implementations</p>
+</blockquote>
+<p>Implementations can be found on the <a href="https://github.com/opengeospatial/ogcapi-styles/blob/master/implementations.md">implementations page</a>.</p>
+<h4 id="usage">Usage</h4>
+<p>The Styles API supports three main types of consumers:</p>
+<ul>
+<li>Visual style editors that create, update and delete styles for datasets shared by other OGC APIs that publish feature or coverage data. Feature data is either accessed directly or organized into spatial partitions (e.g.: vector tiles).</li>
+<li>OGC API - Maps implementations, that fetch styles and render spatial data (features or coverages) on the server.</li>
+<li>Map clients that fetch styles and render spatial data (features or coverages) on the client.</li>
+</ul>
+<p>The draft Standard also defines a conceptual model for styles, style encodings and style metadata. The model defines three main concepts, which are mapped to resources and documents.</p>
+<ul>
+<li><strong>Style</strong>: the main resource.</li>
+<li><strong>Stylesheets</strong>: the representation of a style in an encoding like OGC SLD 1.0 or Mapbox Style. Each style is available in one or more stylesheets. Clients will use the stylesheet of a style that fits best based on the capabilities of available tools and their preferences. </li>
+<li><strong>Style metadata</strong>: general descriptive information about the style, structural information (e.g., layers and attributes), and so forth to allow users to discover and select existing styles for their data. For each style there is style metadata available.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Draft</em> <strong>OGC API - Styles - Part 1</strong>: Core offers conformance classes for fetching styles and style metadata, managing and validating styles.</p>
+</div>
+<h4 id="relation-to-other-standards">Relation to other standards</h4>
+<p>OGC API - Styles is designed to be combined with other OGC API Standards, in order to produce styled geospatial data.
+Feature or coverage data published through OGC APIs, can be styled on client side with styles produced by OGC API - Styles editors. This is the case of OGC API - Features, OGC API - Coverages or OGC API - Tiles (vector tiles).
+OGC API - Maps has support for fetching styles and rendering geospatial data (features or coverages) on server side. </p>
+<p>The styles themselves can be represented using different encodings. As usual in OGC API, no encodings are prescribed, although the draft Standard offers conformance classes for <a href="http://portal.opengeospatial.org/files/?artifact_id=1188">OGC SLD 1.0</a>/<a href="http://portal.opengeospatial.org/files/?artifact_id=22364">1.1</a> and <a href="https://docs.mapbox.com/style-spec/guides/">Mapbox Styles</a>.</p>
+<h3 id="overview-of-resources">Overview of Resources</h3>
+<p><strong>OGC API - Styles - Part 1: Core</strong> defines the resources listed in
+the following table.</p>
+<table>
+  <tr>
+    <th>Resource</th>
+    <th>Method</th>
+    <th>Path</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>Landing page</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>This is the top-level resource, which serves as an entry point.</td>
+  </tr>
+  <tr>
+    <td>Conformance declaration</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>This resource presents information about the functionality that is implemented by the server.</td>
+  </tr>
+  <tr>
+    <td>Fetch Styles</td>
+    <td>GET</td>
+    <td>/styles</td>
+    <td>This resource lists the styles that are offered through the API.</td>
+  </tr>
+  <tr>
+    <td>Create or validate Styles</td>
+    <td>POST</td>
+    <td>/styles</td>
+    <td>This resource enables the creation of a new Style or the validation of an existing one.</td>
+  </tr>
+  <tr>
+    <td>Fetch Style</td>
+    <td>GET</td>
+    <td>/styles/{styleId}</td>
+    <td>This resource retrieves the style identified in the path.</td>
+  </tr>
+  <tr>
+    <td>Create or validate Style</td>
+    <td>PUT</td>
+    <td>/styles/{styleId}</td>
+    <td>This resource can be used to update, create or validate the style identified in the path.</td>
+  </tr>
+  <tr>
+    <td>Delete Style</td>
+    <td>DELETE</td>
+    <td>/styles/{styleId}</td>
+    <td>This resource can be used to delete the style identified in the path.</td>
+  </tr>
+  <tr>
+    <td>Fetch Style metadata</td>
+    <td>GET</td>
+    <td>/styles/{styleId}/metadata</td>
+    <td>This resource retrieves the metadata of the style identified in the path.</td>
+  </tr>
+  <tr>
+    <td>Replace Style metadata</td>
+    <td>PUT</td>
+    <td>/styles/{styleId}</td>
+    <td>This resource replaces the metadata of the style identified in the path.</td>
+  </tr>
+  <tr>
+    <td>Patch Style metadata</td>
+    <td>PATCH</td>
+    <td>/styles/{styleId}</td>
+    <td>This resource updates parts of the metadata of the style identified in the path.</td>
+  </tr>
+  <tr>
+    <td>Fetch resources</td>
+    <td>GET</td>
+    <td>/resources</td>
+    <td>This operation fetches the set of resources (e.g.: symbols and sprites) that have been created and that may be used by reference in stylesheets.</td>
+  </tr>
+  <tr>
+    <td>Fetch symbol resource by id</td>
+    <td>GET</td>
+    <td>/resources/{resourceId}</td>
+    <td>This operation fetches the resource with identifier resourceId. The set of available resources can be retrieved at /resources.</td>
+  </tr>
+  <tr>
+    <td>Replace symbol resource or add new one</td>
+    <td>PUT</td>
+    <td>/resources/{resourceId}</td>
+    <td>This operation replaces an existing resource with the id resourceId. If no such resource exists, a new resource with that id is added. This operation is only available to registered style authors.</td>
+  </tr>
+  <tr>
+    <td>Delete symbol resource</td>
+    <td>DELETE</td>
+    <td>/resources/{resourceId}</td>
+    <td>This operation deletes an existing resource with the id resourceId. If no such resource exists, an error is returned. This operation is only available to registered style authors.</td>
+  </tr>
+</table>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <em>sprite</em> used in a Mapbox Style stylesheet consists of three resources: </p>
+<ul>
+<li>PNG bitmap image (resourceId ends in '.png').</li>
+<li>JSON index file (resourceId of the same name, but ends in '.json' instead of '.png')</li>
+<li>PNG bitmap image for high-resolution displays (the file ends in '.@2x.png').</li>
+</ul>
+<p>Each of the resources needs to be created (and eventually deleted) separately. </p>
+<p><img alt="sprite" src="../../assets/images/sprites.png" width="60.0%" /></p>
+</div>
+<h3 id="example">Example</h3>
+<p>This <a href="https://demo.ldproxy.net/">demonstration
+server</a>
+publishes styles through an interface that conforms to
+OGC API - Features.</p>
+<p>An example request that can be used to list the styles from the Daara collection is
+<a href="https://demo.ldproxy.net/daraa/styles?f=html">https://demo.ldproxy.net/daraa/styles?f=html</a></p>
+<p>Note that the response to the request is HTML in this case.</p>
+<p>Alternatively, the same data can be retrieved in GeoJSON format, through
+the request
+<a href="https://demo.ldproxy.net/daraa/styles?f=json">https://demo.ldproxy.net/daraa/styles?f=json</a></p>
+<p>These styles can be rendered by a client application, or applied directly by other OGC APIs that support styles. The example below shows the <em>Night</em> style, being applied by OGC API - Maps.
+<a href="https://demo.ldproxy.net/daraa/styles/night?f=html#12.24/32.6264/36.1033">https://demo.ldproxy.net/daraa/styles/night?f=html#12.24/32.6264/36.1033</a></p>
+<p><iframe
+  src="https://demo.ldproxy.net/daraa/styles/night?f=html#12.24/32.6264/36.1033s"
+  style="width:100%; height:800px;"
+></iframe>
+</p>
+<h2 id="resources">Resources</h2>
+<p>Styles are the main resources of this API. </p>
+<ul>
+<li>
+<p>For each style there is style metadata available, with general descriptive information about the style, structural information (e.g., layers and attributes), and so forth to allow users to discover and select existing styles for their data.</p>
+</li>
+<li>
+<p>Each style is available as one or more stylesheets - the representation of a style in an encoding like OGC SLD 1.0 or Mapbox Style. Clients will use the stylesheet of a style that fits best based on the capabilities of available tools and their preferences.</p>
+</li>
+</ul>
+<p>A basic request workflow could look like the diagram below, where a client requests the list of styles, and then asks for more information about a particular style, before fetching the stylesheet. In alternative, a client can request the stylesheet directly after the styles request. </p>
+<p><img alt="image" src="../../assets/images/styles-workflow.png" width="80.0%" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section will focus on the resources related to requirements class "Core": fetching styles, style and style metadata.  </p>
+</div>
+<h3 id="landing-page">Landing page</h3>
+<p>Given OGC API - Styles uses OGC API - Common as a building block, please see the <a href="../features/#landing-page">OGC API - Features</a> deep dive
+for a detailed explanation of an example implementation.</p>
+<h3 id="conformance-declarations">Conformance declarations</h3>
+<p>Given OGC API - Styles uses OGC API - Common as a building block, please see the <a href="../features/#conformance-declarations">OGC API - Features</a> deep dive
+for a detailed explanation of an example implementation.</p>
+<h3 id="api-definition">API Definition</h3>
+<p>Given OGC API - Styles uses OGC API - Common as a building block, please see the <a href="../features/#api-definition">OGC API - Features</a> deep dive
+for a detailed explanation of an example implementation.</p>
+<h3 id="style-list">Style list</h3>
+<p>This endpoint, lists the styles available on the server, and for each describes basic information like its id, title and description, as well as the available stylesheets.</p>
+<p>Below is an extract from the response to the request <a href="https://demo.ldproxy.net/daraa/styles?f=json">https://demo.ldproxy.net/daraa/styles?f=json</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;styles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;night&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;night&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;describedby&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Style metadata&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/styles/night/metadata&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stylesheet&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Web map using the style&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/styles/night?f=html&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stylesheet&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/vnd.mapbox.style+json&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Style in format &#39;Mapbox&#39;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/styles/night?f=mbs&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+</code></pre></div>
+<p>In this response, we can see that the links to retrieve more information about the style (e.g.: style metadata) and to retrieve it as a stylesheet.</p>
+<h3 id="style-metadata">Style metadata</h3>
+<p>Requests the metadata for a particular style, so that a client has more information about a potential style of interest. The response format (typically HTML or JSON, but extensions can easily supply others) is determined using HTTP content negotiation.</p>
+<p>In the sample below, we request information about the <em>topographic</em> style. The full response can be retrieved using this request:
+<a href="https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=json">https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=json</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;topographic&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=json&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as HTML&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/styles/topographic/metadata?f=html&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;topographic&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;style&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;stylesheets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mapbox&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.mapbox.com/mapbox-gl-js/style-spec/&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;native&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stylesheet&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/vnd.mapbox.style+json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Style in format &#39;Mapbox&#39;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/styles/topographic?f=mbs&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+</code></pre></div>
+<h3 id="fetch-style">Fetch Style</h3>
+<p>This request returns a stylesheet. If multiple encodings are available, the style encoding is determined using HTTP content negotiation. For instance, a client looking for a Mapbox stylesheet, could request the <code>application/vnd.mapbox.style+json</code> type.</p>
+<p>In the example below, the <em>topographic</em> style is retrieved as a Mapbox stylesheet. </p>
+<p><a href="https://demo.ldproxy.net/daraa/styles/topographic?f=mbs">https://demo.ldproxy.net/daraa/styles/topographic?f=mbs</a></p>
+<p>This sample shows an extract of the Mapbox spec 8.0, response.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;daraa&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;bounds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">35.755073</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">32.357351</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">37.205276</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">33.26714</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xyz&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxzoom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;sprite&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.ldproxy.net/daraa/resources/sprites&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;glyphs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://go-spatial.github.io/carto-assets/fonts/{fontstack}/{range}.pbf&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;layers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Grey Background&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;background&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;layout&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;visible&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;background-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#d3d3d3&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OSM&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raster&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;osm&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;layout&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;none&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agriculturesrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daraa&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AgricultureSrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;fill-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#7ac5a5&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vegetationsrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daraa&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VegetationSrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;fill-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#C2E4B9&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;settlementsrf.1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daraa&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SettlementSrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;line-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;line-width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;settlementsrf.2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daraa&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SettlementSrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;fill-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#E8C3B2&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;militarysrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daraa&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MilitarySrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;fill-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#f3602f&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fill-opacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;culturesrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daraa&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CultureSrf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;fill-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ab92d2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fill-opacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hydrographycrv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daraa&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HydrographyCrv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;==&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;BH140&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;get&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;F_CODE&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;line-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#00A0C6&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;line-width&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;step&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;zoom&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">          </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">          </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="mi">13</span><span class="p">,</span>
+<span class="w">          </span><span class="mi">4</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+</code></pre></div>
+<h2 id="summary">Summary</h2>
+<p>The OGC API - Styles candidate Standard describes an API for accessing and managing styles for rendering geospatial data on the web. It provides building blocks for interacting with styles in multiple style encodings and with metadata for the styles. This deep dive provided an overview of the candidate Standard and the various resources and endpoints that are supported.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+        <script src="../../assets/javascripts/termynal.js"></script>
+      
+        <script src="../../assets/javascripts/custom.js"></script>
+      
+    
+  </body>
+</html>

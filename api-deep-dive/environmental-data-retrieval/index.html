@@ -1,0 +1,2778 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OGC APIs are designed to make it easy for ANYONE to provide and use geospatial data on the web, and to integrate this data with ANY other type of information.  This workshop describes OGC APIs in support of discovery, access, visualization and processing in support of FAIR data principles.">
+      
+      
+        <meta name="author" content="Open Geospatial Consortium">
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/environmental-data-retrieval/">
+      
+      
+        <link rel="prev" href="../records/">
+      
+      
+        <link rel="next" href="../sensorthings/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>OGC API - Environmental Data Retrieval - OGC API workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/termynal.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="ogcapi-workshop" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-api-environmental-data-retrieval" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="OGC API workshop" class="md-header__button md-logo" aria-label="OGC API workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OGC API workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC API - Environmental Data Retrieval
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="OGC API workshop" class="md-nav__button md-logo" aria-label="OGC API workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="logo">
+
+    </a>
+    OGC API workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Background and context
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview and main concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance and certification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API deep dive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API deep dive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Primer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Common
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Tiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Styles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Environmental Data Retrieval
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API - Environmental Data Retrieval
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relation-to-other-ogc-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to other OGC Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landing page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance declaration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collections-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collections metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#area-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Area Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corridor-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Corridor Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cube-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cube Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instances-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#items-features-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Items (Features) Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locations-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locations Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Position Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radius-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radius Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trajectory-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trajectory Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensorthings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC SensorThings API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OGC API roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transition and migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting involved
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conclusion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relation-to-other-ogc-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relation to other OGC Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landing page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance declaration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collections-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collections metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#area-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Area Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corridor-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Corridor Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cube-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cube Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instances-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#items-features-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Items (Features) Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locations-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locations Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Position Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radius-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radius Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trajectory-query-resources-of-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trajectory Query Resources of OGC API - EDR
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ogc-api-environmental-data-retrieval">OGC API - Environmental Data Retrieval</h1>
+<div class="admonition abstract">
+<p class="admonition-title">Audience</p>
+<p>Students that are familiar with web services and APIs, and want to have
+an overview of OGC API - Environmental Data Retrieval standard</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Learning Objectives</p>
+<p>At the completion of the module students will be able to:</p>
+<ul>
+<li>Explain what the OGC API - Environmental Data Retrieval standard is</li>
+<li>Describe what can be done with OGC API - Environmental Data Retrieval implementations</li>
+<li>Understand the main resources offered by implementations of OGC API - Environmental Data Retrieval</li>
+<li>Understand how to retrieve a description of the capabilities of an implementation of OGC API - Environmental Data Retrieval</li>
+<li>Understand how to issue requests to an implementation of OGC API - Environmental Data Retrieval</li>
+<li>Be able to find an OGC API - Environmental Data Retrieval endpoint and use it through a client</li>
+</ul>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://ogcapi.ogc.org/edr">OGC API - Environmental Data Retrieval</a> is a standard that provides a
+family of lightweight interfaces to access Environmental Data resources.
+The standard, which is also called the Environmental Data Retrieval
+(EDR) API, addresses two fundamental operations; discovery and query.
+Discovery operations allow the API to be interrogated to determine its
+capabilities and retrieve information (metadata) about this distribution
+of a resource. This includes the API definition of the server as well as
+metadata about the Environmental Data resources provided by the server.
+Query operations allow Environmental Data resources to be retrieved from
+the underlying data store based upon simple selection criteria, defined
+by this standard and selected by the client.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial module is not intended to be a replacement to the actual
+<strong>OGC API - Environmental Data Retrieval</strong> standard. The tutorial
+intentionally focuses on a subset of capabilities in order to get the
+student started with using the standard. Please refer to the <a href="https://docs.ogc.org/is/19-086r6/19-086r6.html"><strong>OGC API -
+Environmental Data Retrieval</strong> standard</a> for additional detail.</p>
+</div>
+<h3 id="background">Background</h3>
+<blockquote>
+<p>History</p>
+</blockquote>
+<p>Version 1.1.0 was published on 2023-07-27.</p>
+<blockquote>
+<p>Versions</p>
+</blockquote>
+<p><strong>OGC API - Environmental Data Retrieval</strong> version 1.1.0 is the current latest version</p>
+<blockquote>
+<p>Test suite</p>
+</blockquote>
+<p>A test suite is available for:</p>
+<ul>
+<li>OGC API - Environmental Data Retrieval - Part 1</li>
+</ul>
+<p>All of the test suites are available from the <a href="https://cite.ogc.org/teamengine/">OGC Validator</a>.  </p>
+<blockquote>
+<p>Implementations</p>
+</blockquote>
+<p>Implementations can be found on the <a href="https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/tree/master/implementations">implementations page</a>.</p>
+<h4 id="usage">Usage</h4>
+<p><strong>OGC API - Environmental Data Retrieval</strong> provides a family of
+lightweight query interfaces to access spatio-temporal data resources by
+requesting data at a position, within an area, along a trajectory or
+through a corridor. A spatio-temporal data resource is a collection of
+spatio-temporal data that can be sampled using the EDR query pattern
+geometries.</p>
+<p>The standard provides a standard interface for requesting vector
+geospatial data consisting of geographic features and their properties.
+The benefit of this is that client applications can request source data
+from multiple implementations of the API, and then render the data for
+display or process the data further as part of a workflow. The standard
+enables the data to be accessed consistently with other data. Feature
+properties encoded using common data types such as text strings, date
+and time can also be accessed consistently.</p>
+<h4 id="relation-to-other-ogc-standards">Relation to other OGC Standards</h4>
+<ul>
+<li>OGC API - Features: The EDR API is completely compatible with OGC
+    API - Features - Part 1: Core (OGC 17-069r3), in that it
+    supports Collections and Items. It extends the Collection
+    functionality by allowing 'Instances', a form of 'collection of
+    collections'. The EDR API also supports the retrieval of
+    spatiotemporal data by named location as well as coordinates.</li>
+<li>Moving Features: The Moving Features Standards are concerned with
+    things that move along a trajectory, and simultaneously change their
+    orientation through rigid body rotation. The EDR API does not have
+    the concept of orientation, or foliation or prisms. Moving Features
+    and EDR API do share a common conceptual definition, from ISO, of a
+    Trajectory, but the Moving Features Standards encode trajectories in
+    GML, CSV and Moving Features JSON, whereas the EDR API encodes
+    trajectories in WKT.</li>
+<li>Web Coverage Service (WCS) and Coverage Implementation Schema (CIS):
+    The primary messaging mechanism of the EDR API is JSON, including
+    CoverageJSON, over HTTP(S). Implementations of the EDR API are
+    described using the OpenAPI V3.0 specification. The EDR API is
+    consistent with the WCS and CIS standards but does not require the
+    end user or developer to use the terms Domain and RangeSet. The EDR
+    API can also be used to generate a single query against a collection
+    of coverages, providing the data coordinate reference systems are
+    consistent.</li>
+<li>The OGC SensorThings API: SensorThings API follows OData's
+    specification for requesting entities. In contrast, the EDR API
+    makes use of the OpenAPI V3.0 specification for describing resource
+    paths, query options, JSON schema, and other aspects. Further, the
+    EDR API allows for retrieval of coverage data and HTML responses --
+    both of which are not supported by the SensorThings API.</li>
+<li>Sensor Observation Service (SOS): The EDR API allows for retrieval
+    of coverage data and HTML responses -- both of which are not
+    supported by the SOS standard. Further, SOS implementations use the
+    GetCapabilities operation for providing descriptions of available
+    resources. In contrast, the EDR API uses OpenAPI definition
+    documents for describing available interfaces.</li>
+</ul>
+<h3 id="overview-of-resources">Overview of Resources</h3>
+<p><strong>OGC API - Environmental Data Retrieval Standard</strong> defines the
+resources listed in the following table.</p>
+<table>
+<caption>Overview of OGC API - EDR resources</caption>
+  <tr>
+    <th>Resource</th>
+    <th>Method</th>
+    <th>Path</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>Landing page</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>This is the top-level resource, which serves as an entry point.</td>
+  </tr>
+  <tr>
+    <td>Conformance declaration</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>This resource presents information about the functionality that is implemented by the server.</td>
+  </tr>
+  <tr>
+    <td>API definition</td>
+    <td>GET</td>
+    <td>/api</td>
+    <td>This resource provides metadata about the API itself. Note use of /api on the server is optional and the API definition may be hosted on completely separate server.</td>
+  </tr>
+  <tr>
+    <td>Collections metadata</td>
+    <td>GET</td>
+    <td>/collections</td>
+    <td>Metadata describing the collections of data available from this API.</td>
+  </tr>
+  <tr>
+    <td>Single Collection metadata</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}</td>
+    <td>Metadata describing the collection of data which has the unique identifier {collectionId}.</td>
+  </tr>
+  <tr>
+    <td>Items metadata</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/items</td>
+    <td>Retrieve metadata about available items.</td>
+  </tr>
+  <tr>
+    <td>Query data</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/{queryType}</td>
+    <td>Retrieve data according to the query pattern</td>
+  </tr>
+  <tr>
+    <td>Query instances</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/instances</td>
+    <td>Retrieve metadata about instances of a collection</td>
+  </tr>
+</table>
+
+<h3 id="example">Example</h3>
+<p>This <a href="http://labs.metoffice.gov.uk/edr">demonstration server</a> publishes
+environmental data through an interface that conforms to the OGC API -
+Environmental Data Retrieval standard. A client application is available
+<a href="http://labs.metoffice.gov.uk/edr/static/html/query.html">here</a> .</p>
+<p>An example request that can be used to retrieve data from the METAR
+Observation collection is
+<a href="http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=GeoJSON">here</a>
+.</p>
+<p>Note that the response to the request is GeoJSON in this case.</p>
+<p>Alternatively, the same data can be retrieved in CoverageJSON format,
+through <a href="http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=CoverageJSON">this
+request</a>
+.</p>
+<p>Note that this demonstration server offers data from recent
+observations, therefore you may need to update the values of the
+<code>datetime</code> parameter to the current day in order to access
+available METAR observation.</p>
+<h2 id="resources">Resources</h2>
+<p>This section provides basic information about the types of resources
+that OGC API - Environmental Data Retrieval offers.</p>
+<p>Each resource provides <strong>links</strong> that relate to resources. This enables
+a client application to navigate the resources, from the landing page
+through to the individual features. The server identifies the
+relationship between a resource and other linked resources through a
+<strong>link relation type</strong>, represented by the attribute <code>rel</code>. The link
+relation types used by implementations of the <strong>OGC API - Environmental
+Data Retrieval</strong> can be found in <a href="https://docs.ogc.org/is/19-086r4/19-086r4.html#toc22">Section
+6.2</a> of the
+standard.</p>
+<h3 id="landing-page">Landing page</h3>
+<p>The landing page is the top-level resource that serves as an entry
+point. A client application needs to know the location of the landing
+page of the server. From the landing page, the client application can
+retrieve links to the Conformance declaration, Collection and API
+definition paths. An example landing page is at
+<a href="http://labs.metoffice.gov.uk/edr">http://labs.metoffice.gov.uk/edr</a></p>
+<p>The link to the API definition is identified through the
+<code>service-desc</code> and <code>service-doc</code> link relation types.</p>
+<p>The link to the Conformance declaration is identified through the
+<code>conformance</code> link relation type.</p>
+<p>The link to the Collections is identified through the <code>data</code> link
+relation type.</p>
+<p>An extract from the landing page of a demo server is shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Environmental Data Retrevial API concept demonstrator&quot;</span><span class="p">,</span>
+<span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example EDR API (not for operational use)&quot;</span><span class="p">,</span>
+<span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;cube&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;trajectory&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;weather&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;api&quot;</span>
+<span class="p">],</span>
+<span class="nt">&quot;terms_of_service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization Name&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.org&quot;</span>
+<span class="p">},</span>
+<span class="nt">&quot;contact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;you@example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+001-234-567-89&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;fax&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+001-234-567-89&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hours of Service&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;During hours of service.  Off on weekends.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mailing Address&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;postalcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zip or Postal Code&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;stateorprovince&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Administrative Area&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Country&quot;</span>
+<span class="p">},</span>
+<span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/api&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-doc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/vnd.oai.openapi+json;version=3.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/conformance&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conformance&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="conformance-declaration">Conformance declaration</h3>
+<p>An implementation of OGC API - Environmental Data Retrieval describes
+the capabilities that it supports by declaring which conformance classes
+it implements. The Conformance declaration states the conformance
+classes from standards or community specifications, identified by a URI,
+that the API conforms to. Clients can then use this information,
+although they are not required to. Accessing the Conformance declaration
+using HTTP GET returns the list of URIs of conformance classes
+implemented by the server. Conformance classes describe the behavior a
+server should implement in order to meet one or more sets of
+requirements specified in a standard.</p>
+<p>Below is an extract from the response to the request
+<a href="http://labs.metoffice.gov.uk/edr/conformance">http://labs.metoffice.gov.uk/edr/conformance</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w"> </span><span class="nt">&quot;conformsTo&quot;</span><span class="p">:[</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/core&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/oas30&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/html&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/geojson&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/coveragejson&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/wkt&quot;</span>
+<span class="w"> </span><span class="p">]</span>
+<span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="api-definition">API Definition</h3>
+<p>Given OGC API - Environmental Data Retrieval uses OGC API - Common as a building block, please see the <a href="../features/#api-definition">OGC API - Features</a> deep dive
+for a detailed explanation of an example implementation.</p>
+<h3 id="collections-metadata">Collections metadata</h3>
+<p>Data offered through an implementation of <strong>OGC API - Environmental Data
+Retrevial</strong> is organized into one or more feature collections. The
+<code>Collections</code> resource provides information about and access to the
+list of collections.</p>
+<p>For each collection, there is a link to the detailed description of the
+collection (represented by the path <strong>/collections/{collectionId}</strong> and
+link relation <strong>self</strong>).</p>
+<p>The following information is provided by the server to describe each
+collection:</p>
+<ul>
+<li>A local identifier for the collection that is unique for the dataset</li>
+<li>A list of coordinate reference systems (CRS) in which geometries may
+    be returned by the server</li>
+<li>An optional title and description for the collection</li>
+<li>An optional extent that can be used to provide an indication of the
+    spatial and temporal extent of the collection</li>
+<li>An optional indicator about the type of the items in the collection
+    (the default value, if the indicator is not provided, is
+    <code>feature</code>).</li>
+</ul>
+<p>For each collection, there are links to retrieve data according to
+supported query patterns (represented by the path
+<strong>/collections/{collectionId}/{queryType}</strong> and link relation <strong>data</strong>).</p>
+<p>For each collection, there is a link to the metadata about items
+available in the collection (represented by the path
+<strong>/collections/{collectionId}/items</strong> and link relation <strong>items</strong>) and
+other information about the collection.</p>
+<p>Below is an extract from the response to the request
+<a href="http://labs.metoffice.gov.uk/edr/collections">http://labs.metoffice.gov.uk/edr/collections</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections?f=html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections?f=xml&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/xml&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;collections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metar_demo&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Metar observations EDR demonstrator&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;API to access 24 hours of Global Metar Observation data (not for operational use)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;Metar observation&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ICAO identifier&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Wind Direction&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Wind Speed&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Wind Gust&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Visibility&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Air Temperature&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Dew point&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Runway Visibility&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Weather&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Sky condition&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Mean Sea Level Pressure&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Station Level Pressure&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;description&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;restrictions&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;location&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.aviationweather.gov/metar/help&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-doc&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.weather.gov/disclaimer&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;restrictions&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/position&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/radius&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/area&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/locations&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;spatial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mf">-180.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-89.9</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">180.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">89.9</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;temporal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;R36/2021-10-03T01:00Z/PT1H&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;trs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TIMECRS[\&quot;DateTime\&quot;,TDATUM[\&quot;Gregorian Calendar\&quot;],CS[TemporalDateTime,1],AXIS[\&quot;Time (T)\&quot;,future]&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;data_queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/position&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Position query&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;radius&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/radius&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Radius query&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Radius query&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;within_units&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;km&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;miles&quot;</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;area&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/area&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Area query&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;locations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/locations&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Location query&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Location query&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;locations&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;CSV&quot;</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;CRS84&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;parameter_names&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Metar observation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Source Metar observation&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/wmdr/DataFormat/FM-15-metar&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/wmdr/DataFormat/FM-15-metar&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Metar observation&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;ICAO identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ICAO identifier&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://en.wikipedia.org/wiki/ICAO_airport_code&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/bufr4/b/01/_063&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ICAO identifier&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Wind Direction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Direction&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;degree true&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u00b0&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/degree&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_aerodromeMeanWindDirection&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Direction&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-PT10M/PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Wind Speed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Speed&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/mph&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; http://codes.wmo.int/common/quantity-kind/aerodromeMeanWindSpeed&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Speed&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-PT10M/PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Wind Gust&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Gust&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/mph&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_aerodromeMaximumWindGustSpeed&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Gust&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-PT10M/PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visibility&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/m&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_horizontalVisibility&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visibility&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Air Temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;degC&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u00b0C&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/degC&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_airTemperature&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Air Temperature&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Dew point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;degC&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u00b0C&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/degC&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_dewPointTemperature&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dew point&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Runway Visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Runway Visibile Range&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/m&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_runwayVisualRangeRvr&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Runway Visibility&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Weather&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aerodrome recent weather&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weather&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/49-2/AerodromeRecentWeather&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/49-2/AerodromeRecentWeather&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Weather&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Sky condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sky condition&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sky&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://{server}&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sky condition&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Mean Sea Level Pressure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/hPa&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/bufr4/b/10/_051&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mean Sea Level Pressure&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;Station Level Pressure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/hPa&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/bufr4/b/10/_004&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Station Level Pressure&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <strong>Collection</strong> resource provides detailed information about the
+collection identified in a request. Some of the information returned
+includes the supported geographic extent, data queries, coordinate
+reference systems, output formats, and parameter names.</p>
+<p>Below is an extract from the response to the request
+<a href="http://labs.metoffice.gov.uk/edr/collections/metar_demo?f=json">http://labs.metoffice.gov.uk/edr/collections/metar_demo?f=json</a></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metar_demo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Metar observations EDR demonstrator&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;API to access 24 hours of Global Metar Observation data (not for operational use)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;Metar observation&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;ICAO identifier&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Wind Direction&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Wind Speed&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Wind Gust&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Visibility&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Air Temperature&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Dew point&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Runway Visibility&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Weather&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Sky condition&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Mean Sea Level Pressure&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Station Level Pressure&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;restrictions&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;location&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/collections/metar_demo&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/collections/metar_demo?f=html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/collections/metar_demo?f=xml&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/xml&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.aviationweather.gov/metar/help&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-doc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.weather.gov/disclaimer&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;restrictions&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/position&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/radius&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/area&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/locations&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;spatial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">-180.0</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">-89.9</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">180.0</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">89.9</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;temporal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;R36/2021-10-03T03:00Z/PT1H&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;trs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TIMECRS[\&quot;DateTime\&quot;,TDATUM[\&quot;Gregorian Calendar\&quot;],CS[TemporalDateTime,1],AXIS[\&quot;Time (T)\&quot;,future]&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;data_queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/position&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Position query&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;radius&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/radius&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Radius query&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Radius query&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;within_units&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;km&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;miles&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;area&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/area&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Area query&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;locations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/locations&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Location query&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Location query&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;locations&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;CSV&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;CRS84&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;IWXXM&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;parameter_names&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Metar observation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Source Metar observation&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/wmdr/DataFormat/FM-15-metar&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/wmdr/DataFormat/FM-15-metar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Metar observation&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;ICAO identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ICAO identifier&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://en.wikipedia.org/wiki/ICAO_airport_code&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/bufr4/b/01/_063&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ICAO identifier&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Wind Direction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Direction&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;degree true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u00b0&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/degree&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_aerodromeMeanWindDirection&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Direction&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-PT10M/PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Wind Speed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Speed&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/mph&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; http://codes.wmo.int/common/quantity-kind/aerodromeMeanWindSpeed&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Speed&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-PT10M/PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Wind Gust&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Gust&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mph&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/mph&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_aerodromeMaximumWindGustSpeed&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wind Gust&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-PT10M/PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visibility&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/m&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_horizontalVisibility&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visibility&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Air Temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;degC&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u00b0C&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/degC&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_airTemperature&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Air Temperature&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Dew point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;degC&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u00b0C&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/degC&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_dewPointTemperature&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dew point&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Runway Visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Runway Visibile Range&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/m&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/common/quantity-kind/_runwayVisualRangeRvr&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Runway Visibility&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Weather&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aerodrome recent weather&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weather&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/49-2/AerodromeRecentWeather&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/49-2/AerodromeRecentWeather&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Weather&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Sky condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sky condition&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sky&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://{server}&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sky condition&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Mean Sea Level Pressure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/hPa&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/bufr4/b/10/_051&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mean Sea Level Pressure&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Station Level Pressure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hPa&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/metadata/units/hPa&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;observedProperty&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://codes.wmo.int/bufr4/b/10/_004&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Station Level Pressure&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;measurementType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instantaneous&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT0M&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="query-resources">Query Resources</h3>
+<p>Query resources are spatio-temporal queries which support operation of
+the API for the access and use of the spatio-temporal data resources.</p>
+<p>Query resources share several common parameters, which makes it easier
+for developers to implement the queries.</p>
+<p>Where the query applies to a collection, the pattern is as follows:</p>
+<p><code>/collections/{collectionId}/{queryType}</code></p>
+<p>The parameter <code>queryType</code> can be one of the following:</p>
+<ul>
+<li>position</li>
+<li>area</li>
+<li>cube</li>
+<li>trajectory</li>
+<li>corridor</li>
+<li>radius</li>
+<li>instances</li>
+<li>locations</li>
+<li>items</li>
+</ul>
+<p>Where the query applies to an instance, the pattern is as follows:</p>
+<p><code>/collections/{collectionId}/instances/{instanceId}/{queryType}</code></p>
+<h4 id="area-query-resources-of-ogc-api-edr">Area Query Resources of OGC API - EDR</h4>
+<p>An area is a region specified with a geographic envelope that may have
+vertical dimension. An illustration, created using NASA WorldWind, is
+shown below.</p>
+<p><img alt="image" src="../../assets/images/environmental-data-retrieval-query-area.png" width="80.0%" /></p>
+<p>The <code>area</code> query resource returns data for the defined area.
+The resource offers a convenience mechanism for querying the API by
+area, using a Well Known Text (WKT) POLYGON geometry.</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/area</code></p>
+<p>The paths accepts the following parameters:</p>
+<ul>
+<li>coords</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>An example request is shown below.</p>
+<p><code>http://example.org/edr/collections/gfs-pressure_at_height/area?coords=POLYGON((-0.898132%2051.179362,-0.909119%2051.815488,0.552063%2051.818884,0.560303%2051.191414,-0.898132%2051.179362))&amp;parameter-name=Pressure_height_above_ground&amp;datetime=2022-01-19T06:00Z/2022-01-19T12:00Z&amp;z=80/80&amp;crs=CRS84&amp;f=CoverageJSON</code></p>
+<h4 id="corridor-query-resources-of-ogc-api-edr">Corridor Query Resources of OGC API - EDR</h4>
+<p>A corridor is a two parameter set of points around a trajectory. An
+illustration, created using NASA WorldWind, is shown below.</p>
+<p><img alt="image" src="../../assets/images/environmental-data-retrieval-query-corridor.png" width="80.0%" /></p>
+<p>The <code>corridor</code> query resource returns data for the defined
+corridor. The resource offers a convenience mechanism for querying the
+API by corridor, using a Well Known Text (WKT) LINESTRING geometry, or
+alternatively subclasses LINESTRINGZ, LINESTRINGM, LINESTRINGZM.</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/corridor</code></p>
+<p>The paths accepts the following parameters:</p>
+<ul>
+<li>coords</li>
+<li>corridor-width</li>
+<li>corridor-height</li>
+<li>width-units</li>
+<li>height-units</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<h4 id="cube-query-resources-of-ogc-api-edr">Cube Query Resources of OGC API - EDR</h4>
+<p>A cube is a rectangular area, with a vertical extent. An illustration,
+created using NASA WorldWind, is shown below.</p>
+<p><img alt="image" src="../../assets/images/environmental-data-retrieval-query-cube.png" width="80.0%" /></p>
+<p>The <code>cube</code> query resource returns data for a defined cube.
+The resource offers a convenience mechanism for querying the API using a
+bounding box (BBOX) defining a cube.</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/cube</code></p>
+<p>The paths accepts the following parameters:</p>
+<ul>
+<li>bbox</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<h4 id="instances-query-resources-of-ogc-api-edr">Instances Query Resources of OGC API - EDR</h4>
+<p>The <code>instances</code> query resource retrieves metadata about
+instances of a collection. The resource enables support for multiple
+instances or versions of the same underlying data source to be accessed
+by the API.</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionID}/instances/{instanceID}/{queryType}</code></p>
+<h4 id="items-features-query-resources-of-ogc-api-edr">Items (Features) Query Resources of OGC API - EDR</h4>
+<p>The <code>items</code> query resource offers an OGC API - Features
+endpoint that may be used to catalog pre-existing EDR sampling features.</p>
+<p>Example use cases of this resource include:</p>
+<ul>
+<li>existence of a monitoring location</li>
+<li>cached query</li>
+<li>cataloguing of anomalies in a data</li>
+</ul>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/items</code></p>
+<p>An example request is below.</p>
+<p><code>http://example.org/edr/collections/mocov-daily_global/items</code></p>
+<h4 id="locations-query-resources-of-ogc-api-edr">Locations Query Resources of OGC API - EDR</h4>
+<p>The <code>locations</code> query resource returns a list of location
+identifiers and relevant metadata for the collection.</p>
+<p>The location identifier can be anything as long as it is unique for the
+required position (e.g. a GeoHash).</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/locations</code></p>
+<p>An example request is below.</p>
+<p><code>http://example.org/edr/collections/obs_demo/locations</code></p>
+<h4 id="position-query-resources-of-ogc-api-edr">Position Query Resources of OGC API - EDR</h4>
+<p>A position is a data type that describes a point or geometry potentially
+occupied by an object or person. An illustration, created using NASA
+WorldWind, is shown below.</p>
+<p><img alt="image" src="../../assets/images/environmental-data-retrieval-query-position.png" width="80.0%" /></p>
+<p>The <code>position</code> query resource returns data for the requested
+position. The resource offers a convenience mechanism for querying the
+API using a Well Known Text (WKT) POINT geometry defining a position.</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/position</code></p>
+<p>The paths accepts the following parameters:</p>
+<ul>
+<li>coords</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>An example request is shown below.</p>
+<p><code>http://example.org/edr/collections/obs_demo/position?coords=POINT(0.00577%2051.562608)&amp;parameter-name=Wind%20Direction&amp;datetime=2022-01-19T10:00Z/2022-01-19T12:00Z&amp;crs=CRS84&amp;f=GeoJSON</code></p>
+<h4 id="radius-query-resources-of-ogc-api-edr">Radius Query Resources of OGC API - EDR</h4>
+<p>A radius is a region specified with a geographic position and radial
+distance. An illustration, created using NASA WorldWind, is shown below.</p>
+<p><img alt="image" src="../../assets/images/environmental-data-retrieval-query-radius.png" width="80.0%" /></p>
+<p>The <code>radius</code> query resource returns data for a defined
+radius. The resource offers a convenience mechanism for querying the API
+by radius.</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/radius</code></p>
+<p>The paths accepts the following parameters:</p>
+<ul>
+<li>coords</li>
+<li>within</li>
+<li>width-units</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>An example request is shown below.</p>
+<p><code>http://example.org/edr/collections/obs_demo/radius?coords=POINT(-0.095882%2051.512983)&amp;within=50&amp;within-units=km&amp;parameter-name=Wind%20Direction&amp;datetime=2022-01-19T04:00Z/2022-01-19T06:00Z&amp;crs=CRS84&amp;f=GeoJSON</code></p>
+<h4 id="trajectory-query-resources-of-ogc-api-edr">Trajectory Query Resources of OGC API - EDR</h4>
+<p>A trajectory is a path of a moving point described by a one parameter
+set of points. An illustration, created using NASA WorldWind, is shown
+below.</p>
+<p><img alt="image" src="../../assets/images/environmental-data-retrieval-query-trajectory.png" width="80.0%" /></p>
+<p>The <code>trajectory</code> query resource returns data for the defined
+trajectory. The resource offers a convenience mechanism for querying the
+API by trajectory, using a Well Known Text (WKT) LINESTRING geometry, or
+alternatively the specializations LINESTRINGZ, LINESTRINGM,
+LINESTRINGZM.</p>
+<p>The path to the resource is shown below:</p>
+<p><code>/collections/{collectionId}/trajectory</code></p>
+<p>The paths accepts the following parameters:</p>
+<ul>
+<li>coords</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>An example request is shown below.</p>
+<p><code>http://example.org/edr/collections/gfs-pressure_at_height/trajectory?coords=LINESTRING(-3.56
+53.695,-3.546 53.696,-3.532
+53.697)&amp;parameter-name=Height&amp;crs=CRS84&amp;f=CoverageJSON</code></p>
+<h2 id="summary">Summary</h2>
+<p>OGC API - Environmental Data Retrieval provides a family of lightweight interfaces to access Environmental Data resources. Each resource addressed by an EDR API maps to a defined query pattern. In this deep dive, we provided an overview of the standard and described each of these query patterns in detail.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+        <script src="../../assets/javascripts/termynal.js"></script>
+      
+        <script src="../../assets/javascripts/custom.js"></script>
+      
+    
+  </body>
+</html>
