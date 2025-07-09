@@ -81,5 +81,8 @@ For issues/bugs/suggestions or improvements/contributions, please use the [GitHu
 
 Contributions are always encouraged and welcome!
 
+# Cite this workshop
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15846453.svg)](https://doi.org/10.5281/zenodo.15846453)
 
 ## Now, on to the workshop.  Ready?  Let's go!
