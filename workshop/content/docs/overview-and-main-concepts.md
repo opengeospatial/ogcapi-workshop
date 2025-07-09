@@ -112,6 +112,8 @@ The below OGC API standards have been approved and available for use.  Note that
 - [OGC API - Maps](https://ogcapi.ogc.org/maps) offers a modern approach to the OGC Web Map Service (WMS) standard for provision map and raster content
 - [OGC API - Processes](https://ogcapi.ogc.org/processes) allows for processing tools to be called and combined from many sources and applied to data in other OGC API resources though a simple API
 - [OGC API - Tiles](https://ogcapi.ogc.org/tiles) provides extended functionality to other OGC API Standards to deliver vector tiles, map tiles, and other tiled data
+- [Moving Features](https://ogcapi.ogc.org/movingfeatures) defines an API that provides access to data representing features that move as rigid bodies
+- [OGC API - Records](https://ogcapi.ogc.org/records) provides discovery and access to metadata about geo spatial resources.
 
 ### OGC API building blocks
 
@@ -129,7 +131,6 @@ The OGC API effort is rapidly evolving. Numerous OGC API standards are in develo
 - [Routes](https://ogcapi.ogc.org/routes) provides access to routing data
 - [Styles](https://ogcapi.ogc.org/styles) defines a Web API that enables map servers, clients as well as visual style editors, to manage and fetch styles
 - [3D GeoVolumes](https://ogcapi.ogc.org/geovolumes) facilitates efficient discovery of and access to 3D content in multiple formats based on a space-centric perspective
-- [Moving Features](https://ogcapi.ogc.org/movingfeatures) defines an API that provides access to data representing features that move as rigid bodies
 - [Joins](https://ogcapi.ogc.org/joins)  supports the joining of data, from multiple sources, with feature collections or directly with other input files
 - [Discrete Global Grid System](https://ogcapi.ogc.org/dggs) enables applications to organise and access data arranged according to a Discrete Global Grid System (DGGS)
 - [Connected Systems](https://ogcapi.ogc.org/connectedsystems/) is intended to act as a bridge between static data (geographic and other domain features) and dynamic data (observations of these feature properties, and commands/actuations that change these feature properties)
