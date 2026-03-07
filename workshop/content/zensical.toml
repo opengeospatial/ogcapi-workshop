@@ -1,0 +1,61 @@
+[project]
+site_name = "OGC API Workshop"
+site_description = "OGC APIs are designed to make it easy for anyone to provide and use geospatial data on the web and integrate it with other information. This workshop introduces OGC APIs supporting discovery, access, visualization, and processing aligned with FAIR data principles."
+site_url = "https://ogcapi-workshop.ogc.org"
+repo_url = "https://github.com/opengeospatial/ogcapi-workshop"
+edit_uri = "edit/main/workshop/content/docs"
+copyright = "© 2023 - 2026 Open Geospatial Consortium"
+docs_dir = "docs"
+directory_urls = true
+extra_css = [ 
+  "assets/stylesheets/ogcapi-workshop.css",
+  "assets/stylesheets/termynal.css",
+  "assets/stylesheets/custom.css"
+]
+
+nav = [
+    {"Home" = "index.md"},
+    {"Background and context" = "background-and-context.md"},
+    {"Overview and main concepts" = "overview-and-main-concepts.md"},
+    {"Compliance and certification" = "compliance-and-certification.md"},
+    {"API deep dive:" = [
+        {"Primer" = "api-deep-dive/primer.md"},
+        {"OGC API - Common" = "api-deep-dive/common.md"},
+        {"OGC API - Features" = "api-deep-dive/features.md"},
+        {"OGC API - Tiles" = "api-deep-dive/tiles.md"},
+        {"OGC API - Maps" = "api-deep-dive/maps.md"},
+        {"OGC API - Styles" = "api-deep-dive/styles.md"},
+#        {"OGC API - Coverages" = "api-deep-dive/coverages.md"},
+        {"OGC API - Processes" = "api-deep-dive/processes.md"},
+        {"OGC API - Records" = "api-deep-dive/records.md"},
+        {"OGC API - Environmental Data Retrieval" = "api-deep-dive/environmental-data-retrieval.md"},
+        {"OGC SensorThings API" = "api-deep-dive/sensorthings.md"}
+    ]},
+    {"OGC API roadmap" = "roadmap.md"},
+    {"Security" = "security.md"},
+    {"Transition and migration" = "transition-and-migration.md"},
+    {"Getting involved" = "getting-involved.md"},
+    {"Conclusion" = "conclusion.md"}
+]
+
+[project.theme]
+language = "en"
+variant = "classic"
+primary = "black"
+favicon = "assets/favicon.ico"
+logo = "assets/images/ogc.png"
+features = [
+  "content.action.edit",
+  "content.action.view",
+  "navigation.top",
+  "navigation.tracking.prev_next",
+  "navigation.tracking.section"
+]
+
+[project.extra]
+homepage = "https://ogcapi-workshop.ogc.org"
+
+extra_javascript = [
+  "assets/javascripts/termynal.js",
+  "assets/javascripts/custom.js"
+]

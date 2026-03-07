@@ -23,10 +23,5 @@ jobs:
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
 
-      - name: Mock mkdocs config without the with-pdf plugin 🧰
-        run: |
-          awk '!/with-pdf/' mkdocs.yml > mkdocs-strict.yml
-
       - name: Build 📦
-        #run: mkdocs build --strict
-        run: mkdocs build --strict --config-file mkdocs-strict.yml
+        run: zensical build --clean --strict
