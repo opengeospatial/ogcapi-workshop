@@ -7,10 +7,6 @@ on:
 #    paths:
 #      - 'workshop/content/**'
 
-defaults:
-  run:
-    working-directory: workshop/content
-
 jobs:
   build:
     name: Build and Deploy Documentation
@@ -22,12 +18,14 @@ jobs:
           python-version: '3.x'
       - name: Install requirements 📦
         run: |
+          cd workshop/content
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
       - name: Build site 📦
         run: |
           zensical build --clean --strict
           mv site /tmp/
+          cd ../..
       - name: checkout gh-pages branch
         uses: actions/checkout@master
         with:
