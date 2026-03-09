@@ -28,6 +28,10 @@ jobs:
         run: |
           zensical build --clean --strict
           mv site /tmp/
+      - name: checkout gh-pages branch
+        uses: actions/checkout@master
+        with:
+          ref: gh-pages
       - name: Deploy to GitHub Pages 📦
         run: |
           git checkout gh-pages
