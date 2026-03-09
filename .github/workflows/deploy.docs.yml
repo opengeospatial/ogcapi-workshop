@@ -18,15 +18,13 @@ jobs:
           python-version: '3.x'
       - name: Install requirements 📦
         run: |
-          cd workshop/content
           python3 -m pip install --upgrade pip
-          pip3 install -r requirements.txt
+          pip3 install -r workshop/content/requirements.txt
       - name: Build site 📦
         run: |
-          ls -l
+          cd workshop/content
           zensical build --clean --strict
           mv site /tmp/
-          cd ../..
       - name: checkout gh-pages branch
         uses: actions/checkout@master
         with:
