@@ -23,6 +23,7 @@ jobs:
           pip3 install -r requirements.txt
       - name: Build site 📦
         run: |
+          ls -l
           zensical build --clean --strict
           mv site /tmp/
           cd ../..
