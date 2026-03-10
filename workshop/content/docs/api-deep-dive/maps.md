@@ -59,12 +59,6 @@ implementer-friendly and easily understandable by developers without geospatial 
 OGC Web Map Service Interface Standard (WMS): The WMS standard is a long standing and arguably the most well known
 and utilized OGC standard.
 
-
-
-more appropriate when working with client applications that only support classic OGC Web Services. Note as well that WFS adopts the Geography Markup Language (GML) as a default data format. In contrast, OGC API - Features includes recommendations to support HTML and GeoJSON as encodings, where practical. Implementations of OGC API - Features may also optionally support GML, as well as other vector formats.
-
-
-
 ### Overview of Resources
 
 **OGC API - Maps - Part 1: Core** defines the resources listed in the following table.
