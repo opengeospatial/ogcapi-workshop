@@ -193,11 +193,6 @@ Density collection is
 
 Note that the response to the request is CoverageJSON, in this case the default and only output format supported.
 .
-Note that this demonstration server offers data from recent
-observations, therefore you may need to update the values of the
-```datetime``` parameter to the current day in order to access
-available METAR observation.
-
 ## Resources
 
 This section provides basic information about the types of resources
