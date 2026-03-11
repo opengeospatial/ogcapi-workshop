@@ -10,7 +10,7 @@ The [OGC Compliance Program](https://www.ogc.org/compliance) provides the resour
 
 The primary purpose of the program is to increase systems interoperability while reducing technology risks by providing a process whereby compliance with OGC standards can be tested.
 
-You can browse the [OGC compliance product page](https://www.ogc.org/resources/certified-products/) to check the list of products certified by OGC.
+You can browse the [OGC compliance product page](https://portal.ogc.org/public_ogc/compliance/compliant.php?display_opt=1&org_match=Crunchy+Data) to check the list of products certified by OGC.
 
 ## TEAM Engine
 
