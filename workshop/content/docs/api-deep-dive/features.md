@@ -87,7 +87,7 @@ In addition to the approved parts above, The OGC API - Features Standards Workin
 
 * *Draft* **OGC API - Features - Part 4: Create, Replace, Update and Delete** defines the behaviour of an API that allows resource instances to be added, replaced, modified and/or removed for a collection.
 
-* *Draft* **OGC API - Features - Part 5: Schemas** specifies how features can be described by a logical schema and how such schemas are published in an OGC Web API implementation.
+* *Draft* **OGC API - Features - Part 5/OGC API - Common - Part 3: Schemas** specifies how features can be described by a logical schema and how such schemas are published in an OGC Web API implementation.
 
 * *Draft* **OGC API - Features - Part 6: Property Selection** specifies how the representation of a resource can be reduced to selected properties of the resource using a query parameter.
 
