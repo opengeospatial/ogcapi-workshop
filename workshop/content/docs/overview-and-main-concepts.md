@@ -112,10 +112,10 @@ The below OGC API standards have been approved and available for use.  Note that
 - [OGC API - Maps](https://ogcapi.ogc.org/maps) offers a modern approach to the OGC Web Map Service (WMS) standard for provision map and raster content
 - [OGC API - Processes](https://ogcapi.ogc.org/processes) allows for processing tools to be called and combined from many sources and applied to data in other OGC API resources though a simple API
 - [OGC API - Tiles](https://ogcapi.ogc.org/tiles) provides extended functionality to other OGC API Standards to deliver vector tiles, map tiles, and other tiled data
-- [Moving Features](https://ogcapi.ogc.org/movingfeatures) defines an API that provides access to data representing features that move as rigid bodies
+- [OGC API - Moving Features](https://ogcapi.ogc.org/movingfeatures) defines an API that provides access to data representing features that move as rigid bodies
 - [OGC API - Records](https://ogcapi.ogc.org/records) provides discovery and access to metadata about geo spatial resources.
-- [Discrete Global Grid System](https://ogcapi.ogc.org/dggs) enables applications to organise and access data arranged according to a Discrete Global Grid System (DGGS)
-- [Connected Systems](https://ogcapi.ogc.org/connectedsystems/) is intended to act as a bridge between static data (geographic and other domain features) and dynamic data (observations of these feature properties, and commands/actuations that change these feature properties)
+- [OGC API - Discrete Global Grid Systems](https://ogcapi.ogc.org/dggs) enables applications to organise and access data arranged according to a Discrete Global Grid System (DGGS)
+- [OGC API - Connected Systems](https://ogcapi.ogc.org/connectedsystems/) is intended to act as a bridge between static data (geographic and other domain features) and dynamic data (observations of these feature properties, and commands/actuations that change these feature properties)
 
 ### OGC API building blocks
 
