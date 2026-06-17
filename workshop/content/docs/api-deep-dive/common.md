@@ -41,7 +41,9 @@ title: OGC API - Common
 This specification identifies resources, captures compliance classes, and specifies requirements which are applicable to all OGC API standards.  It should be included as a normative reference by all such standards.
 
 * The **OGC API - Common - Part 1: Core** Standard defines the resources and operations which SHALL be common to all OGC API standards. This Standard defines the minimal requirements for an API to be discovered and used by any client.
-* The Draft **OGC API - Common - Part 2: Geospatial Data** Standard provides a common connection between the API landing page and resource-specific details. That connection includes metadata which describes the collections of hosted resources, common parameters for selecting subsets of those collections, and URI templates for identifying the above.
+* The Draft **OGC API - Common - Part 2: Geospatial Data** candidate Standard provides a common connection between the API landing page and resource-specific details. That connection includes metadata which describes the collections of hosted resources, common parameters for selecting subsets of those collections, and URI templates for identifying the above.
+* The Draft **OGC API - Common Part 3/OGC API - Features - Part 5: Schemas** candidate Standard allows to describe the logical schema associated with a collection of geospatial data.
+* The Draft **OGC API - Common Part 4: Discovery within many collections** candidate Standard extends the ```/collections``` endpoint defined in Part 2 with query parameters to retrieve only a subset of the collections; useful for API deployments where a large number of collections are available.
 
 In addition, OGC API - Common provides some non-normative information through the [OGC API-Common Users Guide](https://docs.ogc.org/DRAFTS/20-071.html).
 
