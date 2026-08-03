@@ -1,19 +1,19 @@
 ---
-title: Oficina OGC API
+title: OGC API workshop
 ---
 
-# Bem-vindo à oficina OGC API!
+# Bem-vindo à OGC API workshop!
 
 ![OGC APIs logo](../assets/images/OGC_APIs_banner.jpg)
 
-O OGC é globalmente reconhecido pelos seus padrões abertos comprovados e amplamente implementados. O processo de desenvolvimento de padrões baseado em consenso aberto do OGC evoluiu para acompanhar o ritmo da inovação, com contribuições constantes de previsão tecnológica, prototipagem prática, testes em condições reais, certificação e conformidade e envolvimento da comunidade. Hoje, estamos a revolucionar a forma como a informação geoespacial/localização é partilhada, acedida, integrada e analisada através das APIs revolucionárias do OGC - os blocos de construção para informação de localização.
+A OGC é reconhecida a nível mundial pelos seus padrões abertos comprovados e amplamente implementados. O processo de desenvolvimento de padrões por consenso aberto da OGC evoluiu para acompanhar o ritmo da inovação, com contribuições constantes de previsão tecnológica, prototipagem prática, testes em cenários reais, certificação e conformidade e envolvimento da comunidade. Atualmente estamos a revolucionar a forma como a informação geoespacial/de localização é partilhada, acedida, integrada e analisada através das APIs revolucionárias da OGC — os blocos de construção para informação de localização.
 
-As [OGC APIs](https://ogcapi.ogc.org) são desenhadas para facilitar a qualquer pessoa a disponibilização e utilização de dados geoespaciais na web, e para integrar estes dados com qualquer outro tipo de informação. Estes Padrões constroem sobre a herança dos Padrões de Serviços Web do OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estes Padrões num local consolidado.
+As [OGC APIs](https://ogcapi.ogc.org) são desenhadas para tornar fácil a qualquer pessoa fornecer e utilizar dados geoespaciais na web, e para integrar estes dados com qualquer outro tipo de informação. Estes Padrões constroem sobre a herança dos Padrões de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estes Padrões num local consolidado.
 
-Estes Padrões estão a ser construídos como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos dos Padrões especificados no [Programa de Padrões do OGC](https://www.ogc.org/standards), mas também através de prototipagem e testes de interoperabilidade no [Programa de Soluções Colaborativas e Inovação do OGC](https://www.opengeospatial.org/ogc/programs/ip).
+Estes Padrões estão a ser construídos como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos dos Padrões especificados no [Programa de Padrões da OGC](https://www.ogc.org/standards), mas também através de prototipagem e testes de interoperabilidade no [Programa de Soluções Colaborativas e Inovação da OGC](https://www.opengeospatial.org/ogc/programs/ip).
 
 
-# A equipa da oficina
+# A equipa da workshop
 
 <table>
     <tr>
@@ -26,13 +26,13 @@ Estes Padrões estão a ser construídos como "blocos de construção" que podem
     </tr>
 </table>
 
-# Sobre esta oficina
+# Sobre esta workshop
 
-Esta oficina proporciona uma combinação de conceitos, apresentação e exercícios de OGC APIs em apoio da descoberta, acesso, visualização e processamento em apoio dos princípios de dados FAIR.
+Esta workshop proporciona uma combinação de conceitos, apresentação e exercícios sobre OGC APIs em apoio da descoberta, acesso, visualização e processamento em conformidade com os princípios de dados FAIR.
 
-Cada módulo de aprofundamento começa com secções "Público-alvo" e "Objetivos de Aprendizagem":
+Cada módulo de aprofundamento começa com as secções "Público-alvo" e "Objetivos de Aprendizagem":
 
-!!! abstract Público-alvo
+!!! abstract "Público-alvo"
     Descreve de que trata este módulo.
 
 !!! abstract "Objetivos de Aprendizagem"
@@ -44,7 +44,7 @@ Os exercícios são indicados da seguinte forma:
 
     Uma secção marcada desta forma indica que pode tentar o exercício.
 
-Também irá notar secções de notas dentro do texto:
+Também irá encontrar secções de notas no interior do texto:
 
 !!! note
 
@@ -65,11 +65,11 @@ JSON
 }
 ```
 
-# Localização e materiais da oficina
+# Localização e materiais da workshop
 
-Esta oficina é sempre disponibilizada ao vivo em [ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org).
+Esta workshop é sempre disponibilizada ao vivo em [ogcapi-workshop.ogc.org](https://ogcapi-workshop.ogc.org).
 
-Os conteúdos da oficina, wiki e rastreador de issues são geridos no GitHub em [github.com/opengeospatial/ogcapi-workshop](https://github.com/opengeospatial/ogcapi-workshop).
+Os conteúdos da workshop, wiki e rastreador de issues são geridos no GitHub em [github.com/opengeospatial/ogcapi-workshop](https://github.com/opengeospatial/ogcapi-workshop).
 
 # Suporte
 
@@ -77,8 +77,8 @@ Para problemas/bugs/sugestões ou melhorias/contribuições, por favor utilize o
 
 As contribuições são sempre encorajadas e bem-vindas!
 
-# Citar esta oficina
+# Citar esta workshop
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15846453.svg)](https://doi.org/10.5281/zenodo.15846453)
 
-## Agora, para a oficina. Pronto? Vamos lá!
+## Agora, para a workshop. Pronto? Vamos lá!

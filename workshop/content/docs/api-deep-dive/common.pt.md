@@ -1,64 +1,63 @@
 ---
-title: Common
+title: OGC API - Common
 ---
 
-[
+# OGC API - Common
 
+!!! abstract "Público-alvo"
+    Estudantes que estejam familiarizados com serviços web e APIs, e queiram ter
+    uma visão geral do padrão de rascunho OGC API - Common
 
-    [
+!!! abstract "Objetivos de Aprendizagem"
+    Após a conclusão do módulo, os estudantes serão capazes de:
 
+    - Explicar o que é o padrão OGC API - Common
+    - Descrever o que pode ser feito com o OGC API - Common como bloco de construção
 
-# OGC API - Common[](#ogc-api-common)
+## Introdução
 
-Público-alvo
-Estudantes que estão familiarizados com serviços web e APIs, e querem ter
-uma visão geral do rascunho do padrão OGC API - Common
+A [OGC API - Common](https://ogcapi.ogc.org/common) especifica blocos de construção que são partilhados pela maioria ou por todas as Normas da OGC API, a fim de garantir a consistência em toda a família. No decorrer do desenvolvimento de Arquiteturas Orientadas a Recursos e APIs Web, algumas práticas revelaram-se comuns a todos os padrões da OGC API. A finalidade deste padrão é documentar essas práticas. Também serve como uma **base comum** sobre a qual todas as OGC APIs serão construídas.
 
-Objetivos de Aprendizagem
-No final do módulo os estudantes serão capazes de:
+!!! note
+    Este módulo de tutorial não tem a intenção de ser um substituto do próprio
+    padrão **OGC API - Common - Part 1: Core** ou do padrão em rascunho **OGC API - Common - Part 2: Geospatial Data**. O tutorial
+    foca-se intencionalmente num subconjunto de capacidades a fim de começar com
+    a utilização do padrão. Consulte o [padrão **OGC API -
+    Common - Part 1: Core**](https://docs.ogc.org/is/19-072/19-072.html) e o [padrão em rascunho **OGC API - Common - Part 2: Geospatial Data**](https://docs.ogc.org/DRAFTS/20-024.html) para mais detalhes.
 
-Explicar o que é o padrão OGC API - Common
-Descrever o que pode ser feito com OGC API - Common como bloco de construção
+### Antecedentes
 
-## Introdução[](#introducao)
+> História
 
-O [OGC API - Common](https://ogcapi.ogc.org/common) especifica blocos de construção que são partilhados pela maioria ou por todos os Padrões OGC API para garantir consistência através da família. No curso do desenvolvimento de Arquiteturas Orientadas a Recursos e Web APIs, algumas práticas provaram ser comuns a todos os padrões OGC API. O objetivo deste padrão é documentar essas práticas. Serve também como uma base comum sobre a qual todas as OGC APIs serão construídas.
+  O padrão OGC API Common serve como o padrão "OWS Common" para APIs Orientadas a Recursos da OGC. A carta do SWG da OGC API - Common foi criada em 2020 e a OGC API - Common - Part 1: Core foi aprovada em fevereiro de 2023.
 
-Note
-Este módulo de tutorial não tem a intenção de ser uma substituição ao
-OGC API - Common - Parte 1: Núcleo padrão ou rascunho do padrão OGC API - Common - Parte 2: Dados Geoespaciais. O tutorial
-foca intencionalmente num subconjunto de capacidades a fim de fazer com que o
-estudante comece a usar o padrão. Por favor consulte o [OGC API -
-Common - Parte 1: Núcleo padrão](https://docs.ogc.org/is/19-072/19-072.html) e [OGC API -
-Common - Parte 2: Dados Geoespaciais rascunho do padrão](https://docs.ogc.org/DRAFTS/20-024.html) para mais detalhes.
+> Versões
 
-### Antecedentes[](#antecedentes)
-
-História
-
-O padrão OGC API Common serve como o padrão "OWS Common" para OGC APIs Orientadas a Recursos. O estatuto do SWG OGC API - Common foi criado em 2020, OGC API - Common - Parte 1: Núcleo foi aprovado em Fevereiro de 2023.
-
-Versões
-
-A versão 1.0.0 do OGC API - Common - Parte 1: Núcleo é a versão
+  A versão 1.0.0 da **OGC API - Common - Part 1: Core** é a versão
   mais recente atual
 
-#### Utilização[](#utilizacao)
-Esta especificação identifica recursos, captura classes de conformidade, e especifica requisitos que são aplicáveis a todos os padrões OGC API. Deve ser incluído como uma referência normativa por todos esses padrões.
+#### Utilização
 
-O padrão OGC API - Common - Parte 1: Núcleo define os recursos e operações que DEVEM ser comuns a todos os padrões OGC API. Este padrão define os requisitos mínimos para uma API para ser descoberta e usada por qualquer cliente.
-O rascunho do OGC API - Common - Parte 2: Dados Geoespaciais padrão candidato fornece uma conexão comum entre a página inicial da API e detalhes específicos do recurso. Essa conexão inclui metadados que descrevem as coleções de recursos alojados, parâmetros comuns para selecionar subconjuntos dessas coleções, e modelos URI para identificar o acima.
-O rascunho do OGC API - Common Parte 3/OGC API - Features - Parte 5: Esquemas padrão candidato permite descrever o esquema lógico associado a uma coleção de dados geoespaciais.
-O rascunho do OGC API - Common Parte 4: Descoberta em muitas coleções padrão candidato estende o endpoint /collections definido na Parte 2 com parâmetros de consulta para recuperar apenas um subconjunto das coleções; útil para implementações de API onde um grande número de coleções está disponível.
+Esta especificação identifica recursos, captura classes de conformidade e especifica requisitos que são aplicáveis a todos os padrões da OGC API. Deve ser incluída como referência normativa por todos esses padrões.
 
-Adicionalmente, OGC API - Common fornece alguma informação não normativa através do [Guia de Utilizador OGC API-Common](https://docs.ogc.org/DRAFTS/20-071.html).
+* O padrão **OGC API - Common - Part 1: Core** define os recursos e operações que DEVE ter em comum todos os padrões da OGC API. Este padrão define os requisitos mínimos para que uma API seja descoberta e utilizada por qualquer cliente.
+* O padrão em rascunho **OGC API - Common - Part 2: Geospatial Data** fornece uma ligação comum entre a página de aterragem da API e os detalhes específicos do recurso. Essa ligação inclui metadados que descrevem as coleções de recursos alojados, parâmetros comuns para selecionar subconjuntos dessas coleções e modelos URI para identificar os mesmos.
+* O padrão candidato em rascunho **OGC API - Common Part 3/OGC API - Features - Part 5: Schemas** permite descrever o esquema lógico associado a uma coleção de dados geoespaciais.
+* O padrão candidato em rascunho **OGC API - Common Part 4: Discovery within many collections** estende o endpoint ```/collections``` definido na Parte 2 com parâmetros de consulta para recuperar apenas um subconjunto das coleções; útil para implementações de API onde um grande número de coleções está disponível.
 
-#### Relação com outros padrões[](#relacao-com-outros-padroes)
-A imagem abaixo mostra a arquitetura de recursos no OGC API. O OGC API - Common fornece uma base comum a todas as OGC APIs.
+Além disso, a OGC API - Common fornece alguma informação não normativa através do [Guia do Utilizador da OGC API - Common](https://docs.ogc.org/DRAFTS/20-071.html).
 
-### Visão geral de Recursos[](#visao-geral-de-recursos)
+#### Relação com outros padrões
 
-O OGC API - Common - Parte 1: Núcleo define os recursos listados na
+A imagem abaixo mostra a arquitetura de recursos na OGC API. A OGC API - Common fornece uma base comum a todas as OGC APIs.
+
+![imagem](../assets/images/resources-ogcapi.png){width="100.0%"}
+
+<!-- A especificação [OpenAPI](https://www.openapis.org/) é utilizada para definir os blocos de construção de API reutilizáveis. -->
+
+### Visão geral dos Recursos
+
+**A OGC API - Common - Part 1: Core** define os recursos listados na
 tabela seguinte:
 
 <table>
@@ -66,36 +65,36 @@ tabela seguinte:
     <th>Recurso</th>
     <th>Método</th>
     <th>Caminho</th>
-    <th>Propósito</th>
+    <th>Finalidade</th>
   </tr>
   <tr>
-    <td>Página inicial</td>
+    <td>Página de aterragem</td>
     <td>GET</td>
     <td>/</td>
-    <td>Recupera a página inicial. O objetivo da página inicial é fornecer aos clientes um ponto de partida para usar a API. Qualquer recurso exposto através de uma API pode ser acedido seguindo caminhos ou ligações a partir da página inicial. A página inicial inclui três elementos de metadados; título, descrição e atribuição. Apenas o título é obrigatório. Estes três elementos descrevem a API como um todo. Os clientes podem esperar encontrar metadados que são mais específicos do recurso à medida que seguem ligações e caminhos a partir da página inicial.</td>
+    <td>Recupera a página de aterragem. A finalidade da página de aterragem é fornecer aos clientes um ponto de partida para usar a API. Qualquer recurso exposto através de uma API pode ser acedido seguindo caminhos ou ligações a partir da página de aterragem. A página de aterragem inclui três elementos de metadados; título, descrição e atribuição. Apenas o título é obrigatório. Estes três elementos descrevem a API como um todo. Os clientes podem esperar encontrar metadados que sejam mais específicos do recurso à medida que seguem ligações e caminhos a partir da página de aterragem.</td>
   </tr>
   <tr>
     <td>Declaração de conformidade</td>
     <td>GET</td>
     <td>/conformance</td>
-    <td>Fornece uma lista declarando os módulos que estão implementados pela API. Estes módulos são chamados Classes de Conformidade. A lista de Classes de Conformidade é fundamental para compreender e usar uma OGC Web API.</td>
+    <td>Fornece uma lista declarando os módulos que são implementados pela API. Estes módulos são chamados Classes de Conformidade. A lista de Classes de Conformidade é fundamental para compreender e utilizar uma API Web da OGC.</td>
   </tr>
   <tr>
     <td>Definição da API</td>
     <td>GET</td>
     <td>/api</td>
-    <td>Recupera a definição da API que descreve as capacidades fornecidas por essa API. Este recurso pode ser usado por desenvolvedores para compreender a API, por clientes de software para se ligarem ao servidor, e por ferramentas de desenvolvimento para apoiar a implementação de servidores e clientes. Note que o uso de /api no servidor é opcional e a definição da API pode ser alojada num servidor completamente separado.</td>
+    <td>Recupera a definição da API, que descreve as capacidades fornecidas por essa API. Este recurso pode ser utilizado por programadores para compreender a API, por clientes de software para ligar ao servidor, e por ferramentas de desenvolvimento para apoiar a implementação de servidores e clientes. Note que o uso de /api no servidor é opcional e a definição da API pode estar alojada num servidor completamente separado.</td>
   </tr>
 </table>
 
-O objetivo do rascunho do padrão OGC API - Common - Parte 2: Dados Geoespaciais é fornecer uma conexão comum entre a página inicial da API e detalhes específicos do recurso. A tabela abaixo define os recursos listados nesta parte.
+A finalidade do padrão em rascunho **OGC API - Common - Part 2: Geospatial Data** é fornecer uma ligação comum entre a página de aterragem da API e os detalhes específicos do recurso. A tabela abaixo define os recursos listados nesta parte.
 
 <table>
   <tr>
     <th>Recurso</th>
     <th>Método</th>
     <th>Caminho</th>
-    <th>Propósito</th>
+    <th>Finalidade</th>
   </tr>
   <tr>
     <td>Coleções</td>
@@ -111,9 +110,9 @@ O objetivo do rascunho do padrão OGC API - Common - Parte 2: Dados Geoespaciais
   </tr>
 </table>
 
-Fornecendo uma base comum, OGC API - Common destina-se a ser implementado por padrões OGC API "a jusante"
-de forma uniforme e consistente. Exemplos de recursos OGC API - Common serão mostrados no contexto de outros padrões OGC API.
+Fornecendo uma **base comum**, a OGC API - Common destina-se a ser implementada por padrões "a jusante" da OGC API
+de forma uniforme e consistente. Exemplos de recursos da OGC API - Common serão apresentados no contexto de outros padrões da OGC API.
 
-## Resumo[](#resumo)
+## Resumo
 
-OGC API - Common documenta o conjunto de práticas comuns e requisitos partilhados que emergiram do desenvolvimento de Arquiteturas Orientadas a Recursos e Web APIs dentro do OGC. O padrão define recursos e mecanismos de acesso que são úteis para um cliente que procura compreender as ofertas e capacidades de uma API, bem como uma conexão entre a página inicial da API e detalhes específicos do recurso. Neste aprofundamento fornecemos uma visão geral do padrão e olhamos para os recursos na parte 1 e parte 2 (rascunho).
+A OGC API - Common documenta o conjunto de práticas comuns e requisitos partilhados que emergiram do desenvolvimento de Arquiteturas Orientadas a Recursos e APIs Web dentro da OGC. O padrão define recursos e mecanismos de acesso que são úteis para um cliente que procura compreender as ofertas e capacidades de uma API, bem como uma ligação entre a página de aterragem da API e os detalhes específicos do recurso. Neste aprofundamento, proporcionámos uma visão geral do padrão e olhamos para os recursos na parte 1 e parte 2 (em rascunho).

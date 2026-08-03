@@ -4,14 +4,14 @@ title: Transição e migração
 
 # Transição e migração
 
-De acordo com as [Políticas e Procedimentos do Comité Técnico do OGC](https://docs.ogc.org/pol/05-020r29/05-020r29.html), se um Padrão existente for substituído parcial ou totalmente por um ou mais novos Padrões, então um caso especial de depreciação pode ocorrer resultando no Padrão original ser rotulado como "Padrão Obsoleto."
+De acordo com as [Políticas e Procedimentos do Comité Técnico da OGC](https://docs.ogc.org/pol/05-020r29/05-020r29.html), se um Padrão existente for substituído, parcial ou totalmente, por um ou mais novos Padrões, então um caso especial de depreciação pode ocorrer, resultando no Padrão original ser rotulado como "Padrão Legado".
 
-Este pode ser o caso de muitos [padrões OWS](https://developer.ogc.org/ows.html), à medida que são substituídos por OGC APIs mais modernas e mais completas.
+Poderá ser este o caso de muitos [padrões OWS](https://developer.ogc.org/ows.html), uma vez que estão a ser substituídos por OGC APIs mais modernas e mais completas.
 
-Como com os Padrões obsoletos, os Padrões Obsoletos já não são suportados, mas permanecem no site do OGC com uma notificação de que as capacidades do Padrão foram substituídas totalmente ou parcialmente por novo(s) Padrão(ais). A notificação indicará claramente que o Padrão Obsoleto não é inválido, mas que novas implementações das capacidades do Padrão são melhor servidas pelo(s) novo(s) Padrão(ais) identificado(s).
+Assim como com os Padrões depreciados, os Padrões Legados já não são suportados, mas permanecem no sítio web da OGC com uma notificação de que as capacidades do Padrão foram substituídas, total ou parcialmente, por novos Padrões. A notificação indicará claramente que o Padrão Legado não é inválido, mas que novas implementações das capacidades do Padrão serão melhor servidas pelos novos Padrões identificados.
 
-Na [Oficina Diving into pygeoapi](https://dive.pygeoapi.io), pode encontrar
+Na [Workshop Diving into pygeoapi](https://dive.pygeoapi.io), pode encontrar
 uma secção sobre o [uso de pontes para facilitar a migração de OWS para OGC
 API](https://dive.pygeoapi.io/advanced/bridges/).
 
-![image](assets/images/bridges.png){width="80.0%"}
+![imagem](assets/images/bridges.png){width="80.0%"}
