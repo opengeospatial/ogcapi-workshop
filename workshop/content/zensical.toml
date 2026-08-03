@@ -47,8 +47,14 @@ features = [
   "content.action.view",
   "navigation.top",
   "navigation.tracking.prev_next",
-  "navigation.tracking.section"
+  "navigation.tracking.section",
+  "navigation.indexes" 
 ]
 
 [project.extra]
 homepage = "https://ogcapi-workshop.ogc.org"
+
+alternate = [
+    { name = "English", link = "/", lang = "en" },
+    { name = "Português", link = "/pt/", lang = "pt" }
+]
