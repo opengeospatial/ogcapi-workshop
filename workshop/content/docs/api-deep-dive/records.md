@@ -36,6 +36,13 @@ records will be specified in additional parts.
     OGC API - Records leverages [OGC API - Features](features.md#usage) as a baseline with similar
     URL endpoints and request/response workflow, for the Searchable Catalog and Local.
 
+!!! note
+    This tutorial module is not intended to be a replacement to the actual
+    **OGC API - Records - Part 1: Core** standard. The tutorial
+    intentionally focuses on a subset of capabilities in order to get the
+    student started with using the standard. Please refer to the **OGC API -
+    Records - Part 1: Core** standard for additional detail.
+
 ### Background
 
 > History
