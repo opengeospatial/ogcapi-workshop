@@ -6,47 +6,44 @@ title: OGC API - Maps
 
 !!! abstract "Público-alvo"
     Estudantes que estejam familiarizados com serviços web e APIs, e queiram ter
-    uma visão geral do padrão OGC API - Maps
+    uma visão geral da norma OGC API - Maps
 
 !!! abstract "Objetivos de Aprendizagem"
     Após a conclusão do módulo, os estudantes serão capazes de:
 
-    - Explicar o que é o padrão OGC API - Maps
+    - Explicar o que é a norma OGC API - Maps
     - Descrever o que pode ser feito com implementações da OGC API - Maps
     - Compreender os principais recursos oferecidos por implementações da OGC API - Maps
     - Compreender como recuperar uma descrição das capacidades de uma implementação da OGC API - Maps
-    - Compreender como emitir pedidos a uma implementação da OGC API - Maps
+    - Compreender como fazer pedidos a uma implementação da OGC API - Maps
     - Conseguir encontrar um endpoint da OGC API - Maps e utilizá-lo através de um cliente
 
 ## Introdução
 
-A [OGC API - Maps](https://ogcapi.ogc.org/maps) é um padrão que descreve uma API que apresenta dados como mapas aplicando um
-estilo. O padrão permite que uma aplicação cliente solicite mapas como imagens, ou altere
+A [OGC API - Maps](https://ogcapi.ogc.org/maps) é uma norma que descreve uma API que apresenta dados como mapas aplicando um
+estilo. A norma permite que uma aplicação cliente solicite mapas como imagens, ou altere
 parâmetros como tamanho e sistemas de referência de coordenadas no momento do pedido, tornando-a
-amigável para programadores e facilmente compreensível por desenvolvedores sem experiência geoespacial.
+amigável para programadores e facilmente compreensível por programadores sem experiência geoespacial.
 
 !!! note
-    Este módulo de tutorial não tem a intenção de ser um substituto do próprio
-    padrão **OGC API - Maps - Part 1: Core**. O tutorial foca-se intencionalmente
-    num subconjunto de capacidades a fim de começar com
-    a utilização do padrão. Consulte o [padrão **OGC API - Maps - Part 1:
+    Este módulo de tutorial não tem a intenção de substituir a própria norma **OGC API - Maps - Part 1: Core**. O tutorial foca-se intencionalmente
+    num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a [norma **OGC API - Maps - Parte 1:
     Core**](https://docs.ogc.org/is/20-058/20-058.html) para mais detalhes.
 
 ### Antecedentes
 
 > História
 
-    O trabalho do padrão OGC API - Maps começou em 2019. Foi desenvolvido em relação à OGC API - Tiles para
+    O trabalho da norma OGC API - Maps começou em 2019. Foi desenvolvido em relação à OGC API - Tiles para
     suportar tanto mapas dinâmicos como tiles de mapas.
 
 > Versões
 
-    A versão 1.0.0 da **OGC API - Maps - Part 1: Core** é a versão mais recente atual
+    A versão 1.0.0 da **OGC API - Maps - Part 1: Core** é a versão atual mais recente
 
 > Suite de testes
 
-    Atualmente não existem suites de testes implementadas; serão disponibilizadas uma vez que a especificação for
-    aprovada e uma suite de testes executável (ETS) seja disponibilizada como parte do OGC CITE.
+  Atualmente não existem suites de testes implementadas; uma vez implementadas elas estarão disponíveis no [OGC Validator](https://cite.ogc.org/teamengine/).
 
 > Implementações
 
@@ -54,14 +51,14 @@ amigável para programadores e facilmente compreensível por desenvolvedores sem
 
 #### Utilização
 
-#### Relação com outros padrões
+#### Relação com outras normas
 
-O Padrão de Interface Web Map Service da OGC (WMS): O padrão WMS é de longa data e é, sem dúvida, o padrão da OGC mais conhecido
-e utilizado.
+A Norma de Interface Web Map Service da OGC (WMS): A norma WMS é de longa data e é, sem dúvida, a norma da OGC mais conhecida
+e utilizada.
 
 ### Visão geral dos Recursos
 
-**A OGC API - Maps - Part 1: Core** define os recursos listados na tabela seguinte.
+**A OGC API - Maps - Parte 1: Core** define os recursos listados na tabela seguinte.
 
 !!! note
     Este aprofundamento foca-se na Classe de Requisitos "Collection Maps" da OGC API - Maps. "Dataset Maps" não está incluído de momento.
@@ -128,12 +125,12 @@ Note que, dado o âmbito e propósito da OGC API - Maps, a resposta ao pedido é
 
 ## Recursos
 
-### Página de aterragem
+### Página de Aterragem
 
 Como a OGC API - Maps usa a OGC API - Common como bloco de construção, consulte o aprofundamento da [OGC API - Features](features.md#landing-page)
 para uma explicação detalhada de um exemplo de implementação.
 
-### Declarações de conformidade
+### Declarações de Conformidade
 
 Como a OGC API - Maps usa a OGC API - Common como bloco de construção, consulte o aprofundamento da [OGC API - Features](features.md#conformance-declarations)
 para uma explicação detalhada de um exemplo de implementação.
@@ -279,5 +276,5 @@ Cada estilo dentro da coleção pode, em seguida, ser solicitado como mapa, da s
 
 ## Resumo
 
-O padrão OGC API - Maps descreve uma API que apresenta dados como mapas aplicando um estilo. Este aprofundamento
-proporcionou uma visão geral do padrão e dos vários Recursos e endpoints que são suportados.
+A norma OGC API - Maps descreve uma API que apresenta dados como mapas aplicando um estilo. Este aprofundamento
+proporcionou uma visão geral da norma e dos vários Recursos e endpoints que são suportados.

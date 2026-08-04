@@ -6,53 +6,52 @@ title: OGC API - Tiles
 
 !!! abstract "Público-alvo"
     Estudantes familiarizados com serviços web e APIs, que desejam ter
-    uma visão geral do standard OGC API - Tiles
+    uma visão geral da norma OGC API - Tiles
 
 !!! abstract "Objetivos de Aprendizagem"
     Ao concluir o módulo, os estudantes serão capazes de:
 
-    - Explicar o que é o standard OGC API - Tiles
-    - Descrever o que pode ser feito com implementações do OGC API - Tiles
-    - Compreender os principais recursos oferecidos por implementações do OGC API - Tiles
-    - Compreender como obter uma descrição das capacidades de uma implementação do OGC API - Tiles
-    - Compreender como fazer pedidos a uma implementação do OGC API - Features
-    - Conseguir encontrar um endpoint do OGC API - Tiles e utilizá-lo através de um cliente
+    - Explicar o que é a norma OGC API - Tiles
+    - Descrever o que pode ser feito com implementações da OGC API - Tiles
+    - Compreender os principais recursos oferecidos por implementações da OGC API - Tiles
+    - Compreender como obter uma descrição das capacidades de uma implementação da OGC API - Tiles
+    - Compreender como fazer pedidos a uma implementação da OGC API - Features
+    - Conseguir encontrar um endpoint da OGC API - Tiles e utilizá-lo através de um cliente
 
 ## Introdução
 
-O [OGC API - Tiles](https://tiles.developer.ogc.org/) é um standard que define blocos de construção para criar APIs
+A [OGC API - Tiles](https://tiles.developer.ogc.org/) é uma norma que define blocos de construção para criar APIs
 Web que suportam a recuperação de informação geoespacial sob a forma de tiles.
 São suportadas diferentes formas de informação geoespacial, como tiles
 de entidades vetoriais («tiles vetoriais»), coverages, mapas (ou imagens) e
-outros tipos de informação geoespacial. Embora possa ser utilizado
+outros tipos de informação geoespacial. Embora possa ser utilizada
 independentemente, os blocos de construção do OGC API - Tiles podem ser combinados
-com outros Standards da OGC API e especificações de rascunho para capacidades
+com outras normas e normas candidatas OGC API para capacidades
 adicionais ou para aumentar a interoperabilidade para tipos específicos de dados.
-O standard OGC API - Tiles referencia o [Standard OGC Two Dimensional Tile
+A norma OGC API - Tiles referencia a [norma OGC Two Dimensional Tile
 Matrix Set (TMS) and Tileset Metadata](https://docs.ogc.org/is/17-083r4/17-083r4.html), que define modelos lógicos
 e codificações para especificar tile matrix sets e descrever
 tilesets.
 
 !!! note
-    Este módulo tutorial não tem a intenção de substituir o standard efetivo do
+    Este módulo tutorial não tem a intenção de substituir a própria norma 
     **OGC API - Tiles - Parte 1: Core**. O tutorial concentra-se
-    intencionalmente num subconjunto de capacidades para permitir que o estudante comece
-    a utilizar o standard. Consulte o [standard do **OGC API - Tiles - Parte 1:
+    intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a [norma da **OGC API - Tiles - Parte 1:
     Core**](https://docs.ogc.org/is/20-057/20-057.html) para mais detalhes.
 
-Estes conceitos são o cerne deste standard:
+Estes conceitos são o cerne desta norma:
 
-- **Esquema de Tilagem:** esquema utilizado para particionar o espaço em tiles individuais, podendo incluir múltiplos níveis de detalhe. Um esquema de tilagem é geralmente definido sobre um SRC, embora possa utilizar outros sistemas de referência espacial.
-- **Tile Matrix:** grelha de tilagem num determinado sistema de referência de coordenadas 2D, associada a uma escala específica e a uma particionamento espacial (por exemplo: esquema de tilagem).
+- **Tiling Scheme:** esquema utilizado para particionar o espaço em tiles individuais, podendo incluir múltiplos níveis de detalhe. Um tiling scheme é geralmente definido sobre um SRC, embora possa utilizar outros sistemas de referência espacial.
+- **Tile Matrix:** grelha de tiling num determinado sistema de referência de coordenadas 2D, associada a uma escala específica e a um particionamento espacial (por exemplo: tiling scheme).
   ![imagem](../assets/images/tm.png){width="80.0%"}
-- **Tile Matrix Set:** esquema de tilagem consistindo num conjunto de tile matrices definidas em diferentes escalas, cobrindo aproximadamente a mesma área e tendo um sistema de referência de coordenadas comum. Um Tile Matrix tem um identificador alfanumérico único no Tile Matrix Set. Algumas implementações baseadas em tiles preferem utilizar o número de nível de zoom.
+- **Tile Matrix Set:** tiling scheme consistindo num conjunto de tile matrices definidas em diferentes escalas, cobrindo aproximadamente a mesma área e tendo um sistema de referência de coordenadas comum. Um Tile Matrix tem um identificador alfanumérico único no Tile Matrix Set. Algumas implementações baseadas em tiles preferem utilizar o número de nível de zoom.
   ![imagem](../assets/images/tms.png){width="80.0%"}
-- **Tile Set:** conjunto de tiles resultantes da aplicação de tilagem a dados de acordo com um esquema de tilagem particular.
+- **Tile Set:** conjunto de tiles resultantes da aplicação de tiling a dados de acordo com um tiling scheme particular.
 
 !!! note
 
-    - Um tile matrix pode ser implementado como um conjunto de ficheiros de imagem (por exemplo, PNG ou JPEG) numa pasta de ficheiros, cada ficheiro a representar um único tile.
-    - Em alguns standards, o conceito de Tile Matrix Set é designado por *pirâmide de imagens*.
+    - Uma tile matrix pode ser implementada como um conjunto de ficheiros de imagem (por exemplo, PNG ou JPEG) numa pasta de ficheiros, cada ficheiro a representar uma único tile.
+    - Em algumas normas, o conceito de Tile Matrix Set é designado por *pirâmide de imagens*.
 
 <iframe
   src="https://emotional.byteroad.net/collections/hex350_grid_cardio_1920/tiles"
@@ -64,7 +63,7 @@ Estes conceitos são o cerne deste standard:
 
 > Histórico
 
-  O standard OGC API - Tiles é um sucessor do standard Web Map
+  A norma OGC API - Tiles é uma sucessora da norma Web Map
   Tile Service (WMTS) da OGC, focando-se em blocos de construção REST API simples e reutilizáveis que
   podem ser descritos utilizando a especificação OpenAPI. Enquanto que o WMTS se focava em tiles de mapa, o standard OGC API -
   Tiles foi concebido para suportar qualquer forma de dados em tiles.
@@ -85,42 +84,40 @@ Estes conceitos são o cerne deste standard:
 
 #### Utilização
 
-Existem, pelo menos, duas formas de abordar uma implementação do Standard
+Existem, pelo menos, duas formas de abordar uma implementação da norma
 OGC API - Tiles.
 
--   Ler a landing page, procurar ligações, seguir as mesmas e descobrir novas
+-   Ler a página de aterragem, procurar ligações, seguir as mesmas e descobrir novas
     ligações até que o recurso desejado seja encontrado
 -   Ler um documento de definição de API Web que especifique uma lista de caminhos
     e modelos de caminho para recursos.
 
 Uma vez descobertos os recursos relevantes, recupere a lista
 de esquemas de tilagem disponíveis a partir do recurso
-```/tileMatrixSets``` para identificar o esquema de
-tilagem de interesse. Recupere os detalhes do esquema de tilagem específico
+```/tileMatrixSets``` para identificar o tiling scheme de interesse. Recupere os detalhes do tiling scheme específico
 com ```/tileMatrixSets/{tileMatrixSetId}```.
 
-Uma vez identificado um esquema de tilagem de interesse, pode recuperar
+Uma vez identificado um tiling scheme de interesse, pode recuperar
 os metadados do tileset para esse esquema através de
 ```/tiles/{tileMatrixSetId}``` e também recuperar
 tiles individuais com
 ```/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```
 
-#### Relação com outros standards da OGC
+#### Relação com outras normas da OGC
 
-Embora o Standard OGC API - Tiles seja concebido como um bloco de construção
-que pode ser aproveitado por (ou com) outros Standards da OGC API, adicionando
-precisões sobre tipos específicos de dados disponíveis como tiles (por exemplo, o standard OGC
-API - Features, e os standards candidatos OGC API - Maps e OGC API -
-Coverages), as classes de conformidade definidas neste
-Standard são ainda concretas o suficiente para tornar possível suportar
+Embora a norma OGC API - Tiles seja concebida como um bloco de construção
+que pode ser aproveitado por (ou com) outras normas da OGC API, adicionando
+precisões sobre tipos específicos de dados disponíveis como tiles (por exemplo, as normas OGC API - Features e OGC API - Maps e a norma candidata OGC API -
+Coverages), as classes de conformidade definidas nesta
+norma são ainda concretas o suficiente para tornar possível suportar
 a distribuição e solicitação de vários tipos de dados em tiles, incluindo
 coverages, entidades vetoriais e mapas, confiando estritamente no conteúdo
-aqui presente e no standard OGC Two Dimensional Tile Matrix Set and Tile Set
+aqui presente e na normaOGC Two Dimensional Tile Matrix Set and Tile Set
 Metadata 2.0.
 
 ### Visão geral dos recursos
 
-O **OGC API - Tiles - Parte 1: Core** define os recursos listados na
+A **OGC API - Tiles - Parte 1: Core** define os recursos listados na
 tabela seguinte.
 
 
@@ -131,7 +128,7 @@ tabela seguinte.
     <th>Caminho</th>
   </tr>
   <tr>
-    <td>Landing page</td>
+    <td>Página de aterragem</td>
     <td>GET</td>
     <td>/</td>
   </tr>
@@ -245,7 +242,7 @@ tabela seguinte.
 ### Exemplo
 
 O [servidor de demonstração](https://demo.ldproxy.net/zoomstack/)
-publica dados de entidades em tiles através de uma interface que está em conformidade com o OGC
+publica dados de entidades em tiles através de uma interface que está em conformidade com a OGC
 API - Tiles.
 
 Um exemplo de pedido que pode ser utilizado para recuperar dados, referenciados ao
@@ -261,32 +258,32 @@ dados.
 
 ## Recursos
 
-### Landing page
+### Página de aterragem
 
-Dado que o OGC API - Tiles utiliza o OGC API - Common como bloco de construção, consulte o [OGC API - Features](features.md#landing-page) para
+Dado que o OGC API - Tiles utiliza a OGC API - Common como bloco de construção, consulte a [OGC API - Features](features.md#landing-page) para
 uma explicação detalhada de uma implementação de exemplo.
 
 ### Declarações de conformidade
 
-Dado que o OGC API - Tiles utiliza o OGC API - Common como bloco de construção, consulte o [OGC API - Features](features.md#conformance-declarations) para
+Dado que a OGC API - Tiles utiliza a OGC API - Common como bloco de construção, consulte a [OGC API - Features](features.md#conformance-declarations) para
 uma explicação detalhada de uma implementação de exemplo.
 
 ### Definição da API
 
-Dado que o OGC API - Tiles utiliza o OGC API - Common como bloco de construção, consulte o [OGC API - Features](features.md#api-definition) para
+Dado que a OGC API - Tiles utiliza a OGC API - Common como bloco de construção, consulte a [OGC API - Features](features.md#api-definition) para
 uma explicação detalhada de uma implementação de exemplo.
 
 ### Coleções
 
-Dado que o OGC API - Tiles utiliza o OGC API - Common como bloco de construção, consulte o [OGC API - Features](features.md#feature-collections) para
+Dado que a OGC API - Tiles utiliza a OGC API - Common como bloco de construção, consulte a [OGC API - Features](features.md#feature-collections) para
 uma explicação detalhada de uma implementação de exemplo.
 
 ### Coleção
 
-Dado que o OGC API - Tiles utiliza o OGC API - Common como bloco de construção, consulte o [OGC API - Features](features.md#feature-collection) para
+Dado que a OGC API - Tiles utiliza a OGC API - Common como bloco de construção, consulte a [OGC API - Features](features.md#feature-collection) para
 uma explicação detalhada de uma implementação de exemplo.
 
-### Esquemas de Tilagem
+### Tiling Schemes
 
 Este endpoint recupera uma lista de ligações para as descrições dos tile matrix sets suportados pela API Web da OGC. Podem ser um ou vários dos tile matrix sets bem conhecidos listados no Anexo D do [OGC Two Dimensional Tile Matrix Set and Tile Set Metadata](https://docs.ogc.org/is/17-083r4/17-083r4.html#toc48), ou personalizados.
 
@@ -547,7 +544,7 @@ Os metadados do tileset de um tile matrix set específico podem ser recuperados 
     },
 ```
 
-Finalmente, podemos solicitar os dados efetivos, neste caso um tile vetorial, utilizando ```/collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```.
+Finalmente, podemos solicitar os dados efetivos, neste caso uma tile vetorial, utilizando ```/collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}```.
 
 Assim como nos tilesets de dados, podemos reutilizar os mesmos endpoints para tiles de mapa ou de coverage, mas nesses casos precisamos de introduzir ```map``` ou ```coverage``` no caminho.
 
@@ -567,7 +564,7 @@ Pode ver [aqui](https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tile
 
 ### Utilização por clientes
 
-Nesta secção vamos demonstrar como aceder ao OGC API - Tiles utilizando o cliente OpenLayers.
+Nesta secção vamos demonstrar como aceder à OGC API - Tiles utilizando o cliente OpenLayers.
 
 #### OpenLayers
 
@@ -618,4 +615,4 @@ Verões recentes do QGIS suportam a adição de OGC API - Tiles ao adicionar `ne
 
 ## Resumo
 
-O OGC API - Tiles especifica um standard para APIs Web que fornecem tiles de informação geoespacial. São suportadas diferentes formas de informação geoespacial, como tiles de entidades vetoriais («tiles vetoriais»), coverages, mapas (ou imagens) e, potencialmente, eventualmente, tipos adicionais de tiles de informação geoespacial. Este aprofundamento proporcionou uma visão geral do standard e dos vários recursos e endpoints suportados. Mostra também um exemplo de como aceder a um endpoint OGC API - Tiles, utilizando um cliente JavaScript.
+A OGC API - Tiles especifica uma norma para APIs Web que fornecem tiles de informação geoespacial. São suportadas diferentes formas de informação geoespacial, como tiles de entidades vetoriais («tiles vetoriais»), coverages, mapas (ou imagens) e, potencialmente, eventualmente, tipos adicionais de tiles de informação geoespacial. Este aprofundamento proporcionou uma visão geral da norma e dos vários recursos e endpoints suportados. Mostra também um exemplo de como aceder a um endpoint de OGC API - Tiles, utilizando um cliente JavaScript.

@@ -2,16 +2,15 @@
 title: OGC API workshop
 ---
 
-# Bem-vindo à OGC API workshop!
+# Boas vindas à Workshop das OGC API !
 
 ![OGC APIs logo](../assets/images/OGC_APIs_banner.jpg)
 
-A OGC é reconhecida a nível mundial pelos seus padrões abertos comprovados e amplamente implementados. O processo de desenvolvimento de padrões por consenso aberto da OGC evoluiu para acompanhar o ritmo da inovação, com contribuições constantes de previsão tecnológica, prototipagem prática, testes em cenários reais, certificação e conformidade e envolvimento da comunidade. Atualmente estamos a revolucionar a forma como a informação geoespacial/de localização é partilhada, acedida, integrada e analisada através das APIs revolucionárias da OGC — os blocos de construção para informação de localização.
+A OGC é reconhecida a nível mundial pelas suas normas abertas comprovadas e amplamente implementadas. O processo de desenvolvimento de normas por consenso aberto da OGC evoluiu para acompanhar o ritmo da inovação, com contribuições constantes de previsões tecnológicas, prototipagem prática, testes em cenários reais, certificação e conformidade e envolvimento da comunidade. Atualmente estamos a revolucionar a forma como a informação geoespacial/de localização é partilhada, acedida, integrada e analisada através das APIs revolucionárias da OGC — os blocos de construção para informação de localização.
 
-As [OGC APIs](https://ogcapi.ogc.org) são desenhadas para tornar fácil a qualquer pessoa fornecer e utilizar dados geoespaciais na web, e para integrar estes dados com qualquer outro tipo de informação. Estes Padrões constroem sobre a herança dos Padrões de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estes Padrões num local consolidado.
+As [OGC APIs](https://ogcapi.ogc.org) são desenhadas para tornar fácil a qualquer pessoa fornecer e utilizar dados geoespaciais na web, e para integrar estes dados com qualquer outro tipo de informação. Estas normas constroem-se sobre a herança das Normas de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estas normas num local consolidado.
 
-Estes Padrões estão a ser construídos como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos dos Padrões especificados no [Programa de Padrões da OGC](https://www.ogc.org/standards), mas também através de prototipagem e testes de interoperabilidade no [Programa de Soluções Colaborativas e Inovação da OGC](https://www.opengeospatial.org/ogc/programs/ip).
-
+Estas normas estão a ser construídas como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos das normas especificadas no [Programa de Normas da OGC](https://www.ogc.org/standards), mas também através de prototipagem e testes de interoperabilidade no [Programa de Soluções Colaborativas e Inovação da OGC](https://www.ogc.org/research/).
 
 # A equipa da workshop
 

@@ -6,33 +6,31 @@ title: OGC API - Features
 
 !!! abstract "Público-alvo"
     Estudantes que estejam familiarizados com serviços web e APIs, e queiram ter
-    uma visão geral do padrão OGC API - Features
+    uma visão geral da norma OGC API - Features
 
 !!! abstract "Objetivos de Aprendizagem"
     Após a conclusão do módulo, os estudantes serão capazes de:
 
-    - Explicar o que é o padrão OGC API - Features
+    - Explicar o que é a norma OGC API - Features
     - Descrever o que pode ser feito com implementações da OGC API - Features
     - Compreender os principais recursos oferecidos por implementações da OGC API - Features
     - Comprender como recuperar uma descrição das capacidades de uma implementação da OGC API - Features
-    - Comprender como emitir pedidos a uma implementação da OGC API - Features
+    - Comprender como fazer pedidos a uma implementação da OGC API - Features
     - Conseguir encontrar um endpoint da OGC API - Features e utilizá-lo através de um cliente
 
 ## Introdução
 
-A [OGC API - Features](https://features.developer.ogc.org/) é um padrão multi-parte que oferece a capacidade
+A [OGC API - Features](https://features.developer.ogc.org/) é uma norma multi-parte que oferece a capacidade
 de criar, modificar e consultar dados espaciais na Web e especifica
 requisitos e recomendações para APIs que pretendam seguir uma forma padrão
-de partilhar dados de entidades. **A OGC API - Features - Part 1: Core** descreve as capacidades obrigatórias que todo o
+de partilhar dados do tipo entidade. **A OGC API - Features - Parte 1: Core** descreve as capacidades obrigatórias que todo o
 serviço que a implementa deve suportar e está limitada a acesso de leitura a
-dados espaciais. Capacidades adicionais, como suporte para diferentes SCR, consultas mais ricas e criação e modificação de dados, são especificadas em partes adicionais.
+dados espaciais. Capacidades adicionais, como suporte para diferentes Sistemas de Referência de Coordenadas (CRS, das siglas em inglês), consultas mais ricas e criação e modificação de dados, são especificadas em partes adicionais.
 
 !!! note
-    Este módulo de tutorial não tem a intenção de ser um substituto do próprio
-    padrão **OGC API - Features - Part 1: Core**. O tutorial
-    foca-se intencionalmente num subconjunto de capacidades a fim de começar com
-    a utilização do padrão. Consulte o [padrão **OGC API -
-    Features - Part 1: Core**](https://docs.ogc.org/is/17-069r4/17-069r4.html) para mais detalhes.
+    Este módulo de tutorial não tem a intenção de substituir a própria norma **OGC API - Features - Parte 1: Core**. O tutorial
+    foca-se intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a [norma **OGC API -
+    Features - Parte 1: Core**](https://docs.ogc.org/is/17-069r4/17-069r4.html) para mais detalhes.
 
 
 ### Antecedentes
@@ -40,19 +38,19 @@ dados espaciais. Capacidades adicionais, como suporte para diferentes SCR, consu
 > História
 
   Enquanto esteve em formato de rascunho e antes de fevereiro de 2019, a **OGC API -
-  Features - Part 1: Core** era referida como WFS3.0.
+  Features - Parte 1: Core** era referida como WFS3.0.
 
 > Versões
 
-  A versão 1.0.1 da **OGC API - Features - Part 1: Core**, a versão 1.0.1 da **OGC API - Features - Part 2: Coordinate Reference Systems by Reference** e a versão 1.0.1 da **OGC API - Features - Part 3: Filtering** são as versões
+  A versão 1.0.1 da **OGC API - Features - Parte 1: Core**, a versão 1.0.1 da **OGC API - Features - Parte 2: Coordinate Reference Systems by Reference** e a versão 1.0.1 da **OGC API - Features - Parte 3: Filtering** são as versões
   mais recentes atuais
 
 > Suite de testes
 
   Suites de testes estão disponíveis para:
 
-  * OGC API - Features - Part 1
-  * OGC API - Features - Part 2
+  * OGC API - Features - Parte 1
+  * OGC API - Features - Parte 2
 
   Todas as suites de testes estão disponíveis no [Validador da OGC](https://cite.ogc.org/teamengine/).
 
@@ -62,20 +60,20 @@ dados espaciais. Capacidades adicionais, como suporte para diferentes SCR, consu
 
 #### Utilização
 
-O padrão fornece uma interface padrão para solicitar dados
+A norma fornece uma interface padrão para solicitar dados
 geoespaciais vetoriais, consistindo em entidades geográficas e as respetivas propriedades.
 O benefício disto é que as aplicações cliente podem solicitar dados de origem
 a múltiplas implementações da API e, em seguida, representar os dados para
-visualização ou processá-los ulteriormente como parte de um fluxo de trabalho. O padrão
+visualização ou processá-los ulteriormente como parte de um fluxo de trabalho. A norma
 permite que os dados sejam acedidos de forma consistente com outros dados. As propriedades
 de entidades codificadas com tipos de dados comuns, como strings de texto, data
 e hora, também podem ser acedidas de forma consistente.
 
-* A **OGC API - Features - Part 1: Core** especifica operações de descoberta e consulta
+* A **OGC API - Features - Parte 1: Core** especifica operações de descoberta e consulta
   que são implementadas usando o método HTTP GET. O suporte para
   métodos adicionais (em particular POST, PUT, DELETE, PATCH) será
   especificado em partes adicionais. As agências governamentais,
-  organizações privadas e institutos académicos usam este padrão para publicar
+  organizações privadas e institutos académicos usam esta norma para publicar
   conjuntos de dados geoespaciais vetoriais de uma forma que facilite as
   organizações receptoras compilarem novos mapas ou conduzirem análises aos
   dados fornecidos. Na Parte 1, o Sistema de Referência de Coordenadas (SCR) padrão é o WGS 84 longitude/latitude, com ou sem altitude.
@@ -83,9 +81,9 @@ e hora, também podem ser acedidas de forma consistente.
 
 * A **OGC API - Features - Part 3: Filtering** define parâmetros de consulta (```filter```, ```filter-lang```, ```filter-crs```) para especificar critérios de filtragem num pedido a uma API e o recurso ```Queryables``` que declara as propriedades dos dados numa coleção que podem ser usadas em expressões de filtro.
 
-Para além das partes aprovadas acima, o Standards Working Group (SWG) da OGC API - Features está a trabalhar nos seguintes rascunhos:
+Para além das partes aprovadas acima, o Grupo de Trabalho (SWG, das siglas em inglês) da OGC API - Features está a trabalhar nos seguintes rascunhos:
 
-* *Rascunho* **OGC API - Features - Part 4: Create, Replace, Update and Delete** define o comportamento de uma API que permite que instâncias de recursos sejam adicionadas, substituídas, modificadas e/ou removidas para uma coleção.
+* *Rascunho* **OGC API - Features - Part 4: Create, Replace, Update and Delete** define o comportamento de uma API que permite que instâncias de recursos sejam adicionadas, substituídas, modificadas e/ou removidas de uma coleção.
 
 * *Rascunho* **OGC API - Features - Part 5/OGC API - Common - Part 3: Schemas** especifica como as entidades podem ser descritas por um esquema lógico e como esses esquemas são publicados numa implementação de API Web da OGC.
 
@@ -95,19 +93,19 @@ Para além das partes aprovadas acima, o Standards Working Group (SWG) da OGC AP
 
 * *Rascunho* **OGC API - Features - Part 8: Sorting** define parâmetros de consulta (sortby) para especificar critérios de ordenação num pedido a uma API e o recurso Sortables que declara as propriedades dos dados numa coleção que podem ser usadas em expressões de ordenação.
 
-* *Rascunho* **OGC API - Features - Part 9: Text Search** adiciona um parâmetro de consulta à suíte de padrões da OGC API Features para suportar pesquisas de texto ou palavras-chave em campos de texto.
+* *Rascunho* **OGC API - Features - Part 9: Text Search** adiciona um parâmetro de consulta à suíte de normas da OGC API Features para suportar pesquisas de texto ou palavras-chave em campos de texto.
 
 * *Rascunho* **OGC API - Features - Part 10: Search/Queries** adiciona suporte para obter dinamicamente entidades de múltiplas coleções de uma vez.
 
 !!! note
 
-    O resto deste tutorial focar-se-á na parte central do padrão.
+    O resto deste tutorial focar-se-á na parte central da norma (core).
 
-#### Relação com outros padrões da OGC
+#### Relação com outras normas da OGC
 
-- O Padrão de Interface Web Feature Service da OGC (WFS): O padrão WFS
-  é mais adequado quando se trabalha com aplicações cliente que apenas
-  suportam Serviços Web clássicos da OGC. Note também que o WFS adota a
+- A Norma de Interface Web Feature Service da OGC (WFS): A norma WFS
+  é mais adequada quando se trabalha com aplicações cliente que apenas
+  suportam Serviços Web clássicos da OGC. Note também que a WFS adota a
   Linguagem de Marcação Geográfica ([GML](https://www.ogc.org/standards/gml))
   como formato de dados padrão. Em contraste, a OGC API - Features inclui
   recomendações para suportar [HTML](https://html.spec.whatwg.org) e
@@ -117,7 +115,7 @@ Para além das partes aprovadas acima, o Standards Working Group (SWG) da OGC AP
 
 ### Visão geral dos Recursos
 
-**A OGC API - Features - Part 1: Core** define os recursos listados na
+**A OGC API - Features - Parte 1: Core** define os recursos listados na
 tabela seguinte.
 
 <table>
@@ -196,34 +194,34 @@ Esta secção fornece informação básica sobre os tipos de recursos
 que a OGC API - Features oferece.
 
 Cada recurso fornece **ligações** para recursos relacionados. Isto permite a
-uma aplicação cliente navegar pelos recursos, desde a página de aterragem
+uma aplicação cliente navegar pelos recursos, desde a Página de Aterragem
 até às entidades individuais. O servidor identifica a
 relação entre um recurso e outros recursos ligados através de um
 **tipo de relação de ligação**, representado pelo atributo ```rel```. Os tipos
 de relação de ligação usados por implementações da **OGC API - Features -
 Part 1: Core** podem ser encontrados na [Secção
 5.2](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations)
-do padrão.
+da norma.
 
-### Página de aterragem
+### Página de Aterragem
 
-A página de aterragem é o recurso de nível superior que serve como ponto de
-entrada. Uma aplicação cliente precisa de conhecer a localização da página de
-aterragem do servidor. A partir da página de aterragem, a aplicação cliente
-pode então recuperar ligações para a declaração de Conformidade, para os caminhos
-de Coleção e para a definição da API. Um exemplo de página de aterragem está em
+A página de Aterragem é o recurso de nível superior que serve como ponto de
+entrada. Uma aplicação cliente precisa de conhecer a localização da Página de
+Aterragem do servidor. A partir da Página de Aterragem, a aplicação cliente
+pode então recuperar ligações para a Seclaração de Conformidade, para os caminhos
+de Coleção e para a Definição da API. Um exemplo de Página de Aterragem está em
 <https://demo.ldproxy.net/daraa?f=json>
 
-A ligação à definição da API é identificada através dos tipos
+A ligação à Definição da API é identificada através dos tipos
 de relação de ligação ```service-desc``` e ```service-doc```.
 
-A ligação à declaração de Conformidade é identificada através do tipo
+A ligação à Declaração de Conformidade é identificada através do tipo
 de relação de ligação ```conformance```.
 
 A ligação às Coleções é identificada através do tipo de relação de
 ligação ```data```.
 
-Um excerto da página de aterragem de um servidor de demonstração é apresentado abaixo.
+Um excerto da Página de Aterragem de um servidor de demonstração é apresentado abaixo.
 
 ```json
 {
@@ -257,17 +255,17 @@ Um excerto da página de aterragem de um servidor de demonstração é apresenta
 }
 ```
 
-### Declarações de conformidade
+### Declarações de Conformidade
 
 Uma implementação da OGC API - Features descreve as capacidades que
 suporta declarando que classes de conformidade implementa. A
-declaração de Conformidade afirma as classes de conformidade de padrões ou
+declaração de Conformidade afirma as classes de conformidade de normas ou
 especificações comunitárias, identificadas por um URI, às quais a API está em conformidade.
 Os clientes podem então utilizar esta informação, embora não sejam obrigados
 a fazê-lo. Ao aceder à declaração de Conformidade usando HTTP GET, devolve a
 lista de URIs das classes de conformidade implementadas pelo servidor.
 As classes de conformidade descrevem o comportamento que um servidor deve implementar para
-cumprirem um ou mais conjuntos de requisitos especificados num padrão.
+cumprirem um ou mais conjuntos de requisitos especificados numa norma.
 
 Abaixo está um excerto da resposta ao pedido
 <https://demo.ldproxy.net/daraa/conformance?f=json>
@@ -299,11 +297,11 @@ informação fornecida pelo recurso. Neste caso, a relação de ligação
 
 ### Definição da API
 
-A definição da API descreve as capacidades do servidor. Pode ser usada por programadores para compreender a API, por clientes de software para se ligarem ao servidor, ou por ferramentas de desenvolvimento para apoiar a implementação de servidores e clientes. Ao aceder à definição da API usando HTTP GET, devolve uma descrição da API.
+A Definição da API descreve as capacidades do servidor. Pode ser usada por programadores para compreender a API, por clientes de software para se ligarem ao servidor, ou por ferramentas de desenvolvimento para apoiar a implementação de servidores e clientes. Ao aceder à definição da API usando HTTP GET, é devolvida uma descrição da API.
 
 Existem classes de conformidade para fornecer a definição da API usando [Open API](https://ogcapi-workshop.ogc.org/overview-and-main-concepts/#openapi). Alguns servidores também devolvem uma representação legível por humanos da definição em HTML, usando ferramentas como Redoc ou Swagger.
 
-Isto é um excerto de uma [definição de API](https://demo.ldproxy.net/daraa/api?f=json), que usa Open API 3:
+Este é um excerto de uma [Definição de API](https://demo.ldproxy.net/daraa/api?f=json), que usa Open API 3:
 
 ```json
 {
@@ -368,14 +366,14 @@ Isto é um excerto de uma [definição de API](https://demo.ldproxy.net/daraa/ap
       }
     },
 ```
-Pode aceder a uma representação HTML da definição da API [aqui](https://demo.ldproxy.net/daraa/api?f=html).
+Pode aceder a uma representação HTML da Definição da API [aqui](https://demo.ldproxy.net/daraa/api?f=html).
 
 !!! note
-    O uso de ```/api``` no servidor é opcional e a definição da API pode estar alojada num caminho diferente ou num servidor completamente separado.
+    O uso de ```/api``` no servidor é opcional e a Definição da API pode estar alojada num caminho diferente ou num servidor completamente separado.
 
-### Coleções de entidades
+### Coleções de Entidades
 
-Os dados oferecidos através de uma implementação da **OGC API - Features - Part 1:
+Os dados oferecidos através de uma implementação da **OGC API - Features - Parte 1:
 Core** estão organizados numa ou mais coleções de entidades. O
 recurso ```Collections``` fornece informação sobre e acesso à
 lista de coleções.
@@ -464,7 +462,7 @@ Abaixo está um excerto da resposta ao pedido
   ]
 ```
 
-### Coleção de entidades
+### Coleção de Entidades
 
 O recurso **Collection** fornece informação detalhada sobre a
 coleção identificada num pedido.
@@ -522,8 +520,7 @@ Abaixo está um excerto da resposta ao pedido
 
 ### Entidades
 
-O recurso de Entidades devolve um documento que consiste em entidades
-contidas pela coleção identificada num pedido. As entidades
+O recurso de Entidades devolve um documento que consiste em entidades contidas pela coleção identificada num pedido. As entidades
 incluídas na resposta são determinadas pelo servidor com base nos parâmetros de consulta
 do pedido. Para suportar o acesso a coleções maiores sem sobrecarregar o cliente, a API suporta acesso por página com ligações
 para a página seguinte, se mais entidades forem selecionadas do que o tamanho da página.
@@ -593,9 +590,9 @@ pelo parâmetro **datetime**. Um exemplo de pedido que usa o parâmetro **bbox**
 
 !!! note
     O efeito do parâmetro bbox pode ser facilmente observado ao comparar a
-    resposta HTML de
+    resposta HTML ao
     [aplicar](https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=html&bbox=36.0832432,32.599852,36.1168237,32.6283697)
-    o parâmetro bbox com a resposta
+    o parâmetro bbox, com a resposta
     [sem](https://demo.ldproxy.net/daraa/collections/VegetationSrf/items?f=html)
     qualquer parâmetro bbox.
 
@@ -691,11 +688,11 @@ através do pedido
 
 ### Utilização com clientes
 
-Nesta workshop, abordaremos diferentes ferramentas cliente para a OGC API - Features: duas bibliotecas JavaScript (Leaflet e OpenLayers), um SIG de escritorio (QGIS) e uma biblioteca C++ (GDAL).
+Nesta workshop, abordaremos diferentes ferramentas cliente para a OGC API - Features: duas bibliotecas JavaScript (Leaflet e OpenLayers), um SIG Desktop (QGIS) e uma biblioteca C++ (GDAL).
 
 #### Leaflet
 
-A [Leaflet](https://leafletjs.com) pode ler GeoJSON nativamente, a partir de um ficheiro ou de uma API. Como a OGC API - Features pode expor dados em formato GeoJSON usando `f=json` no pedido, a resposta pode ser lida diretamente na LeafLet usando o seguinte código:
+O [Leaflet](https://leafletjs.com) pode ler GeoJSON nativamente, a partir de um ficheiro ou de uma API. Como a OGC API - Features pode expor dados em formato GeoJSON usando `f=json` no pedido, a resposta pode ser lida diretamente no LeafLet usando o seguinte código:
 
 ```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
@@ -708,7 +705,7 @@ fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100',
 });
 ```
 
-A Leaflet também tem um [plugin externo](https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi) que permite que a OGC API - Features seja usada nativamente:
+O Leaflet também tem um [plugin externo](https://gitlab.com/IvanSanchez/leaflet.featuregroup.ogcapi) que permite que a OGC API - Features seja usada nativamente:
 
 ```javascript
 // Import following in <head> tag
@@ -724,7 +721,7 @@ var overlay = L.featureGroup.ogcApi("https://demo.ldproxy.net/zoomstack/", {
 
 #### OpenLayers
 
-A [OpenLayers](https://openlayers.org/) também compreende GeoJSON por predefinição. Uma resposta da OGC API - Features pode ser consumida usando o seguinte código:
+O [OpenLayers](https://openlayers.org/) também lê GeoJSON de forma nativa. Uma resposta da OGC API - Features pode ser consumida usando o seguinte código:
 
 ```javascript
 fetch('https://demo.ldproxy.net/zoomstack/collections/airports/items?limit=100', {
@@ -748,7 +745,7 @@ O [QGIS](https://qgis.org) suporta a OGC API - Features e WFS usando o mesmo for
 
 ![qgis-data-source-manager](../assets/images/qgis-data-source-manager.png){width="100.0%"}
 
-Forneça as informações de ligação. A URL é a URL do recurso de página de aterragem da OGC API (neste caso <https://demo.ldproxy.net/zoomstack>). Certifique-se de que "Ativar paginação de entidades" está marcado.
+Forneça as informações de ligação. A URL é a URL do recurso de Página de Aterragem da OGC API (neste caso <https://demo.ldproxy.net/zoomstack>). Certifique-se de que "Ativar paginação de entidades" está seleccionado.
 
 ![qgis-add-api](../assets/images/qgis-add-api.png){width="100.0%"}
 
@@ -795,4 +792,4 @@ A Classe de Requisitos GeoJSON da OGC API - Features especifica uma codificaçã
 ## Resumo
 
 A OGC API - Features fornece funcionalidade para trabalhar com dados vetoriais na Web. Este aprofundamento
-proporcionou uma visão geral do padrão e dos vários Recursos e endpoints que são suportados, bem como exemplos de como aceder usando diferentes clientes.
+proporcionou uma visão geral da norma e dos vários Recursos e endpoints que são suportados, bem como exemplos de como aceder usando diferentes clientes.

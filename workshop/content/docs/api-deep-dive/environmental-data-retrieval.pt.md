@@ -5,38 +5,37 @@ title: OGC API - Environmental Data Retrieval
 # OGC API - Environmental Data Retrieval
 
 !!! abstract "Público-alvo"
-    Estudantes familiarizados com serviços web e APIs, que desejam ter
-    uma visão geral do standard OGC API - Environmental Data Retrieval
+    Estudantes que estejam familiarizados com serviços web e APIs, que desejam ter
+    uma visão geral da norma OGC API - Environmental Data Retrieval
 
 !!! abstract "Objetivos de Aprendizagem"
     Ao concluir o módulo, os estudantes serão capazes de:
 
-    - Explicar o que é o standard OGC API - Environmental Data Retrieval
-    - Descrever o que pode ser feito com implementações do OGC API - Environmental Data Retrieval
-    - Compreender os principais recursos oferecidos por implementações do OGC API - Environmental Data Retrieval
-    - Compreender como obter uma descrição das capacidades de uma implementação do OGC API - Environmental Data Retrieval
-    - Compreender como fazer pedidos a uma implementação do OGC API - Environmental Data Retrieval
-    - Conseguir encontrar um endpoint do OGC API - Environmental Data Retrieval e utilizá-lo através de um cliente
+    - Explicar o que é a norma OGC API - Environmental Data Retrieval
+    - Descrever o que pode ser feito com implementações da OGC API - Environmental Data Retrieval
+    - Compreender os principais recursos oferecidos por implementações da OGC API - Environmental Data Retrieval
+    - Compreender como obter uma descrição das capacidades de uma implementação da OGC API - Environmental Data Retrieval
+    - Compreender como fazer pedidos a uma implementação da OGC API - Environmental Data Retrieval
+    - Conseguir encontrar um endpoint da OGC API - Environmental Data Retrieval e utilizá-lo através de um cliente
 
 ## Introdução
 
-O [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) é um standard que fornece uma
+A [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) é uma norma que fornece uma
 família de interfaces leves para aceder a recursos de dados ambientais.
-O standard, também designado API de Environmental Data Retrieval
-(EDR), aborda duas operações fundamentais: descoberta e consulta.
+A norma, também designada API de Recuperação de Dados Ambientais 
+(EDR, pelas siglas em inglês), aborda duas operações fundamentais: descoberta e consulta.
 As operações de descoberta permitem interrogar a API para determinar as suas
-capacidades e recuperar informação (metadados) sobre esta distribuição
+capacidades e recuperar informação (metadados) sobre a distribuição
 de um recurso. Isto inclui a definição da API do servidor, bem como
 metadados sobre os recursos de dados ambientais fornecidos pelo servidor.
 As operações de consulta permitem recuperar recursos de dados ambientais a partir
 da base de dados subjacente com base em critérios de seleção simples, definidos
-por este standard e selecionados pelo cliente.
+por esta norma e selecionados pelo cliente.
 
 !!! note
-    Este módulo tutorial não tem a intenção de substituir o standard efetivo do
+    Este módulo de tutorial não tem a intenção de substituir a própria norma
     **OGC API - Environmental Data Retrieval**. O tutorial concentra-se
-    intencionalmente num subconjunto de capacidades para permitir que o
-    estudante comece a utilizar o standard. Consulte o [standard do **OGC API -
+    intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a [norma da **OGC API -
     Environmental Data Retrieval**](https://docs.ogc.org/is/19-086r6/19-086r6.html) para mais detalhes.
 
 ### Antecedentes
@@ -63,25 +62,25 @@ por este standard e selecionados pelo cliente.
 
 #### Utilização
 
-O **OGC API - Environmental Data Retrieval** fornece uma família de
-interfaces de consulta leves para aceder a recursos de dados espácio-temporais
+A **OGC API - Environmental Data Retrieval** fornece uma família de
+interfaces de pesquisa leves para aceder a recursos de dados espácio-temporais
 ao solicitar dados numa posição, numa área, ao longo de uma trajetória ou
 através de um corredor. Um recurso de dados espácio-temporais é uma coleção de
 dados espácio-temporais que pode ser amostrada utilizando as geometrias
-de consulta da EDR.
+de pesquisa da EDR.
 
-O standard fornece uma interface standard para solicitar dados
+A norma fornece uma interface padrão para solicitar dados
 geoespaciais vetoriais, consistindo em entidades geográficas e respetivas propriedades.
 A vantagem disto é que as aplicações cliente podem solicitar dados de origem
 a múltiplas implementações da API e, em seguida, renderizar os dados para
-exibição ou processá-los adicionalmente como parte de um fluxo de trabalho. O standard
+exibição ou processá-los adicionalmente como parte de um fluxo de trabalho. A norma
 permite que os dados sejam acedidos de forma consistente com outros dados. As propriedades
 das entidades codificadas com tipos de dados comuns, como cadeias de texto, data
-e hora, também podem ser acessadas de forma consistente.
+e hora, também podem ser acedidas de forma consistente.
 
 #### Relação com outros standards da OGC
 
--   OGC API - Features: A API da EDR é completamente compatível com o OGC
+-   OGC API - Features: A API da EDR é completamente compatível com a OGC
     API - Features - Parte 1: Core (OGC 17-069r3), uma vez que
     suporta Collections e Items. Estende a funcionalidade de Collection
     permitindo «Instances», uma forma de «collection of
@@ -90,35 +89,35 @@ e hora, também podem ser acessadas de forma consistente.
 -   Moving Features: Os Standards Moving Features tratam de
     entidades que se movem ao longo de uma trajetória, mudando simultaneamente a sua
     orientação através de rotação de corpo rígido. A API da EDR não tem
-    o conceito de orientação, foliação ou prismas. O Moving Features
+    o conceito de orientação, foliação ou prismas. A Moving Features
     e a API da EDR partilham uma definição conceptual comum, da ISO, de
-    Trajetória, mas os Standards Moving Features codificam trajetórias em
+    Trajetória, mas a norma Moving Features codifica trajetórias em
     GML, CSV e Moving Features JSON, enquanto que a API da EDR codifica
     trajetórias em WKT.
 -   Web Coverage Service (WCS) e Coverage Implementation Schema (CIS):
     O mecanismo principal de mensagens da API da EDR é JSON, incluindo
     CoverageJSON, sobre HTTP(S). As implementações da API da EDR são
     descritas utilizando a especificação OpenAPI V3.0. A API da EDR é
-    consistente com os standards WCS e CIS, mas não exige que
+    consistente com as normas WCS e CIS, mas não exige que
     o utilizador final ou programador utilize os termos Domain e RangeSet. A API da EDR
-    também pode ser utilizada para gerar uma única consulta contra uma coleção
+    também pode ser utilizada para gerar uma única pesquisa contra uma coleção
     de coverages, desde que os sistemas de referência de coordenadas dos dados sejam
     consistentes.
 -   A API OGC SensorThings: A API SensorThings segue a
     especificação OData para solicitar entidades. Em contraste, a API da EDR
     utiliza a especificação OpenAPI V3.0 para descrever recursos
-    caminhos, opções de consulta, esquema JSON e outros aspetos. Além disso, a API da EDR permite a recuperação de
+    caminhos, opções de pesquisa, esquema JSON e outros aspetos. Além disso, a API da EDR permite a recuperação de
     dados de coverage e respostas HTML — ambos não sendo suportados pela API SensorThings.
 -   Sensor Observation Service (SOS): A API da EDR permite a recuperação
     de dados de coverage e respostas HTML — ambos não sendo
-    suportados pelo standard SOS. Além disso, as implementações SOS utilizam a
+    suportados pela norma SOS. Além disso, as implementações SOS utilizam a
     operação GetCapabilities para fornecer descrições de recursos
     disponíveis. Em contraste, a API da EDR utiliza definições
     OpenAPI para descrever as interfaces disponíveis.
 
 ### Visão geral dos recursos
 
-O **Standard OGC API - Environmental Data Retrieval** define os
+A **norma OGC API - Environmental Data Retrieval** define os
 recursos listados na tabela seguinte.
 
 <table>
@@ -130,7 +129,7 @@ recursos listados na tabela seguinte.
     <th>Propósito</th>
   </tr>
   <tr>
-    <td>Landing page</td>
+    <td>Página de aterragem</td>
     <td>GET</td>
     <td>/</td>
     <td>Este é o recurso de nível superior, que serve como ponto de entrada.</td>
@@ -166,13 +165,13 @@ recursos listados na tabela seguinte.
     <td>Recuperar metadados sobre os itens disponíveis.</td>
   </tr>
   <tr>
-    <td>Consulta de dados</td>
+    <td>Pesquisa de dados</td>
     <td>GET</td>
     <td>/collections/{collectionId}/{queryType}</td>
-    <td>Recuperar dados de acordo com o padrão de consulta</td>
+    <td>Recuperar dados de acordo com o padrão de pesquisa</td>
   </tr>
   <tr>
-    <td>Consulta de instâncias</td>
+    <td>Pesquisa de instâncias</td>
     <td>GET</td>
     <td>/collections/{collectionId}/instances</td>
     <td>Recuperar metadados sobre instâncias de uma coleção</td>
@@ -182,12 +181,12 @@ recursos listados na tabela seguinte.
 ### Exemplo
 
 O [servidor de demonstração](http://labs.metoffice.gov.uk/edr) publica
-dados ambientais através de uma interface que está em conformidade com o standard OGC API -
+dados ambientais através de uma interface que está em conformidade com a norma OGC API -
 Environmental Data Retrieval. Uma aplicação cliente está disponível
 [aqui](http://labs.metoffice.gov.uk/edr/static/html/query.html).
 
-Um exemplo de pedido que pode ser usado para recuperar dados da coleção Global Population
-Density encontra-se
+Um exemplo de pedido que pode ser usado para recuperar dados da coleção "Global Population
+Density" encontra-se
 [aqui](https://labs.metoffice.gov.uk/edr/collections/global_pop_density/position?coords=POINT(-1.406%2054.157)&parameter-name=Pop_Density&crs=EPSG:4326&f=CoverageJSON)
 
 Note que a resposta ao pedido é CoverageJSON, neste caso o formato de saída predefinido e único suportado.
@@ -195,25 +194,25 @@ Note que a resposta ao pedido é CoverageJSON, neste caso o formato de saída pr
 ## Recursos
 
 Esta secção fornece informação básica sobre os tipos de recursos
-que o OGC API - Environmental Data Retrieval oferece.
+que a OGC API - Environmental Data Retrieval oferece.
 
 Cada recurso fornece **ligações** relacionadas com recursos. Isto permite
-a uma aplicação cliente navegar pelos recursos, desde a landing page
+a uma aplicação cliente navegar pelos recursos, desde a Página de Aterragem
 até às entidades individuais. O servidor identifica a
 relação entre um recurso e outros recursos ligados através de um
 **tipo de relação de ligação**, representado pelo atributo ```rel```. Os tipos
-de relação de ligação utilizados por implementações do **OGC API - Environmental
+de relação de ligação utilizados por implementações da **OGC API - Environmental
 Data Retrieval** podem ser encontrados na [Secção
 6.2](https://docs.ogc.org/is/19-086r4/19-086r4.html#toc22) do
 standard.
 
 ### Landing page
 
-A landing page é o recurso de nível superior que serve como ponto
-de entrada. Uma aplicação cliente precisa de conhecer a localização da landing page
-do servidor. A partir da landing page, a aplicação cliente pode
+A Página de Aterragem é o recurso de nível superior que serve como ponto
+de entrada. Uma aplicação cliente precisa de conhecer a localização da Página de Aterragem
+do servidor. A partir da Página de Aterragem, a aplicação cliente pode
 recuperar ligações para os caminhos da Declaração de Conformidade, Collection e Definição
-da API. Um exemplo de landing page está em
+da API. Um exemplo de Página de Aterragem está em
 <http://labs.metoffice.gov.uk/edr>
 
 A ligação para a definição da API é identificada através dos
@@ -222,10 +221,10 @@ tipos de relação de ligação ```service-desc``` e ```service-doc```.
 A ligação para a Declaração de Conformidade é identificada através do tipo
 de relação de ligação ```conformance```.
 
-A ligação para as Collections é identificada através do tipo ```data``` de relação
+A ligação para as Coleções é identificada através do tipo ```data``` de relação
 de ligação.
 
-Um excerto da landing page de um servidor de demonstração é mostrado abaixo.
+Um excerto da Página de Aterragem de um servidor de demonstração é mostrado abaixo.
 
 ```json
 {
@@ -288,16 +287,16 @@ Um excerto da landing page de um servidor de demonstração é mostrado abaixo.
 
 ### Declaração de conformidade
 
-Uma implementação do OGC API - Environmental Data Retrieval descreve
-as capacidades que suporta ao declarar que classes de conformidade
+Uma implementação da OGC API - Environmental Data Retrieval descreve
+as capacidades que suporta ao declarar que classes de conformidade que
 implementa. A Declaração de Conformidade indica as classes de conformidade
-de standards ou especificações da comunidade, identificadas por um URI,
+de normas ou especificações da comunidade, identificadas por um URI,
 a que a API está em conformidade. Os clientes podem, em seguida, utilizar esta informação,
 embora não sejam obrigados a fazê-lo. Ao aceder à Declaração de Conformidade
 através de HTTP GET, obtém-se a lista de URIs das classes de conformidade
 implementadas pelo servidor. As classes de conformidade descrevem o comportamento que
 o servidor deve implementar para cumprir um ou mais conjuntos de
-requisitos especificados num standard.
+requisitos especificados numa norma.
 
 Abaixo segue um excerto da resposta ao pedido
 <http://labs.metoffice.gov.uk/edr/conformance>
@@ -319,12 +318,12 @@ Abaixo segue um excerto da resposta ao pedido
 
 ### Definição da API
 
-Dado que o OGC API - Environmental Data Retrieval utiliza o OGC API - Common como bloco de construção, consulte o [OGC API - Features](features.md#api-definition) para
+Dado que a OGC API - Environmental Data Retrieval utiliza a OGC API - Common como bloco de construção, consulte a [OGC API - Features](features.md#api-definition) para
 uma explicação detalhada de uma implementação de exemplo.
 
 ### Metadados das coleções
 
-Os dados oferecidos através de uma implementação do **OGC API - Environmental Data
+Os dados oferecidos através de uma implementação da **OGC API - Environmental Data
 Retrieval** são organizados numa ou mais coleções de entidades. O
 recurso ```Collections``` fornece informação sobre e acesso à
 lista de coleções.
@@ -337,8 +336,7 @@ A seguinte informação é fornecida pelo servidor para descrever cada
 coleção:
 
 -   Um identificador local para a coleção que é único para o conjunto de dados
--   Uma lista de sistemas de referência de coordenadas (SRC) nos quais as geometrias podem
-    ser retornadas pelo servidor
+-   Uma lista de sistemas de referência de coordenadas (SRC) nos quais as geometrias podem ser retornadas pelo servidor
 -   Um título e descrição opcionais para a coleção
 -   Uma extensão opcional que pode ser utilizada para fornecer uma indicação da
     extensão espacial e temporal da coleção
@@ -347,7 +345,7 @@ coleção:
     ```feature```).
 
 Para cada coleção, existem ligações para recuperar dados de acordo com
-os padrões de consulta suportados (representadas pelo caminho
+os padrões de pesquisa suportados (representadas pelo caminho
 **/collections/{collectionId}/{queryType}** e relação de ligação **data**).
 
 Para cada coleção, existe uma ligação para os metadados sobre itens
@@ -548,15 +546,15 @@ Abaixo segue um excerto da resposta ao pedido
 }
 ```
 
-### Recursos de consulta
+### Recursos de Pesquisa
 
-Os recursos de consulta são consultas espácio-temporais que suportam a operação
+Os recursos de pesquisa são consultas espácio-temporais que suportam a operação
 da API para o acesso e utilização dos recursos de dados espácio-temporais.
 
-Os recursos de consulta partilham vários parâmetros comuns, o que facilita
-aos programadores a implementação das consultas.
+Os recursos de pesquisa partilham vários parâmetros comuns, o que facilita
+aos programadores a implementação das pesquisas.
 
-Quando a consulta se aplica a uma coleção, o padrão é o seguinte:
+Quando a pesquisa se aplica a uma coleção, o padrão é o seguinte:
 
 ```/collections/{collectionId}/{queryType}```
 
@@ -572,18 +570,18 @@ O parâmetro ```queryType``` pode ser um dos seguintes:
 -   locations
 -   items
 
-Quando a consulta se aplica a uma instância, o padrão é o seguinte:
+Quando a pesquisa se aplica a uma instância, o padrão é o seguinte:
 
 ```/collections/{collectionId}/instances/{instanceId}/{queryType}```
 
-#### Recursos de Consulta de Área do OGC API - EDR
+#### Recursos de Pesquisa de Área da OGC API - EDR
 
 Uma área é uma região especificada com um envelope geográfico que pode ter
 dimensão vertical. Uma ilustração, criada com o NASA WorldWind, é mostrada abaixo.
 
 ![imagem](../assets/images/environmental-data-retrieval-query-area.png){width="80.0%"}
 
-O recurso de consulta ```area``` retorna dados para a área definida.
+O recurso de pesquisa ```area``` retorna dados para a área definida.
 O recurso oferece um mecanismo de conveniência para consultar a API por
 área, utilizando uma geometria POLYGON em Well Known Text (WKT).
 
@@ -604,14 +602,14 @@ Um exemplo de pedido é mostrado abaixo.
 
 ```http://example.org/edr/collections/gfs-pressure_at_height/area?coords=POLYGON((-0.898132%2051.179362,-0.909119%2051.815488,0.552063%2051.818884,0.560303%2051.191414,-0.898132%2051.179362))&parameter-name=Pressure_height_above_ground&datetime=2022-01-19T06:00Z/2022-01-19T12:00Z&z=80/80&crs=CRS84&f=CoverageJSON```
 
-#### Recursos de Consulta de Corredor do OGC API - EDR
+#### Recursos de Pesquisa de Corredor da OGC API - EDR
 
 Um corredor é um conjunto de dois parâmetros de pontos em torno de uma trajetória. Uma
 ilustração, criada com o NASA WorldWind, é mostrada abaixo.
 
 ![imagem](../assets/images/environmental-data-retrieval-query-corridor.png){width="80.0%"}
 
-O recurso de consulta ```corridor``` retorna dados para o corredor definido. O recurso oferece um mecanismo de conveniência para consultar a
+O recurso de pesquisa ```corridor``` retorna dados para o corredor definido. O recurso oferece um mecanismo de conveniência para consultar a
 API por corredor, utilizando uma geometria LINESTRING em Well Known Text (WKT), ou
 alternativamente subclasses LINESTRINGZ, LINESTRINGM, LINESTRINGZM.
 
@@ -632,16 +630,16 @@ O caminho aceita os seguintes parâmetros:
 -   crs
 -   f
 
-#### Recursos de Consulta de Cube do OGC API - EDR
+#### Recursos de Pesquisa de Cubo da OGC API - EDR
 
-Um cube é uma área retangular, com uma extensão vertical. Uma ilustração,
+Um cubo é uma área retangular, com uma extensão vertical. Uma ilustração,
 criada com o NASA WorldWind, é mostrada abaixo.
 
 ![imagem](../assets/images/environmental-data-retrieval-query-cube.png){width="80.0%"}
 
-O recurso de consulta ```cube``` retorna dados para um cube definido.
+O recurso de pesquisa ```cube``` retorna dados para um cubo definido.
 O recurso oferece um mecanismo de conveniência para consultar a API utilizando uma
-caixa delimitadora (BBOX) que define um cube.
+caixa delimitadora (BBOX) que define um cubo.
 
 O caminho para o recurso é mostrado abaixo:
 
@@ -656,9 +654,9 @@ O caminho aceita os seguintes parâmetros:
 -   crs
 -   f
 
-#### Recursos de Consulta de Instâncias do OGC API - EDR
+#### Recursos de Pesquisa de Instâncias da OGC API - EDR
 
-O recurso de consulta ```instances``` recupera metadados sobre
+O recurso de pesquisa ```instances``` recupera metadados sobre
 instâncias de uma coleção. O recurso permite suporte para múltiplas
 instâncias ou versões da mesma fonte de dados subjacente acessíveis
 pela API.
@@ -667,9 +665,9 @@ O caminho para o recurso é mostrado abaixo:
 
 ```/collections/{collectionID}/instances/{instanceID}/{queryType}```
 
-#### Recursos de Consulta de Itens (Entidades) do OGC API - EDR
+#### Recursos de Pesquisa de Itens (Entidades) da OGC API - EDR
 
-O recurso de consulta ```items``` oferece um endpoint OGC API - Features
+O recurso de pesquisa ```items``` oferece um endpoint OGC API - Features
 que pode ser utilizado para catalogar entidades de amostragem EDR preexistentes.
 
 Exemplos de casos de utilização deste recurso incluem:
@@ -686,9 +684,9 @@ Um exemplo de pedido segue abaixo.
 
 ```http://example.org/edr/collections/mocov-daily_global/items```
 
-#### Recursos de Consulta de Localizações do OGC API - EDR
+#### Recursos de Pesquisa de Localizações da OGC API - EDR
 
-O recurso de consulta ```locations``` retorna uma lista de identificadores
+O recurso de pesquisa ```locations``` retorna uma lista de identificadores
 de localização e metadados relevantes para a coleção.
 
 O identificador de localização pode ser qualquer coisa, desde que seja único para a
@@ -702,15 +700,15 @@ Um exemplo de pedido segue abaixo.
 
 ```http://example.org/edr/collections/obs_demo/locations```
 
-#### Recursos de Consulta de Posição do OGC API - EDR
+#### Recursos de Pesquisa de Posição da OGC API - EDR
 
 Uma posição é um tipo de dados que descreve um ponto ou geometria potencialmente
-ocupado por um objeto ou pessoa. Uma ilustração, criada com o NASA
+ocupados por um objeto ou pessoa. Uma ilustração, criada com o NASA
 WorldWind, é mostrada abaixo.
 
 ![imagem](../assets/images/environmental-data-retrieval-query-position.png){width="80.0%"}
 
-O recurso de consulta ```position``` retorna dados para a posição
+O recurso de pesquisa ```position``` retorna dados para a posição
 solicitada. O recurso oferece um mecanismo de conveniência para consultar a
 API utilizando uma geometria POINT em Well Known Text (WKT) que define uma posição.
 
@@ -731,14 +729,14 @@ Um exemplo de pedido é mostrado abaixo.
 
 ```http://example.org/edr/collections/obs_demo/position?coords=POINT(0.00577%2051.562608)&parameter-name=Wind%20Direction&datetime=2022-01-19T10:00Z/2022-01-19T12:00Z&crs=CRS84&f=GeoJSON```
 
-#### Recursos de Consulta de Raio do OGC API - EDR
+#### Recursos de Pesquisa de Raio da OGC API - EDR
 
 Um raio é uma região especificada com uma posição geográfica e distância
 radial. Uma ilustração, criada com o NASA WorldWind, é mostrada abaixo.
 
 ![imagem](../assets/images/environmental-data-retrieval-query-radius.png){width="80.0%"}
 
-O recurso de consulta ```radius``` retorna dados para um raio definido. O recurso oferece um mecanismo de conveniência para consultar a API
+O recurso de pesquisa ```radius``` retorna dados para um raio definido. O recurso oferece um mecanismo de conveniência para consultar a API
 por raio.
 
 O caminho para o recurso é mostrado abaixo:
@@ -760,7 +758,7 @@ Um exemplo de pedido é mostrado abaixo.
 
 ```http://example.org/edr/collections/obs_demo/radius?coords=POINT(-0.095882%2051.512983)&within=50&within-units=km&parameter-name=Wind%20Direction&datetime=2022-01-19T04:00Z/2022-01-19T06:00Z&crs=CRS84&f=GeoJSON```
 
-#### Recursos de Consulta de Trajetória do OGC API - EDR
+#### Recursos de Pesquisa de Trajetória da OGC API - EDR
 
 Uma trajetória é um caminho de um ponto em movimento descrito por um conjunto uniparamétrico
 de pontos. Uma ilustração, criada com o NASA WorldWind, é mostrada
@@ -768,7 +766,7 @@ abaixo.
 
 ![imagem](../assets/images/environmental-data-retrieval-query-trajectory.png){width="80.0%"}
 
-O recurso de consulta ```trajectory``` retorna dados para a trajetória definida. O recurso oferece um mecanismo de conveniência para consultar a
+O recurso de pesquisa ```trajectory``` retorna dados para a trajetória definida. O recurso oferece um mecanismo de conveniência para consultar a
 API por trajetória, utilizando uma geometria LINESTRING em Well Known Text (WKT), ou
 alternativamente as especializações LINESTRINGZ, LINESTRINGM,
 LINESTRINGZM.
@@ -794,4 +792,4 @@ Um exemplo de pedido é mostrado abaixo.
 
 ## Resumo
 
-O OGC API - Environmental Data Retrieval fornece uma família de interfaces leves para aceder a recursos de dados ambientais. Cada recurso endereçado por uma API EDR corresponde a um padrão de consulta definido. Neste aprofundamento, fornecemos uma visão geral do standard e descrevemos cada um destes padrões de consulta em detalhe.
+A OGC API - Environmental Data Retrieval fornece uma família de interfaces leves para aceder a recursos de dados ambientais. Cada recurso endereçado por uma API EDR corresponde a um padrão de pesquisa definido. Neste aprofundamento, fornecemos uma visão geral do standard e descrevemos cada um destes padrões de pesquisa em detalhe.

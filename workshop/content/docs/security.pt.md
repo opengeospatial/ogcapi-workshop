@@ -25,8 +25,8 @@ OGC APIs incluem (mas não estão limitados a):
 - permitir capacidades de inserção/atualização/eliminação de itens numa coleção
 - permitir capacidades de inserção/atualização/eliminação de coleções
 
-Dado que questões de controlo de acesso, implementações e arquiteturas existem para muitos domínios, é melhor aproveitar os padrões da indústria
-para implementação. Dado que os padrões OGC API aproveitam a especificação OpenAPI para descrições de serviços, pode usar o OpenAPI
+Dado que questões de controlo de acesso, implementações e arquiteturas existem para muitos domínios, é melhor aproveitar as normas da indústria
+para implementação. Dado que as normas OGC API aproveitam a especificação OpenAPI para descrições de serviços, pode usar o OpenAPI
 [Security Scheme Object](https://spec.openapis.org/oas/v3.0.3#security-scheme-object) para descrever (não implementar!) o(s) mecanismo(s) de controlo de acesso para a
 API inteira, bem como para um caminho/operação específica da API.
 

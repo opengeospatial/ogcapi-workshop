@@ -6,47 +6,46 @@ title: OGC API - Processes
 
 !!! abstract "Público-alvo"
     Estudantes familiarizados com serviços web e APIs, que desejam ter
-    uma visão geral do standard OGC API - Processes
+    uma visão geral da norma OGC API - Processes
 
 !!! abstract "Objetivos de Aprendizagem"
     Ao concluir o módulo, os estudantes serão capazes de:
 
-    - Explicar o que é o standard OGC API - Processes
+    - Explicar o que é a norma OGC API - Processes
     - Descrever o que pode ser feito com implementações do OGC API - Processes
-    - Compreender os principais recursos oferecidos por implementações do OGC API - Processes
-    - Compreender como obter uma descrição das capacidades de uma implementação do OGC API - Processes
-    - Compreender como fazer pedidos a uma implementação do OGC API - Processes
-    - Conseguir encontrar um endpoint do OGC API - Processes e utilizá-lo através de um cliente
+    - Compreender os principais recursos oferecidos por implementações da OGC API - Processes
+    - Compreender como obter uma descrição das capacidades de uma implementação da OGC API - Processes
+    - Compreender como fazer pedidos a uma implementação da OGC API - Processes
+    - Conseguir encontrar um endpoint da OGC API - Processes e utilizá-lo através de um cliente
 
 ## Introdução
 
-O [OGC API - Processes](https://ogcapi.ogc.org/processes) é um standard que suporta a integração de
+A [OGC API - Processes](https://ogcapi.ogc.org/processes) é uma norma que suporta a integração de
 tarefas computacionais em processos executáveis que podem ser oferecidos por um
-servidor através de uma API Web e invocar por uma aplicação cliente. O
-standard especifica uma interface de processamento para comunicar sobre um protocolo
-RESTful utilizando codificações em JavaScript Object Notation (JSON). O standard
-aproveita conceitos do Standard OGC Web Processing Service (WPS) 2.0
-Interface, mas não exige a implementação de um WPS. A parte Core do standard é designada **OGC API - Processes - Parte 1:
-Core**. A parte Core do standard suporta a integração de
+servidor através de uma API Web e invocados por uma aplicação cliente. A
+norma especifica uma interface de processamento para comunicar sobre um protocolo
+RESTful utilizando codificações em JavaScript Object Notation (JSON). A norma
+aproveita conceitos da norma OGC Web Processing Service (WPS) 2.0
+Interface, mas não exige a implementação de um WPS. A parte Core da norma é designada **OGC API - Processes - Parte 1:
+Core**. A parte Core da norma suporta a integração de
 tarefas computacionais em processos executáveis que podem ser oferecidos por um
 servidor através de uma API Web e invocar por uma aplicação cliente, quer
 sincronamente quer assincronamente. Exemplos de processos computacionais
-que podem ser suportados por implementações desta especificação incluem
+que podem ser suportados por implementações desta norma incluem
 álgebra raster, buffering de geometria, geometria de área construtiva, roteamento,
 análise de imagens e vários outros.
 
 !!! note
-    Este módulo tutorial não tem a intenção de substituir o standard efetivo do
+    Este módulo tutorial não tem a intenção de substituir a própria norma 
     **OGC API - Processes - Parte 1: Core**. O tutorial
-    concentra-se intencionalmente num subconjunto de capacidades para permitir que o
-    estudante comece a utilizar o standard. Consulte o standard do **OGC API -
+    concentra-se intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a norma da **OGC API -
     Processes - Parte 1: Core** para mais detalhes.
 
 ### Antecedentes
 
 > Histórico
 
-  Vários dos conceitos especificados no OGC API - Processes tiveram origem no trabalho de especificação de uma interface RESTful para o WPS 2.0. A partir de fevereiro de 2019, todo o trabalho relativo a uma interface RESTful para o WPS 2.0 passou a focar-se no OGC API - Processes.
+  Vários dos conceitos especificados na OGC API - Processes tiveram origem no trabalho de especificação de uma interface RESTful para o WPS 2.0. A partir de fevereiro de 2019, todo o trabalho relativo a uma interface RESTful para o WPS 2.0 passou a focar-se na OGC API - Processes.
 
 > Versões
 
@@ -70,33 +69,37 @@ O **OGC API - Processes - Parte 1: Core** suporta a integração de
 tarefas computacionais em processos executáveis que podem ser oferecidos por um
 servidor através de uma API Web e invocar por uma aplicação cliente.
 Agências governamentais, organizações privadas e institutos académicos utilizam
-o standard OGC API - Processes para fornecer implementações de
+a norma OGC API - Processes para fornecer implementações de
 algoritmos geoespaciais que processam dados. A vantagem disto é que o
 processamento de dados geoespaciais, incluindo dados de sensores, pode ser
 distribuído, permitindo maior capacidade para processar quantidades maiores
 de dados.
 
-Para além da parte aprovada acima, o Standards Working Group (SWG) do OGC API - Processes está a trabalhar nos seguintes rascunhos:
+Para além da parte aprovada acima, o Grupo de Trabalho da OGC API - Processes está a trabalhar nos seguintes rascunhos:
 
 * *Rascunho* **OGC API - Processes - Parte 2: Deploy, Replace, Undeploy** estende as capacidades básicas especificadas na Parte 1 com a capacidade de adicionar, modificar e/ou eliminar processos individuais de forma dinâmica utilizando uma implementação (endpoint) do Standard OGC API - Processes.
 
 * *Rascunho* **OGC API - Processes - Parte 3: Workflows and Chaining** estende as capacidades básicas especificadas na Parte 1 com a capacidade de encadear processos aninhados, referenciar processos tanto locais como externos e coleções de dados acessíveis via standards OGC API como entradas para um processo, e ativar a execução de processos através de especificações de entrega de dados OGC API, como OGC API - Tiles, DGGS, Coverages, Features, EDR e Maps.
 
+* *Rascunho* **OGC API - Processes - Parte 4: Gestão de Trabalhos** estende as capacidades básicas especificadas na Parte 1 com a capacidade de crear, gerir e monitorizar trabalhos que estão associados com a execução de processos.
+
+* *Rascunho* **OGC API - Processes - Parte 5: Origem dos Trabalhos** estende as capacidades básicas especificadas na Parte 1 com a informação de origem associada à execução de processos através dos trabalhos associados.
+
 #### Relação com outros standards da OGC
 
--   OGC Web Processing Service Interface Standard (WPS): O standard WPS
+-   OGC Web Processing Service Interface Standard (WPS): A norma WPS
     fornece uma interface standard que simplifica a tarefa de
-    tornar serviços de processamento geoespacial computacional, simples ou complexos, acessíveis via serviços web. O Standard OGC API - Processes
+    tornar serviços de processamento geoespacial computacional, simples ou complexos, acessíveis via serviços web. A norma OGC API - Processes
     é uma forma mais recente e moderna de programar e
     interagir com recursos na web, permitindo melhor
-    integração com pacotes de software existentes. O Standard OGC
+    integração com pacotes de software existentes. A norma OGC
     API - Processes aborda todos os casos de utilização que foram
-    abordados pelo Standard WPS, aproveitando também a especificação
+    abordados pela norma WPS, aproveitando também a especificação
     OpenAPI e uma abordagem orientada a recursos.
 
 ### Visão geral dos recursos
 
-O **OGC API - Processes - Parte 1: Core** define os recursos listados na
+A **OGC API - Processes - Parte 1: Core** define os recursos listados na
 tabela seguinte.
 
 <table>
@@ -107,7 +110,7 @@ tabela seguinte.
     <th>Propósito</th>
   </tr>
   <tr>
-    <td>Landing page</td>
+    <td>Página de aterragem</td>
     <td>GET</td>
     <td>/</td>
     <td>Este é o recurso de nível superior, que serve como ponto de entrada.</td>
@@ -169,7 +172,7 @@ tabela seguinte.
 
 ### Exemplo
 
-O [servidor de demonstração](https://demo.pygeoapi.io/master) oferece e executa vários processos através de uma interface que está em conformidade com o OGC API - Processes.
+O [servidor de demonstração](https://demo.pygeoapi.io/master) oferece e executa vários processos através de uma interface que está em conformidade com a OGC API - Processes.
 
 Um exemplo de pedido que pode ser utilizado para navegar em todos os processos disponíveis encontra-se em <https://demo.pygeoapi.io/master/processes>.
 
@@ -179,33 +182,33 @@ Alternativamente, os mesmos dados podem ser recuperados no formato GeoJSON, atra
 
 ## Recursos
 
-### Landing page
+### Página de Aterragem
 
-Dado que o OGC API - Processes utiliza o OGC API - Common e o OGC API - Features como blocos de construção, consulte o [OGC API - Features](features.md#landing-page) para
+Dado que a OGC API - Processes utiliza a OGC API - Common e a OGC API - Features como blocos de construção, consulte a [OGC API - Features](features.md#landing-page) para
 uma explicação detalhada.
 
 ### Declarações de conformidade
 
-Dado que o OGC API - Processes utiliza o OGC API - Common e o OGC API - Features como blocos de construção, consulte o [OGC API - Features](features.md#conformance-declarations) para
+Dado que a OGC API - Processes utiliza a OGC API - Common e o OGC API - Features como blocos de construção, consulte a [OGC API - Features](features.md#conformance-declarations) para
 uma explicação detalhada.
 
 ### Definição da API
 
-Dado que o OGC API - Processes utiliza o OGC API - Common como bloco de construção, consulte o [OGC API - Features](features.md#api-definition) para
+Dado que a OGC API - Processes utiliza a OGC API - Common como bloco de construção, consulte a [OGC API - Features](features.md#api-definition) para
 uma explicação detalhada de uma implementação de exemplo.
 
 ### Lista de processos
 
-Os processos oferecidos através de uma implementação do **OGC API - Processes** são organizados num ou mais processos. O endpoint
+Os processos oferecidos através de uma implementação da **OGC API - Processes** são organizados num ou mais processos. O endpoint
 `/processes` fornece informação sobre e acesso à lista de processos.
 
 Para cada processo, existe uma ligação para a descrição detalhada do
 processo (representada pelo caminho **/processes/{processId}** e
-relação de ligação **self**. Além disso, existem ligações para executar o
+relação de ligação **self**). Além disso, existem ligações para executar o
 processo, bem como a lista de trabalhos resultantes da execução do processo.
 
 A informação do processo inclui também se o processo pode ser executado em modo
-síncrono e/ou assíncrono (opções de controlo de trabalho). O modo assíncrono é valioso
+síncrono e/ou assíncrono (opções de controlo de trabalho). O modo assíncrono é útil
 para executar trabalhos de longa duração sem bloquear o fluxo de trabalho de pedido/resposta HTTP.
 Isto também significa que o cliente pode voltar a verificar o estado do trabalho e o
 resultado assim que este estiver concluído.
@@ -480,4 +483,4 @@ curl -X 'DELETE' https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-02
 
 ## Resumo
 
-O standard OGC API - Processes permite a execução de processos computacionais e a recuperação de metadados que descrevem o propósito e a funcionalidade dos processos. Este aprofundamento proporcionou uma introdução ao standard e uma visão geral dos vários endpoints, que permitem monitorizar, criar, atualizar e eliminar esses processos num servidor.
+O standard OGC API - Processes permite a execução de processos computacionais e a recuperação de metadados que descrevem o propósito e a funcionalidade dos processos. Este aprofundamento proporcionou uma introdução à norma e uma visão geral dos vários endpoints, que permitem monitorizar, criar, atualizar e eliminar esses processos num servidor.

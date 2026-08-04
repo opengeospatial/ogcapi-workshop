@@ -72,13 +72,13 @@ de dados subjacente (inteiros, strings, etc.) através da análise do próprio d
 
 ## OGC APIs
 
-Esta secção fornece uma visão de conjunto da família de padrões da OGC API.
+Esta secção fornece uma visão de conjunto da família de normas da OGC API.
 
 !!! cite
 
-    A família de padrões OGC API está a ser desenvolvida para facilitar a qualquer pessoa o fornecimento de dados geoespaciais à web. Estes padrões constroem sobre a herança dos padrões de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estes padrões num local consolidado.
+    A família de normas OGC API está a ser desenvolvida para facilitar a qualquer pessoa o fornecimento de dados geoespaciais à web. Estas normas constroem sobre a herança das normas de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estas normas num local consolidado.
 
-    Estes padrões estão a ser construídos como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos dos respetivos padrões, mas também através de prototipagem e testes de interoperabilidade no Programa de Inovação da OGC.
+    Estas normas estão a ser construídas como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos das respetivas normas, mas também através de prototipagem e testes de interoperabilidade no Programa de Inovação da OGC.
 
 ### OGC API - Common
 
@@ -96,18 +96,18 @@ A OGC API - Common fornece as seguintes funcionalidades:
 - aspetos comuns, como paginação, ligações entre recursos, filtragem básica, parâmetros de consulta (`bbox`, `datetime`, etc.)
 
 A OGC API - Common permite aos desenvolvedores de especificações concentrarem-se na funcionalidade principal de uma dada API (isto é, acesso a dados, etc.)
-enquanto utilizam construções comuns. Isto harmoniza os padrões da OGC API e permite uma integração mais profunda com menos código. Isto também
+enquanto utilizam construções comuns. Isto harmoniza as normas da OGC API e permite uma integração mais profunda com menos código. Isto também
 permite que o software cliente da OGC API seja mais eficiente.
 
-Para mais detalhes sobre este padrão, consulte a [secção OGC API - Common](https://ogcapi-workshop.ogc.org/api-deep-dive/common/).
+Para mais detalhes sobre esta norma, consulte a [secção OGC API - Common](https://ogcapi-workshop.ogc.org/api-deep-dive/common/).
 
 ### Padrões aprovados
 
-Os seguintes padrões OGC API foram aprovados e estão disponíveis para utilização. Note que estes padrões têm 1 ou mais "Partes" ou extensões que permitem funcionalidades específicas. A "Parte 1" de um dado padrão representa as capacidades mais básicas. Partes adicionais também podem ser implementadas como [blocos de construção](#blocos-de-construcao-da-ogc-api).
+As seguintes normas OGC API foram aprovadas e estão disponíveis para utilização. Note que estas normas têm 1 ou mais "Partes" ou extensões que permitem funcionalidades específicas. A "Parte 1" de uma dada norma representa as capacidades mais básicas. Partes adicionais também podem ser implementadas como [blocos de construção](#blocos-de-construcao-da-ogc-api).
 
 - A [OGC API - Features](https://ogcapi.ogc.org/features) oferece a capacidade de criar, modificar e consultar dados espaciais na Web e especifica requisitos e recomendações para APIs que pretendam seguir uma maneira padrão de partilhar dados de entidades
-- A [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) fornece um conjunto de interfaces leves para aceder a recursos de Dados Ambientais. Cada recurso endereçado por uma API EDR corresponde a um padrão de consulta definido
-- A [OGC API - Maps](https://ogcapi.ogc.org/maps) oferece uma abordagem moderna ao padrão Web Map Service (WMS) da OGC para a prestação de mapas e conteúdo raster
+- A [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) fornece um conjunto de interfaces leves para aceder a recursos de Dados Ambientais. Cada recurso endereçado por uma API EDR corresponde a uma norma de consulta definida
+- A [OGC API - Maps](https://ogcapi.ogc.org/maps) oferece uma abordagem moderna à norma Web Map Service (WMS) da OGC para a prestação de mapas e conteúdo raster
 - A [OGC API - Processes](https://ogcapi.ogc.org/processes) permite que ferramentas de processamento sejam chamadas e combinadas a partir de múltiplas fontes e aplicadas a dados em outros recursos da OGC API através de uma API simples
 - A [OGC API - Tiles](https://ogcapi.ogc.org/tiles) fornece funcionalidade estendida a outros Padrões da OGC API para entregar tiles vetoriais, tiles de mapas e outros dados em tiles
 - A [OGC API - Moving Features](https://ogcapi.ogc.org/movingfeatures) define uma API que fornece acesso a dados que representam entidades que se deslocam como corpos rígidos
@@ -126,7 +126,7 @@ Pode ler mais sobre este tópico no [sítio web de blocos de construção](https
 
 ### Em desenvolvimento
 
-O esforço da OGC API está a evoluir rapidamente. Inúmeros padrões OGC API estão em desenvolvimento:
+O esforço da OGC API está a evoluir rapidamente. Inúmeras normas OGC API estão em desenvolvimento:
 
 - A [Routes](https://ogcapi.ogc.org/routes) fornece acesso a dados de rotas
 - A [Styles](https://ogcapi.ogc.org/styles) define uma API Web que permite a servidores de mapas, clientes, bem como editores de estilos visuais, gerir e obter estilos
@@ -144,7 +144,7 @@ A OGC API - Common sugere que este documento esteja localizado em `/openapi`. Po
 a consulta da API. Adicione `?f=json` para ver o documento em JSON. O documento OpenAPI indica quais
 os endpoints disponíveis no serviço, quais os parâmetros que aceita e
 que tipos de resposta podem ser esperados. O documento OpenAPI é um conceito semelhante ao XML de Capacidades
-como parte dos padrões de Serviços Web da OGC de primeira geração.
+como parte das normas de Serviços Web da OGC de primeira geração.
 
 !!! question "Análise da Especificação OpenAPI num navegador"
 
@@ -176,4 +176,4 @@ dependendo do(s) tipo(s) de dados ou metadados.
 ## Resumo
 
 As OGC APIs aproveitam os princípios fundamentais da arquitetura Web, proporcionando suporte para descoberta, acesso, visualização, processamento
-de dados geoespaciais, em conformidade com padrões do setor, para máxima interoperabilidade na Web.
+de dados geoespaciais, em conformidade com normas do setor, para máxima interoperabilidade na Web.

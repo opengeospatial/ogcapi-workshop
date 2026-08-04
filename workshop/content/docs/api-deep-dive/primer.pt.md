@@ -4,7 +4,7 @@ title: Introdução
 
 # Introdução
 
-As sessões de aprofundamento focar-se-ão em inúmeros padrões da OGC API, começando pela base OGC API - Common, seguida
+As sessões de aprofundamento focar-se-ão em inúmeras normas da OGC API, começando pela base OGC API - Common, seguida
 por implementações de API para vários tipos de dados geoespaciais e fluxos de trabalho. A descoberta, acesso, visualização e
 processamento são fluxos de trabalho centrais no domínio geoespacial. As sessões de aprofundamento estão desenhadas para que possa "aprofundar" e
 compreender melhor a sua finalidade e aplicabilidade aos vossos requisitos/interesses.
