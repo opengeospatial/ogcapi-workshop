@@ -218,7 +218,7 @@ illustrating a single record collection:
 ### Records collection
 
 Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#feature-collection) deep dive
-for a detailed initial explanation, as well as the [Records collections](#records-collections) description..
+for a detailed initial explanation, as well as the [Records collections](#records-collections) description.
 
 ### Records access
 
