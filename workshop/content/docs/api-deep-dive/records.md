@@ -50,9 +50,7 @@ records will be specified in additional parts.
 
 > Test suite
 
-  There are no test suites currently implemented; they will be made available once
-  the specification is approved, and an executable test suite (ETS) is made availabe
-  as per of OGC CITE.
+  There are no test suites implemented yet; once implemented they will be available on the [OGC Validator](https://cite.ogc.org/teamengine/).
 
 > Implementations
 
