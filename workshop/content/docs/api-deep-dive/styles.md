@@ -5,12 +5,12 @@ title: OGC API - Styles
 # OGC API - Styles
 
 !!! abstract "Audience"
-    Students that are familiar with web services and APIs, and want to have an overview of OGC API - Styles standard
+    Students that are familiar with web services and APIs, and want to have an overview of OGC API - Styles candidate standard
 
 !!! abstract "Learning Objectives"
     At the completion of the module students will be able to:
 
-    - Explain what the OGC API - Styles standard is
+    - Explain what the OGC API - Styles candidate standard is
     - Describe what can be done with OGC API - Styles implementations
     - Understand the main resources offered by OGC API - Styles implementations
     - Understand how to retrieve a description of the capabilities of an OGC API - Styles implementation
@@ -19,13 +19,13 @@ title: OGC API - Styles
 
 ## Introduction
 
-[OGC API - Styles](https://ogcapi.ogc.org/styles) is a standard that describes an API that enables map servers, clients as well as visual style editors, to manage and fetch styles. The styles consist of symbolizing instructions that can be applied by a rendering engine on features and/or coverages. The API implements the conceptual model for style encodings and style metadata.
+[OGC API - Styles](https://ogcapi.ogc.org/styles) is a candidate standard that describes an API that enables map servers, clients as well as visual style editors, to manage and fetch styles. The styles consist of symbolizing instructions that can be applied by a rendering engine on features and/or coverages. The API implements the conceptual model for style encodings and style metadata.
 
 !!! note
     This tutorial module is not intended to be a replacement to the actual
-    **OGC API - Styles - Part 1: Core** standard. The tutorial intentionally
+    **OGC API - Styles - Part 1: Core** candidate Standard. The tutorial intentionally
     focuses on a subset of capabilities in order to get the student started
-    with using the standard. Please refer to the [**OGC API - Styles - Part 1:
+    with using the candidate Standard. Please refer to the [**OGC API - Styles - Part 1:
     Core** standard](https://docs.ogc.org/DRAFTS/20-009.html) for additional detail.
 
 ### Background
@@ -59,7 +59,7 @@ The Styles API supports three main types of consumers:
 * OGC API - Maps implementations, that fetch styles and render spatial data (features or coverages) on the server.
 * Map clients that fetch styles and render spatial data (features or coverages) on the client.
 
-The draft Standard also defines a conceptual model for styles, style encodings and style metadata. The model defines three main concepts, which are mapped to resources and documents.
+The candidate Standard also defines a conceptual model for styles, style encodings and style metadata. The model defines three main concepts, which are mapped to resources and documents.
 
 * **Style**: the main resource.
 * **Stylesheets**: the representation of a style in an encoding like OGC SLD 1.0 or Mapbox Style. Each style is available in one or more stylesheets. Clients will use the stylesheet of a style that fits best based on the capabilities of available tools and their preferences. 
@@ -75,7 +75,7 @@ OGC API - Styles is designed to be combined with other OGC API Standards, in ord
 Feature or coverage data published through OGC APIs, can be styled on client side with styles produced by OGC API - Styles editors. This is the case of OGC API - Features, OGC API - Coverages or OGC API - Tiles (vector tiles).
 OGC API - Maps has support for fetching styles and rendering geospatial data (features or coverages) on server side. 
 
-The styles themselves can be represented using different encodings. As usual in OGC API, no encodings are prescribed, although the draft Standard offers conformance classes for [OGC SLD 1.0](http://portal.opengeospatial.org/files/?artifact_id=1188)/[1.1](http://portal.opengeospatial.org/files/?artifact_id=22364) and [Mapbox Styles](https://docs.mapbox.com/style-spec/guides/).
+The styles themselves can be represented using different encodings. As usual in OGC API, no encodings are prescribed, although the candidate Standard offers conformance classes for [OGC SLD 1.0](http://portal.opengeospatial.org/files/?artifact_id=1188)/[1.1](http://portal.opengeospatial.org/files/?artifact_id=22364) and [Mapbox Styles](https://docs.mapbox.com/style-spec/guides/).
 
 ### Overview of Resources
 

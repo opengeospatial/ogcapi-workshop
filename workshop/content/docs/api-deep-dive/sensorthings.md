@@ -52,7 +52,7 @@ The OGC SensorThings API is based on the existing [OGC Sensor Web Enablement (SW
 
 > Versions
 
-**OGC SensorThings API Part 1: Sensing** Version 1.1 and **OGC SensorThings API Part 2 – Tasking Core** Version 1.0.0 are the current latest versions. The current latest version of the **STAplus extension** is 1.0.0.
+**OGC SensorThings API Part 1: Sensing** Version 1.1 and **OGC SensorThings API Part 2 – Tasking Core** Version 1.0 are the current latest versions. The current latest version of the **STAplus extension** is 1.0.
 
 > Test suite
 

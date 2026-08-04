@@ -6,7 +6,7 @@ title: OGC API - Common
 
 !!! abstract "Audience"
     Students that are familiar with web services and APIs, and want to have
-    an overview of OGC API - Common draft standard
+    an overview of OGC API - Common standard
 
 !!! abstract "Learning Objectives"
     At the completion of the module students will be able to:
@@ -20,10 +20,9 @@ title: OGC API - Common
 
 !!! note
     This tutorial module is not intended to be a replacement to the actual
-    **OGC API - Common - Part 1: Core** standard or **OGC API - Common - Part 2: Geospatial Data** draft standard. The tutorial
-    intentionally focuses on a subset of capabilities in order to get the
+    **OGC API - Common - Part 1: Core** standard or **OGC API - Common - Part 2: Geospatial Data** candidate standard. The tutorial intentionally focuses on a subset of capabilities in order to get the
     student started with using the standard. Please refer to the [**OGC API -
-    Common - Part 1: Core** standard](https://docs.ogc.org/is/19-072/19-072.html) and [**OGC API - Common - Part 2: Geospatial Data** draft standard](https://docs.ogc.org/DRAFTS/20-024.html) for additional detail.
+    Common - Part 1: Core** standard](https://docs.ogc.org/is/19-072/19-072.html) and [**OGC API - Common - Part 2: Geospatial Data** candidate standard](https://docs.ogc.org/DRAFTS/20-024.html) for additional detail.
 
 ### Background
 
@@ -87,7 +86,7 @@ the following table:
   </tr>
 </table>
 
-The purpose of the draft **OGC API - Common - Part 2: Geospatial Data** Standard is to provide a common connection between the API landing page and resource-specific details. The table below defines the resources listed in this part.
+The purpose of the **OGC API - Common - Part 2: Geospatial Data** candidate Standard is to provide a common connection between the API landing page and resource-specific details. The table below defines the resources listed in this part.
 
 <table>
   <tr>
