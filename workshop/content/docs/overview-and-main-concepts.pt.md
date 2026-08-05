@@ -11,7 +11,7 @@ O cerne das APIs Web pode ser resumido como:
 
 ## Cliente / servidor
 
-Num ambiente típico de cliente / servidor, um cliente pede a um servidor para executar uma ação (por exemplo, solicitar dados), com a capacidade de adicionar instruções adicionais, como consultas, filtragem e qual formato a API deve fornecer como parte da resposta.
+Num ambiente típico de cliente / servidor, um cliente pede a um servidor para executar uma ação (por exemplo, solicitar dados), com a capacidade de adicionar instruções adicionais, como consultas, filtros e qual formato a API deve fornecer como parte da resposta.
 
 A imagem abaixo, retirada de [Introdução ao SIG](https://volaya.github.io/gis-book/en/), ilustra
 o conceito do ciclo de vida de pedido / resposta entre um cliente e um servidor.
@@ -72,13 +72,13 @@ de dados subjacente (inteiros, strings, etc.) através da análise do próprio d
 
 ## OGC APIs
 
-Esta secção fornece uma visão de conjunto da família de normas da OGC API.
+Esta secção fornece uma visão de conjunto da família de normas OGC API.
 
 !!! cite
 
-    A família de normas OGC API está a ser desenvolvida para facilitar a qualquer pessoa o fornecimento de dados geoespaciais à web. Estas normas constroem sobre a herança das normas de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estas normas num local consolidado.
+    A família de normas OGC API está a ser desenvolvida para facilitar a qualquer pessoa o fornecimento de dados geoespaciais na web. Estas normas constroem-se sobre a herança das normas de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estas normas num local consolidado.
 
-    Estas normas estão a ser construídas como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos das respetivas normas, mas também através de prototipagem e testes de interoperabilidade no Programa de Inovação da OGC.
+    Estas normas estão a ser construídas como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos das respetivas normas, mas também através de prototipagem e testes de interoperabilidade no Programa de Investigação da OGC.
 
 ### OGC API - Common
 
@@ -93,7 +93,7 @@ A OGC API - Common fornece as seguintes funcionalidades:
     - `/openapi`
     - `/collections`
     - `/collections/foo`
-- aspetos comuns, como paginação, ligações entre recursos, filtragem básica, parâmetros de consulta (`bbox`, `datetime`, etc.)
+- aspetos comuns, como paginação, ligações entre recursos, filtros básicos, parâmetros de pesquisa (`bbox`, `datetime`, etc.)
 
 A OGC API - Common permite aos desenvolvedores de especificações concentrarem-se na funcionalidade principal de uma dada API (isto é, acesso a dados, etc.)
 enquanto utilizam construções comuns. Isto harmoniza as normas da OGC API e permite uma integração mais profunda com menos código. Isto também
@@ -101,15 +101,15 @@ permite que o software cliente da OGC API seja mais eficiente.
 
 Para mais detalhes sobre esta norma, consulte a [secção OGC API - Common](https://ogcapi-workshop.ogc.org/api-deep-dive/common/).
 
-### Padrões aprovados
+### Normas aprovados
 
 As seguintes normas OGC API foram aprovadas e estão disponíveis para utilização. Note que estas normas têm 1 ou mais "Partes" ou extensões que permitem funcionalidades específicas. A "Parte 1" de uma dada norma representa as capacidades mais básicas. Partes adicionais também podem ser implementadas como [blocos de construção](#blocos-de-construcao-da-ogc-api).
 
-- A [OGC API - Features](https://ogcapi.ogc.org/features) oferece a capacidade de criar, modificar e consultar dados espaciais na Web e especifica requisitos e recomendações para APIs que pretendam seguir uma maneira norma de partilhar dados de entidades
-- A [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) fornece um conjunto de interfaces leves para aceder a recursos de Dados Ambientais. Cada recurso endereçado por uma API EDR corresponde a uma norma de consulta definida
+- A [OGC API - Features](https://ogcapi.ogc.org/features) oferece a capacidade de criar, modificar e consultar dados espaciais na Web e especifica requisitos e recomendações para APIs que pretendam seguir uma maneira norma de partilhar dados de tipo entidade
+- A [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) fornece um conjunto de interfaces leves para aceder a recursos de Dados Ambientais. Cada recurso endereçado por uma API EDR corresponde a uma norma de pesquisa definida
 - A [OGC API - Maps](https://ogcapi.ogc.org/maps) oferece uma abordagem moderna à norma Web Map Service (WMS) da OGC para a prestação de mapas e conteúdo raster
 - A [OGC API - Processes](https://ogcapi.ogc.org/processes) permite que ferramentas de processamento sejam chamadas e combinadas a partir de múltiplas fontes e aplicadas a dados em outros recursos da OGC API através de uma API simples
-- A [OGC API - Tiles](https://ogcapi.ogc.org/tiles) fornece funcionalidade estendida a outros Padrões da OGC API para entregar tiles vetoriais, tiles de mapas e outros dados em tiles
+- A [OGC API - Tiles](https://ogcapi.ogc.org/tiles) fornece funcionalidade estendida a outras normas da OGC API para entregar tiles vetoriais, tiles de mapas e outros dados em tiles
 - A [OGC API - Moving Features](https://ogcapi.ogc.org/movingfeatures) define uma API que fornece acesso a dados que representam entidades que se deslocam como corpos rígidos
 - A [OGC API - Records](https://ogcapi.ogc.org/records) fornece descoberta e acesso a metadados sobre recursos geoespaciais
 - A [OGC API - Discrete Global Grid Systems](https://ogcapi.ogc.org/dggs) permite que aplicações organizem e acedam a dados organizados de acordo com um Sistema de Grelha Global Discreta (DGGS)
@@ -133,12 +133,12 @@ O esforço da OGC API está a evoluir rapidamente. Inúmeras normas OGC API est�
 - A [3D GeoVolumes](https://ogcapi.ogc.org/geovolumes) facilita a descoberta eficiente e o acesso a conteúdo 3D em múltiplos formatos com base numa perspetiva centrada no espaço
 - A [Joins](https://ogcapi.ogc.org/joins) suporta a junção de dados, a partir de múltiplas fontes, com coleções de entidades ou diretamente com outros ficheiros de entrada
 
-![Padrões OGC API aprovados e candidatos](assets/images/ogcapis-overview.png)
+![Normas OGC API aprovados e candidatas](assets/images/ogcapis-overview.png)
 
 ### OpenAPI
 
 O cerne da OGC API - Common é a [iniciativa OpenAPI](https://www.openapis.org/about) para ajudar
-a descrever e documentar uma API. O OpenAPI define a sua estrutura num documento OpenAPI.
+a descrever e documentar uma API. A OpenAPI define a sua estrutura num documento OpenAPI.
 A OGC API - Common sugere que este documento esteja localizado em `/openapi`. Por exemplo, com o [pygeoapi](https://pygeoapi.io), num navegador
 [a esta URL](https://demo.pygeoapi.io/master/openapi) abre-se uma página HTML interativa que facilita
 a consulta da API. Adicione `?f=json` para ver o documento em JSON. O documento OpenAPI indica quais
@@ -169,7 +169,7 @@ por software cliente e ferramentas. O JSON é facilmente decodificado/encoded em
 linguagens de programação (dicionários Python, objetos JavaScript, etc.). A OGC API - Common fornece
 formatos JSON uniformes para os vários endpoints que suporta.
 
-Padrões específicos da OGC API podem especificar formatos específicos de domínio (por exemplo,
+Normas específicas da OGC API podem especificar formatos específicos de domínio (por exemplo,
 GeoJSON para OGC API - Features, GeoTIFF para OGC API - Coverages, ISO 19115/19139 para OGC API - Records, etc.),
 dependendo do(s) tipo(s) de dados ou metadados.
 

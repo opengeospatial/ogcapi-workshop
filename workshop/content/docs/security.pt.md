@@ -9,8 +9,8 @@ As OGC APIs são desenhadas utilizando tecnologias modernas a fim de baixar a ba
 ## SSL/TLS
 
 As OGC APIs podem ser implementadas usando HTTP ou HTTPS. Recomenda-se fortemente a implementação de quaisquer serviços usando HTTPS para que os clientes
-possam validar e verificar a autenticidade dos vossos serviços de acordo. Dependendo de como o vosso sistema é arquitetado, isto pode significar
-aplicar Secure Sockets Layer/Transport Layer Security (SSL/TLS) no vosso serviço de alojamento, ou, se tiverdes uma arquitetura de implementação multicamada,
+possam validar e verificar a autenticidade dos vossos serviços de acordo com o protocolo. Dependendo de como o vosso sistema é arquitetado, isto pode significar
+aplicar Secure Sockets Layer/Transport Layer Security (SSL/TLS) no vosso serviço de alojamento, ou, se tiverem uma arquitetura de implementação multicamada,
 aplicando como parte dos vossos serviços front-end, altura em que a comunicação interna/interna pode ou não ser implementada
 usando HTTP.
 
@@ -24,6 +24,7 @@ OGC APIs incluem (mas não estão limitados a):
 - proteger apenas endpoints específicos
 - permitir capacidades de inserção/atualização/eliminação de itens numa coleção
 - permitir capacidades de inserção/atualização/eliminação de coleções
+- permitir a criação ou remoção de trabalhos
 
 Dado que questões de controlo de acesso, implementações e arquiteturas existem para muitos domínios, é melhor aproveitar as normas da indústria
 para implementação. Dado que as normas OGC API aproveitam a especificação OpenAPI para descrições de serviços, pode usar o OpenAPI

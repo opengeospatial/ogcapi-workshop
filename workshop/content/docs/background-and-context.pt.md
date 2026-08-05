@@ -62,7 +62,7 @@ Um novo paradigma emergiu, destacando os seguintes conceitos:
     - orientação a serviços: `/ows?request=GetFeature&typename=roads&featureid=5`
     - orientação a recursos: `/api/collections/roads/items/5`
 - desenvolvimento de especificações modulares
-  - especificações centrais e de extensão, permitindo implementação e adoção com barreiras de entrada baixas para o mercado de massa/a Web
+  - especificações com um núcleo (core) e extensões, permitindo implementação e adoção com barreiras de entrada baixas para o mercado de massa/a Web
 
 Em 2018, a OGC começou a organizar vários hackathons, começando o trabalho no WFS3 (atualmente OGC API - Features - Part 1: Core), bem como uma Weather on the Web
 API (atualmente OGC API - Environmental Data Retrieval). Isto representou as origens do movimento da OGC API!
