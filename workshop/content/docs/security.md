@@ -24,6 +24,7 @@ OGC APIs includes (but is not limited to):
 - securing only specific endpoints
 - allowing insert/update/delete capabilities on items in a collection
 - allowing insert/update/delete capabilities on collections
+- enabling job creation or job deletion
 
 Given that access control concerns, implementations and architectures exist for many domains, it is best to leverage industry standards
 for implementation.  Given OGC API standards leverage the OpenAPI specification for service descriptions, one can use the OpenAPI
