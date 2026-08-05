@@ -21,10 +21,10 @@ title: OGC API - Records
 
 ## Introduction
 
-[OGC API - Records](https://records.developer.ogc.org/) is a multi-part draft specification that offers the capability to
-create, modify, and query metadata on the Web. The draft specification enables the
+[OGC API - Records](https://records.developer.ogc.org/) is a multi-part Standard that offers the capability to
+create, modify, and query metadata on the Web. The Standard enables the
 discovery of geospatial resources by standardizing the way collections of descriptive
-information about the resources (metadata) are exposed.  The draft specification also
+information about the resources (metadata) are exposed.  The Standard also
 enables the discovery and sharing of related resources that may be referenced from
 geospatial resources or their metadata by standardizing the way all kinds of records
 are exposed and managed.  Part 1 covers read-only access to records and simple query
@@ -36,6 +36,13 @@ records will be specified in additional parts.
     OGC API - Records leverages [OGC API - Features](features.md#usage) as a baseline with similar
     URL endpoints and request/response workflow, for the Searchable Catalog and Local.
 
+!!! note
+    This tutorial module is not intended to be a replacement to the actual
+    **OGC API - Records - Part 1: Core** standard. The tutorial
+    intentionally focuses on a subset of capabilities in order to get the
+    student started with using the standard. Please refer to the **OGC API -
+    Records - Part 1: Core** standard for additional detail.
+
 ### Background
 
 > History
@@ -45,14 +52,12 @@ records will be specified in additional parts.
 
 > Versions
 
-  **OGC API - Records - Part 1: Core** has been submitted to the OGC Architecture Board (OAB)
-  and has completed public review stage. It is expected to be finalized in Q4 2024.
+  **OGC API - Records - Part 1: Core** version 1.0.0 is the current
+  latest version
 
 > Test suite
 
-  There are no test suites currently implemented; they will be made available once
-  the specification is approved, and an executable test suite (ETS) is made availabe
-  as per of OGC CITE.
+  There are no test suites implemented yet; once implemented they will be available on the [OGC Validator](https://cite.ogc.org/teamengine/).
 
 > Implementations
 
@@ -142,7 +147,7 @@ For example, a metadata repository can be modelled after the ISO 19115 standard,
 of "mapping" the ISO elements to the core record model and queryables.
 
 The core record is the atomic unit of information in a catalog.  A full description of the core properties of a record can be
-found in <https://docs.ogc.org/DRAFTS/20-004.html#core-properties>.  The core record is a GeoJSON compatible representation
+found in <https://docs.ogc.org/is/20-004r1/20-004r1.html#core-properties>.  The core record is a GeoJSON compatible representation
 with fixed elements in the `properties` object/block.
 
 ### Example
@@ -220,7 +225,7 @@ illustrating a single record collection:
 ### Records collection
 
 Given OGC API - Records uses OGC API - Common and OGC API - Features as building blocks, please see the [OGC API - Features](features.md#feature-collection) deep dive
-for a detailed initial explanation, as well as the [Records collections](#records-collections) description..
+for a detailed initial explanation, as well as the [Records collections](#records-collections) description.
 
 ### Records access
 

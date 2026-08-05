@@ -26,7 +26,7 @@ Different forms of geospatial information are supported, such as tiles
 of vector features ("vector tiles"), coverages, maps (or imagery) and
 other types of geospatial information. Although it can be used
 independently, the OGC API - Tiles building blocks can be combined
-with other OGC API Standards and draft specifications for additional
+with other OGC API Standards and candidate Standards for additional
 capabilities or increasing interoperability for specific types of data.
 The OGC API - Tiles standard references the [OGC Two Dimensional Tile
 Matrix Set (TMS) and Tileset Metadata standard](https://docs.ogc.org/is/17-083r4/17-083r4.html), which defines logical

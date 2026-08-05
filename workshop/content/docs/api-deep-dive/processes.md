@@ -83,6 +83,10 @@ In addition to the approved part above, The OGC API - Processes Standards Workin
   
 * *Draft* **OGC API - Processes - Part 3: Workflows and Chaining** extends the core capabilities specified in Part 1 with the ability to chain nested processes, refer to both local and external processes and collections of data accessible via OGC API standards as inputs to a process, and trigger execution of processes through OGC API data delivery specifications such as OGC API — Tiles, DGGS, Coverages, Features, EDR and Maps.
 
+* *Draft* **OGC API - Processes - Part 4: Job Management** extends the core capabilities specified in Part 1 with the ability to create, manage and monitor jobs that are associated with processes execution.
+
+* *Draft* **OGC API - Processes - Part 5: Job Provenance** extends the core capabilities specified in Part 1 with provenance information associated with processes execution through associated jobs.
+
 #### Relation to other OGC Standards
 
 -   OGC Web Processing Service Interface Standard (WPS): The WPS

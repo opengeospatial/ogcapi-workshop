@@ -10,7 +10,7 @@ OGC is globally known for its proven widely implemented open standards. The OGC 
 
 [OGC APIs](https://ogcapi.ogc.org) are designed to make it easy for ANYONE to provide and use geospatial data on the web, and to integrate this data with ANY other type of information. These Standards build upon the legacy of the OGC Web Service Standards (WMS, WFS, WCS, WPS, etc.), but define resource-centric APIs that take advantage of modern web development practices. This web page provides information on these Standards in a consolidated location.
 
-These Standards are being constructed as "building blocks" that can be used to assemble novel APIs for web access to geospatial content. The building blocks are defined not only by the requirements of the Standards specified in the [OGC's Standards Program](https://www.ogc.org/standards), but also through interoperability prototyping and testing in the [OGC's Collaborative Solutions and Innovation Program](https://www.opengeospatial.org/ogc/programs/ip).
+These Standards are being constructed as "building blocks" that can be used to assemble novel APIs for web access to geospatial content. The building blocks are defined not only by the requirements of the Standards specified in the [OGC's Standards Program](https://www.ogc.org/standards), but also through interoperability prototyping and testing in the [OGC's Collaborative Solutions and Innovation Program](https://www.ogc.org/research/).
 
 
 # Your workshop team
