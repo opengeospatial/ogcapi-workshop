@@ -10,7 +10,7 @@ Esta página fornece antecedentes e história dos serviços web geoespaciais, ma
 
 ## Evolução da API geoespacial
 
-A década de 1990 viu a implementação inicial da Arquitetura Orientada a Serviços (SOA). A primeira norma OGC Web Map Service (WMS)
+A década de 1990 viu a implementação inicial da Arquitetura Orientada a Serviços (SOA, das siglas em inglês). A primeira norma OGC Web Map Service (WMS)
 foi publicado em 1999, fornecendo uma abordagem neutra relativamente ao fornecedor para visualizar mapas de dados geoespaciais numa página
 web. Os serviços web tinham raízes fortes em [XML-RPC (eXtensible Markup Language over Remote Procedure Call)](http://xmlrpc.com/)
 e [CORBA](https://www.omg.org/spec/CCM), e normas e tecnologias como SOAP, WSDL e UDDI começaram a emergir
@@ -22,7 +22,7 @@ tornou-se uma norma oficial da OGC em apoio da troca de dados (vetoriais) normal
 eram tipicamente desenhados com o conceito de um modelo de base de dados relacional (RDBMS) como repositório de dados/metadados de backend.
 
 A meados da década de 2000, JavaScript, AJAX e mapas interativos/tiles começaram a emergir no domínio do mapeamento web, que proporcionou
-normas de design Web 2.0 que resultaram em mapas mais interativos em páginas web através da Web.
+padrões de design Web 2.0 que resultaram em mapas mais interativos em páginas web através da Web.
 
 ## Realidades das arquiteturas de serviços web
 
@@ -44,23 +44,23 @@ margem para melhorias a fim de evoluir:
   experiência especializada em domínios geoespaciais para interpretar e compreender os requisitos da especificação. Além disso, os Serviços Web
   eram difíceis de integrar com motores de pesquisa da Internet mainstream
 
-## Ser web: um novo paradigma
+## Ser "webby": um novo paradigma
 
-Em 2017, a W3C publicou as [Spatial Data on the Web Best Practices](https://www.w3.org/TR/sdw-bp), que forneceu
-recomendações sobre formatos de dados, identificadores, acesso, licenciamento e proveniência. O objetivo desta melhor prática era
+Em 2017, a W3C publicou as [Spatial Data on the Web Best Practices](https://www.w3.org/TR/sdw-bp), que forneceram
+recomendações sobre formatos de dados, identificadores, acesso, licenciamento e proveniência. O objetivo destas boas práticas era
 fornecer uma linha de base de recomendações para integrar dados e serviços geoespaciais com práticas e
-normas de design web mainstream. Além disso, a OGC publicou o OGC API Whitepaper descrevendo, discutindo APIs e próximos passos
+padrões de design web mainstream. Além disso, a OGC publicou o OGC API Whitepaper descrevendo, discutindo APIs e próximos passos
 para a OGC na altura. Ficou claro que era necessária uma "ruptura total", a fim de as OGC APIs se tornarem mais
 "da Web" e com barreiras de entrada mais baixas para não especialistas do domínio.
 
 Um novo paradigma emergiu, destacando os seguintes conceitos:
 
-- ser web (ser "webby") (humanos, motores de pesquisa)
+- ser "webby" (amigável para humanos, motores de pesquisa)
 - amigável para desenvolvedores
-- desenvolvimento de especificações leve
-- passar de orientado a serviços para orientado a recursos: remover o uso do HTTP como túnel:
-    - orientado a serviços: `/ows?request=GetFeature&typename=roads&featureid=5`
-    - orientado a recursos: `/api/collections/roads/items/5`
+- desenvolvimento ligeiro de especificações
+- passar de uma orientação a serviços para uma orientação a recursos: remover o uso do HTTP como túnel:
+    - orientação a serviços: `/ows?request=GetFeature&typename=roads&featureid=5`
+    - orientação a recursos: `/api/collections/roads/items/5`
 - desenvolvimento de especificações modulares
   - especificações centrais e de extensão, permitindo implementação e adoção com barreiras de entrada baixas para o mercado de massa/a Web
 
@@ -70,13 +70,12 @@ API (atualmente OGC API - Environmental Data Retrieval). Isto representou as ori
 Os processos de desenvolvimento e de trabalho de desenvolvimento de normas da OGC evoluíram durante este período. As especificações da OGC API começaram a ser
 desenvolvidas em repositórios GitHub públicos, permitindo a qualquer pessoa do público discutir e colaborar para uma dada norma da OGC API
 abertamente no GitHub. Além disso, as próprias especificações começaram a ser desenvolvidas em AsciiDoc (um formato aberto para documentação/markup) e
-tornadas disponíveis como páginas HTML (e PDF). As ferramentas colaborativas utilizadas pela OGC também se proliferaram, como Gitter/Element, bem como Discord.
+tornadas disponíveis como páginas HTML (e PDF). As ferramentas colaborativas utilizadas pela OGC também proliferaram, como Gitter/Element ou Discord.
 
 !!! note
-    As normas da OGC, embora desenvolvidos primariamente no GitHub, são votados pelos membros da OGC.
+    Embora desenvolvidos primariamente no GitHub, as normas da OGC são votadas pelos membros da OGC.
 
 ## Resumo
 
 Os Serviços Web e APIs Geoespaciais têm sido uma atividade de longa data no domínio geoespacial. As normas OGC API são desenhadas com base nas lições
-aprendidas de esforços passados, e construídos para terem barreiras de entrada baixas, com foco em recursos (dados/conteúdo!) utilizando práticas modernas de desenvolvimento web
-e princípios.
+aprendidas de esforços passados, e construídas para terem barreiras de entrada baixas, com foco em recursos (dados/conteúdo!) utilizando práticas e princípios modernos de desenvolvimento web.

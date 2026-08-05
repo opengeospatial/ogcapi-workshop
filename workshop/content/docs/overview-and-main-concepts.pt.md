@@ -105,7 +105,7 @@ Para mais detalhes sobre esta norma, consulte a [secção OGC API - Common](http
 
 As seguintes normas OGC API foram aprovadas e estão disponíveis para utilização. Note que estas normas têm 1 ou mais "Partes" ou extensões que permitem funcionalidades específicas. A "Parte 1" de uma dada norma representa as capacidades mais básicas. Partes adicionais também podem ser implementadas como [blocos de construção](#blocos-de-construcao-da-ogc-api).
 
-- A [OGC API - Features](https://ogcapi.ogc.org/features) oferece a capacidade de criar, modificar e consultar dados espaciais na Web e especifica requisitos e recomendações para APIs que pretendam seguir uma maneira padrão de partilhar dados de entidades
+- A [OGC API - Features](https://ogcapi.ogc.org/features) oferece a capacidade de criar, modificar e consultar dados espaciais na Web e especifica requisitos e recomendações para APIs que pretendam seguir uma maneira norma de partilhar dados de entidades
 - A [OGC API - Environmental Data Retrieval](https://ogcapi.ogc.org/edr) fornece um conjunto de interfaces leves para aceder a recursos de Dados Ambientais. Cada recurso endereçado por uma API EDR corresponde a uma norma de consulta definida
 - A [OGC API - Maps](https://ogcapi.ogc.org/maps) oferece uma abordagem moderna à norma Web Map Service (WMS) da OGC para a prestação de mapas e conteúdo raster
 - A [OGC API - Processes](https://ogcapi.ogc.org/processes) permite que ferramentas de processamento sejam chamadas e combinadas a partir de múltiplas fontes e aplicadas a dados em outros recursos da OGC API através de uma API simples
