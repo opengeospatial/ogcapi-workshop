@@ -1,0 +1,58 @@
+[project]
+site_name = "Workshop OGC API"
+site_description = "As OGC APIs foram projetadas para facilitar a disponibilização e utilização de dados geoespaciais na web e a sua integração com outras informações. Este workshop introduz as OGC APIs que suportam descoberta, acesso, visualização e processamento alinhados com os princípios FAIR."
+site_url = "https://ogcapi-workshop.ogc.org"
+repo_url = "https://github.com/opengeospatial/ogcapi-workshop"
+edit_uri = "edit/main/workshop/content/docs"
+copyright = "© 2023 - 2026 Open Geospatial Consortium"
+docs_dir = "docs"
+site_dir = "site/pt"
+directory_urls = true
+extra_css = [ 
+  "assets/stylesheets/ogcapi-workshop.css"
+]
+
+nav = [
+    {"Início" = "pt/index.md"},
+    {"Contexto e antecedentes" = "background-and-context.pt.md"},
+    {"Visão geral e conceitos principais" = "overview-and-main-concepts.pt.md"},
+    {"Conformidade e certificação" = "compliance-and-certification.pt.md"},
+    {"Aprofundamento API:" = [
+        {"Introdução" = "api-deep-dive/primer.pt.md"},
+        {"OGC API - Common" = "api-deep-dive/common.pt.md"},
+        {"OGC API - Features" = "api-deep-dive/features.pt.md"},
+        {"OGC API - Tiles" = "api-deep-dive/tiles.pt.md"},
+        {"OGC API - Maps" = "api-deep-dive/maps.pt.md"},
+        {"OGC API - Styles" = "api-deep-dive/styles.pt.md"},
+        {"OGC API - Processes" = "api-deep-dive/processes.pt.md"},
+        {"OGC API - Records" = "api-deep-dive/records.pt.md"},
+        {"OGC API - Environmental Data Retrieval" = "api-deep-dive/environmental-data-retrieval.pt.md"},
+    ]},
+    {"Roadmap OGC API" = "roadmap.pt.md"},
+    {"Segurança" = "security.pt.md"},
+    {"Transição e migração" = "transition-and-migration.pt.md"},
+    {"Participar" = "getting-involved.pt.md"},
+    {"Conclusão" = "conclusion.pt.md"}
+]
+
+[project.theme]
+language = "pt"
+variant = "classic"
+primary = "black"
+favicon = "assets/favicon.ico"
+logo = "assets/images/ogc.png"
+features = [
+  "content.action.edit",
+  "content.action.view",
+  "navigation.top",
+  "navigation.tracking.prev_next",
+  "navigation.tracking.section",
+  "navigation.indexes" 
+]
+
+[project.extra]
+homepage = "https://ogcapi-workshop.ogc.org"
+alternate = [
+    { name = "English", link = "/", lang = "en" },
+    { name = "Português", link = "/pt/", lang = "pt" }
+]
