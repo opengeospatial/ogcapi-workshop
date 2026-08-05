@@ -232,13 +232,13 @@ com vários parâmetros de consulta aplicados.
 ### Coleção
 
 Como a OGC API - Maps usa a OGC API - Common como bloco de construção, consulte o aprofundamento da [OGC API - Features](features.md#feature-collection)
-para uma explicação detalhada de um exemplo de implementação, bem como a descrição das [Coleções](#collections).
+para uma explicação detalhada de um exemplo de implementação, bem como a descrição das [Coleções](#colecoes).
 
 Para inspecionar a coleção específica, execute o pedido <https://demo.pygeoapi.io/master/collections/mapserver_world_map?f=json>.
 
 ### Mapas de coleção no estilo predefinido
 
-Vamos gerar um mapa a partir da coleção usando a ligação no excerto [acima](#collections):
+Vamos gerar um mapa a partir da coleção usando a ligação no excerto [acima](#colecoes):
 
 <https://demo.pygeoapi.io/master/collections/mapserver_world_map/map>
 

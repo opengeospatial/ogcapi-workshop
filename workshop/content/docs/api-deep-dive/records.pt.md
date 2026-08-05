@@ -223,7 +223,7 @@ ilustrando um registo de coleção:
 ### Coleção de registos
 
 Dado que o OGC API - Records utiliza o OGC API - Common e o OGC API - Features como blocos de construção, consulte a [OGC API - Features](features.md#feature-collection) para
-uma explicação inicial detalhada, bem como a descrição das [Coleções de registos](#coleccao-de-registos).
+uma explicação inicial detalhada, bem como a descrição das [Coleções de registos](#colecao-de-registos).
 
 ### Acesso a registos
 

@@ -21,7 +21,7 @@ title: OGC SensorThings API
 
 A Internet das Coisas (IoT, das siglas em inglês) é uma infraestrutura global de informação que
 permite serviços avançados interligando "coisas" tanto físicas como virtuais
-com base em tecnologias de informação e comunicação interoperáveis existentes e em evolução [ITU-T]. Para facilitar a
+com base em tecnologias de informação e comunicação interoperáveis existentes e em evolução [ITU-T\]. Para facilitar a
 interoperabilidade geoespacial entre dispositivos na IoT, a OGC publicou a
 OGC SensorThings API.
 

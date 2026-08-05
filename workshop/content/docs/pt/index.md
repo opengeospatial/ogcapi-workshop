@@ -80,4 +80,8 @@ As contribuições são sempre encorajadas e bem-vindas!
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15846453.svg)](https://doi.org/10.5281/zenodo.15846453)
 
+# Créditos
+
+![OGC APIs logo](../assets/images/PRR.png)
+
 ## Agora, para a workshop. Pronto? Vamos lá!
