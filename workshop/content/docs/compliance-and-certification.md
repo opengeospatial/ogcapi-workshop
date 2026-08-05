@@ -14,7 +14,7 @@ You can browse the [OGC compliance product page](https://portal.ogc.org/public_o
 
 ## TEAM Engine
 
-In order to be certified, a product needs to passed the tests on the OGC validator. The OGC validation infrastructure is based on [TEAM Engine](https://github.com/opengeospatial/teamengine), a Free and Open Source tool which is being incubated as an [OSGeo project](https://www.osgeo.org/projects/teamengine/). 
+In order to be certified, a product needs to passed the tests on the OGC validator. The OGC validation infrastructure is based on [TEAM Engine](https://github.com/opengeospatial/teamengine), a Free and Open Source tool which is an [OSGeo community project](https://www.osgeo.org/projects/teamengine/). 
 
 Developers can either use the hosted version of TEAM Engine on CITE, or install and integrate it locally into their own pipeline. 
 
