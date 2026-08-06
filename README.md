@@ -55,10 +55,7 @@ Support to multiple languages is native in Zensical. To add an additional langua
 - foreach `.md` page in `workshop/content/docs`, add an equivalent page in the language with the locale code as part of the filename.  For example:
   - `records.md` -> `records.pt.md`
   
-<!-- TODO: add something about Action
-
-- Update the [GitHub action](https://github.com/geopython/diving-into-pygeoapi/blob/main/.github/workflows/deploy.docs.yml), to also include a build for this language; example: `zensical build --strict --config-file zensical.pt.toml`
--->
+- Update the [GitHub action](https://github.com/doublebyte1/ogcapi-workshop/blob/main/.github/workflows/deploy.docs.yml), to also include a build for this language; example: `zensical build --strict --config-file zensical.pt.toml`
 
 - commit to your fork and issue a GitHub Pull Request
 
