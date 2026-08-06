@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'workshop/content/**'
+  workflow_dispatch:
 
 jobs:
   build:
