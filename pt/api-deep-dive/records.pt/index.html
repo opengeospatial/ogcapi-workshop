@@ -1,0 +1,1665 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="As OGC APIs foram projetadas para facilitar a disponibilização e utilização de dados geoespaciais na web e a sua integração com outras informações. Este workshop introduz as OGC APIs que suportam descoberta, acesso, visualização e processamento alinhados com os princípios FAIR.">
+      
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/records.pt/">
+      
+      
+        <link rel="prev" href="../processes.pt/">
+      
+      
+        <link rel="next" href="../environmental-data-retrieval.pt/">
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="/pt/" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>OGC API - Records - Workshop OGC API</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.39e53929.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navegação"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-api-records" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="https://ogcapi-workshop.ogc.org" title="Workshop OGC API" class="md-header__button md-logo" aria-label="Workshop OGC API" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="Workshop OGC API">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navegação">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Workshop OGC API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC API - Records
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/pt/" hreflang="pt" class="md-select__link">
+              Português
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Pesquisar">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Pesquisar">
+  <button type="button" class="md-search__button">
+    Pesquisar
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ogcapi-workshop.ogc.org" title="Workshop OGC API" class="md-nav__button md-logo" aria-label="Workshop OGC API" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="Workshop OGC API">
+
+    </a>
+    Workshop OGC API
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Início
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Contexto e antecedentes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Visão geral e conceitos principais
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conformidade e certificação
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Aprofundamento API:
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Aprofundamento API:
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Introdução
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Common
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Features
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Tiles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Maps
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Styles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processes.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Processes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Records
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Records
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introdução
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antecedentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Antecedentes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antecedentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-outras-normas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relação com outras normas
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visao-geral-dos-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Visão geral dos recursos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Exemplo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagina-de-aterragem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Página de Aterragem
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaracoes-de-conformidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Declarações de conformidade
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicao-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definição da API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colecoes-de-registos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Coleções de registos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colecao-de-registos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Coleção de registos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acesso-a-registos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Acesso a registos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recurso-central-do-registo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recurso central do registo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        GeoJSON
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environmental-data-retrieval.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Environmental Data Retrieval
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Roadmap OGC API
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Segurança
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transição e migração
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Participar
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conclusão
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introdução
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antecedentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Antecedentes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antecedentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-outras-normas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relação com outras normas
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visao-geral-dos-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Visão geral dos recursos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Exemplo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagina-de-aterragem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Página de Aterragem
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaracoes-de-conformidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Declarações de conformidade
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicao-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definição da API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colecoes-de-registos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Coleções de registos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colecao-de-registos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Coleção de registos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acesso-a-registos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Acesso a registos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recurso-central-do-registo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recurso central do registo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        GeoJSON
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/edit/main/workshop/content/docs/api-deep-dive/records.pt.md" title="Editar esta página" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/raw/main/workshop/content/docs/api-deep-dive/records.pt.md" title="Ver fonte desta página" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="ogc-api-records">OGC API - Records<a class="headerlink" href="#ogc-api-records" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Público-alvo</p>
+<p>Estudantes familiarizados com serviços web e APIs, que desejam ter
+uma visão geral da norma OGC API - Records</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivos de Aprendizagem</p>
+<p>Ao concluir o módulo, os estudantes serão capazes de:</p>
+<ul>
+<li>Explicar o que é a norma OGC API - Records</li>
+<li>Descrever o que pode ser feito com implementações da OGC API - Records</li>
+<li>Compreender os principais recursos oferecidos por implementações da OGC API - Records</li>
+<li>Compreender como obter uma descrição das capacidades de uma
+  implementação da OGC API - Records</li>
+<li>Compreender como fazer pedidos a uma implementação do OGC API - Records</li>
+<li>Conseguir encontrar um endpoint do OGC API - Records e utilizá-lo através de um cliente</li>
+</ul>
+</div>
+<h2 id="introducao">Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+<p>A <a href="https://records.developer.ogc.org/">OGC API - Records</a> é uma norma multi-parte que oferece a capacidade de
+criar, modificar e consultar metadados na Web. A norma permite a
+descoberta de recursos geoespaciais ao padronizar a forma como as coleções de informação
+descritiva sobre os recursos (metadados) são expostas. A norma também
+permite a descoberta e partilha de recursos relacionados que possam ser referenciados a partir
+de recursos geoespaciais ou dos respetivos metadados, padronizando a forma como todos os tipos de registos
+são expostos e geridos. A Parte 1 cobre o acesso apenas-leitura a registos e capacidades
+simples de consulta. Capacidades adicionais que abordam necessidades específicas serão especificadas
+em partes adicionais. Capacidades para consultas mais ricas ou para criar, atualizar ou eliminar
+registos serão especificadas em partes adicionais.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A OGC API - Records aproveita a <a href="../features/#usage">OGC API - Features</a> como base, com
+endpoints de URL semelhantes e fluxo de trabalho de pedido/resposta, para o Catálogo Pesquisável e Local.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este módulo tutorial não tem a intenção de substituir a própria norma 
+<strong>OGC API - Records - Parte 1: Core</strong>. O tutorial
+concentra-se intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a norma da <strong>OGC API -
+Records - Parte 1: Core</strong> para mais detalhes.</p>
+</div>
+<h3 id="antecedentes">Antecedentes<a class="headerlink" href="#antecedentes" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Histórico</p>
+</blockquote>
+<p>O trabalho do standard OGC API - Records foi iniciado em 2018 e foi originalmente designado por
+  <strong>OGC CAT4.0</strong>. Desde então, seguiu o desenvolvimento do OGC API - Features como base.</p>
+<blockquote>
+<p>Versões</p>
+</blockquote>
+<p><strong>OGC API - Records - Parte 1: Core</strong> versão 1.0.0 é a versão mais recente</p>
+<blockquote>
+<p>Suite de testes</p>
+</blockquote>
+<p>Atualmente não existem suites de testes implementadas; uma vez implementadas elas estarão disponíveis no <a href="https://cite.ogc.org/teamengine/">OGC Validator</a>.</p>
+<blockquote>
+<p>Implementações</p>
+</blockquote>
+<p>As implementações podem ser encontradas na <a href="https://github.com/opengeospatial/ogcapi-records/blob/master/implementations.md">página de implementações</a>.</p>
+<h4 id="utilizacao">Utilização<a class="headerlink" href="#utilizacao" title="Permanent link">&para;</a></h4>
+<p>O OGC API - Records suporta 3 padrões principais de implementação:</p>
+<ul>
+<li>Catálogo navegável: navegação e pesquisa de um conjunto de registos de metadados através de ligações</li>
+<li>Catálogo pesquisável: capacidade da API para pesquisar e filtrar uma coleção de registos de metadados com base em critérios de pesquisa (bbox, datetime, q, etc.)</li>
+<li>Catálogo de recursos locais: funcionalidade de catálogo pesquisável aplicada ao nível da coleção de uma API</li>
+</ul>
+<p>A OGC API - Records suporta também um modelo de pesquisa central. Ou seja, um conjunto de propriedades comuns de pesquisa que podem ser utilizadas contra qualquer
+servidor OGC API - Records, independentemente do formato/standard de metadados e/ou do design do repositório de metadados subjacente.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para fins deste aprofundamento, vamos focar-nos na norma de implementação de catálogo pesquisável.</p>
+</div>
+<h4 id="relacao-com-outras-normas">Relação com outras normas<a class="headerlink" href="#relacao-com-outras-normas" title="Permanent link">&para;</a></h4>
+<p>OGC Catalogue Service for the Web (CSW): A norma CSW é mais apropriada quando se trabalha com aplicações cliente que suportam apenas serviços web clássicos da OGC. Note também que o CSW adota um modelo central de metadados baseado no Dublin Core por predefinição. Em contraste, a OGC API - Records inclui recomendações para suportar HTML e GeoJSON como codificações, quando aplicável. As implementações da OGC API - Records podem também opcionalmente suportar formatos de metadados XML, como ISO 19115/19139.</p>
+<h3 id="visao-geral-dos-recursos">Visão geral dos recursos<a class="headerlink" href="#visao-geral-dos-recursos" title="Permanent link">&para;</a></h3>
+<p>A <strong>OGC API - Records - Parte 1: Core</strong> define os recursos listados na
+tabela seguinte.</p>
+<table>
+  <tr>
+    <th>Recurso</th>
+    <th>Método</th>
+    <th>Caminho</th>
+    <th>Propósito</th>
+  </tr>
+  <tr>
+    <td>Página de aterragem</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>Este é o recurso de nível superior, que serve como ponto de entrada.</td>
+  </tr>
+  <tr>
+    <td>Declaração de conformidade</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>Este recurso apresenta informação sobre a funcionalidade que é implementada pelo servidor.</td>
+  </tr>
+  <tr>
+    <td>Definição da API</td>
+    <td>GET</td>
+    <td>/api</td>
+    <td>Este recurso fornece metadados sobre a API propriamente dita. Note que a utilização de /api no servidor é opcional e a definição da API pode estar alojada num servidor completamente separado.</td>
+  </tr>
+  <tr>
+    <td>Coleções de registos</td>
+    <td>GET</td>
+    <td>/collections</td>
+    <td>Este recurso lista as coleções de registos oferecidas através da API.</td>
+  </tr>
+  <tr>
+    <td>Coleção de registos</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}</td>
+    <td>Este recurso descreve a coleção de registos identificada no caminho.</td>
+  </tr>
+  <tr>
+    <td>Acesso a registos</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/items</td>
+    <td>Este recurso apresenta os registos contidos na coleção.</td>
+  </tr>
+  <tr>
+    <td>Recurso central do registo</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/items/{recordId}</td>
+    <td>Este recurso apresenta o registo identificado no caminho.</td>
+  </tr>
+</table>
+
+<p>Como mencionado anteriormente, a OGC API - Records utiliza intensivamente o\a OGC API - Features como bloco de construção base. Embora a OGC API - Records
+permita qualquer modelo de metadados, uma diferença e valor acrescentado chave é a capacidade de descrever um modelo central de registo e elementos consultáveis. Isto
+permite interoperabilidade e integração entre catálogos para descrever recursos geoespaciais de forma consistente.</p>
+<p>Por exemplo, um repositório de metadados pode ser modelado seguindo a norma ISO 19115 e ser exposto através da OGC API - Records através de
+«mapeamento» dos elementos ISO para o modelo central de registo e elementos consultáveis.</p>
+<p>O registo central é a unidade atómica de informação num catálogo. Uma descrição completa das propriedades centrais de um registo pode
+encontrar-se em <a href="https://docs.ogc.org/is/20-004r1/20-004r1.html#core-properties">https://docs.ogc.org/is/20-004r1/20-004r1.html#core-properties</a>. O registo central é uma representação compatível com GeoJSON
+com elementos fixos no objeto/bloco <code>properties</code>.</p>
+<h3 id="exemplo">Exemplo<a class="headerlink" href="#exemplo" title="Permanent link">&para;</a></h3>
+<p>O <a href="https://demo.pygeoapi.io/master">servidor de demonstração</a> publica metadados de dados geoespaciais através de uma interface que está em conformidade com a OGC API - Records.</p>
+<p>Um exemplo de pedido que pode ser utilizado para recuperar dados da coleção de registos de metadados amostrais do Dutch Nationaal georegister é <a href="https://demo.pygeoapi.io/master/collections/dutch-metadata?f=html">https://demo.pygeoapi.io/master/collections/dutch-metadata?f=html</a></p>
+<p>Note que a resposta ao pedido é HTML neste caso.</p>
+<p>Alternativamente, os mesmos dados podem ser recuperados no formato GeoJSON, através do pedido <a href="https://demo.pygeoapi.io/master/collections/dutch-metadata?f=json">https://demo.pygeoapi.io/master/collections/dutch-metadata?f=json</a></p>
+<p>Uma aplicação cliente pode, em seguida, recuperar o documento GeoJSON e exibi-lo ou processá-lo.</p>
+<h2 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<h3 id="pagina-de-aterragem">Página de Aterragem<a class="headerlink" href="#pagina-de-aterragem" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Records utiliza o OGC API - Common e a OGC API - Features como blocos de construção, consulte a <a href="../features/#landing-page">OGC API - Features</a> para
+uma explicação detalhada.</p>
+<h3 id="declaracoes-de-conformidade">Declarações de conformidade<a class="headerlink" href="#declaracoes-de-conformidade" title="Permanent link">&para;</a></h3>
+<p>Dado que o OGC API - Records utiliza a OGC API - Common e a OGC API - Features como blocos de construção, consulte a <a href="../features/#conformance-declarations">OGC API - Features</a> para
+uma explicação detalhada.</p>
+<h3 id="definicao-da-api">Definição da API<a class="headerlink" href="#definicao-da-api" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Records utiliza o OGC API - Common como bloco de construção, consulte a <a href="../features/#api-definition">OGC API - Features</a> para
+uma explicação detalhada de uma implementação de exemplo.</p>
+<h3 id="colecoes-de-registos">Coleções de registos<a class="headerlink" href="#colecoes-de-registos" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Records utiliza a OGC API - Common e a OGC API - Features como blocos de construção, consulte a <a href="../features/#feature-collections">OGC API - Features</a> para
+uma explicação inicial detalhada.</p>
+<p>As descrições de coleções da OGC API - Records fornecem as seguintes propriedades adicionais:</p>
+<ul>
+<li>Um título obrigatório para a coleção</li>
+<li>Um tipo obrigatório para a coleção</li>
+<li>Um indicador obrigatório sobre o tipo dos itens na coleção (<code>record</code>)</li>
+</ul>
+<p>Abaixo segue um excerto da resposta ao pedido <a href="https://demo.pygeoapi.io/master/collections?f=json">https://demo.pygeoapi.io/master/collections?f=json</a>,
+ilustrando um registo de coleção:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dutch-metadata&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Catalog&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;itemType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;record&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sample metadata records from Dutch Nationaal georegister&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sample metadata records from Dutch Nationaal georegister&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;keywords&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="s2">&quot;netherlands&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="s2">&quot;open data&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="s2">&quot;georegister&quot;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nt">&quot;links&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This document as JSON&quot;</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/collections/dutch-metadata?f=json&quot;</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/geo+json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;items&quot;</span><span class="p">,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;items as GeoJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json&quot;</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="colecao-de-registos">Coleção de registos<a class="headerlink" href="#colecao-de-registos" title="Permanent link">&para;</a></h3>
+<p>Dado que o OGC API - Records utiliza o OGC API - Common e o OGC API - Features como blocos de construção, consulte a <a href="../features/#feature-collection">OGC API - Features</a> para
+uma explicação inicial detalhada, bem como a descrição das <a href="#colecao-de-registos">Coleções de registos</a>.</p>
+<h3 id="acesso-a-registos">Acesso a registos<a class="headerlink" href="#acesso-a-registos" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Records utiliza o OGC API - Common e a OGC API - Features como blocos de construção, consulte a <a href="../features/#features">OGC API - Features</a> para
+uma explicação detalhada.</p>
+<p>Abaixo segue um excerto da resposta ao pedido <a href="https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json">https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json</a></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;numberMatched&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;numberReturned&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;35149dfb-31d3-431c-a8bc-12a4034dac48&quot;</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">          </span><span class="p">[</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">              </span><span class="mf">4.690751953125</span><span class="p">,</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">              </span><span class="mf">52.358740234375</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">              </span><span class="mf">4.690751953125</span><span class="p">,</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">              </span><span class="mf">52.6333984375</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">              </span><span class="mf">5.020341796875</span><span class="p">,</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">              </span><span class="mf">52.6333984375</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">              </span><span class="mf">5.020341796875</span><span class="p">,</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">              </span><span class="mf">52.358740234375</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">              </span><span class="mf">4.690751953125</span><span class="p">,</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">              </span><span class="mf">52.358740234375</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">          </span><span class="p">]</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">      </span><span class="p">},</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">        </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-12-08&quot;</span><span class="p">,</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">        </span><span class="nt">&quot;updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-10T01:27:47Z&quot;</span><span class="p">,</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kaartboeck 1635&quot;</span><span class="p">,</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data uit kaartboeken van de periode 1635 tot 1775. De kaartboeken werden door het waterschap gebruikt om er op toe te zien dat de eigenaren geen water in beslag namen door demping.\nDe percelen op de kaart zijn naar de huidige maatstaven vrij nauwkeurig gemeten en voorzien van een administratie met de eigenaren. bijzondere locaties van molens werven en beroepen worden in de boeken vermeld. Alle 97 kaarten aan een geven een zeer gedetailleerd beeld van de Voorzaan, Nieuwe Haven en de Achterzaan. De bladen Oost en West van de zaan zijn vrij nauwkeurig. De bladen aan de Voorzaan zijn een schetsmatige weergave van de situatie. De kaart van de Nieuwe Haven si weer nauwkeurig te noemen.&quot;</span><span class="p">,</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">        </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">          </span><span class="s2">&quot;Team Geo, geo-informatie@zaanstad.nl, Gemeente Zaanstad&quot;</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">        </span><span class="nt">&quot;externalIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">          </span><span class="p">{</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">            </span><span class="nt">&quot;scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;35149dfb-31d3-431c-a8bc-12a4034dac48&quot;</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">        </span><span class="nt">&quot;themes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">          </span><span class="p">{</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">            </span><span class="nt">&quot;concepts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">              </span><span class="s2">&quot;ARGEOLOGIE&quot;</span><span class="p">,</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">              </span><span class="s2">&quot;MONUMENTEN&quot;</span><span class="p">,</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">              </span><span class="s2">&quot;KADASTER&quot;</span><span class="p">,</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">              </span><span class="s2">&quot;KAARTBOEK&quot;</span><span class="p">,</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">              </span><span class="s2">&quot;KAARTBOECK&quot;</span><span class="p">,</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">              </span><span class="s2">&quot;HISTORIE&quot;</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">        </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">          </span><span class="nt">&quot;spatial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">            </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">              </span><span class="p">[</span>
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">                </span><span class="mf">4.690751953125</span><span class="p">,</span>
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="w">                </span><span class="mf">52.358740234375</span><span class="p">,</span>
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">                </span><span class="mf">5.020341796875</span><span class="p">,</span>
+</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">                </span><span class="mf">52.6333984375</span>
+</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">              </span><span class="p">]</span>
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="w">            </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/crs/OGC/1.3/CRS84&quot;</span>
+</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="w">          </span><span class="p">},</span>
+</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="w">          </span><span class="nt">&quot;temporal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="w">            </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="w">              </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="w">              </span><span class="kc">null</span>
+</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="w">            </span><span class="nt">&quot;trs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/uom/ISO-8601/0/Gregorian&quot;</span>
+</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-1-82"><a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-83"><a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="w">      </span><span class="p">},</span>
+</span><span id="__span-1-84"><a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a><span class="w">      </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-85"><a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-1-86"><a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://maps-intern.zaanstad.gem.local/geoserver/wms?SERVICE=WMS&quot;</span><span class="p">,</span>
+</span><span id="__span-1-87"><a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;item&quot;</span><span class="p">,</span>
+</span><span id="__span-1-88"><a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a><span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;geo:kaartboeck&quot;</span><span class="p">,</span>
+</span><span id="__span-1-89"><a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OGC:WMS&quot;</span>
+</span><span id="__span-1-90"><a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-1-91"><a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-1-92"><a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://maps-intern.zaanstad.gem.local/geoserver/wfs?SERVICE=WFS&quot;</span><span class="p">,</span>
+</span><span id="__span-1-93"><a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;item&quot;</span><span class="p">,</span>
+</span><span id="__span-1-94"><a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a><span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;geo:kaartboeck&quot;</span><span class="p">,</span>
+</span><span id="__span-1-95"><a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OGC:WFS&quot;</span>
+</span><span id="__span-1-96"><a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-1-97"><a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-1-98"><a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://maps-intern.zaanstad.gem.local/geoserver/wfs?SERVICE=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=geo:kaartboeck&amp;outputFormat=csv&quot;</span><span class="p">,</span>
+</span><span id="__span-1-99"><a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;item&quot;</span><span class="p">,</span>
+</span><span id="__span-1-100"><a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;download&quot;</span>
+</span><span id="__span-1-101"><a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-1-102"><a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-1-103"><a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://maps-intern.zaanstad.gem.local/geoserver/wfs?SERVICE=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=geo:kaartboeck&amp;outputFormat=shape-zip&quot;</span><span class="p">,</span>
+</span><span id="__span-1-104"><a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;item&quot;</span><span class="p">,</span>
+</span><span id="__span-1-105"><a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;download&quot;</span>
+</span><span id="__span-1-106"><a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-107"><a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a><span class="w">      </span><span class="p">]</span>
+</span><span id="__span-1-108"><a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<p>Note que este documento é um documento GeoJSON válido.</p>
+<p>O OGC API - Records suporta os mesmos parâmetros de consulta especificados na OGC API - Features. Além disso, o OGC API - Records adiciona um conjunto central de
+elementos consultáveis fixos. Um exemplo de consulta com base numa pesquisa estilo «motor de pesquisa» utilizando o parâmetro <strong>q</strong> é <a href="https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json&amp;q=biomassa">https://demo.pygeoapi.io/master/collections/dutch-metadata/items?f=json&amp;q=biomassa</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Consulte a norma OGC API - Records - Parte 1: Core para mais informação sobre elementos consultáveis centrais.</p>
+</div>
+<h3 id="recurso-central-do-registo">Recurso central do registo<a class="headerlink" href="#recurso-central-do-registo" title="Permanent link">&para;</a></h3>
+<p>Dado que o OGC API - Records utiliza a OGC API - Common e o OGC API - Features como blocos de construção, consulte a <a href="../features/#feature">OGC API - Features</a> para
+uma explicação detalhada.</p>
+<h3 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link">&para;</a></h3>
+<p>A Classe de Requisitos GeoJSON da OGC API - Records especifica uma codificação baseada em GeoJSON para o registo central, com base no RFC7946. Dada a onipresença do GeoJSON, existem inúmeras ferramentas para validar, processar e decodificar/codificar GeoJSON, tornando o GeoJSON da OGC API - Records fácil de incluir em pipelines de processamento de metadados. A OGC API - Records inclui o <a href="https://github.com/opengeospatial/ogcapi-records/blob/master/core/openapi/schemas/recordGeoJSON.yaml">JSON Schema</a> para a representação GeoJSON e, por conseguinte, pode ser utilizada para validação em tempo de execução ou offline de payloads de metadados. Aplicações baseadas no GeoJSON do OGC API - Records podem estender e restringir o esquema de acordo para fluxos de trabalho específicos do domínio.</p>
+<h2 id="resumo">Resumo<a class="headerlink" href="#resumo" title="Permanent link">&para;</a></h2>
+<p>A OGC API - Records fornece funcionalidade para trabalhar com metadados na Web. Este aprofundamento proporcionou uma visão geral da norma e dos vários recursos e endpoints suportados.</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2023 - 2026 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.action.edit","content.action.view","navigation.top","navigation.tracking.prev_next","navigation.tracking.section","navigation.indexes"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copiado para área de transferência","clipboard.copy":"Copiar para área de transferência","search.result.more.one":"Mais 1 nesta página","search.result.more.other":"Mais # nesta página","search.result.none":"Nenhum resultado encontrado","search.result.one":"1 resultado encontrado","search.result.other":"# resultados encontrados","search.result.placeholder":"Digite para iniciar a busca","search.result.term.missing":"Ausente","select.version":"Selecione a versão"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>

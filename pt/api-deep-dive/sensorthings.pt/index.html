@@ -1,0 +1,1781 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="As OGC APIs foram projetadas para facilitar a disponibilização e utilização de dados geoespaciais na web e a sua integração com outras informações. Este workshop introduz as OGC APIs que suportam descoberta, acesso, visualização e processamento alinhados com os princípios FAIR.">
+      
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/sensorthings.pt/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="/pt/" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>OGC SensorThings API - Workshop OGC API</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.39e53929.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navegação"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-sensorthings-api" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="https://ogcapi-workshop.ogc.org" title="Workshop OGC API" class="md-header__button md-logo" aria-label="Workshop OGC API" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="Workshop OGC API">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navegação">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Workshop OGC API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC SensorThings API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/pt/" hreflang="pt" class="md-select__link">
+              Português
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Pesquisar">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Pesquisar">
+  <button type="button" class="md-search__button">
+    Pesquisar
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ogcapi-workshop.ogc.org" title="Workshop OGC API" class="md-nav__button md-logo" aria-label="Workshop OGC API" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="Workshop OGC API">
+
+    </a>
+    Workshop OGC API
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Início
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Contexto e antecedentes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Visão geral e conceitos principais
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conformidade e certificação
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Aprofundamento API:
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Aprofundamento API:
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Introdução
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Common
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Features
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Tiles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Maps
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Styles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processes.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Processes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Records
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environmental-data-retrieval.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Environmental Data Retrieval
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Roadmap OGC API
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Segurança
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transição e migração
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Participar
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conclusão
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introdução
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antecedentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Antecedentes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antecedentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-outras-normas-da-ogc" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relação com outras normas da OGC
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visao-geral-dos-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Visão Geral dos Recursos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Exemplo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao-de-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização de Cliente
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Operações
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operações">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcoes-de-recuperacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Opções de Recuperação
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opções de Recuperação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        $filter
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        $count
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderby" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        $orderby
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skip" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        $skip
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        $top
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        $expand
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        $select
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demonstracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Demonstração
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Demonstração">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cliente-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Cliente Web
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cliente Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#devolver-caminho-do-recurso-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Devolver Caminho do Recurso Base
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-things-estao-disponiveis-no-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Que <em>Things</em> estão disponíveis no servidor?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obter-um-datastream-para-uma-coisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Obter um <em>Datastream</em> para uma Coisa
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obter-as-observacoes-relacionadas-com-um-fluxo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Obter as <em>Observações</em> relacionadas com um fluxo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-complexa" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Consulta Complexa
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resposta-de-consulta-complexa" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resposta de Consulta Complexa
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-qgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Plugin QGIS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Referências
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/edit/main/workshop/content/docs/api-deep-dive/sensorthings.pt.md" title="Editar esta página" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/raw/main/workshop/content/docs/api-deep-dive/sensorthings.pt.md" title="Ver fonte desta página" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="ogc-sensorthings-api">OGC SensorThings API<a class="headerlink" href="#ogc-sensorthings-api" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Público-alvo</p>
+<p>Estudantes que estejam familiarizados com serviços web e queiram ter
+uma visão geral da norma da Interface de Programação de Aplicação (API) SensorThings</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivos de Aprendizagem</p>
+<p>Após a conclusão do módulo, os estudantes serão capazes de:</p>
+<ul>
+<li>Explicar o que é a SensorThings API</li>
+<li>Descrever o que pode ser feito com a SensorThings API</li>
+<li>Compreender como obter dados através da SensorThings API</li>
+<li>Compreender como publicar dados coletados por sensores através da SensorThings API</li>
+<li>Conseguir encontrar um endpoint de uma SensorThings API e utilizá-lo através de um cliente</li>
+</ul>
+</div>
+<h2 id="introducao">Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+<p>A Internet das Coisas (IoT, das siglas em inglês) é uma infraestrutura global de informação que
+permite serviços avançados interligando "coisas" tanto físicas como virtuais
+com base em tecnologias de informação e comunicação interoperáveis existentes e em evolução [ITU-T]. Para facilitar a
+interoperabilidade geoespacial entre dispositivos na IoT, a OGC publicou a
+OGC SensorThings API.</p>
+<p>A OGC SensorThings API é uma norma multiparte para uma abordagem aberta e
+com capacidades geoespaciais para interligar dispositivos, dados e
+aplicações da Internet das Coisas (IoT). A primeira parte da
+norma descreve a interface para a Sensibilização (Sensing). A segunda parte descreve
+a interface para a Atribuição de Tarefas (Tasking). A parte de Sensibilização padroniza a gestão
+e recuperação de observações e metadados de sistemas de sensores IoT heterogéneos. A parte de Atribuição de Tarefas fornece uma forma padrão para parametrizar - também chamada
+de atribuição de tarefas - dispositivos IoT que podem ser instruídos a realizar
+observações ou executar outras funções. A SensorThings também inclui uma extensão, a STAplus, desenvolvida especificamente para abordar os requisitos da comunidade de Ciência Cidadã.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este módulo de tutorial não tem a intenção de substituir a própria norma
+<strong>OGC SensorThings API Parte 1: Sensibilização (Sensing)</strong>. O tutorial
+foca-se intencionalmente num subconjunto de capacidades com o propósito de dar aos
+estudantes um ponto de partida para utilizar a norma. Consulte a <a href="https://docs.ogc.org/is/18-088/18-088.html">norma <strong>OGC SensorThings API Parte 1: Sensibilização (Sensing)</strong></a> para mais detalhes.</p>
+</div>
+<p><img alt="image" src="../../assets/images/SensorCollage.jpg" width="100.0%" /></p>
+<h3 id="antecedentes">Antecedentes<a class="headerlink" href="#antecedentes" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>História</p>
+</blockquote>
+<p>A OGC SensorThings API baseia-se nas <a href="https://www.ogc.org/about-ogc/domains/swe/">normas existentes de Habilitação da Web de Sensores (SWE) da OGC</a>. Foi desenvolvida para abordar as necessidades específicas da comunidade IoT. A SensorThings API Parte 1: Sensibilização (Sensing) versão 1.0 foi aprovada pelo Comitê Técnico da OGC em fevereiro de 2016.</p>
+<blockquote>
+<p>Versões</p>
+</blockquote>
+<p>As versões <strong>OGC SensorThings API Parte 1: Sensibilização (Sensing)</strong> Versão 1.1 e <strong>OGC SensorThings API Parte 2 – Atribuição de Tarefas (Tasking Core)</strong> Versão 1.0 são as versões mais recentes. A versão mais recente da <strong>extensão STAplus</strong> é a 1.0.</p>
+<blockquote>
+<p>Suite de testes</p>
+</blockquote>
+<p>Uma suite de testes está disponível para:</p>
+<ul>
+<li><a href="https://github.com/opengeospatial/ets-sta10">SensorThings API - Parte 1</a></li>
+</ul>
+<blockquote>
+<p>Endpoints Públicos</p>
+</blockquote>
+<p>Uma lista de endpoints públicos pode ser encontrada aqui: <a href="https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md">https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md</a></p>
+<h4 id="utilizacao">Utilização<a class="headerlink" href="#utilizacao" title="Permanent link">&para;</a></h4>
+<p>A SensorThings API permite o acesso e disseminação de
+dados coletados por sensores sobre qualquer objeto do mundo físico (coisas
+físicas) ou do mundo da informação (coisas virtuais) que seja capaz de
+ser identificado e integrado em redes de comunicação. Os dados são
+acedidos através de uma interface centrada em recursos que se baseia nos
+princípios de Transferência de Estado Representacional (REST). Os dados devolvidos pela
+API são serializados em Notação de Objetos JavaScript (JSON).</p>
+<p>A vantagem de adotar REST e JSON para a SensorThings API é que
+estes oferecem maior eficiência em dispositivos de Tamanho, Peso e
+Potência (SWaP) restritos, como microcomputadores, controladores de casa inteligente,
+nanoveículos Aéreos não Tripulados (UAV), smartphones, relógios inteligentes e
+tablets. O uso de REST também torna mais fácil para os desenvolvedores web e as
+aplicações que implementam aceder a dados através de
+padrões de URL Uniformes centrados em recursos.</p>
+<ul>
+<li><strong>OGC SensorThings API Parte 1: Sensibilização (Sensing)</strong> - fornece uma forma padrão de gerir e recuperar observações e metadados a partir de sistemas de sensores IoT heterogéneos.</li>
+<li><strong>OGC SensorThings API Parte 2: Atribuição de Tarefas (Tasking Core)</strong> - fornece uma forma padrão para parametrizar - também chamada de atribuição de tarefas - dispositivos IoT com tarefas, como sensores e atuadores individuais, plataformas in situ de consumidores / comerciais / industriais / cidades inteligentes compostas, dispositivos móveis e vestíveis, ou mesmo plataformas de sistemas não tripulados como drones, satélites, veículos conectados e autónomos, etc.</li>
+<li><strong>OGC SensorThings API Extensão: STAplus</strong> - foi projetada para suportar um modelo em que as observações pertencem a utilizadores diferentes. Isto resulta em requisitos para o conceito de propriedade. Além da propriedade, os utilizadores podem expressar uma licença para garantir a reutilização adequada das suas observações. A extensão STAplus também suporta a expressão de relações explícitas entre observações, bem como entre observações e recursos externos. As relações podem enriquecer observações para permitir extensões futuras que suportem Dados Ligados, RDF e SPARQL. Grupo(s) de Observação permitem agrupar observações que pertencem juntas.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>O resto deste tutorial irá focar-se na Versão 1.0 da Parte 1 da norma (por exemplo: Sensibilização). A Versão 1.1 da SensorThings API Parte 1 é uma <a href="https://docs.ogc.org/is/18-088/18-088.html#changes_v_11">atualização para a versão 1.0 que é (maioritariamente) compatível com a versão 1.0</a>.</p>
+</div>
+<h4 id="relacao-com-outras-normas-da-ogc">Relação com outras normas da OGC<a class="headerlink" href="#relacao-com-outras-normas-da-ogc" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Norma da Interface do Serviço de Observação de Sensores (SOS): A
+    SensorThings API foi projetada especificamente para permitir a
+    disseminação de observações a partir de dispositivos IoT com recursos limitados
+    e a comunidade de desenvolvedores web. Em contraste com o SOS, a
+    SensorThings API utiliza abordagens consideradas mais eficientes,
+    por exemplo, REST, JSON e o Transporte de Telemetria e Enfileiramento de Mensagens
+    (MQTT).</li>
+<li>Norma da Interface do Serviço de Características Web (WFS): A norma WFS é
+    projetada para permitir o fornecimento de tipos de características de qualquer tipo. Para além de
+    exigir que os dados sejam serializáveis em Linguagem de Marcação Geográfica
+    (GML), o WFS não impõe outras restrições significativas. Em
+    contraste, a SensorThings API formalizou como entidades específicas e
+    conceitos devem ser representados e serializados.</li>
+</ul>
+<h3 id="visao-geral-dos-recursos">Visão Geral dos Recursos<a class="headerlink" href="#visao-geral-dos-recursos" title="Permanent link">&para;</a></h3>
+<p>A SensorThings API fornece uma série de entidades como recursos.
+A seguinte é uma lista de entidades suportadas pela API:</p>
+<blockquote>
+<p>Thing</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>A OGC SensorThings API segue a definição da ITU-T, isto é, no
+que diz respeito à Internet das Coisas, uma coisa é um objeto do
+mundo físico (coisas físicas) ou do mundo da informação (coisas
+virtuais) que seja capaz de ser identificado e integrado em
+redes de comunicação ITU-T.
+</code></pre></div>
+<blockquote>
+<p>Location</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>A entidade Location localiza a Thing ou as Things com as quais está
+associada. A entidade Location de uma Thing é definida como a última localização
+conhecida da Thing.
+</code></pre></div>
+<blockquote>
+<p>HistoricalLocation</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>O conjunto de entidades HistoricalLocation de uma Thing fornece os tempos das
+localizações atuais (isto é, última localização conhecida) e anteriores da Thing.
+</code></pre></div>
+<blockquote>
+<p>Datastream</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>Um Datastream agrupa uma coleção de Observações que medem o mesmo
+ObservedProperty e produzidas pelo mesmo Sensor.
+</code></pre></div>
+<blockquote>
+<p>Sensor</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>Um Sensor é um instrumento que observa uma propriedade ou fenômeno
+com o objetivo de produzir uma estimativa do valor da propriedade.
+</code></pre></div>
+<blockquote>
+<p>ObservedProperty</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>Um ObservedProperty especifica o fenômeno de uma Observação.
+</code></pre></div>
+<blockquote>
+<p>Observation</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>Uma Observation é o ato de medir ou de outro modo determinar o
+valor de uma propriedade.
+</code></pre></div>
+<blockquote>
+<p>FeatureOfInterest</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code>O fenômeno contra o qual uma observação é feita é uma propriedade da
+característica de interesse.
+</code></pre></div>
+<p>A figura abaixo mostra as relações entre as entidades de sensibilização.</p>
+<p><img alt="image" src="../../assets/images/sensorthings-data-model.png" width="100.0%" /></p>
+<h3 id="exemplo">Exemplo<a class="headerlink" href="#exemplo" title="Permanent link">&para;</a></h3>
+<p>Este <a href="http://toronto-bike-snapshot.sensorup.com/v1.0/">servidor de SensorThings API</a> publica dados de exemplo
+sobre bicicletas e docas disponíveis de uma estação de partilha de bicicletas de Toronto.</p>
+<p>Um exemplo de pedido para recuperar sensores através da API é mostrado abaixo.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors">http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors</a></p>
+<p>A resposta, que é apresentada abaixo, reporta que existem dois
+sensores: um para acompanhar quantas docas estão disponíveis numa estação de bicicletas
+e outro sensor para acompanhar quantas bicicletas estão disponíveis numa estação de bicicletas.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="s2">&quot;@iot.count&quot;</span><span class="o">:</span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="p">[</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="p">{</span><span class="s2">&quot;@iot.id&quot;</span><span class="o">:</span><span class="mf">4</span><span class="p">,</span><span class="s2">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(4)&quot;</span><span class="p">,</span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Um sensor para acompanhar quantas docas estão disponíveis numa estação de bicicletas&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;available_docks&quot;</span><span class="p">,</span><span class="s2">&quot;encodingType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/plan&quot;</span><span class="p">,</span><span class="s2">&quot;metadata&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://member.bikesharetoronto.com/stations&quot;</span><span class="p">,</span><span class="s2">&quot;Datastreams@iot.navigationLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(4)/Datastreams&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">              </span><span class="p">},</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="p">{</span><span class="s2">&quot;@iot.id&quot;</span><span class="o">:</span><span class="mf">3</span><span class="p">,</span><span class="s2">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(3)&quot;</span><span class="p">,</span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Um sensor para acompanhar quantas bicicletas estão disponíveis numa estação de bicicletas&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;available_bikes&quot;</span><span class="p">,</span><span class="s2">&quot;encodingType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/plan&quot;</span><span class="p">,</span><span class="s2">&quot;metadata&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://member.bikesharetoronto.com/stations&quot;</span><span class="p">,</span><span class="s2">&quot;Datastreams@iot.navigationLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Sensors(3)/Datastreams&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">              </span><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">           </span><span class="p">]</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Os dados devolvidos pelo serviço podem ser renderizados por um Sistema de
+Informação Geográfica (SIG) de desktop ou uma aplicação web. Alternativamente, podem ser
+enviados para um serviço OGC API - Processes para processamento adicional.</p>
+<h3 id="utilizacao-de-cliente">Utilização de Cliente<a class="headerlink" href="#utilizacao-de-cliente" title="Permanent link">&para;</a></h3>
+<p>Um cliente precisa de conhecer a localização do serviço de SensorThings API para
+poder interagir com o servidor. A localização é geralmente chamada de
+<code>endpoint</code> do serviço e é representada pelo URI raiz do serviço.
+Os recursos disponíveis através do serviço podem ser acedidos anexando um
+caminho do recurso e, opcionalmente, opções de consulta.</p>
+<p>Por exemplo, a primeira linha do seguinte URL é o URI raiz
+do serviço. A segunda linha é o caminho do recurso. A terceira linha é a opção
+de consulta.</p>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">http</span><span class="o">:</span><span class="s">//toronto-bike-snapshot.sensorup.com/v1.0</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">/Datastreams(206051)/Observations(1593917)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">?$select</span><span class="o">=</span><span class="s">result</span>
+</span></code></pre></div>
+<p>O link para o pedido
+é: <a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations(1593917)?$select=result">http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations(1593917)?$select=result</a></p>
+<p>Consulte vários endpoints públicos disponíveis <a href="https://github.com/opengeospatial/sensorthings/blob/master/PublicEndPoints.md">aqui</a></p>
+<h2 id="operacoes">Operações<a class="headerlink" href="#operacoes" title="Permanent link">&para;</a></h2>
+<p>As entidades oferecidas por um serviço de SensorThings API podem ser acedidas
+anexando o caminho do recurso ao URI raiz do serviço. Um exemplo de um URL
+que recupera observações é mostrado abaixo.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations</a></p>
+<p>Um extrato da resposta é apresentado abaixo. Note como as instâncias
+da entidade solicitada são apresentadas numa matriz JSON.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span><span class="s2">&quot;@iot.count&quot;</span><span class="o">:</span><span class="mf">1594349</span><span class="p">,</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="s2">&quot;@iot.nextLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$top=100&amp;$skip=100&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="o">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="p">[</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">            </span><span class="p">{</span><span class="s2">&quot;@iot.id&quot;</span><span class="o">:</span><span class="mf">1595550</span><span class="p">,</span><span class="s2">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)&quot;</span><span class="p">,</span><span class="s2">&quot;phenomenonTime&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2017-02-16T21:55:12.841Z&quot;</span><span class="p">,</span><span class="s2">&quot;result&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;7&quot;</span><span class="p">,</span><span class="s2">&quot;resultTime&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span><span class="s2">&quot;Datastream@iot.navigationLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/Datastream&quot;</span><span class="p">,</span><span class="s2">&quot;FeatureOfInterest@iot.navigationLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/FeatureOfInterest&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                </span><span class="p">},</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">            </span><span class="p">{</span><span class="s2">&quot;@iot.id&quot;</span><span class="o">:</span><span class="mf">1595551</span><span class="p">,</span><span class="s2">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)&quot;</span><span class="p">,</span><span class="s2">&quot;phenomenonTime&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2017-02-16T21:55:12.841Z&quot;</span><span class="p">,</span><span class="s2">&quot;result&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span><span class="s2">&quot;resultTime&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span><span class="s2">&quot;Datastream@iot.navigationLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)/Datastream&quot;</span><span class="p">,</span><span class="s2">&quot;FeatureOfInterest@iot.navigationLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595551)/FeatureOfInterest&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                </span><span class="p">},</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                </span><span class="p">...</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Outras entidades também podem ser recuperadas através de caminhos de recursos com um padrão
+semelhante. A seguinte tabela lista os caminhos de recursos de cada tipo
+de entidade.</p>
+<table>
+  <caption>Conjuntos de Entidades Oferecidos</caption>
+  <tr>
+    <th>Conjunto de Entidades</th>
+    <th>Método</th>
+    <th>Caminho do Recurso</th>
+  </tr>
+  <tr>
+    <td>Things</td>
+    <td>GET</td>
+    <td>/Things</td>
+  </tr>
+  <tr>
+    <td>Locations</td>
+    <td>GET</td>
+    <td>/Locations</td>
+  </tr>
+  <tr>
+    <td>Localizações Históricas</td>
+    <td>GET</td>
+    <td>/HistoricalLocations</td>
+  </tr>
+  <tr>
+    <td>Datastreams</td>
+    <td>GET</td>
+    <td>/Datastreams</td>
+  </tr>
+  <tr>
+    <td>Sensores</td>
+    <td>GET</td>
+    <td>/Sensors</td>
+  </tr>
+  <tr>
+    <td>Propriedades Observadas</td>
+    <td>GET</td>
+    <td>/ObservedProperties</td>
+  </tr>
+  <tr>
+    <td>Observações</td>
+    <td>GET</td>
+    <td>/Observations</td>
+  </tr>
+  <tr>
+    <td>Características de Interesse</td>
+    <td>GET</td>
+    <td>/FeaturesOfInterest</td>
+  </tr>
+</table>
+
+<p>Além de aceder a uma entidade, a propriedade de uma entidade também
+pode ser acedida de forma semelhante, anexando o nome da propriedade ao
+caminho do recurso. O seguinte é um exemplo de um pedido que
+recupera uma propriedade chamada <code>result</code> de uma observação específica.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/result">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595550)/result</a></p>
+<p>Exemplos de caminhos de recursos de propriedades são mostrados na seguinte
+tabela.</p>
+<table>
+  <caption>Exemplos de Caminho do Recurso de Propriedades</caption>
+  <tr>
+    <th>Propriedade</th>
+    <th>Método</th>
+    <th>Caminho do Recurso</th>
+  </tr>
+  <tr>
+    <td>Resultado de uma observação com um ID de 1595550</td>
+    <td>GET</td>
+    <td>/Observations(1595550)/result</td>
+  </tr>
+  <tr>
+    <td>O nome de uma característica de interesse</td>
+    <td>GET</td>
+    <td>/Sensor(4)/metadata</td>
+  </tr>
+  <tr>
+    <td>Coordenadas da característica observada pela observação 1595550</td>
+    <td>GET</td>
+    <td>/Observations(1595550)/FeatureOfInterest/feature</td>
+  </tr>
+</table>
+
+<h3 id="opcoes-de-recuperacao">Opções de Recuperação<a class="headerlink" href="#opcoes-de-recuperacao" title="Permanent link">&para;</a></h3>
+<h4 id="filter">$filter<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
+<p>A opção de sistema <code>$filter</code> permite aos clientes filtrar uma coleção de
+entidades que são endereçadas por um URL de pedido.</p>
+<p>Por exemplo, o seguinte pedido devolve todas as Observações cujo resultado
+é menor que 15.00.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$filter=result%20lt%2015.00">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$filter=result%20lt%2015.00</a></p>
+<h4 id="count">$count<a class="headerlink" href="#count" title="Permanent link">&para;</a></h4>
+<p>A opção de consulta <code>$count</code> especifica se a contagem total de itens
+dentro de uma coleção que correspondem ao pedido deve ser devolvida junto com
+o resultado.</p>
+<p>Por exemplo, o seguinte pedido devolve o número total de
+Observações na coleção, bem como os resultados. Alterando o
+valor da opção <code>$count</code> para false faz com que a contagem seja omitida da
+resposta.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$count=true">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$count=true</a></p>
+<h4 id="orderby">$orderby<a class="headerlink" href="#orderby" title="Permanent link">&para;</a></h4>
+<p>A opção de consulta <code>$orderby</code> especifica a ordem em que os itens são
+devolvidos a partir do serviço.</p>
+<p>Por exemplo, o seguinte pedido devolve todas as Observações organizadas em
+ordem ascendente da propriedade de resultado</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$orderby=result">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$orderby=result</a></p>
+<h4 id="skip">$skip<a class="headerlink" href="#skip" title="Permanent link">&para;</a></h4>
+<p>A opção de consulta <code>$skip</code> especifica o número de itens da
+coleção consultada que devem ser excluídos do resultado.</p>
+<p>Por exemplo, o seguinte pedido devolve todas as Observações a partir da
+vinte e primeira entidade de Observação.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$skip=20">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$skip=20</a></p>
+<h4 id="top">$top<a class="headerlink" href="#top" title="Permanent link">&para;</a></h4>
+<p>A opção de consulta <code>$top</code> especifica o limite no número de itens
+devolvidos a partir de uma coleção de entidades.</p>
+<p>Por exemplo, o seguinte pedido devolve apenas as primeiras seis entidades
+na coleção de Observações.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$top=6">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$top=6</a></p>
+<h4 id="expand">$expand<a class="headerlink" href="#expand" title="Permanent link">&para;</a></h4>
+<p>A opção de consulta <code>$expand</code> permite ao cliente especificar o conjunto de
+propriedades a serem incluídas numa resposta, indicando que as entidades
+relacionadas devem ser representadas em linha.</p>
+<p>Por exemplo, o seguinte pedido devolve o conjunto completo de entidades
+de Things e os seus Datastreams associados.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Things?$expand=Datastreams">http://toronto-bike-snapshot.sensorup.com/v1.0/Things?$expand=Datastreams</a></p>
+<h4 id="select">$select<a class="headerlink" href="#select" title="Permanent link">&para;</a></h4>
+<p>A opção de consulta <code>$select</code> permite ao cliente especificar o conjunto de
+propriedades a serem incluídas numa resposta, instruindo o serviço a
+devolver apenas as propriedades explicitamente solicitadas.</p>
+<p>Por exemplo, o seguinte pedido devolve cada entidade de Observation com
+apenas as propriedades result e phenomenonTime listadas.</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$select=result,phenomenonTime">http://toronto-bike-snapshot.sensorup.com/v1.0/Observations?$select=result,phenomenonTime</a></p>
+<h2 id="demonstracao">Demonstração<a class="headerlink" href="#demonstracao" title="Permanent link">&para;</a></h2>
+<p>Nesta secção, exploramos diferentes formas de aceder a um <a href="http://developers.sensorup.com/docs/">servidor de SensorThings API</a> em:</p>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/">http://toronto-bike-snapshot.sensorup.com/v1.0/</a></p>
+<h3 id="cliente-web">Cliente Web<a class="headerlink" href="#cliente-web" title="Permanent link">&para;</a></h3>
+<p>Começamos a explorar os diferentes endpoints disponíveis no servidor utilizando um navegador web. Em alternativa, também poderia utilizar o <a href="https://www.postman.com/">postman</a> ou o <a href="https://curl.se/">curl</a>.</p>
+<h4 id="devolver-caminho-do-recurso-base">Devolver Caminho do Recurso Base<a class="headerlink" href="#devolver-caminho-do-recurso-base" title="Permanent link">&para;</a></h4>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/">http://toronto-bike-snapshot.sensorup.com/v1.0/</a></p>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="na">&quot;value&quot;</span><span class="o">:</span><span class="s">[  </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Things&quot;,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/Things&quot;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="na">},</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Locations&quot;,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/Locations&quot;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="na">},</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;HistoricalLocations&quot;,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/HistoricalLocations&quot;</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">      </span><span class="na">},</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Datastreams&quot;,</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/Datastreams&quot;</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="na">},</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Sensors&quot;,</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/Sensors&quot;</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">      </span><span class="na">},</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Observations&quot;,</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/Observations&quot;</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">      </span><span class="na">},</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ObservedProperties&quot;,</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/ObservedProperties&quot;</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">      </span><span class="na">},</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">      </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">          </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;FeaturesOfInterest&quot;,</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">          </span><span class="na">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://pm25-march.singapore2017.sensorup.com/v1.0/FeaturesOfInterest&quot;</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">      </span><span class="na">}</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">      </span><span class="na">]</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">      </span><span class="na">}</span>
+</span></code></pre></div>
+<h4 id="que-things-estao-disponiveis-no-servidor">Que <em>Things</em> estão disponíveis no servidor?<a class="headerlink" href="#que-things-estao-disponiveis-no-servidor" title="Permanent link">&para;</a></h4>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Things">http://toronto-bike-snapshot.sensorup.com/v1.0/Things</a></p>
+<blockquote>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">&quot;@iot.count&quot;</span><span class="o">:</span><span class="s">199,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">&quot;@iot.nextLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="na">Things?$top</span><span class="o">=</span><span class="s">100&amp;$skip=100&quot;,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">&quot;value&quot;</span><span class="o">:</span><span class="s">[  </span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w"> </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">   </span><span class="na">&quot;@iot.id&quot;</span><span class="o">:</span><span class="s">206047,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">   </span><span class="na">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Things(206047)&quot;,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">   </span><span class="na">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Estação de partilha de bicicletas de Toronto Bloor St / Brunswick Ave com dados</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">             </span><span class="na">de</span><span class="w"> </span><span class="s">bicicletas disponíveis e docas disponíveis&quot;,</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">   </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;7061:Bloor St / Brunswick Ave&quot;,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">   </span><span class="na">&quot;properties&quot;</span><span class="o">:</span><span class="s">{  </span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">   </span><span class="na">},</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">   </span><span class="na">...</span>
+</span></code></pre></div>
+</blockquote>
+<h4 id="obter-um-datastream-para-uma-coisa">Obter um <em>Datastream</em> para uma Coisa<a class="headerlink" href="#obter-um-datastream-para-uma-coisa" title="Permanent link">&para;</a></h4>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Things(206047)/Datastreams">http://toronto-bike-snapshot.sensorup.com/v1.0/Things(206047)/Datastreams</a></p>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w"> </span><span class="na">&quot;@iot.count&quot;</span><span class="o">:</span><span class="s">2,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w"> </span><span class="na">&quot;value&quot;</span><span class="o">:</span><span class="s">[  </span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w"> </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">   </span><span class="na">&quot;@iot.id&quot;</span><span class="o">:</span><span class="s">206051,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">   </span><span class="na">&quot;@iot.selfLink&quot;</span><span class="o">:</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">       </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)&quot;,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">   </span><span class="na">&quot;description&quot;</span><span class="o">:</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">       </span><span class="na">&quot;...</span><span class="w"> </span><span class="s">contagem de docas disponíveis para a estação de partilha de bicicletas de Toronto Bloor St &quot;,</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">   </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;7061:Bloor St / Brunswick Ave:available_docks&quot;,</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">   </span><span class="na">&quot;observationType&quot;</span><span class="o">:</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">       </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation&quot;,</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">   </span><span class="na">&quot;unitOfMeasurement&quot;</span><span class="o">:</span><span class="s">{  </span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">     </span><span class="na">&quot;symbol&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{TOT}&quot;,</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">     </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;dock count&quot;,</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">     </span><span class="na">&quot;definition&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://unitsofmeasure.org/ucum.html#para-50&quot;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">   </span><span class="na">},</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">   </span><span class="na">....</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Os Datastreams definem a unidade de medida</p>
+<blockquote>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="na">&quot;observationType&quot;</span><span class="o">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation&quot;,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">&quot;unitOfMeasurement&quot;</span><span class="o">:</span><span class="s">{  </span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="na">&quot;symbol&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{TOT}&quot;,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;dock count&quot;,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="na">&quot;definition&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://unitsofmeasure.org/ucum.html#para-50&quot;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="na">},</span>
+</span></code></pre></div>
+</blockquote>
+</div>
+<h4 id="obter-as-observacoes-relacionadas-com-um-fluxo">Obter as <em>Observações</em> relacionadas com um fluxo<a class="headerlink" href="#obter-as-observacoes-relacionadas-com-um-fluxo" title="Permanent link">&para;</a></h4>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations">http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(206051)/Observations</a></p>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">&quot;@iot.count&quot;</span><span class="o">:</span><span class="s">3511,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">&quot;@iot.nextLink&quot;</span><span class="o">:</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//toronto-bike-snapshot.sensorup.com/...&quot;,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="na">&quot;value&quot;</span><span class="o">:</span><span class="s">[  </span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w"> </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">   </span><span class="na">&quot;@iot.id&quot;</span><span class="o">:</span><span class="s">1595467,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">   </span><span class="na">&quot;@iot.selfLink&quot;</span><span class="o">:</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">      </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595467)&quot;,</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">   </span><span class="na">&quot;phenomenonTime&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;2017-02-16T21:55:12.233Z&quot;,</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">   </span><span class="na">&quot;result&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;23&quot;,</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">   </span><span class="na">&quot;resultTime&quot;</span><span class="o">:</span><span class="s">null,</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">   </span><span class="na">&quot;Datastream@iot.navigationLink&quot;</span><span class="o">:</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">      </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595467)/Datastream&quot;,</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">   </span><span class="na">&quot;FeatureOfInterest@iot.navigationLink&quot;</span><span class="o">:</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">      </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595467)/FeatureOfInterest&quot;</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w"> </span><span class="na">},</span>
+</span></code></pre></div>
+<h4 id="consulta-complexa">Consulta Complexa<a class="headerlink" href="#consulta-complexa" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Expande Datastreams e observações numa única consulta</li>
+<li>Característica de Interesse = 7000:Ft. York / Capreol Crt.</li>
+<li>Hora de início = 2017-01-01T11:30:00.000Z</li>
+<li>Hora de fim = 2017-03-01T11:30:00.000Z</li>
+</ul>
+<p><a href="http://toronto-bike-snapshot.sensorup.com/v1.0/Things?\(expand=Datastreams/Observations/FeatureOfInterest&amp;\)filter=Datastreams/Observations/FeatureOfInterest/name%20eq%20'7000:Ft.%20York%20/%20Capreol%20Crt.'%20and%20Datastreams/Observations/phenomenonTime%20ge%202017-01-01T11:30:00.000Z%20and%20Datastreams/Observations/phenomenonTime%20le%202017-03-01T11:30:00.000Z">Link</a></p>
+<blockquote>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="na">http</span><span class="o">:</span><span class="s">//toronto-bike-snapshot.sensorup.com/v1.0/Things?</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">$expand</span><span class="o">=</span><span class="s">Datastreams/Observations/FeatureOfInterest&amp;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="na">$filter</span><span class="o">=</span><span class="s">Datastreams/Observations/FeatureOfInterest/</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="na">name</span><span class="w"> </span><span class="s">eq &#39;7000:Ft. York / Capreol Crt.&#39; and</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="na">Datastreams/Observations/phenomenonTime</span><span class="w"> </span><span class="s">ge 2017-01-01T11:30:00.000Z </span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="na">and</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="na">Datastreams/Observations/phenomenonTime</span><span class="w"> </span><span class="s">le 2017-03-01T11:30:00.000Z</span>
+</span></code></pre></div>
+</blockquote>
+<h4 id="resposta-de-consulta-complexa">Resposta de Consulta Complexa<a class="headerlink" href="#resposta-de-consulta-complexa" title="Permanent link">&para;</a></h4>
+<blockquote>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="na">&quot;@iot.count&quot;</span><span class="o">:</span><span class="s">1,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="na">&quot;value&quot;</span><span class="o">:</span><span class="s">[  </span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w"> </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">   </span><span class="na">&quot;@iot.id&quot;</span><span class="o">:</span><span class="s">5,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">   </span><span class="na">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Things(5)&quot;,</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">   </span><span class="na">&quot;description&quot;</span><span class="o">:</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">         </span><span class="na">&quot;Estação</span><span class="w"> </span><span class="s">de partilha de bicicletas de Toronto Ft. York / Capreol Crt. com bicicletas e docas disponíveis&quot;,</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">   </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;7000:Ft. York / Capreol Crt.&quot;,</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">   </span><span class="na">&quot;properties&quot;</span><span class="o">:</span><span class="s">{  </span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">   </span><span class="na">},</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">   </span><span class="na">&quot;Datastreams&quot;</span><span class="o">:</span><span class="s">[  </span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">     </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">       </span><span class="na">&quot;@iot.id&quot;</span><span class="o">:</span><span class="s">9,</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">       </span><span class="na">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Datastreams(9)&quot;,</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">       </span><span class="na">&quot;description&quot;</span><span class="o">:</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">            </span><span class="na">&quot;...contagem</span><span class="w"> </span><span class="s">de docas disponíveis para a estação de partilha de bicicletas de Toronto Ft. York / Capreol Crt.&quot;,</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">       </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;7000:Ft. York / Capreol Crt.:available_docks&quot;,</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">       </span><span class="na">&quot;observationType&quot;</span><span class="o">:</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="na">&quot;http</span><span class="o">:</span><span class="s">//www.opengis.net/def/observationType/OGC-OM/2.0/OM_CountObservation&quot;,</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">       </span><span class="na">&quot;unitOfMeasurement&quot;</span><span class="o">:</span><span class="s">{  </span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">         </span><span class="na">&quot;symbol&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;{TOT}&quot;,</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">         </span><span class="na">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;dock count&quot;,</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">         </span><span class="na">&quot;definition&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://unitsofmeasure.org/ucum.html#para-50&quot;</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">       </span><span class="na">},</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="na">&quot;Observations@iot.nextLink&quot;</span><span class="o">:</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">         </span><span class="na">&quot;.../v1.0/Datastreams(9)/Observations?$top</span><span class="o">=</span><span class="s">100&amp;$skip=100&quot;,</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w"> </span><span class="na">&quot;Observations&quot;</span><span class="o">:</span><span class="s">[  </span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">   </span><span class="na">{</span><span class="w">  </span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">     </span><span class="na">&quot;@iot.id&quot;</span><span class="o">:</span><span class="s">1595545,</span>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">     </span><span class="na">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/Observations(1595545)&quot;,</span>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">     </span><span class="na">&quot;phenomenonTime&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;2017-02-16T21:55:12.797Z&quot;,</span>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">     </span><span class="na">&quot;result&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;10&quot;,</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">     </span><span class="na">&quot;resultTime&quot;</span><span class="o">:</span><span class="s">null,</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">     </span><span class="na">&quot;Datastream@iot.navigationLink&quot;</span><span class="o">:</span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">            </span><span class="na">&quot;....</span><span class="w"> </span><span class="s">/v1.0/Observations(1595545)/Datastream&quot;,</span>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="w">     </span><span class="na">&quot;FeatureOfInterest&quot;</span><span class="o">:</span><span class="s">{  </span>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w">       </span><span class="na">&quot;@iot.id&quot;</span><span class="o">:</span><span class="s">10,</span>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="w">       </span><span class="na">&quot;@iot.selfLink&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;http://toronto-bike-snapshot.sensorup.com/v1.0/FeaturesOfInterest(10)&quot;,</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="w">       </span><span class="na">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;  ...</span>
+</span></code></pre></div>
+</blockquote>
+<!-- ### Cliente Python
+
+O [Cliente Python da SensorThings API](https://pypi.org/project/frost-sta-client/) é um pacote python para desenvolver aplicações com a SensorThings API. -->
+
+<h3 id="plugin-qgis">Plugin QGIS<a class="headerlink" href="#plugin-qgis" title="Permanent link">&para;</a></h3>
+<p>O <a href="https://plugins.qgis.org/plugins/SensorThingsAPI/">plugin da SensorThings API</a> permite ao software QGIS aceder dados dinâmicos de sensores, usando a norma SensorThings API.</p>
+<p>Para instalar este plugin a partir do repositório do QGIS, será necessário ativar os plugins experimentais, nas definições de plugins.</p>
+<p><img alt="plugins experimentais" src="../../assets/images/experimental-plugins.png" width="100.0%" /></p>
+<p>Abra o plugin e insira a SensorThings API com <code>/Locations</code></p>
+<p>No nosso caso, vamos conectar-nos a
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Nome<span class="w"> </span>-<span class="w"> </span>Dados<span class="w"> </span>de<span class="w"> </span>superfície,<span class="w"> </span>atmosféricos<span class="w"> </span>e<span class="w"> </span>de<span class="w"> </span>águas<span class="w"> </span>subterrâneas
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>URL<span class="w"> </span>-<span class="w"> </span>https://labs.waterdata.usgs.gov/sta/v1.1/Locations
+</span></code></pre></div></p>
+<p>Agora pode adicionar cada sensor como uma nova camada ou combinar tudo numa única camada
+<img alt="connect_sta" src="../../assets/images/connect_sta.png" width="100.0%" /></p>
+<p>Agora podemos verificar mais informações sobre cada Localização ativando <code>Mostrar Informação da Localização</code> e, em seguida, clicando no sensor</p>
+<p><img alt="location_info" src="../../assets/images/location_info.png" width="100.0%" /></p>
+<p>Cada sensor também possui um painel de observação que nos permite ver os dados espaço-temporais completos de cada sensor em formato de tabela e gráfico
+<img alt="sta_obs" src="../../assets/images/sta_obs.png" width="100.0%" /></p>
+<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<p><a href="http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=y.2060">ITU-T, Visão geral da Internet das Coisas
+(Internet of Things)</a></p>
+<p><a href="https://www.sensorup.com/">SensorUp SensorThings API</a></p>
+<h2 id="resumo">Resumo<a class="headerlink" href="#resumo" title="Permanent link">&para;</a></h2>
+<p>A OGC SensorThings API fornece uma forma aberta e unificada de interligar dispositivos IoT, dados e aplicações através da Web. Baseia-se nos protocolos Web e nas normas de Habilitação da Web de Sensores (SWE) da OGC e aplica um estilo semelhante ao REST de fácil utilização. Esta análise aprofundada forneceu uma visão geral das entidades e das principais operações disponibilizadas por esta norma.</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2023 - 2026 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.action.edit","content.action.view","navigation.top","navigation.tracking.prev_next","navigation.tracking.section","navigation.indexes"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copiado para área de transferência","clipboard.copy":"Copiar para área de transferência","search.result.more.one":"Mais 1 nesta página","search.result.more.other":"Mais # nesta página","search.result.none":"Nenhum resultado encontrado","search.result.one":"1 resultado encontrado","search.result.other":"# resultados encontrados","search.result.placeholder":"Digite para iniciar a busca","search.result.term.missing":"Ausente","select.version":"Selecione a versão"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1825 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="As OGC APIs foram projetadas para facilitar a disponibilização e utilização de dados geoespaciais na web e a sua integração com outras informações. Este workshop introduz as OGC APIs que suportam descoberta, acesso, visualização e processamento alinhados com os princípios FAIR.">
+      
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/processes.pt/">
+      
+      
+        <link rel="prev" href="../styles.pt/">
+      
+      
+        <link rel="next" href="../records.pt/">
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="/pt/" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>OGC API - Processes - Workshop OGC API</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.39e53929.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navegação"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-api-processes" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="https://ogcapi-workshop.ogc.org" title="Workshop OGC API" class="md-header__button md-logo" aria-label="Workshop OGC API" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="Workshop OGC API">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navegação">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Workshop OGC API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC API - Processes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/pt/" hreflang="pt" class="md-select__link">
+              Português
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Pesquisar">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Pesquisar">
+  <button type="button" class="md-search__button">
+    Pesquisar
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ogcapi-workshop.ogc.org" title="Workshop OGC API" class="md-nav__button md-logo" aria-label="Workshop OGC API" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="Workshop OGC API">
+
+    </a>
+    Workshop OGC API
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Início
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Contexto e antecedentes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Visão geral e conceitos principais
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conformidade e certificação
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Aprofundamento API:
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Aprofundamento API:
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Introdução
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Common
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Features
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Tiles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Maps
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Styles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Processes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Processes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introdução
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antecedentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Antecedentes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antecedentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-outros-standards-da-ogc" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relação com outros standards da OGC
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visao-geral-dos-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Visão geral dos recursos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Exemplo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagina-de-aterragem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Página de Aterragem
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaracoes-de-conformidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Declarações de conformidade
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicao-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definição da API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lista-de-processos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lista de processos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descricao-do-processo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Descrição do processo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execucao-do-processo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Execução do processo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacao-de-estado-do-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Informação de estado do trabalho
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultados-do-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resultados do trabalho
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lista-de-trabalhos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lista de trabalhos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminacao-de-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Eliminação de trabalho
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Records
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environmental-data-retrieval.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Environmental Data Retrieval
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Roadmap OGC API
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Segurança
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transição e migração
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Participar
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion.pt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conclusão
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introdução
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antecedentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Antecedentes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antecedentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-outros-standards-da-ogc" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relação com outros standards da OGC
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visao-geral-dos-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Visão geral dos recursos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Exemplo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagina-de-aterragem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Página de Aterragem
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaracoes-de-conformidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Declarações de conformidade
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicao-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definição da API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lista-de-processos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lista de processos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descricao-do-processo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Descrição do processo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execucao-do-processo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Execução do processo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacao-de-estado-do-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Informação de estado do trabalho
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultados-do-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resultados do trabalho
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lista-de-trabalhos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lista de trabalhos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminacao-de-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Eliminação de trabalho
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/edit/main/workshop/content/docs/api-deep-dive/processes.pt.md" title="Editar esta página" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/raw/main/workshop/content/docs/api-deep-dive/processes.pt.md" title="Ver fonte desta página" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="ogc-api-processes">OGC API - Processes<a class="headerlink" href="#ogc-api-processes" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Público-alvo</p>
+<p>Estudantes familiarizados com serviços web e APIs, que desejam ter
+uma visão geral da norma OGC API - Processes</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivos de Aprendizagem</p>
+<p>Ao concluir o módulo, os estudantes serão capazes de:</p>
+<ul>
+<li>Explicar o que é a norma OGC API - Processes</li>
+<li>Descrever o que pode ser feito com implementações do OGC API - Processes</li>
+<li>Compreender os principais recursos oferecidos por implementações da OGC API - Processes</li>
+<li>Compreender como obter uma descrição das capacidades de uma implementação da OGC API - Processes</li>
+<li>Compreender como fazer pedidos a uma implementação da OGC API - Processes</li>
+<li>Conseguir encontrar um endpoint da OGC API - Processes e utilizá-lo através de um cliente</li>
+</ul>
+</div>
+<h2 id="introducao">Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+<p>A <a href="https://ogcapi.ogc.org/processes">OGC API - Processes</a> é uma norma que suporta a integração de
+tarefas computacionais em processos executáveis que podem ser oferecidos por um
+servidor através de uma API Web e invocados por uma aplicação cliente. A
+norma especifica uma interface de processamento para comunicar sobre um protocolo
+RESTful utilizando codificações em JavaScript Object Notation (JSON). A norma
+aproveita conceitos da norma OGC Web Processing Service (WPS) 2.0
+Interface, mas não exige a implementação de um WPS. A parte Core da norma é designada <strong>OGC API - Processes - Parte 1:
+Core</strong>. A parte Core da norma suporta a integração de
+tarefas computacionais em processos executáveis que podem ser oferecidos por um
+servidor através de uma API Web e invocar por uma aplicação cliente, quer
+sincronamente quer assincronamente. Exemplos de processos computacionais
+que podem ser suportados por implementações desta norma incluem
+álgebra raster, buffering de geometria, geometria de área construtiva, roteamento,
+análise de imagens e vários outros.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este módulo tutorial não tem a intenção de substituir a própria norma 
+<strong>OGC API - Processes - Parte 1: Core</strong>. O tutorial
+concentra-se intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a norma da <strong>OGC API -
+Processes - Parte 1: Core</strong> para mais detalhes.</p>
+</div>
+<h3 id="antecedentes">Antecedentes<a class="headerlink" href="#antecedentes" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Histórico</p>
+</blockquote>
+<p>Vários dos conceitos especificados na OGC API - Processes tiveram origem no trabalho de especificação de uma interface RESTful para o WPS 2.0. A partir de fevereiro de 2019, todo o trabalho relativo a uma interface RESTful para o WPS 2.0 passou a focar-se na OGC API - Processes.</p>
+<blockquote>
+<p>Versões</p>
+</blockquote>
+<p>A versão 1.0.0 do <strong>OGC API - Processes - Parte 1: Core</strong> é a versão mais recente</p>
+<blockquote>
+<p>Suite de testes</p>
+</blockquote>
+<p>Estão disponíveis suites de testes para:</p>
+<ul>
+<li>OGC API - Processes - Parte 1</li>
+</ul>
+<p>Todas as suites de testes estão disponíveis no <a href="https://cite.ogc.org/teamengine/">OGC Validator</a>.</p>
+<blockquote>
+<p>Implementações</p>
+</blockquote>
+<p>As implementações podem ser encontradas na <a href="https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc">página de implementações</a>.</p>
+<h4 id="utilizacao">Utilização<a class="headerlink" href="#utilizacao" title="Permanent link">&para;</a></h4>
+<p>O <strong>OGC API - Processes - Parte 1: Core</strong> suporta a integração de
+tarefas computacionais em processos executáveis que podem ser oferecidos por um
+servidor através de uma API Web e invocar por uma aplicação cliente.
+Agências governamentais, organizações privadas e institutos académicos utilizam
+a norma OGC API - Processes para fornecer implementações de
+algoritmos geoespaciais que processam dados. A vantagem disto é que o
+processamento de dados geoespaciais, incluindo dados de sensores, pode ser
+distribuído, permitindo maior capacidade para processar quantidades maiores
+de dados.</p>
+<p>Para além da parte aprovada acima, o Grupo de Trabalho da OGC API - Processes está a trabalhar nos seguintes rascunhos:</p>
+<ul>
+<li>
+<p><em>Rascunho</em> <strong>OGC API - Processes - Parte 2: Deploy, Replace, Undeploy</strong> estende as capacidades básicas especificadas na Parte 1 com a capacidade de adicionar, modificar e/ou eliminar processos individuais de forma dinâmica utilizando uma implementação (endpoint) do Standard OGC API - Processes.</p>
+</li>
+<li>
+<p><em>Rascunho</em> <strong>OGC API - Processes - Parte 3: Workflows and Chaining</strong> estende as capacidades básicas especificadas na Parte 1 com a capacidade de encadear processos aninhados, referenciar processos tanto locais como externos e coleções de dados acessíveis via standards OGC API como entradas para um processo, e ativar a execução de processos através de especificações de entrega de dados OGC API, como OGC API - Tiles, DGGS, Coverages, Features, EDR e Maps.</p>
+</li>
+<li>
+<p><em>Rascunho</em> <strong>OGC API - Processes - Parte 4: Gestão de Trabalhos</strong> estende as capacidades básicas especificadas na Parte 1 com a capacidade de crear, gerir e monitorizar trabalhos que estão associados com a execução de processos.</p>
+</li>
+<li>
+<p><em>Rascunho</em> <strong>OGC API - Processes - Parte 5: Origem dos Trabalhos</strong> estende as capacidades básicas especificadas na Parte 1 com a informação de origem associada à execução de processos através dos trabalhos associados.</p>
+</li>
+</ul>
+<h4 id="relacao-com-outros-standards-da-ogc">Relação com outros standards da OGC<a class="headerlink" href="#relacao-com-outros-standards-da-ogc" title="Permanent link">&para;</a></h4>
+<ul>
+<li>OGC Web Processing Service Interface Standard (WPS): A norma WPS
+    fornece uma interface standard que simplifica a tarefa de
+    tornar serviços de processamento geoespacial computacional, simples ou complexos, acessíveis via serviços web. A norma OGC API - Processes
+    é uma forma mais recente e moderna de programar e
+    interagir com recursos na web, permitindo melhor
+    integração com pacotes de software existentes. A norma OGC
+    API - Processes aborda todos os casos de utilização que foram
+    abordados pela norma WPS, aproveitando também a especificação
+    OpenAPI e uma abordagem orientada a recursos.</li>
+</ul>
+<h3 id="visao-geral-dos-recursos">Visão geral dos recursos<a class="headerlink" href="#visao-geral-dos-recursos" title="Permanent link">&para;</a></h3>
+<p>A <strong>OGC API - Processes - Parte 1: Core</strong> define os recursos listados na
+tabela seguinte.</p>
+<table>
+  <tr>
+    <th>Recurso</th>
+    <th>Método</th>
+    <th>Caminho</th>
+    <th>Propósito</th>
+  </tr>
+  <tr>
+    <td>Página de aterragem</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>Este é o recurso de nível superior, que serve como ponto de entrada.</td>
+  </tr>
+  <tr>
+    <td>Declaração de conformidade</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>Este recurso apresenta informação sobre a funcionalidade que é implementada pelo servidor.</td>
+  </tr>
+  <tr>
+    <td>Definição da API</td>
+    <td>GET</td>
+    <td>/api</td>
+    <td>Este recurso fornece metadados sobre a API propriamente dita. Note que a utilização de /api no servidor é opcional e a definição da API pode estar alojada num servidor completamente separado.</td>
+  </tr>
+  <tr>
+    <td>Lista de processos</td>
+    <td>GET</td>
+    <td>/processes </td>
+    <td>Identificadores de processos, ligações para descrições de processos.</td>
+  </tr>
+  <tr>
+    <td>Descrição do processo </td>
+    <td>GET</td>
+    <td>/processes/{processID}</td>
+    <td>Recupera uma descrição do processo.</td>
+  </tr>
+  <tr>
+    <td>Execução do processo</td>
+    <td>POST</td>
+    <td>/processes/{processID}/execution</td>
+    <td>Cria e executa um trabalho.</td>
+  </tr>
+  <tr>
+    <td>Informação de estado do trabalho</td>
+    <td>GET</td>
+    <td>/jobs/{jobID}</td>
+    <td>Recupera informação sobre o estado de um trabalho.</td>
+  </tr>
+    <td>Resultados do trabalho</td>
+    <td>GET</td>
+    <td>/jobs/{jobID}/results</td>
+    <td>Recupera o(s) resultado(s) de um trabalho.</td>
+  </tr>
+  <tr>
+    <td>Lista de trabalhos</td>
+    <td>GET</td>
+    <td>/jobs</td>
+    <td>Recupera a lista de trabalhos.</td>
+  </tr>
+  <tr>
+    <td>Eliminação de trabalho</td>
+    <td>DELETE</td>
+    <td>/jobs/{jobID} </td>
+    <td>Cancela e elimina um trabalho.</td>
+  </tr>
+</table>
+
+<h3 id="exemplo">Exemplo<a class="headerlink" href="#exemplo" title="Permanent link">&para;</a></h3>
+<p>O <a href="https://demo.pygeoapi.io/master">servidor de demonstração</a> oferece e executa vários processos através de uma interface que está em conformidade com a OGC API - Processes.</p>
+<p>Um exemplo de pedido que pode ser utilizado para navegar em todos os processos disponíveis encontra-se em <a href="https://demo.pygeoapi.io/master/processes">https://demo.pygeoapi.io/master/processes</a>.</p>
+<p>Note que a resposta ao pedido é HTML neste caso.</p>
+<p>Alternativamente, os mesmos dados podem ser recuperados no formato GeoJSON, através do pedido <a href="https://demo.pygeoapi.io/master/processes?f=json">https://demo.pygeoapi.io/master/processes?f=json</a></p>
+<h2 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<h3 id="pagina-de-aterragem">Página de Aterragem<a class="headerlink" href="#pagina-de-aterragem" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Processes utiliza a OGC API - Common e a OGC API - Features como blocos de construção, consulte a <a href="../features/#landing-page">OGC API - Features</a> para
+uma explicação detalhada.</p>
+<h3 id="declaracoes-de-conformidade">Declarações de conformidade<a class="headerlink" href="#declaracoes-de-conformidade" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Processes utiliza a OGC API - Common e o OGC API - Features como blocos de construção, consulte a <a href="../features/#conformance-declarations">OGC API - Features</a> para
+uma explicação detalhada.</p>
+<h3 id="definicao-da-api">Definição da API<a class="headerlink" href="#definicao-da-api" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Processes utiliza a OGC API - Common como bloco de construção, consulte a <a href="../features/#api-definition">OGC API - Features</a> para
+uma explicação detalhada de uma implementação de exemplo.</p>
+<h3 id="lista-de-processos">Lista de processos<a class="headerlink" href="#lista-de-processos" title="Permanent link">&para;</a></h3>
+<p>Os processos oferecidos através de uma implementação da <strong>OGC API - Processes</strong> são organizados num ou mais processos. O endpoint
+<code>/processes</code> fornece informação sobre e acesso à lista de processos.</p>
+<p>Para cada processo, existe uma ligação para a descrição detalhada do
+processo (representada pelo caminho <strong>/processes/{processId}</strong> e
+relação de ligação <strong>self</strong>). Além disso, existem ligações para executar o
+processo, bem como a lista de trabalhos resultantes da execução do processo.</p>
+<p>A informação do processo inclui também se o processo pode ser executado em modo
+síncrono e/ou assíncrono (opções de controlo de trabalho). O modo assíncrono é útil
+para executar trabalhos de longa duração sem bloquear o fluxo de trabalho de pedido/resposta HTTP.
+Isto também significa que o cliente pode voltar a verificar o estado do trabalho e o
+resultado assim que este estiver concluído.</p>
+<p>Finalmente, existem definições para a estrutura de entrada necessária para executar o processo
+(expressa como JSON Schema), bem como a estrutura de saída que o cliente deve esperar
+quando recebe uma resposta da execução do processo.</p>
+<p>Abaixo segue um excerto da resposta ao pedido
+<a href="https://demo.pygeoapi.io/master/processes?f=json">https://demo.pygeoapi.io/master/processes?f=json</a></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello-world&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An example process that takes a name as input, and echoes it back as output. Intended to demonstrate a simple process with a single literal input.&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;jobControlOptions&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="s2">&quot;sync-execute&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="s2">&quot;async-execute&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">&quot;keywords&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="s2">&quot;hello world&quot;</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="s2">&quot;example&quot;</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="s2">&quot;echo&quot;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">&quot;links&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;about&quot;</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;information&quot;</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/process&quot;</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/processes/hello-world?f=json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Process description as JSON&quot;</span><span class="p">,</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/processes/hello-world?f=html&quot;</span><span class="p">,</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Process description as HTML&quot;</span><span class="p">,</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/rel/ogc/1.0/job-list&quot;</span><span class="p">,</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/jobs?f=html&quot;</span><span class="p">,</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jobs for this process as HTML&quot;</span><span class="p">,</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/rel/ogc/1.0/job-list&quot;</span><span class="p">,</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/jobs?f=json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jobs for this process as JSON&quot;</span><span class="p">,</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opengis.net/def/rel/ogc/1.0/execute&quot;</span><span class="p">,</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/processes/hello-world/execution?f=json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Execution for this process as JSON&quot;</span><span class="p">,</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">    </span><span class="nt">&quot;inputs&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the person or entity that you wish tobe echoed back as an output&quot;</span><span class="p">,</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">            </span><span class="nt">&quot;schema&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">            </span><span class="p">},</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">            </span><span class="nt">&quot;minOccurs&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">            </span><span class="nt">&quot;maxOccurs&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">            </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">            </span><span class="nt">&quot;keywords&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">                </span><span class="s2">&quot;full name&quot;</span><span class="p">,</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">                </span><span class="s2">&quot;personal&quot;</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Message&quot;</span><span class="p">,</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An optional message to echo as well&quot;</span><span class="p">,</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">            </span><span class="nt">&quot;schema&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">            </span><span class="p">},</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="w">            </span><span class="nt">&quot;minOccurs&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">            </span><span class="nt">&quot;maxOccurs&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="w">            </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">            </span><span class="nt">&quot;keywords&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="w">                </span><span class="s2">&quot;message&quot;</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="w">    </span><span class="nt">&quot;outputs&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="w">        </span><span class="nt">&quot;echo&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello, world&quot;</span><span class="p">,</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A \&quot;hello world\&quot; echo with the name and (optional) message submitted for processing&quot;</span><span class="p">,</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="w">            </span><span class="nt">&quot;schema&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="w">                </span><span class="nt">&quot;contentMediaType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="w">    </span><span class="nt">&quot;example&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="w">        </span><span class="nt">&quot;inputs&quot;</span><span class="p">:{</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;World&quot;</span><span class="p">,</span>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="w">            </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An optional message.&quot;</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="w">    </span><span class="nt">&quot;outputTransmission&quot;</span><span class="p">:[</span>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="w">        </span><span class="s2">&quot;value&quot;</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="descricao-do-processo">Descrição do processo<a class="headerlink" href="#descricao-do-processo" title="Permanent link">&para;</a></h3>
+<p>O exemplo anterior demonstrou informação do processo para todos os processos oferecidos por um servidor OGC API - Processes. Para aceder à informação do processo de um único processo, execute o seguinte pedido no servidor de demonstração:</p>
+<p><a href="https://demo.pygeoapi.io/master/processes/hello-world?f=json">https://demo.pygeoapi.io/master/processes/hello-world?f=json</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A informação de um único processo exige o identificador do processo como parte do URL</p>
+</div>
+<h3 id="execucao-do-processo">Execução do processo<a class="headerlink" href="#execucao-do-processo" title="Permanent link">&para;</a></h3>
+<p>Agora que temos a informação adequada do processo, podemos executar o processo. A execução do processo
+exige que os pedidos sejam executados com HTTP POST, com um payload conforme especificado/exigido pelo servidor (JSON).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Os navegadores web não conseguem facilmente fazer pedidos HTTP POST, pelo que utilizamos o comando <a href="https://curl.se">curl</a>.
+Pode utilizar qualquer ferramenta que seja capaz de executar pedidos HTTP POST conforme indicado abaixo.</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="s1">&#39;https://demo.pygeoapi.io/master/processes/hello-world/execution&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s1">  &quot;inputs&quot;: {</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s1">    &quot;message&quot;: &quot;Great to see you here&quot;,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s1">    &quot;name&quot;: &quot;OGC API workshop participant&quot;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s1">  }</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s1">}&#39;</span>
+</span></code></pre></div>
+<p>O servidor irá responder com uma resposta imediata (modo síncrono por predefinição), conforme abaixo:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello OGC API workshop participant! Great to see you here&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Para executar o mesmo processo em modo assíncrono, precisamos de adicionar o cabeçalho
+HTTP <strong>Prefer: respond-async</strong>. Além disso, a resposta a uma execução assíncrona do processo é sempre vazia, sendo
+que o cabeçalho HTTP <strong>Location</strong> contém um URL para a informação do trabalho resultante.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adicionamos a opção <code>-v</code> ao comando curl abaixo para podermos inspecionar os cabeçalhos de resposta</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="s1">&#39;https://demo.pygeoapi.io/master/processes/hello-world/execution&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Prefer: respond-async&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Accept: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s1">  &quot;inputs&quot;: {</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s1">    &quot;message&quot;: &quot;Great to see you here&quot;,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s1">    &quot;name&quot;: &quot;OGC API workshop participant&quot;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s1">  }</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s1">}&#39;</span>
+</span></code></pre></div>
+<p>Um excerto da resposta mostra o cabeçalho HTTP <strong>Location</strong> (localização):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&lt;<span class="w"> </span>HTTP/2<span class="w"> </span><span class="m">201</span><span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>&lt;<span class="w"> </span>access-control-allow-origin:<span class="w"> </span>*
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>&lt;<span class="w"> </span>content-language:<span class="w"> </span>en-US
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>&lt;<span class="w"> </span>content-type:<span class="w"> </span>application/json
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>&lt;<span class="w"> </span>date:<span class="w"> </span>Mon,<span class="w"> </span><span class="m">04</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">16</span>:33:06<span class="w"> </span>GMT
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>&lt;<span class="w"> </span>location:<span class="w"> </span>https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>&lt;<span class="w"> </span>preference-applied:<span class="w"> </span>respond-async
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>&lt;<span class="w"> </span>server:<span class="w"> </span>gunicorn
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>&lt;<span class="w"> </span>x-powered-by:<span class="w"> </span>pygeoapi<span class="w"> </span><span class="m">0</span>.16.dev0
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>&lt;<span class="w"> </span>content-length:<span class="w"> </span><span class="m">4</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>O URL do cabeçalho HTTP <code>location</code> será sempre único</p>
+</div>
+<h3 id="informacao-de-estado-do-trabalho">Informação de estado do trabalho<a class="headerlink" href="#informacao-de-estado-do-trabalho" title="Permanent link">&para;</a></h3>
+<p>Utilizando o URL do cabeçalho HTTP <code>location</code> acima, podemos inspecionar o estado do trabalho:</p>
+<p><a href="https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003?f=json">https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003?f=json</a></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">&quot;processID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello-world&quot;</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&quot;jobID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cdbc641c-92c2-11ee-9c88-0242ac120003&quot;</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;successful&quot;</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Job complete&quot;</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">&quot;progress&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">&quot;job_start_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-12-04T16:33:06.806485Z&quot;</span><span class="p">,</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nt">&quot;job_end_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-12-04T16:33:06.812615Z&quot;</span><span class="p">,</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nt">&quot;links&quot;</span><span class="p">:[</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003/results?f=html&quot;</span><span class="p">,</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;about&quot;</span><span class="p">,</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results of job cdbc641c-92c2-11ee-9c88-0242ac120003 as HTML&quot;</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003/results?f=json&quot;</span><span class="p">,</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;about&quot;</span><span class="p">,</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results of job cdbc641c-92c2-11ee-9c88-0242ac120003 as JSON&quot;</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="resultados-do-trabalho">Resultados do trabalho<a class="headerlink" href="#resultados-do-trabalho" title="Permanent link">&para;</a></h3>
+<p>Aqui vemos que o trabalho foi totalmente executado e concluído, mas não contém os resultados efetivos. Para inspecionar
+os resultados efetivos, utilizamos os objetos de ligação que fornecem os resultados de acordo:</p>
+<p><a href="https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003/results?f=json">https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003/results?f=json</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Vemos que os resultados dos pedidos/respostas síncronos e assíncronos são idênticos e
+que apenas o controlo de execução é diferente.</p>
+</div>
+<h3 id="lista-de-trabalhos">Lista de trabalhos<a class="headerlink" href="#lista-de-trabalhos" title="Permanent link">&para;</a></h3>
+<p>Da mesma forma que um servidor OGC API - Processes fornece acesso à informação de processo de todos os seus
+processos, o servidor fornece o mesmo para todos os seus trabalhos (de qualquer processo), utilizando o seguinte URL:</p>
+<p><a href="https://demo.pygeoapi.io/master/jobs?f=json">https://demo.pygeoapi.io/master/jobs?f=json</a></p>
+<h3 id="eliminacao-de-trabalho">Eliminação de trabalho<a class="headerlink" href="#eliminacao-de-trabalho" title="Permanent link">&para;</a></h3>
+<p>Se quisermos eliminar um determinado trabalho, podemos executar um pedido HTTP DELETE contra o ID do trabalho.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Os navegadores web não conseguem facilmente fazer pedidos HTTP DELETE, pelo que utilizamos o comando <a href="https://curl.se">curl</a>.
+Pode utilizar qualquer ferramenta que seja capaz de executar pedidos HTTP DELETE conforme indicado abaixo.</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;DELETE&#39;</span><span class="w"> </span>https://demo.pygeoapi.io/master/jobs/cdbc641c-92c2-11ee-9c88-0242ac120003
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Experimente executar um HTTP GET no trabalho que foi apenas eliminado e verifique que já não existe (HTTP 404).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alguns servidores podem implementar controlo de acesso para prevenir a eliminação errónea ou não desejada de um trabalho ou
+outro recurso.</p>
+</div>
+<h2 id="resumo">Resumo<a class="headerlink" href="#resumo" title="Permanent link">&para;</a></h2>
+<p>O standard OGC API - Processes permite a execução de processos computacionais e a recuperação de metadados que descrevem o propósito e a funcionalidade dos processos. Este aprofundamento proporcionou uma introdução à norma e uma visão geral dos vários endpoints, que permitem monitorizar, criar, atualizar e eliminar esses processos num servidor.</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2023 - 2026 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.action.edit","content.action.view","navigation.top","navigation.tracking.prev_next","navigation.tracking.section","navigation.indexes"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copiado para área de transferência","clipboard.copy":"Copiar para área de transferência","search.result.more.one":"Mais 1 nesta página","search.result.more.other":"Mais # nesta página","search.result.none":"Nenhum resultado encontrado","search.result.one":"1 resultado encontrado","search.result.other":"# resultados encontrados","search.result.placeholder":"Digite para iniciar a busca","search.result.term.missing":"Ausente","select.version":"Selecione a versão"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>

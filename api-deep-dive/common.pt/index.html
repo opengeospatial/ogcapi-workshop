@@ -1,0 +1,1110 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OGC APIs are designed to make it easy for anyone to provide and use geospatial data on the web and integrate it with other information. This workshop introduces OGC APIs supporting discovery, access, visualization, and processing aligned with FAIR data principles.">
+      
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/common.pt/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="/pt/" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>OGC API - Common - OGC API Workshop</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.39e53929.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-api-common" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://ogcapi-workshop.ogc.org" title="OGC API Workshop" class="md-header__button md-logo" aria-label="OGC API Workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="OGC API Workshop">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OGC API Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC API - Common
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/pt/" hreflang="pt" class="md-select__link">
+              Português
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ogcapi-workshop.ogc.org" title="OGC API Workshop" class="md-nav__button md-logo" aria-label="OGC API Workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="OGC API Workshop">
+
+    </a>
+    OGC API Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Background and context
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview and main concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Compliance and certification
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API deep dive:
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  API deep dive:
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Primer
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Common
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Features
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Tiles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Maps
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Styles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Processes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Records
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environmental-data-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Environmental Data Retrieval
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensorthings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC SensorThings API
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API roadmap
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Security
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transition and migration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting involved
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conclusion
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introdução
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antecedentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Antecedentes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antecedentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-outras-normas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relação com outras normas
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visao-geral-dos-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Visão geral dos Recursos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/edit/main/workshop/content/docs/api-deep-dive/common.pt.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/raw/main/workshop/content/docs/api-deep-dive/common.pt.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="ogc-api-common">OGC API - Common<a class="headerlink" href="#ogc-api-common" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Público-alvo</p>
+<p>Estudantes que estejam familiarizados com serviços web e APIs, e queiram ter
+uma visão geral da norma OGC API - Common</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivos de Aprendizagem</p>
+<p>Após a conclusão do módulo, os estudantes serão capazes de:</p>
+<ul>
+<li>Explicar o que é a norma OGC API - Common</li>
+<li>Descrever o que pode ser feito com a OGC API - Common como bloco de construção</li>
+</ul>
+</div>
+<h2 id="introducao">Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+<p>A <a href="https://ogcapi.ogc.org/common">OGC API - Common</a> especifica blocos de construção que são partilhados pela maioria ou por todas as normas da OGC API, a fim de garantir a consistência em toda a família de APIs. No decorrer do desenvolvimento de Arquiteturas Orientadas a Recursos e APIs Web, algumas práticas revelaram-se comuns a todas as normas OGC API. A finalidade desta norma é documentar essas práticas. Também serve como uma <strong>base comum</strong> sobre a qual todas as OGC APIs serão construídas.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este módulo de tutorial não tem a intenção de substituir a própria norma <strong>OGC API - Common - Parte 1: Core</strong> ou da candidata a norma <strong>OGC API - Common - Parte 2: Geospatial Data</strong>. O tutorial
+foca-se intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a <a href="https://docs.ogc.org/is/19-072/19-072.html">norma <strong>OGC API -
+Common - Parte 1: Core</strong></a> e a <a href="https://docs.ogc.org/DRAFTS/20-024.html">candidata a norma <strong>OGC API - Common - Parte 2: Geospatial Data</strong></a> para mais detalhes.</p>
+</div>
+<h3 id="antecedentes">Antecedentes<a class="headerlink" href="#antecedentes" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>História</p>
+</blockquote>
+<p>A norma OGC API Common serve como a norma "OWS Common" para APIs Orientadas a Recursos da OGC. A carta de formação do grupo de trabalho da OGC API - Common foi criada em 2020 e a OGC API - Common - Parte 1: Core foi aprovada em fevereiro de 2023.</p>
+<blockquote>
+<p>Versões</p>
+</blockquote>
+<p>A versão 1.0.0 da <strong>OGC API - Common - Parte 1: Core</strong> é a versão
+  atual mais recente </p>
+<h4 id="utilizacao">Utilização<a class="headerlink" href="#utilizacao" title="Permanent link">&para;</a></h4>
+<p>Esta norma identifica recursos, captura classes de conformidade e especifica requisitos que são aplicáveis a todas as normas da OGC API. Deve ser incluída como referência normativa por todos essas normas.</p>
+<ul>
+<li>A norma <strong>OGC API - Common - Parte 1: Core</strong> define os recursos e operações que DEVEM ter em comum todas as normas OGC API. Esta norma define os requisitos mínimos para que uma API seja descoberta e utilizada por qualquer cliente.</li>
+<li>A candidata a norma <strong>OGC API - Common - Parte 2: Geospatial Data</strong> fornece uma ligação comum entre a página de aterragem da API e os detalhes específicos do recurso. Essa ligação inclui metadados que descrevem as coleções de recursos alojados, parâmetros comuns para selecionar subconjuntos dessas coleções e modelos URI para identificar os mesmos.</li>
+<li>A candidata a norma <strong>OGC API - Common Parte 3/OGC API - Features - Parte 5: Schemas</strong> permite descrever o esquema lógico associado a uma coleção de dados geoespaciais.</li>
+<li>A candidata a norma <strong>OGC API - Common Parte 4: Discovery within many collections</strong> estende o endpoint <code>/collections</code> definido na Parte 2 com parâmetros de consulta para recuperar apenas um subconjunto das coleções; útil para implementações de API onde um grande número de coleções está disponível.</li>
+</ul>
+<p>Além disso, a OGC API - Common fornece alguma informação não normativa através do <a href="https://docs.ogc.org/DRAFTS/20-071.html">Guia do Utilizador da OGC API - Common</a>.</p>
+<h4 id="relacao-com-outras-normas">Relação com outras normas<a class="headerlink" href="#relacao-com-outras-normas" title="Permanent link">&para;</a></h4>
+<p>A imagem abaixo mostra a arquitetura de recursos na OGC API. A OGC API - Common fornece uma base comum a todas as OGC APIs.</p>
+<p><img alt="imagem" src="../../assets/images/resources-ogcapi.png" width="100.0%" /></p>
+<!-- A especificação [OpenAPI](https://www.openapis.org/) é utilizada para definir os blocos de construção de API reutilizáveis. -->
+
+<h3 id="visao-geral-dos-recursos">Visão geral dos Recursos<a class="headerlink" href="#visao-geral-dos-recursos" title="Permanent link">&para;</a></h3>
+<p><strong>A OGC API - Common - Parte 1: Core</strong> define os recursos listados na
+tabela seguinte:</p>
+<table>
+  <tr>
+    <th>Recurso</th>
+    <th>Método</th>
+    <th>Caminho</th>
+    <th>Finalidade</th>
+  </tr>
+  <tr>
+    <td>Página de aterragem</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>Recupera a página de aterragem. A finalidade da página de aterragem é fornecer aos clientes um ponto de partida para usar a API. Qualquer recurso exposto através de uma API pode ser acedido seguindo caminhos ou ligações a partir da página de aterragem. A página de aterragem inclui três elementos de metadados; título, descrição e atribuição. Apenas o título é obrigatório. Estes três elementos descrevem a API como um todo. Os clientes podem esperar encontrar metadados que sejam mais específicos do recurso à medida que seguem ligações e caminhos a partir da página de aterragem.</td>
+  </tr>
+  <tr>
+    <td>Declaração de conformidade</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>Fornece uma lista declarando os módulos que são implementados pela API. Estes módulos são chamados Classes de Conformidade. A lista de Classes de Conformidade é fundamental para compreender e utilizar uma OGC API Web da OGC.</td>
+  </tr>
+  <tr>
+    <td>Definição da API</td>
+    <td>GET</td>
+    <td>/api</td>
+    <td>Recupera a definição da API, que descreve as capacidades fornecidas por essa API. Este recurso pode ser utilizado por programadores para compreender a API, por clientes de software para ligar ao servidor, e por ferramentas de desenvolvimento para apoiar a implementação de servidores e clientes. Note que o uso de /api no servidor é opcional e a definição da API pode estar alojada num servidor completamente separado.</td>
+  </tr>
+</table>
+
+<p>A finalidade da norma em rascunho <strong>OGC API - Common - Parte 2: Geospatial Data</strong> é fornecer uma ligação comum entre a página de aterragem da API e os detalhes específicos do recurso. A tabela abaixo define os recursos listados nesta parte.</p>
+<table>
+  <tr>
+    <th>Recurso</th>
+    <th>Método</th>
+    <th>Caminho</th>
+    <th>Finalidade</th>
+  </tr>
+  <tr>
+    <td>Coleções</td>
+    <td>GET</td>
+    <td>/collections</td>
+    <td>Recupera informação que descreve o conjunto de Coleções suportadas.</td>
+  </tr>
+  <tr>
+    <td>Coleção</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}</td>
+    <td>Recupera informação descritiva sobre uma Coleção específica.</td>
+  </tr>
+</table>
+
+<p>Fornecendo uma <strong>base comum</strong>, a OGC API - Common destina-se a ser implementada por normas "a jusante" da OGC API
+de forma uniforme e consistente. Exemplos de recursos da OGC API - Common serão apresentados no contexto de outras normas da OGC API.</p>
+<h2 id="resumo">Resumo<a class="headerlink" href="#resumo" title="Permanent link">&para;</a></h2>
+<p>A OGC API - Common documenta o conjunto de práticas comuns e requisitos partilhados que emergiram do desenvolvimento de Arquiteturas Orientadas a Recursos e APIs Web dentro da OGC. A norma define recursos e mecanismos de acesso que são úteis para um cliente que procura compreender as ofertas e capacidades de uma API, bem como uma ligação entre a página de aterragem da API e os detalhes específicos do recurso. Neste aprofundamento, proporcionámos uma visão geral das normas e olhamos para os recursos na parte 1 e parte 2 (em rascunho).</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2023 - 2026 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.action.edit","content.action.view","navigation.top","navigation.tracking.prev_next","navigation.tracking.section","navigation.indexes"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>

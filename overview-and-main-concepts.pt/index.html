@@ -1,0 +1,1216 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OGC APIs are designed to make it easy for anyone to provide and use geospatial data on the web and integrate it with other information. This workshop introduces OGC APIs supporting discovery, access, visualization, and processing aligned with FAIR data principles.">
+      
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/overview-and-main-concepts.pt/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="/pt/" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>Visão geral e conceitos principais - OGC API Workshop</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/classic/main.39e53929.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/ogcapi-workshop.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#visao-geral-e-conceitos-principais" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://ogcapi-workshop.ogc.org" title="OGC API Workshop" class="md-header__button md-logo" aria-label="OGC API Workshop" data-md-component="logo">
+      
+  <img src="../assets/images/ogc.png" alt="OGC API Workshop">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OGC API Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Visão geral e conceitos principais
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/pt/" hreflang="pt" class="md-select__link">
+              Português
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ogcapi-workshop.ogc.org" title="OGC API Workshop" class="md-nav__button md-logo" aria-label="OGC API Workshop" data-md-component="logo">
+      
+  <img src="../assets/images/ogc.png" alt="OGC API Workshop">
+
+    </a>
+    OGC API Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background-and-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Background and context
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview-and-main-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview and main concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compliance-and-certification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Compliance and certification
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API deep dive:
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  API deep dive:
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Primer
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/common/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Common
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Features
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/tiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Tiles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Maps
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/styles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Styles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Processes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Records
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/environmental-data-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Environmental Data Retrieval
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-deep-dive/sensorthings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC SensorThings API
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API roadmap
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Security
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transition-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transition and migration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-involved/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting involved
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conclusion
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cliente-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Cliente / servidor
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitetura-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Arquitetura Web
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquitetura Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        REST
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        JSON
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ogc-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OGC APIs
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OGC APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ogc-api-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OGC API - Common
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normas-aprovados" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Normas aprovados
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocos-de-construcao-da-ogc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Blocos de construção da OGC API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Em desenvolvimento
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OpenAPI
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#padroes-de-conteudo-e-formato" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Padrões de conteúdo e formato
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/edit/main/workshop/content/docs/overview-and-main-concepts.pt.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/raw/main/workshop/content/docs/overview-and-main-concepts.pt.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="visao-geral-e-conceitos-principais">Visão geral e conceitos principais<a class="headerlink" href="#visao-geral-e-conceitos-principais" title="Permanent link">&para;</a></h1>
+<p>O cerne das APIs Web pode ser resumido como:</p>
+<ul>
+<li>interfaces: a forma como se estabelecem "conversações" entre as APIs e os clientes das mesmas</li>
+<li>codificações: os "formatos" dos conteúdos fornecidos por uma API</li>
+</ul>
+<h2 id="cliente-servidor">Cliente / servidor<a class="headerlink" href="#cliente-servidor" title="Permanent link">&para;</a></h2>
+<p>Num ambiente típico de cliente / servidor, um cliente pede a um servidor para executar uma ação (por exemplo, solicitar dados), com a capacidade de adicionar instruções adicionais, como consultas, filtros e qual formato a API deve fornecer como parte da resposta.</p>
+<p>A imagem abaixo, retirada de <a href="https://volaya.github.io/gis-book/en/">Introdução ao SIG</a>, ilustra
+o conceito do ciclo de vida de pedido / resposta entre um cliente e um servidor.</p>
+<p><img alt="Cliente-Servidor" src="../assets/images/How_internet_works.png" width="80.0%" /></p>
+<h2 id="arquitetura-web">Arquitetura Web<a class="headerlink" href="#arquitetura-web" title="Permanent link">&para;</a></h2>
+<h3 id="rest">REST<a class="headerlink" href="#rest" title="Permanent link">&para;</a></h3>
+<p>A Transferência de Estado Representacional (REST, do inglês <em>REpresentational State Transfer</em>) é um estilo arquitetónico para a Web. Os conceitos fundamentais do REST são:</p>
+<ul>
+<li>verbos HTTP (GET/PUT/POST/DELETE)</li>
+<li>códigos HTTP (200, 201, 404, etc.)</li>
+<li>URIs para identificar recursos</li>
+<li>Negociação de conteúdo (tipos de conteúdo)</li>
+<li>Estado (stateless)</li>
+</ul>
+<p>A implementação do REST resulta numa arquitetura mais simples, com barreiras de entrada baixas, baseada em primitivas web. Isto permite que os
+sistemas e aplicações se concentrem mais nos requisitos de domínio/negócios.</p>
+<div class="admonition note">
+<p class="admonition-title">Conheça o seu HTTP!</p>
+<ul>
+<li>verbos: <a href="https://http.dev/methods">https://http.dev/methods</a></li>
+<li>códigos de estado: <a href="https://http.dev/status">https://http.dev/status</a></li>
+</ul>
+</div>
+<h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<p>JSON (JavaScript Object Notation) é uma codificação compacta e muito fácil de compreender, muito popular entre
+desenvolvedores web. O JSON é a codificação primária utilizada em serviços e APIs web RESTful, sendo por natureza extensível.</p>
+<p>Vamos comparar JSON e XML num exemplo simples:</p>
+<p>Um exemplo de documento XML (75 bytes):</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;order&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&lt;orderID&gt;</span>123<span class="nt">&lt;/orderID&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;status&gt;</span>completed<span class="nt">&lt;/status&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&lt;/order&gt;</span>
+</span></code></pre></div>
+<p>O mesmo documento em JSON (46 bytes):</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;orderID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;completed&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Aqui, vemos uma representação mais compacta usando JSON. Além disso, é mais fácil determinar os literais do tipo
+de dados subjacente (inteiros, strings, etc.) através da análise do próprio documento.</p>
+<div class="admonition note">
+<p class="admonition-title">Esquema JSON</p>
+<p>O <a href="https://json-schema.org">JSON Schema</a> é o equivalente em JSON ao Esquema XML da W3C, fornecendo uma linguagem para definir o modelo de conteúdo de
+um documento JSON. Um documento JSON pode optar por implementar um JSON Schema, ou não, dependendo dos requisitos da aplicação em questão
+para validação e integridade de dados.</p>
+</div>
+<h2 id="ogc-apis">OGC APIs<a class="headerlink" href="#ogc-apis" title="Permanent link">&para;</a></h2>
+<p>Esta secção fornece uma visão de conjunto da família de normas OGC API.</p>
+<div class="admonition cite">
+<p class="admonition-title">Cite</p>
+<p>A família de normas OGC API está a ser desenvolvida para facilitar a qualquer pessoa o fornecimento de dados geoespaciais na web. Estas normas constroem-se sobre a herança das normas de Serviços Web da OGC (WMS, WFS, WCS, WPS, etc.), mas definem APIs centradas em recursos que aproveitam as práticas modernas de desenvolvimento web. Esta página web fornece informação sobre estas normas num local consolidado.</p>
+<p>Estas normas estão a ser construídas como "blocos de construção" que podem ser utilizados para montar APIs inovadoras para acesso web a conteúdo geoespacial. Os blocos de construção não são definidos apenas pelos requisitos das respetivas normas, mas também através de prototipagem e testes de interoperabilidade no Programa de Investigação da OGC.</p>
+</div>
+<h3 id="ogc-api-common">OGC API - Common<a class="headerlink" href="#ogc-api-common" title="Permanent link">&para;</a></h3>
+<p>A <a href="https://ogcapi.ogc.org/common/">OGC API - Common</a> é um quadro comum utilizado em todas as APIs da OGC.
+A OGC API - Common fornece as seguintes funcionalidades:</p>
+<ul>
+<li>baseada na especificação <a href="https://spec.openapis.org/oas/latest.html">OpenAPI 3.0</a></li>
+<li>HTML e JSON como codificações dominantes, sendo possíveis codificações alternativas</li>
+<li>endpoints comuns e partilhados, tais como:<ul>
+<li><code>/</code> (página de aterragem)</li>
+<li><code>/conformance</code></li>
+<li><code>/openapi</code></li>
+<li><code>/collections</code></li>
+<li><code>/collections/foo</code></li>
+</ul>
+</li>
+<li>aspetos comuns, como paginação, ligações entre recursos, filtros básicos, parâmetros de pesquisa (<code>bbox</code>, <code>datetime</code>, etc.)</li>
+</ul>
+<p>A OGC API - Common permite aos desenvolvedores de especificações concentrarem-se na funcionalidade principal de uma dada API (isto é, acesso a dados, etc.)
+enquanto utilizam construções comuns. Isto harmoniza as normas da OGC API e permite uma integração mais profunda com menos código. Isto também
+permite que o software cliente da OGC API seja mais eficiente.</p>
+<p>Para mais detalhes sobre esta norma, consulte a <a href="https://ogcapi-workshop.ogc.org/api-deep-dive/common/">secção OGC API - Common</a>.</p>
+<h3 id="normas-aprovados">Normas aprovados<a class="headerlink" href="#normas-aprovados" title="Permanent link">&para;</a></h3>
+<p>As seguintes normas OGC API foram aprovadas e estão disponíveis para utilização. Note que estas normas têm 1 ou mais "Partes" ou extensões que permitem funcionalidades específicas. A "Parte 1" de uma dada norma representa as capacidades mais básicas. Partes adicionais também podem ser implementadas como <a href="#blocos-de-construcao-da-ogc-api">blocos de construção</a>.</p>
+<ul>
+<li>A <a href="https://ogcapi.ogc.org/features">OGC API - Features</a> oferece a capacidade de criar, modificar e consultar dados espaciais na Web e especifica requisitos e recomendações para APIs que pretendam seguir uma maneira norma de partilhar dados de tipo entidade</li>
+<li>A <a href="https://ogcapi.ogc.org/edr">OGC API - Environmental Data Retrieval</a> fornece um conjunto de interfaces leves para aceder a recursos de Dados Ambientais. Cada recurso endereçado por uma API EDR corresponde a uma norma de pesquisa definida</li>
+<li>A <a href="https://ogcapi.ogc.org/maps">OGC API - Maps</a> oferece uma abordagem moderna à norma Web Map Service (WMS) da OGC para a prestação de mapas e conteúdo raster</li>
+<li>A <a href="https://ogcapi.ogc.org/processes">OGC API - Processes</a> permite que ferramentas de processamento sejam chamadas e combinadas a partir de múltiplas fontes e aplicadas a dados em outros recursos da OGC API através de uma API simples</li>
+<li>A <a href="https://ogcapi.ogc.org/tiles">OGC API - Tiles</a> fornece funcionalidade estendida a outras normas da OGC API para entregar tiles vetoriais, tiles de mapas e outros dados em tiles</li>
+<li>A <a href="https://ogcapi.ogc.org/movingfeatures">OGC API - Moving Features</a> define uma API que fornece acesso a dados que representam entidades que se deslocam como corpos rígidos</li>
+<li>A <a href="https://ogcapi.ogc.org/records">OGC API - Records</a> fornece descoberta e acesso a metadados sobre recursos geoespaciais</li>
+<li>A <a href="https://ogcapi.ogc.org/dggs">OGC API - Discrete Global Grid Systems</a> permite que aplicações organizem e acedam a dados organizados de acordo com um Sistema de Grelha Global Discreta (DGGS)</li>
+<li>A <a href="https://ogcapi.ogc.org/connectedsystems/">OGC API - Connected Systems</a> pretende atuar como uma ponte entre dados estáticos (entidades geográficas e de outros domínios) e dados dinâmicos (observações das propriedades dessas entidades, e comandos/atuadores que alteram essas propriedades)</li>
+</ul>
+<h3 id="blocos-de-construcao-da-ogc-api">Blocos de construção da OGC API<a class="headerlink" href="#blocos-de-construcao-da-ogc-api" title="Permanent link">&para;</a></h3>
+<p>A abordagem da OGC API permite a modularidade e a "perfuração" de APIs consoante os vossos requisitos. Isto significa que
+pode misturar e combinar OGC APIs entre si.</p>
+<p><img alt="Blocos de construção da OGC API" src="../assets/images/ogc-api-building-blocks.png" /></p>
+<p>Pode ler mais sobre este tópico no <a href="https://opengeospatial.github.io/bblocks/">sítio web de blocos de construção</a>.</p>
+<h3 id="em-desenvolvimento">Em desenvolvimento<a class="headerlink" href="#em-desenvolvimento" title="Permanent link">&para;</a></h3>
+<p>O esforço da OGC API está a evoluir rapidamente. Inúmeras normas OGC API estão em desenvolvimento:</p>
+<ul>
+<li>A <a href="https://ogcapi.ogc.org/routes">Routes</a> fornece acesso a dados de rotas</li>
+<li>A <a href="https://ogcapi.ogc.org/styles">Styles</a> define uma API Web que permite a servidores de mapas, clientes, bem como editores de estilos visuais, gerir e obter estilos</li>
+<li>A <a href="https://ogcapi.ogc.org/geovolumes">3D GeoVolumes</a> facilita a descoberta eficiente e o acesso a conteúdo 3D em múltiplos formatos com base numa perspetiva centrada no espaço</li>
+<li>A <a href="https://ogcapi.ogc.org/joins">Joins</a> suporta a junção de dados, a partir de múltiplas fontes, com coleções de entidades ou diretamente com outros ficheiros de entrada</li>
+</ul>
+<p><img alt="Normas OGC API aprovados e candidatas" src="../assets/images/ogcapis-overview.png" /></p>
+<h3 id="openapi">OpenAPI<a class="headerlink" href="#openapi" title="Permanent link">&para;</a></h3>
+<p>O cerne da OGC API - Common é a <a href="https://www.openapis.org/about">iniciativa OpenAPI</a> para ajudar
+a descrever e documentar uma API. A OpenAPI define a sua estrutura num documento OpenAPI.
+A OGC API - Common sugere que este documento esteja localizado em <code>/openapi</code>. Por exemplo, com o <a href="https://pygeoapi.io">pygeoapi</a>, num navegador
+<a href="https://demo.pygeoapi.io/master/openapi">a esta URL</a> abre-se uma página HTML interativa que facilita
+a consulta da API. Adicione <code>?f=json</code> para ver o documento em JSON. O documento OpenAPI indica quais
+os endpoints disponíveis no serviço, quais os parâmetros que aceita e
+que tipos de resposta podem ser esperados. O documento OpenAPI é um conceito semelhante ao XML de Capacidades
+como parte das normas de Serviços Web da OGC de primeira geração.</p>
+<div class="admonition question">
+<p class="admonition-title">Análise da Especificação OpenAPI num navegador</p>
+<p>Uma abordagem comum para interagir com APIs Open utilizando JSON é usar um programa como
+o <a href="https://www.postman.com/">Postman</a>. Também existem plugins para navegadores que permitem definir pedidos de API
+de forma interativa dentro do navegador. Para o Firefox, descarregue o plugin
+<a href="https://pluginsaddonsextensions.com/mozilla-firefox/poster-mozilla-addon">poster</a>. Para Chrome
+e Edge, utilize o <a href="https://microsoftedge.microsoft.com/addons/detail/boomerang-soap-rest-c/bhmdjpobkcdcompmlhiigoidknlgghfo?hl=en-US">Boomerang</a>.
+No Boomerang, pode criar pedidos web individuais, mas também carregar o documento de especificação
+open api e interagir com qualquer um dos endpoints anunciados.</p>
+</div>
+<p>A comunidade OpenAPI fornece várias ferramentas, como um validador para documentos OAS ou
+<a href="https://swagger.io/tools/swagger-codegen/">gerar código</a> como ponto de partida para o desenvolvimento de clientes.</p>
+<h2 id="padroes-de-conteudo-e-formato">Padrões de conteúdo e formato<a class="headerlink" href="#padroes-de-conteudo-e-formato" title="Permanent link">&para;</a></h2>
+<p>As OGC APIs são normalmente agnósticas quanto ao formato dos dados. Isto significa que uma OGC API pode fornecer qualquer formato de dados
+ou metadados (JSON, YAML, XML, HTML, etc.).</p>
+<p>O JSON é um formato central que é legível por máquina e fácil de analisar e tratar
+por software cliente e ferramentas. O JSON é facilmente decodificado/encoded em objetos nativos em inúmeras
+linguagens de programação (dicionários Python, objetos JavaScript, etc.). A OGC API - Common fornece
+formatos JSON uniformes para os vários endpoints que suporta.</p>
+<p>Normas específicas da OGC API podem especificar formatos específicos de domínio (por exemplo,
+GeoJSON para OGC API - Features, GeoTIFF para OGC API - Coverages, ISO 19115/19139 para OGC API - Records, etc.),
+dependendo do(s) tipo(s) de dados ou metadados.</p>
+<h2 id="resumo">Resumo<a class="headerlink" href="#resumo" title="Permanent link">&para;</a></h2>
+<p>As OGC APIs aproveitam os princípios fundamentais da arquitetura Web, proporcionando suporte para descoberta, acesso, visualização, processamento
+de dados geoespaciais, em conformidade com normas do setor, para máxima interoperabilidade na Web.</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2023 - 2026 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.action.edit","content.action.view","navigation.top","navigation.tracking.prev_next","navigation.tracking.section","navigation.indexes"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1883 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OGC APIs are designed to make it easy for anyone to provide and use geospatial data on the web and integrate it with other information. This workshop introduces OGC APIs supporting discovery, access, visualization, and processing aligned with FAIR data principles.">
+      
+      
+      
+        <link rel="canonical" href="https://ogcapi-workshop.ogc.org/api-deep-dive/environmental-data-retrieval.pt/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="/pt/" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>OGC API - Environmental Data Retrieval - OGC API Workshop</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.39e53929.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/ogcapi-workshop.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ogc-api-environmental-data-retrieval" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://ogcapi-workshop.ogc.org" title="OGC API Workshop" class="md-header__button md-logo" aria-label="OGC API Workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="OGC API Workshop">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OGC API Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OGC API - Environmental Data Retrieval
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/pt/" hreflang="pt" class="md-select__link">
+              Português
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://ogcapi-workshop.ogc.org" title="OGC API Workshop" class="md-nav__button md-logo" aria-label="OGC API Workshop" data-md-component="logo">
+      
+  <img src="../../assets/images/ogc.png" alt="OGC API Workshop">
+
+    </a>
+    OGC API Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opengeospatial/ogcapi-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background-and-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Background and context
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview-and-main-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview and main concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance-and-certification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Compliance and certification
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  API deep dive:
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  API deep dive:
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Primer
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Common
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Features
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Tiles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Maps
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Styles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Processes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Records
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environmental-data-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API - Environmental Data Retrieval
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensorthings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC SensorThings API
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OGC API roadmap
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Security
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transition-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transition and migration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-involved/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting involved
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Conclusion
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introdução
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introdução">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antecedentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Antecedentes
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antecedentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Utilização
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-outros-standards-da-ogc" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relação com outros standards da OGC
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visao-geral-dos-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Visão geral dos recursos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Exemplo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Landing page
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaracao-de-conformidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Declaração de conformidade
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicao-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definição da API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadados-das-colecoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Metadados das coleções
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos de Pesquisa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-area-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Área da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-corredor-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Corredor da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-cubo-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Cubo da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-instancias-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Instâncias da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-itens-entidades-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Itens (Entidades) da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-localizacoes-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Localizações da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-posicao-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Posição da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-raio-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Raio da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-de-pesquisa-de-trajetoria-da-ogc-api-edr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recursos de Pesquisa de Trajetória da OGC API - EDR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/edit/main/workshop/content/docs/api-deep-dive/environmental-data-retrieval.pt.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/opengeospatial/ogcapi-workshop/raw/main/workshop/content/docs/api-deep-dive/environmental-data-retrieval.pt.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="ogc-api-environmental-data-retrieval">OGC API - Environmental Data Retrieval<a class="headerlink" href="#ogc-api-environmental-data-retrieval" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Público-alvo</p>
+<p>Estudantes que estejam familiarizados com serviços web e APIs, que desejam ter
+uma visão geral da norma OGC API - Environmental Data Retrieval</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivos de Aprendizagem</p>
+<p>Ao concluir o módulo, os estudantes serão capazes de:</p>
+<ul>
+<li>Explicar o que é a norma OGC API - Environmental Data Retrieval</li>
+<li>Descrever o que pode ser feito com implementações da OGC API - Environmental Data Retrieval</li>
+<li>Compreender os principais recursos oferecidos por implementações da OGC API - Environmental Data Retrieval</li>
+<li>Compreender como obter uma descrição das capacidades de uma implementação da OGC API - Environmental Data Retrieval</li>
+<li>Compreender como fazer pedidos a uma implementação da OGC API - Environmental Data Retrieval</li>
+<li>Conseguir encontrar um endpoint da OGC API - Environmental Data Retrieval e utilizá-lo através de um cliente</li>
+</ul>
+</div>
+<h2 id="introducao">Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+<p>A <a href="https://ogcapi.ogc.org/edr">OGC API - Environmental Data Retrieval</a> é uma norma que fornece uma
+família de interfaces leves para aceder a recursos de dados ambientais.
+A norma, também designada API de Recuperação de Dados Ambientais 
+(EDR, pelas siglas em inglês), aborda duas operações fundamentais: descoberta e consulta.
+As operações de descoberta permitem interrogar a API para determinar as suas
+capacidades e recuperar informação (metadados) sobre a distribuição
+de um recurso. Isto inclui a definição da API do servidor, bem como
+metadados sobre os recursos de dados ambientais fornecidos pelo servidor.
+As operações de consulta permitem recuperar recursos de dados ambientais a partir
+da base de dados subjacente com base em critérios de seleção simples, definidos
+por esta norma e selecionados pelo cliente.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este módulo de tutorial não tem a intenção de substituir a própria norma
+<strong>OGC API - Environmental Data Retrieval</strong>. O tutorial concentra-se
+intencionalmente num subconjunto de capacidades com o propósito de ser uma iniciação à utilização da norma. Consulte a <a href="https://docs.ogc.org/is/19-086r6/19-086r6.html">norma da <strong>OGC API -
+Environmental Data Retrieval</strong></a> para mais detalhes.</p>
+</div>
+<h3 id="antecedentes">Antecedentes<a class="headerlink" href="#antecedentes" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Histórico</p>
+</blockquote>
+<p>A versão 1.1.0 foi publicada em 2023-07-27.</p>
+<blockquote>
+<p>Versões</p>
+</blockquote>
+<p>A versão 1.1.0 do <strong>OGC API - Environmental Data Retrieval</strong> é a versão mais recente</p>
+<blockquote>
+<p>Suite de testes</p>
+</blockquote>
+<p>Está disponível uma suite de testes para:</p>
+<ul>
+<li>OGC API - Environmental Data Retrieval - Parte 1</li>
+</ul>
+<p>Todas as suites de testes estão disponíveis no <a href="https://cite.ogc.org/teamengine/">OGC Validator</a>.</p>
+<blockquote>
+<p>Implementações</p>
+</blockquote>
+<p>As implementações podem ser encontradas na <a href="https://github.com/opengeospatial/ogcapi-environmental-data-retrieval/tree/master/implementations">página de implementações</a>.</p>
+<h4 id="utilizacao">Utilização<a class="headerlink" href="#utilizacao" title="Permanent link">&para;</a></h4>
+<p>A <strong>OGC API - Environmental Data Retrieval</strong> fornece uma família de
+interfaces de pesquisa leves para aceder a recursos de dados espácio-temporais
+ao solicitar dados numa posição, numa área, ao longo de uma trajetória ou
+através de um corredor. Um recurso de dados espácio-temporais é uma coleção de
+dados espácio-temporais que pode ser amostrada utilizando as geometrias
+de pesquisa da EDR.</p>
+<p>A norma fornece uma interface padrão para solicitar dados
+geoespaciais vetoriais, consistindo em entidades geográficas e respetivas propriedades.
+A vantagem disto é que as aplicações cliente podem solicitar dados de origem
+a múltiplas implementações da API e, em seguida, renderizar os dados para
+exibição ou processá-los adicionalmente como parte de um fluxo de trabalho. A norma
+permite que os dados sejam acedidos de forma consistente com outros dados. As propriedades
+das entidades codificadas com tipos de dados comuns, como cadeias de texto, data
+e hora, também podem ser acedidas de forma consistente.</p>
+<h4 id="relacao-com-outros-standards-da-ogc">Relação com outros standards da OGC<a class="headerlink" href="#relacao-com-outros-standards-da-ogc" title="Permanent link">&para;</a></h4>
+<ul>
+<li>OGC API - Features: A API da EDR é completamente compatível com a OGC
+    API - Features - Parte 1: Core (OGC 17-069r3), uma vez que
+    suporta Collections e Items. Estende a funcionalidade de Collection
+    permitindo «Instances», uma forma de «collection of
+    collections». A API da EDR também suporta a recuperação de
+    dados espácio-temporais por localização nomeada, bem como por coordenadas.</li>
+<li>Moving Features: Os Standards Moving Features tratam de
+    entidades que se movem ao longo de uma trajetória, mudando simultaneamente a sua
+    orientação através de rotação de corpo rígido. A API da EDR não tem
+    o conceito de orientação, foliação ou prismas. A Moving Features
+    e a API da EDR partilham uma definição conceptual comum, da ISO, de
+    Trajetória, mas a norma Moving Features codifica trajetórias em
+    GML, CSV e Moving Features JSON, enquanto que a API da EDR codifica
+    trajetórias em WKT.</li>
+<li>Web Coverage Service (WCS) e Coverage Implementation Schema (CIS):
+    O mecanismo principal de mensagens da API da EDR é JSON, incluindo
+    CoverageJSON, sobre HTTP(S). As implementações da API da EDR são
+    descritas utilizando a especificação OpenAPI V3.0. A API da EDR é
+    consistente com as normas WCS e CIS, mas não exige que
+    o utilizador final ou programador utilize os termos Domain e RangeSet. A API da EDR
+    também pode ser utilizada para gerar uma única pesquisa contra uma coleção
+    de coverages, desde que os sistemas de referência de coordenadas dos dados sejam
+    consistentes.</li>
+<li>A API OGC SensorThings: A API SensorThings segue a
+    especificação OData para solicitar entidades. Em contraste, a API da EDR
+    utiliza a especificação OpenAPI V3.0 para descrever recursos
+    caminhos, opções de pesquisa, esquema JSON e outros aspetos. Além disso, a API da EDR permite a recuperação de
+    dados de coverage e respostas HTML — ambos não sendo suportados pela API SensorThings.</li>
+<li>Sensor Observation Service (SOS): A API da EDR permite a recuperação
+    de dados de coverage e respostas HTML — ambos não sendo
+    suportados pela norma SOS. Além disso, as implementações SOS utilizam a
+    operação GetCapabilities para fornecer descrições de recursos
+    disponíveis. Em contraste, a API da EDR utiliza definições
+    OpenAPI para descrever as interfaces disponíveis.</li>
+</ul>
+<h3 id="visao-geral-dos-recursos">Visão geral dos recursos<a class="headerlink" href="#visao-geral-dos-recursos" title="Permanent link">&para;</a></h3>
+<p>A <strong>norma OGC API - Environmental Data Retrieval</strong> define os
+recursos listados na tabela seguinte.</p>
+<table>
+<caption>Visão geral dos recursos OGC API - EDR</caption>
+  <tr>
+    <th>Recurso</th>
+    <th>Método</th>
+    <th>Caminho</th>
+    <th>Propósito</th>
+  </tr>
+  <tr>
+    <td>Página de aterragem</td>
+    <td>GET</td>
+    <td>/</td>
+    <td>Este é o recurso de nível superior, que serve como ponto de entrada.</td>
+  </tr>
+  <tr>
+    <td>Declaração de conformidade</td>
+    <td>GET</td>
+    <td>/conformance</td>
+    <td>Este recurso apresenta informação sobre a funcionalidade implementada pelo servidor.</td>
+  </tr>
+  <tr>
+    <td>Definição da API</td>
+    <td>GET</td>
+    <td>/api</td>
+    <td>Este recurso fornece metadados sobre a API propriamente dita. Note que a utilização de /api no servidor é opcional e a definição da API pode estar alojada num servidor completamente separado.</td>
+  </tr>
+  <tr>
+    <td>Metadados das coleções</td>
+    <td>GET</td>
+    <td>/collections</td>
+    <td>Metadados que descrevem as coleções de dados disponíveis nesta API.</td>
+  </tr>
+  <tr>
+    <td>Metadados de uma coleção</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}</td>
+    <td>Metadados que descrevem a coleção de dados que tem o identificador único {collectionId}.</td>
+  </tr>
+  <tr>
+    <td>Metadados dos itens</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/items</td>
+    <td>Recuperar metadados sobre os itens disponíveis.</td>
+  </tr>
+  <tr>
+    <td>Pesquisa de dados</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/{queryType}</td>
+    <td>Recuperar dados de acordo com o padrão de pesquisa</td>
+  </tr>
+  <tr>
+    <td>Pesquisa de instâncias</td>
+    <td>GET</td>
+    <td>/collections/{collectionId}/instances</td>
+    <td>Recuperar metadados sobre instâncias de uma coleção</td>
+  </tr>
+</table>
+
+<h3 id="exemplo">Exemplo<a class="headerlink" href="#exemplo" title="Permanent link">&para;</a></h3>
+<p>O <a href="http://labs.metoffice.gov.uk/edr">servidor de demonstração</a> publica
+dados ambientais através de uma interface que está em conformidade com a norma OGC API -
+Environmental Data Retrieval. Uma aplicação cliente está disponível
+<a href="http://labs.metoffice.gov.uk/edr/static/html/query.html">aqui</a>.</p>
+<p>Um exemplo de pedido que pode ser usado para recuperar dados da coleção "Global Population
+Density" encontra-se
+<a href="https://labs.metoffice.gov.uk/edr/collections/global_pop_density/position?coords=POINT(-1.406%2054.157)&amp;parameter-name=Pop_Density&amp;crs=EPSG:4326&amp;f=CoverageJSON">aqui</a></p>
+<p>Note que a resposta ao pedido é CoverageJSON, neste caso o formato de saída predefinido e único suportado.</p>
+<h2 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<p>Esta secção fornece informação básica sobre os tipos de recursos
+que a OGC API - Environmental Data Retrieval oferece.</p>
+<p>Cada recurso fornece <strong>ligações</strong> relacionadas com recursos. Isto permite
+a uma aplicação cliente navegar pelos recursos, desde a Página de Aterragem
+até às entidades individuais. O servidor identifica a
+relação entre um recurso e outros recursos ligados através de um
+<strong>tipo de relação de ligação</strong>, representado pelo atributo <code>rel</code>. Os tipos
+de relação de ligação utilizados por implementações da <strong>OGC API - Environmental
+Data Retrieval</strong> podem ser encontrados na <a href="https://docs.ogc.org/is/19-086r4/19-086r4.html#toc22">Secção
+6.2</a> do
+standard.</p>
+<h3 id="landing-page">Landing page<a class="headerlink" href="#landing-page" title="Permanent link">&para;</a></h3>
+<p>A Página de Aterragem é o recurso de nível superior que serve como ponto
+de entrada. Uma aplicação cliente precisa de conhecer a localização da Página de Aterragem
+do servidor. A partir da Página de Aterragem, a aplicação cliente pode
+recuperar ligações para os caminhos da Declaração de Conformidade, Collection e Definição
+da API. Um exemplo de Página de Aterragem está em
+<a href="http://labs.metoffice.gov.uk/edr">http://labs.metoffice.gov.uk/edr</a></p>
+<p>A ligação para a definição da API é identificada através dos
+tipos de relação de ligação <code>service-desc</code> e <code>service-doc</code>.</p>
+<p>A ligação para a Declaração de Conformidade é identificada através do tipo
+de relação de ligação <code>conformance</code>.</p>
+<p>A ligação para as Coleções é identificada através do tipo <code>data</code> de relação
+de ligação.</p>
+<p>Um excerto da Página de Aterragem de um servidor de demonstração é mostrado abaixo.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Environmental Data Retrevial API concept demonstrator&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example EDR API (not for operational use)&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="s2">&quot;cube&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="s2">&quot;trajectory&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="s2">&quot;weather&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="s2">&quot;api&quot;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">],</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nt">&quot;terms_of_service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization Name&quot;</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.org&quot;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">},</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="nt">&quot;contact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;you@example.org&quot;</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+001-234-567-89&quot;</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="nt">&quot;fax&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+001-234-567-89&quot;</span><span class="p">,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="nt">&quot;hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hours of Service&quot;</span><span class="p">,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;During hours of service.  Off on weekends.&quot;</span><span class="p">,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mailing Address&quot;</span><span class="p">,</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="nt">&quot;postalcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zip or Postal Code&quot;</span><span class="p">,</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="nt">&quot;stateorprovince&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Administrative Area&quot;</span><span class="p">,</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Country&quot;</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">},</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/api&quot;</span><span class="p">,</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-doc&quot;</span><span class="p">,</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/vnd.oai.openapi+json;version=3.0&quot;</span><span class="p">,</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/conformance&quot;</span><span class="p">,</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conformance&quot;</span><span class="p">,</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">    </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections&quot;</span><span class="p">,</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">    </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">    </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="p">]</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="declaracao-de-conformidade">Declaração de conformidade<a class="headerlink" href="#declaracao-de-conformidade" title="Permanent link">&para;</a></h3>
+<p>Uma implementação da OGC API - Environmental Data Retrieval descreve
+as capacidades que suporta ao declarar que classes de conformidade que
+implementa. A Declaração de Conformidade indica as classes de conformidade
+de normas ou especificações da comunidade, identificadas por um URI,
+a que a API está em conformidade. Os clientes podem, em seguida, utilizar esta informação,
+embora não sejam obrigados a fazê-lo. Ao aceder à Declaração de Conformidade
+através de HTTP GET, obtém-se a lista de URIs das classes de conformidade
+implementadas pelo servidor. As classes de conformidade descrevem o comportamento que
+o servidor deve implementar para cumprir um ou mais conjuntos de
+requisitos especificados numa norma.</p>
+<p>Abaixo segue um excerto da resposta ao pedido
+<a href="http://labs.metoffice.gov.uk/edr/conformance">http://labs.metoffice.gov.uk/edr/conformance</a></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w"> </span><span class="nt">&quot;conformsTo&quot;</span><span class="p">:[</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core&quot;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/core&quot;</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/oas30&quot;</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/html&quot;</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/geojson&quot;</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/coveragejson&quot;</span><span class="p">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/wkt&quot;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="definicao-da-api">Definição da API<a class="headerlink" href="#definicao-da-api" title="Permanent link">&para;</a></h3>
+<p>Dado que a OGC API - Environmental Data Retrieval utiliza a OGC API - Common como bloco de construção, consulte a <a href="../features/#api-definition">OGC API - Features</a> para
+uma explicação detalhada de uma implementação de exemplo.</p>
+<h3 id="metadados-das-colecoes">Metadados das coleções<a class="headerlink" href="#metadados-das-colecoes" title="Permanent link">&para;</a></h3>
+<p>Os dados oferecidos através de uma implementação da <strong>OGC API - Environmental Data
+Retrieval</strong> são organizados numa ou mais coleções de entidades. O
+recurso <code>Collections</code> fornece informação sobre e acesso à
+lista de coleções.</p>
+<p>Para cada coleção, existe uma ligação para a descrição detalhada da
+coleção (representada pelo caminho <strong>/collections/{collectionId}</strong> e
+relação de ligação <strong>self</strong>).</p>
+<p>A seguinte informação é fornecida pelo servidor para descrever cada
+coleção:</p>
+<ul>
+<li>Um identificador local para a coleção que é único para o conjunto de dados</li>
+<li>Uma lista de sistemas de referência de coordenadas (SRC) nos quais as geometrias podem ser retornadas pelo servidor</li>
+<li>Um título e descrição opcionais para a coleção</li>
+<li>Uma extensão opcional que pode ser utilizada para fornecer uma indicação da
+    extensão espacial e temporal da coleção</li>
+<li>Um indicador opcional sobre o tipo dos itens na coleção
+    (o valor predefinido, caso o indicador não seja fornecido, é
+    <code>feature</code>).</li>
+</ul>
+<p>Para cada coleção, existem ligações para recuperar dados de acordo com
+os padrões de pesquisa suportados (representadas pelo caminho
+<strong>/collections/{collectionId}/{queryType}</strong> e relação de ligação <strong>data</strong>).</p>
+<p>Para cada coleção, existe uma ligação para os metadados sobre itens
+disponíveis na coleção (representada pelo caminho
+<strong>/collections/{collectionId}/items</strong> e relação de ligação <strong>items</strong>) e
+outra informação sobre a coleção.</p>
+<p>Abaixo segue um excerto da resposta ao pedido
+<a href="http://labs.metoffice.gov.uk/edr/collections">http://labs.metoffice.gov.uk/edr/collections</a></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections&quot;</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections?f=html&quot;</span><span class="p">,</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections?f=xml&quot;</span><span class="p">,</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">      </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">      </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternate&quot;</span><span class="p">,</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/xml&quot;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="p">],</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="nt">&quot;collections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metar_demo&quot;</span><span class="p">,</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Metar observations EDR demonstrator&quot;</span><span class="p">,</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;API to access 24 hours of Global Metar Observation data (not for operational use)&quot;</span><span class="p">,</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">      </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="s2">&quot;Metar observation&quot;</span><span class="p">,</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">        </span><span class="s2">&quot;ICAO identifier&quot;</span><span class="p">,</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="s2">&quot;Wind Direction&quot;</span><span class="p">,</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="s2">&quot;Wind Speed&quot;</span><span class="p">,</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="s2">&quot;Wind Gust&quot;</span><span class="p">,</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="s2">&quot;Visibility&quot;</span><span class="p">,</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">        </span><span class="s2">&quot;Air Temperature&quot;</span><span class="p">,</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="s2">&quot;Dew point&quot;</span><span class="p">,</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">        </span><span class="s2">&quot;Runway Visibility&quot;</span><span class="p">,</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="s2">&quot;Weather&quot;</span><span class="p">,</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">        </span><span class="s2">&quot;Sky condition&quot;</span><span class="p">,</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">        </span><span class="s2">&quot;Mean Sea Level Pressure&quot;</span><span class="p">,</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">        </span><span class="s2">&quot;Station Level Pressure&quot;</span><span class="p">,</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">        </span><span class="s2">&quot;description&quot;</span><span class="p">,</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">        </span><span class="s2">&quot;restrictions&quot;</span><span class="p">,</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">        </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">        </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">        </span><span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">        </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">        </span><span class="s2">&quot;location&quot;</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">      </span><span class="nt">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.aviationweather.gov/metar/help&quot;</span><span class="p">,</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-doc&quot;</span><span class="p">,</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.weather.gov/disclaimer&quot;</span><span class="p">,</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;restrictions&quot;</span><span class="p">,</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/&quot;</span><span class="p">,</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/position&quot;</span><span class="p">,</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/radius&quot;</span><span class="p">,</span>
+</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-79"><a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+</span><span id="__span-2-80"><a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-81"><a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/area&quot;</span><span class="p">,</span>
+</span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+</span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-86"><a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-87"><a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a><span class="w">          </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/locations&quot;</span><span class="p">,</span>
+</span><span id="__span-2-88"><a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a><span class="w">          </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-89"><a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a><span class="w">          </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span>
+</span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-91"><a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a><span class="w">      </span><span class="p">],</span>
+</span><span id="__span-2-92"><a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a><span class="w">      </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-93"><a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a><span class="w">        </span><span class="nt">&quot;spatial&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-94"><a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a><span class="w">          </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-95"><a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a><span class="w">            </span><span class="mf">-180.0</span><span class="p">,</span>
+</span><span id="__span-2-96"><a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a><span class="w">            </span><span class="mf">-89.9</span><span class="p">,</span>
+</span><span id="__span-2-97"><a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a><span class="w">            </span><span class="mf">180.0</span><span class="p">,</span>
+</span><span id="__span-2-98"><a id="__codelineno-2-98" name="__codelineno-2-98" href="#__codelineno-2-98"></a><span class="w">            </span><span class="mf">89.9</span>
+</span><span id="__span-2-99"><a id="__codelineno-2-99" name="__codelineno-2-99" href="#__codelineno-2-99"></a><span class="w">          </span><span class="p">],</span>
+</span><span id="__span-2-100"><a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a><span class="w">          </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+</span><span id="__span-2-101"><a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-102"><a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a><span class="w">        </span><span class="nt">&quot;temporal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-103"><a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a><span class="w">          </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-104"><a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a><span class="w">            </span><span class="s2">&quot;R36/2021-10-03T01:00Z/PT1H&quot;</span>
+</span><span id="__span-2-105"><a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a><span class="w">          </span><span class="p">],</span>
+</span><span id="__span-2-106"><a id="__codelineno-2-106" name="__codelineno-2-106" href="#__codelineno-2-106"></a><span class="w">          </span><span class="nt">&quot;trs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TIMECRS[\&quot;DateTime\&quot;,TDATUM[\&quot;Gregorian Calendar\&quot;],CS[TemporalDateTime,1],AXIS[\&quot;Time (T)\&quot;,future]&quot;</span>
+</span><span id="__span-2-107"><a id="__codelineno-2-107" name="__codelineno-2-107" href="#__codelineno-2-107"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-108"><a id="__codelineno-2-108" name="__codelineno-2-108" href="#__codelineno-2-108"></a><span class="w">      </span><span class="p">},</span>
+</span><span id="__span-2-109"><a id="__codelineno-2-109" name="__codelineno-2-109" href="#__codelineno-2-109"></a><span class="w">      </span><span class="nt">&quot;data_queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-110"><a id="__codelineno-2-110" name="__codelineno-2-110" href="#__codelineno-2-110"></a><span class="w">        </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-111"><a id="__codelineno-2-111" name="__codelineno-2-111" href="#__codelineno-2-111"></a><span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-112"><a id="__codelineno-2-112" name="__codelineno-2-112" href="#__codelineno-2-112"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/position&quot;</span><span class="p">,</span>
+</span><span id="__span-2-113"><a id="__codelineno-2-113" name="__codelineno-2-113" href="#__codelineno-2-113"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-114"><a id="__codelineno-2-114" name="__codelineno-2-114" href="#__codelineno-2-114"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+</span><span id="__span-2-115"><a id="__codelineno-2-115" name="__codelineno-2-115" href="#__codelineno-2-115"></a><span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-116"><a id="__codelineno-2-116" name="__codelineno-2-116" href="#__codelineno-2-116"></a><span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Position query&quot;</span><span class="p">,</span>
+</span><span id="__span-2-117"><a id="__codelineno-2-117" name="__codelineno-2-117" href="#__codelineno-2-117"></a><span class="w">              </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;position&quot;</span><span class="p">,</span>
+</span><span id="__span-2-118"><a id="__codelineno-2-118" name="__codelineno-2-118" href="#__codelineno-2-118"></a><span class="w">              </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-119"><a id="__codelineno-2-119" name="__codelineno-2-119" href="#__codelineno-2-119"></a><span class="w">                </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-120"><a id="__codelineno-2-120" name="__codelineno-2-120" href="#__codelineno-2-120"></a><span class="w">                </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-121"><a id="__codelineno-2-121" name="__codelineno-2-121" href="#__codelineno-2-121"></a><span class="w">                </span><span class="s2">&quot;IWXXM&quot;</span>
+</span><span id="__span-2-122"><a id="__codelineno-2-122" name="__codelineno-2-122" href="#__codelineno-2-122"></a><span class="w">              </span><span class="p">],</span>
+</span><span id="__span-2-123"><a id="__codelineno-2-123" name="__codelineno-2-123" href="#__codelineno-2-123"></a><span class="w">              </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-124"><a id="__codelineno-2-124" name="__codelineno-2-124" href="#__codelineno-2-124"></a><span class="w">              </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-125"><a id="__codelineno-2-125" name="__codelineno-2-125" href="#__codelineno-2-125"></a><span class="w">                </span><span class="p">{</span>
+</span><span id="__span-2-126"><a id="__codelineno-2-126" name="__codelineno-2-126" href="#__codelineno-2-126"></a><span class="w">                  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+</span><span id="__span-2-127"><a id="__codelineno-2-127" name="__codelineno-2-127" href="#__codelineno-2-127"></a><span class="w">                  </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+</span><span id="__span-2-128"><a id="__codelineno-2-128" name="__codelineno-2-128" href="#__codelineno-2-128"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-2-129"><a id="__codelineno-2-129" name="__codelineno-2-129" href="#__codelineno-2-129"></a><span class="w">              </span><span class="p">]</span>
+</span><span id="__span-2-130"><a id="__codelineno-2-130" name="__codelineno-2-130" href="#__codelineno-2-130"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-131"><a id="__codelineno-2-131" name="__codelineno-2-131" href="#__codelineno-2-131"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-2-132"><a id="__codelineno-2-132" name="__codelineno-2-132" href="#__codelineno-2-132"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-133"><a id="__codelineno-2-133" name="__codelineno-2-133" href="#__codelineno-2-133"></a><span class="w">        </span><span class="nt">&quot;radius&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-134"><a id="__codelineno-2-134" name="__codelineno-2-134" href="#__codelineno-2-134"></a><span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-135"><a id="__codelineno-2-135" name="__codelineno-2-135" href="#__codelineno-2-135"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/radius&quot;</span><span class="p">,</span>
+</span><span id="__span-2-136"><a id="__codelineno-2-136" name="__codelineno-2-136" href="#__codelineno-2-136"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-137"><a id="__codelineno-2-137" name="__codelineno-2-137" href="#__codelineno-2-137"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+</span><span id="__span-2-138"><a id="__codelineno-2-138" name="__codelineno-2-138" href="#__codelineno-2-138"></a><span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-139"><a id="__codelineno-2-139" name="__codelineno-2-139" href="#__codelineno-2-139"></a><span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Radius query&quot;</span><span class="p">,</span>
+</span><span id="__span-2-140"><a id="__codelineno-2-140" name="__codelineno-2-140" href="#__codelineno-2-140"></a><span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Radius query&quot;</span><span class="p">,</span>
+</span><span id="__span-2-141"><a id="__codelineno-2-141" name="__codelineno-2-141" href="#__codelineno-2-141"></a><span class="w">              </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+</span><span id="__span-2-142"><a id="__codelineno-2-142" name="__codelineno-2-142" href="#__codelineno-2-142"></a><span class="w">              </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-143"><a id="__codelineno-2-143" name="__codelineno-2-143" href="#__codelineno-2-143"></a><span class="w">                </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-144"><a id="__codelineno-2-144" name="__codelineno-2-144" href="#__codelineno-2-144"></a><span class="w">                </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-145"><a id="__codelineno-2-145" name="__codelineno-2-145" href="#__codelineno-2-145"></a><span class="w">                </span><span class="s2">&quot;IWXXM&quot;</span>
+</span><span id="__span-2-146"><a id="__codelineno-2-146" name="__codelineno-2-146" href="#__codelineno-2-146"></a><span class="w">              </span><span class="p">],</span>
+</span><span id="__span-2-147"><a id="__codelineno-2-147" name="__codelineno-2-147" href="#__codelineno-2-147"></a><span class="w">              </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-148"><a id="__codelineno-2-148" name="__codelineno-2-148" href="#__codelineno-2-148"></a><span class="w">              </span><span class="nt">&quot;within_units&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-149"><a id="__codelineno-2-149" name="__codelineno-2-149" href="#__codelineno-2-149"></a><span class="w">                </span><span class="s2">&quot;km&quot;</span><span class="p">,</span>
+</span><span id="__span-2-150"><a id="__codelineno-2-150" name="__codelineno-2-150" href="#__codelineno-2-150"></a><span class="w">                </span><span class="s2">&quot;miles&quot;</span>
+</span><span id="__span-2-151"><a id="__codelineno-2-151" name="__codelineno-2-151" href="#__codelineno-2-151"></a><span class="w">              </span><span class="p">],</span>
+</span><span id="__span-2-152"><a id="__codelineno-2-152" name="__codelineno-2-152" href="#__codelineno-2-152"></a><span class="w">              </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-153"><a id="__codelineno-2-153" name="__codelineno-2-153" href="#__codelineno-2-153"></a><span class="w">                </span><span class="p">{</span>
+</span><span id="__span-2-154"><a id="__codelineno-2-154" name="__codelineno-2-154" href="#__codelineno-2-154"></a><span class="w">                  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+</span><span id="__span-2-155"><a id="__codelineno-2-155" name="__codelineno-2-155" href="#__codelineno-2-155"></a><span class="w">                  </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+</span><span id="__span-2-156"><a id="__codelineno-2-156" name="__codelineno-2-156" href="#__codelineno-2-156"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-2-157"><a id="__codelineno-2-157" name="__codelineno-2-157" href="#__codelineno-2-157"></a><span class="w">              </span><span class="p">]</span>
+</span><span id="__span-2-158"><a id="__codelineno-2-158" name="__codelineno-2-158" href="#__codelineno-2-158"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-159"><a id="__codelineno-2-159" name="__codelineno-2-159" href="#__codelineno-2-159"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-2-160"><a id="__codelineno-2-160" name="__codelineno-2-160" href="#__codelineno-2-160"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-2-161"><a id="__codelineno-2-161" name="__codelineno-2-161" href="#__codelineno-2-161"></a><span class="w">        </span><span class="nt">&quot;area&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-162"><a id="__codelineno-2-162" name="__codelineno-2-162" href="#__codelineno-2-162"></a><span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-163"><a id="__codelineno-2-163" name="__codelineno-2-163" href="#__codelineno-2-163"></a><span class="w">            </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections/metar_demo/area&quot;</span><span class="p">,</span>
+</span><span id="__span-2-164"><a id="__codelineno-2-164" name="__codelineno-2-164" href="#__codelineno-2-164"></a><span class="w">            </span><span class="nt">&quot;hreflang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+</span><span id="__span-2-165"><a id="__codelineno-2-165" name="__codelineno-2-165" href="#__codelineno-2-165"></a><span class="w">            </span><span class="nt">&quot;rel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+</span><span id="__span-2-166"><a id="__codelineno-2-166" name="__codelineno-2-166" href="#__codelineno-2-166"></a><span class="w">            </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-167"><a id="__codelineno-2-167" name="__codelineno-2-167" href="#__codelineno-2-167"></a><span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Area query&quot;</span><span class="p">,</span>
+</span><span id="__span-2-168"><a id="__codelineno-2-168" name="__codelineno-2-168" href="#__codelineno-2-168"></a><span class="w">              </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+</span><span id="__span-2-169"><a id="__codelineno-2-169" name="__codelineno-2-169" href="#__codelineno-2-169"></a><span class="w">              </span><span class="nt">&quot;output_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-170"><a id="__codelineno-2-170" name="__codelineno-2-170" href="#__codelineno-2-170"></a><span class="w">                </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-171"><a id="__codelineno-2-171" name="__codelineno-2-171" href="#__codelineno-2-171"></a><span class="w">                </span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-172"><a id="__codelineno-2-172" name="__codelineno-2-172" href="#__codelineno-2-172"></a><span class="w">                </span><span class="s2">&quot;IWXXM&quot;</span>
+</span><span id="__span-2-173"><a id="__codelineno-2-173" name="__codelineno-2-173" href="#__codelineno-2-173"></a><span class="w">              </span><span class="p">],</span>
+</span><span id="__span-2-174"><a id="__codelineno-2-174" name="__codelineno-2-174" href="#__codelineno-2-174"></a><span class="w">              </span><span class="nt">&quot;default_output_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CoverageJSON&quot;</span><span class="p">,</span>
+</span><span id="__span-2-175"><a id="__codelineno-2-175" name="__codelineno-2-175" href="#__codelineno-2-175"></a><span class="w">              </span><span class="nt">&quot;crs_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-176"><a id="__codelineno-2-176" name="__codelineno-2-176" href="#__codelineno-2-176"></a><span class="w">                </span><span class="p">{</span>
+</span><span id="__span-2-177"><a id="__codelineno-2-177" name="__codelineno-2-177" href="#__codelineno-2-177"></a><span class="w">                  </span><span class="nt">&quot;crs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRS84&quot;</span><span class="p">,</span>
+</span><span id="__span-2-178"><a id="__codelineno-2-178" name="__codelineno-2-178" href="#__codelineno-2-178"></a><span class="w">                  </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOGCS[\&quot;WGS 84\&quot;,DATUM[\&quot;WGS_1984\&quot;,SPHEROID[\&quot;WGS 84\&quot;,6378137,298.257223563,AUTHORITY[\&quot;EPSG\&quot;,\&quot;7030\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;6326\&quot;]],PRIMEM[\&quot;Greenwich\&quot;,0,AUTHORITY[\&quot;EPSG\&quot;,\&quot;8901\&quot;]],UNIT[\&quot;degree\&quot;,0.01745329251994328,AUTHORITY[\&quot;EPSG\&quot;,\&quot;9122\&quot;]],AUTHORITY[\&quot;EPSG\&quot;,\&quot;4326\&quot;]]&quot;</span>
+</span><span id="__span-2-179"><a id="__codelineno-2-179" name="__codelineno-2-179" href="#__codelineno-2-179"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-2-180"><a id="__codelineno-2-180" name="__codelineno-2-180" href="#__codelineno-2-180"></a><span class="w">              </span><span class="p">]</span>
+</span><span id="__span-2-181"><a id="__codelineno-2-181" name="__codelineno-2-181" href="#__codelineno-2-181"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-182"><a id="__codelineno-2-182" name="__codelineno-2-182" href="#__codelineno-2-182"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-2-183"><a id="__codelineno-2-183" name="__codelineno-2-183" href="#__codelineno-2-183"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-184"><a id="__codelineno-2-184" name="__codelineno-2-184" href="#__codelineno-2-184"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-2-185"><a id="__codelineno-2-185" name="__codelineno-2-185" href="#__codelineno-2-185"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-186"><a id="__codelineno-2-186" name="__codelineno-2-186" href="#__codelineno-2-186"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-2-187"><a id="__codelineno-2-187" name="__codelineno-2-187" href="#__codelineno-2-187"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="recursos-de-pesquisa">Recursos de Pesquisa<a class="headerlink" href="#recursos-de-pesquisa" title="Permanent link">&para;</a></h3>
+<p>Os recursos de pesquisa são consultas espácio-temporais que suportam a operação
+da API para o acesso e utilização dos recursos de dados espácio-temporais.</p>
+<p>Os recursos de pesquisa partilham vários parâmetros comuns, o que facilita
+aos programadores a implementação das pesquisas.</p>
+<p>Quando a pesquisa se aplica a uma coleção, o padrão é o seguinte:</p>
+<p><code>/collections/{collectionId}/{queryType}</code></p>
+<p>O parâmetro <code>queryType</code> pode ser um dos seguintes:</p>
+<ul>
+<li>position</li>
+<li>area</li>
+<li>cube</li>
+<li>trajectory</li>
+<li>corridor</li>
+<li>radius</li>
+<li>instances</li>
+<li>locations</li>
+<li>items</li>
+</ul>
+<p>Quando a pesquisa se aplica a uma instância, o padrão é o seguinte:</p>
+<p><code>/collections/{collectionId}/instances/{instanceId}/{queryType}</code></p>
+<h4 id="recursos-de-pesquisa-de-area-da-ogc-api-edr">Recursos de Pesquisa de Área da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-area-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>Uma área é uma região especificada com um envelope geográfico que pode ter
+dimensão vertical. Uma ilustração, criada com o NASA WorldWind, é mostrada abaixo.</p>
+<p><img alt="imagem" src="../../assets/images/environmental-data-retrieval-query-area.png" width="80.0%" /></p>
+<p>O recurso de pesquisa <code>area</code> retorna dados para a área definida.
+O recurso oferece um mecanismo de conveniência para consultar a API por
+área, utilizando uma geometria POLYGON em Well Known Text (WKT).</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/area</code></p>
+<p>O caminho aceita os seguintes parâmetros:</p>
+<ul>
+<li>coords</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>Um exemplo de pedido é mostrado abaixo.</p>
+<p><code>http://example.org/edr/collections/gfs-pressure_at_height/area?coords=POLYGON((-0.898132%2051.179362,-0.909119%2051.815488,0.552063%2051.818884,0.560303%2051.191414,-0.898132%2051.179362))&amp;parameter-name=Pressure_height_above_ground&amp;datetime=2022-01-19T06:00Z/2022-01-19T12:00Z&amp;z=80/80&amp;crs=CRS84&amp;f=CoverageJSON</code></p>
+<h4 id="recursos-de-pesquisa-de-corredor-da-ogc-api-edr">Recursos de Pesquisa de Corredor da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-corredor-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>Um corredor é um conjunto de dois parâmetros de pontos em torno de uma trajetória. Uma
+ilustração, criada com o NASA WorldWind, é mostrada abaixo.</p>
+<p><img alt="imagem" src="../../assets/images/environmental-data-retrieval-query-corridor.png" width="80.0%" /></p>
+<p>O recurso de pesquisa <code>corridor</code> retorna dados para o corredor definido. O recurso oferece um mecanismo de conveniência para consultar a
+API por corredor, utilizando uma geometria LINESTRING em Well Known Text (WKT), ou
+alternativamente subclasses LINESTRINGZ, LINESTRINGM, LINESTRINGZM.</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/corridor</code></p>
+<p>O caminho aceita os seguintes parâmetros:</p>
+<ul>
+<li>coords</li>
+<li>corridor-width</li>
+<li>corridor-height</li>
+<li>width-units</li>
+<li>height-units</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<h4 id="recursos-de-pesquisa-de-cubo-da-ogc-api-edr">Recursos de Pesquisa de Cubo da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-cubo-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>Um cubo é uma área retangular, com uma extensão vertical. Uma ilustração,
+criada com o NASA WorldWind, é mostrada abaixo.</p>
+<p><img alt="imagem" src="../../assets/images/environmental-data-retrieval-query-cube.png" width="80.0%" /></p>
+<p>O recurso de pesquisa <code>cube</code> retorna dados para um cubo definido.
+O recurso oferece um mecanismo de conveniência para consultar a API utilizando uma
+caixa delimitadora (BBOX) que define um cubo.</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/cube</code></p>
+<p>O caminho aceita os seguintes parâmetros:</p>
+<ul>
+<li>bbox</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<h4 id="recursos-de-pesquisa-de-instancias-da-ogc-api-edr">Recursos de Pesquisa de Instâncias da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-instancias-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>O recurso de pesquisa <code>instances</code> recupera metadados sobre
+instâncias de uma coleção. O recurso permite suporte para múltiplas
+instâncias ou versões da mesma fonte de dados subjacente acessíveis
+pela API.</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionID}/instances/{instanceID}/{queryType}</code></p>
+<h4 id="recursos-de-pesquisa-de-itens-entidades-da-ogc-api-edr">Recursos de Pesquisa de Itens (Entidades) da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-itens-entidades-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>O recurso de pesquisa <code>items</code> oferece um endpoint OGC API - Features
+que pode ser utilizado para catalogar entidades de amostragem EDR preexistentes.</p>
+<p>Exemplos de casos de utilização deste recurso incluem:</p>
+<ul>
+<li>existência de uma localização de monitorização</li>
+<li>consulta em cache</li>
+<li>catalogação de anomalias num conjunto de dados</li>
+</ul>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/items</code></p>
+<p>Um exemplo de pedido segue abaixo.</p>
+<p><code>http://example.org/edr/collections/mocov-daily_global/items</code></p>
+<h4 id="recursos-de-pesquisa-de-localizacoes-da-ogc-api-edr">Recursos de Pesquisa de Localizações da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-localizacoes-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>O recurso de pesquisa <code>locations</code> retorna uma lista de identificadores
+de localização e metadados relevantes para a coleção.</p>
+<p>O identificador de localização pode ser qualquer coisa, desde que seja único para a
+posição requerida (por exemplo, um GeoHash).</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/locations</code></p>
+<p>Um exemplo de pedido segue abaixo.</p>
+<p><code>http://example.org/edr/collections/obs_demo/locations</code></p>
+<h4 id="recursos-de-pesquisa-de-posicao-da-ogc-api-edr">Recursos de Pesquisa de Posição da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-posicao-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>Uma posição é um tipo de dados que descreve um ponto ou geometria potencialmente
+ocupados por um objeto ou pessoa. Uma ilustração, criada com o NASA
+WorldWind, é mostrada abaixo.</p>
+<p><img alt="imagem" src="../../assets/images/environmental-data-retrieval-query-position.png" width="80.0%" /></p>
+<p>O recurso de pesquisa <code>position</code> retorna dados para a posição
+solicitada. O recurso oferece um mecanismo de conveniência para consultar a
+API utilizando uma geometria POINT em Well Known Text (WKT) que define uma posição.</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/position</code></p>
+<p>O caminho aceita os seguintes parâmetros:</p>
+<ul>
+<li>coords</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>Um exemplo de pedido é mostrado abaixo.</p>
+<p><code>http://example.org/edr/collections/obs_demo/position?coords=POINT(0.00577%2051.562608)&amp;parameter-name=Wind%20Direction&amp;datetime=2022-01-19T10:00Z/2022-01-19T12:00Z&amp;crs=CRS84&amp;f=GeoJSON</code></p>
+<h4 id="recursos-de-pesquisa-de-raio-da-ogc-api-edr">Recursos de Pesquisa de Raio da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-raio-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>Um raio é uma região especificada com uma posição geográfica e distância
+radial. Uma ilustração, criada com o NASA WorldWind, é mostrada abaixo.</p>
+<p><img alt="imagem" src="../../assets/images/environmental-data-retrieval-query-radius.png" width="80.0%" /></p>
+<p>O recurso de pesquisa <code>radius</code> retorna dados para um raio definido. O recurso oferece um mecanismo de conveniência para consultar a API
+por raio.</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/radius</code></p>
+<p>O caminho aceita os seguintes parâmetros:</p>
+<ul>
+<li>coords</li>
+<li>within</li>
+<li>width-units</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>Um exemplo de pedido é mostrado abaixo.</p>
+<p><code>http://example.org/edr/collections/obs_demo/radius?coords=POINT(-0.095882%2051.512983)&amp;within=50&amp;within-units=km&amp;parameter-name=Wind%20Direction&amp;datetime=2022-01-19T04:00Z/2022-01-19T06:00Z&amp;crs=CRS84&amp;f=GeoJSON</code></p>
+<h4 id="recursos-de-pesquisa-de-trajetoria-da-ogc-api-edr">Recursos de Pesquisa de Trajetória da OGC API - EDR<a class="headerlink" href="#recursos-de-pesquisa-de-trajetoria-da-ogc-api-edr" title="Permanent link">&para;</a></h4>
+<p>Uma trajetória é um caminho de um ponto em movimento descrito por um conjunto uniparamétrico
+de pontos. Uma ilustração, criada com o NASA WorldWind, é mostrada
+abaixo.</p>
+<p><img alt="imagem" src="../../assets/images/environmental-data-retrieval-query-trajectory.png" width="80.0%" /></p>
+<p>O recurso de pesquisa <code>trajectory</code> retorna dados para a trajetória definida. O recurso oferece um mecanismo de conveniência para consultar a
+API por trajetória, utilizando uma geometria LINESTRING em Well Known Text (WKT), ou
+alternativamente as especializações LINESTRINGZ, LINESTRINGM,
+LINESTRINGZM.</p>
+<p>O caminho para o recurso é mostrado abaixo:</p>
+<p><code>/collections/{collectionId}/trajectory</code></p>
+<p>O caminho aceita os seguintes parâmetros:</p>
+<ul>
+<li>coords</li>
+<li>z</li>
+<li>parameter-name</li>
+<li>datetime</li>
+<li>crs</li>
+<li>f</li>
+</ul>
+<p>Um exemplo de pedido é mostrado abaixo.</p>
+<p><code>http://example.org/edr/collections/gfs-pressure_at_height/trajectory?coords=LINESTRING(-3.56
+53.695,-3.546 53.696,-3.532
+53.697)&amp;parameter-name=Height&amp;crs=CRS84&amp;f=CoverageJSON</code></p>
+<h2 id="resumo">Resumo<a class="headerlink" href="#resumo" title="Permanent link">&para;</a></h2>
+<p>A OGC API - Environmental Data Retrieval fornece uma família de interfaces leves para aceder a recursos de dados ambientais. Cada recurso endereçado por uma API EDR corresponde a um padrão de pesquisa definido. Neste aprofundamento, fornecemos uma visão geral do standard e descrevemos cada um destes padrões de pesquisa em detalhe.</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2023 - 2026 Open Geospatial Consortium
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.action.edit","content.action.view","navigation.top","navigation.tracking.prev_next","navigation.tracking.section","navigation.indexes"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>
