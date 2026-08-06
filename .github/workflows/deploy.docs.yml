@@ -24,7 +24,7 @@ jobs:
         run: |
           cd workshop/content
           zensical build --clean --strict
-          zensical build --config-file zensical_pt.toml --strict
+          zensical build --config-file zensical.pt.toml --strict
           mv site /tmp/
       - name: checkout gh-pages branch
         uses: actions/checkout@master
