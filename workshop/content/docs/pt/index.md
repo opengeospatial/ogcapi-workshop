@@ -82,6 +82,7 @@ As contribuições são sempre encorajadas e bem-vindas!
 
 # Créditos
 
+![OGC APIs logo](../assets/images/DGT_logo.png){ width=50% }
 ![OGC APIs logo](../assets/images/PRR.png)
 
 ## Agora, para a workshop. Pronto? Vamos lá!
