@@ -103,6 +103,10 @@ allows for OGC API client software to be more streamlined.
 
 For more details about this standard, please refer to the [OGC API - Common section](https://ogcapi-workshop.ogc.org/api-deep-dive/common/).
 
+### Approved and Candidate Standards
+
+![Approved and candidate OGC API standards](assets/images/ogcapis-overview.png)
+
 ### Approved Standards
 
 The below OGC API standards have been approved and available for use.  Note that these standards have 1 or more "Parts" or extensions that enable specific functionality.  "Part 1" of a given standard represents the most basic capabilities.  Additional parts can also be implemented as [building blocks](#ogc-api-building-blocks).
@@ -117,15 +121,6 @@ The below OGC API standards have been approved and available for use.  Note that
 - [OGC API - Discrete Global Grid Systems](https://ogcapi.ogc.org/dggs) enables applications to organise and access data arranged according to a Discrete Global Grid System (DGGS)
 - [OGC API - Connected Systems](https://ogcapi.ogc.org/connectedsystems/) is intended to act as a bridge between static data (geographic and other domain features) and dynamic data (observations of these feature properties, and commands/actuations that change these feature properties)
 
-### OGC API building blocks
-
-The OGC API approach allows for modularity and "profiling" of APIs depending on your requirements.  This means you
-can mix and match OGC APIs together.
-
-![OGC API building blocks](assets/images/ogc-api-building-blocks.png)
-
-You can read more about this topic in the [building blocks website](https://opengeospatial.github.io/bblocks/).
-
 ### In development
 
 The OGC API effort is rapidly evolving. Numerous OGC API standards are in development:
@@ -135,7 +130,14 @@ The OGC API effort is rapidly evolving. Numerous OGC API standards are in develo
 - [3D GeoVolumes](https://ogcapi.ogc.org/geovolumes) facilitates efficient discovery of and access to 3D content in multiple formats based on a space-centric perspective
 - [Joins](https://ogcapi.ogc.org/joins)  supports the joining of data, from multiple sources, with feature collections or directly with other input files
 
-![Approved and candidate OGC API standards](assets/images/ogcapis-overview.png)
+### OGC API building blocks
+
+The OGC API approach allows for modularity and "profiling" of APIs depending on your requirements.  This means you
+can mix and match OGC APIs together.
+
+![OGC API building blocks](assets/images/ogc-api-building-blocks.png)
+
+You can read more about this topic in the [building blocks website](https://opengeospatial.github.io/bblocks/).
 
 ### OpenAPI
 
