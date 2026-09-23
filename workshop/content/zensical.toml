@@ -32,6 +32,7 @@ nav = [
     {"OGC API roadmap" = "roadmap.md"},
     {"Security" = "security.md"},
     {"Transition and migration" = "transition-and-migration.md"},
+    {"Use cases" = "use-cases.md"},
     {"Getting involved" = "getting-involved.md"},
     {"Conclusion" = "conclusion.md"}
 ]
