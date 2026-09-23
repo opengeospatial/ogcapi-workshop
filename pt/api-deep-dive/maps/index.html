@@ -944,10 +944,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#collection-maps-in-the-default-style" class="md-nav__link">
+  <a href="#collection-maps-with-default-parameters" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Collection maps in the default style
+        Collection maps with default parameters
       </span>
     </span>
   </a>
@@ -955,10 +955,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#collection-maps" class="md-nav__link">
+  <a href="#collection-maps-with-parameters" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Collection maps
+        Collection maps with parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collection-maps-with-styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Collection maps with styles
       </span>
     </span>
   </a>
@@ -1224,19 +1235,31 @@ with various query parameters applied.</p>
 <p>Given OGC API - Maps uses OGC API - Common as a building block, please see the <a href="../features/#feature-collection">OGC API - Features</a> deep dive
 for a detailed explanation of an example implementation, as well as the <a href="#collections">Collections</a> description.</p>
 <p>To inspect the specific collection, run the request <a href="https://demo.pygeoapi.io/master/collections/mapserver_world_map?f=json">https://demo.pygeoapi.io/master/collections/mapserver_world_map?f=json</a>.</p>
-<h3 id="collection-maps-in-the-default-style">Collection maps in the default style<a class="headerlink" href="#collection-maps-in-the-default-style" title="Permanent link">&para;</a></h3>
+<h3 id="collection-maps-with-default-parameters">Collection maps with default parameters<a class="headerlink" href="#collection-maps-with-default-parameters" title="Permanent link">&para;</a></h3>
 <p>Let generate a map from the collection using the link in the <a href="#collections">above</a> extract:</p>
 <p><a href="https://demo.pygeoapi.io/master/collections/mapserver_world_map/map">https://demo.pygeoapi.io/master/collections/mapserver_world_map/map</a></p>
 <p><img alt="image" src="../../assets/images/map-world.png" width="80.0%" /></p>
 <p>The request above asks the OGC API - Maps server to generate a default map as determined by the server.  In this case,
 the default is a map of the world with a pixel width of 500 and height of 300.</p>
+<h3 id="collection-maps-with-parameters">Collection maps with parameters<a class="headerlink" href="#collection-maps-with-parameters" title="Permanent link">&para;</a></h3>
 <p>Additional parameters can be added to the map URL with specific width, height and area of interest.</p>
 <p>To clip the map to a desired area of interest (for example, India), use the <strong>bbox</strong> parameter:</p>
 <p><a href="https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;bbox=69,7,99,37">https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;bbox=69,7,99,37</a></p>
 <p>To adjust the map's dimensions, use the <strong>width</strong> and <strong>height</strong> parameters:</p>
 <p><a href="https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;bbox=69,7,99,37&amp;width=800&amp;height=600">https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;bbox=69,7,99,37&amp;width=800&amp;height=600</a></p>
 <p><img alt="image" src="../../assets/images/map-india.png" width="80.0%" /></p>
-<h3 id="collection-maps">Collection maps<a class="headerlink" href="#collection-maps" title="Permanent link">&para;</a></h3>
+<p>The default CRS and bounding box CRS are <code>OGC:CRS84</code>. They can be changed using the <code>crs</code> and <code>bbox-crs</code> parameters: </p>
+<p><a href="https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;crs=[EPSG:3978]&amp;bbox-crs=EPSG:3857&amp;bbox=-20037508.34,-20037508.34,20037508.34,20037508.34">https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;crs=[EPSG:3978]&amp;bbox-crs=EPSG:3857&amp;bbox=-20037508.34,-20037508.34,20037508.34,20037508.34</a></p>
+<p><img alt="image" src="../../assets/images/oam-3978.png" width="80.0%" /></p>
+<p><a href="https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;crs=http://www.opengis.net/def/crs/EPSG/0/4269">https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;crs=http://www.opengis.net/def/crs/EPSG/0/4269</a></p>
+<p><img alt="image" src="../../assets/images/oam-4269.png" width="80.0%" /></p>
+<p><a href="https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;crs=EPSG:3857">https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&amp;crs=EPSG:3857</a></p>
+<p><img alt="image" src="../../assets/images/oam-3857.png" width="80.0%" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>OGC API - Maps supports CRS from Compact URIs (CURIEs, i.e. <code>EPSG:4326</code>, <code>OGC:CRS84</code>), safe CURIEs (e.g.: <code>[EPSG:4326]</code>, <code>[OGC:CRS84]</code>) and URIs (e.g.: <code>https://www.opengis.net/def/crs/EPSG/0/4326</code>). Additional information about naming conventions can be checked <a href="https://docs.ogc.org/pol/09-048r5.html#_naming_rule">here</a> and <a href="https://docs.ogc.org/DRAFTS/20-024.html#conventions-curies">here</a>.</p>
+</div>
+<h3 id="collection-maps-with-styles">Collection maps with styles<a class="headerlink" href="#collection-maps-with-styles" title="Permanent link">&para;</a></h3>
 <p>To demonstrate an OGC API - Maps implementation, <a href="https://test.cubewerx.com/cubewerx/cubeserv/demo/ogcapi/Foundation">this demonstration server</a> provides a list
 of styles for a given dataset at <a href="https://test.cubewerx.com/cubewerx/cubeserv/demo/ogcapi/Foundation/collections/gtopo30/styles?f=json">https://test.cubewerx.com/cubewerx/cubeserv/demo/ogcapi/Foundation/collections/gtopo30/styles?f=json</a>.</p>
 <p>Each style within the collection can then be requested as a map as follows (using the <code>colorShaded</code> and <code>desaturated</code> styles):</p>
@@ -1246,7 +1269,7 @@ of styles for a given dataset at <a href="https://test.cubewerx.com/cubewerx/cub
 <p><img alt="image" src="../../assets/images/map-gtopo-world-desaturated.png" width="80.0%" /></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>The OGC API - Maps standard describes an API that presents data as maps by applying a style.  This deep dive
-provided an overview of the standard and the various Resources and endpoints that are supported.</p>
+provided an overview of the standard and the various Resources and parameters that are supported.</p>
 
 
 
