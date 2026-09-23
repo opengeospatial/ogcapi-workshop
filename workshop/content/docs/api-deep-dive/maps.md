@@ -238,7 +238,7 @@ for a detailed explanation of an example implementation, as well as the [Collect
 
 To inspect the specific collection, run the request <https://demo.pygeoapi.io/master/collections/mapserver_world_map?f=json>.
 
-### Collection maps in the default style
+### Collection maps with default parameters
 
 Let generate a map from the collection using the link in the [above](#collections) extract:
 
@@ -248,6 +248,8 @@ Let generate a map from the collection using the link in the [above](#collection
 
 The request above asks the OGC API - Maps server to generate a default map as determined by the server.  In this case,
 the default is a map of the world with a pixel width of 500 and height of 300.
+
+### Collection maps with parameters
 
 Additional parameters can be added to the map URL with specific width, height and area of interest.
 
@@ -261,7 +263,24 @@ To adjust the map's dimensions, use the **width** and **height** parameters:
 
 ![image](../assets/images/map-india.png){width="80.0%"}
 
-### Collection maps
+The default CRS and bounding box CRS are `OGC:CRS84`. They can be changed using the `crs` and `bbox-crs` parameters: 
+
+https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&crs=[EPSG:3978]&bbox-crs=EPSG:3857&bbox=-20037508.34,-20037508.34,20037508.34,20037508.34
+
+![image](../assets/images/oam-3978.png){width="80.0%"}
+
+https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&crs=http://www.opengis.net/def/crs/EPSG/0/4269
+
+![image](../assets/images/oam-4269.png){width="80.0%"}
+
+https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&crs=EPSG:3857
+
+![image](../assets/images/oam-3857.png){width="80.0%"}
+
+!!! note
+    OGC API - Maps supports CRS from Compact URIs (CURIEs, i.e. `EPSG:4326`, `OGC:CRS84`), safe CURIEs (e.g.: `[EPSG:4326]`, `[OGC:CRS84]`) and URIs (e.g.: `https://www.opengis.net/def/crs/EPSG/0/4326`). Additional information about naming conventions can be checked [here](https://docs.ogc.org/pol/09-048r5.html#_naming_rule) and [here](https://docs.ogc.org/DRAFTS/20-024.html#conventions-curies).
+
+### Collection maps with styles
 
 To demonstrate an OGC API - Maps implementation, [this demonstration server](https://test.cubewerx.com/cubewerx/cubeserv/demo/ogcapi/Foundation) provides a list
 of styles for a given dataset at <https://test.cubewerx.com/cubewerx/cubeserv/demo/ogcapi/Foundation/collections/gtopo30/styles?f=json>.
@@ -279,4 +298,4 @@ Each style within the collection can then be requested as a map as follows (usin
 ## Summary
 
 The OGC API - Maps standard describes an API that presents data as maps by applying a style.  This deep dive
-provided an overview of the standard and the various Resources and endpoints that are supported.
+provided an overview of the standard and the various Resources and parameters that are supported.
