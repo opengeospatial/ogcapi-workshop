@@ -265,7 +265,7 @@ To adjust the map's dimensions, use the **width** and **height** parameters:
 
 The default CRS and bounding box CRS are `OGC:CRS84`. They can be changed using the `crs` and `bbox-crs` parameters: 
 
-https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&crs=[EPSG:3978]&bbox-crs=EPSG:3857&bbox=-20037508.34,-20037508.34,20037508.34,20037508.34
+[https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&crs=[EPSG:3978]&bbox-crs=EPSG:3857&bbox=-20037508.34,-20037508.34,20037508.34,20037508.34](https://demo.pygeoapi.io/master/collections/mapserver_world_map/map?f=png&crs=[EPSG:3978]&bbox-crs=EPSG:3857&bbox=-20037508.34,-20037508.34,20037508.34,20037508.34)
 
 ![image](../assets/images/oam-3978.png){width="80.0%"}
 
