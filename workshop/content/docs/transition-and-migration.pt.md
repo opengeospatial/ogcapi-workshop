@@ -8,7 +8,7 @@ De acordo com as [Políticas e Procedimentos do Comité Técnico da OGC](https:/
 
 Poderá ser este o caso de muitas [normas OWS](https://developer.ogc.org/ows.html), uma vez que estão a ser substituídos por OGC APIs mais modernas e mais completas.
 
-Assim como com as normas depreciadas, as Normas de Legado já não são suportados, mas permanecem no sítio web da OGC com uma notificação de que as capacidades da norma foram substituídas, total ou parcialmente, por novas normas. A notificação indicará claramente que a Norma Legado não é inválida, mas que novas implementações das capacidades da norma serão melhor servidas pelas novas normas identificadas.
+Assim como com as normas depreciadas, as Normas de Legado já não são suportadas, mas permanecem no sítio web da OGC com uma notificação de que as capacidades da norma foram substituídas, total ou parcialmente, por novas normas. A notificação indicará claramente que a Norma Legado não é inválida, mas que novas implementações das capacidades da norma serão melhor servidas pelas novas normas identificadas.
 
 Na [Workshop Mergulhando na pygeoapi](https://dive.pygeoapi.io/pt/index.pt/), pode encontrar
 uma secção sobre o [uso de pontes para facilitar a migração de OWS para OGC
